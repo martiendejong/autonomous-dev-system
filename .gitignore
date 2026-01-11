@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# User configuration (generated during setup)
+.config/
+user-config.json
+config.local.json
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Test artifacts
+test-results/
+coverage/
+
+# Build output
+dist/
+build/
+*.tgz

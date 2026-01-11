@@ -1,0 +1,173 @@
+{
+  "manifest_version": "0.2",
+  "name": "autonomous-dev-system",
+  "display_name": "Autonomous Development System",
+  "version": "1.0.0",
+  "description": "Battle-tested autonomous agent protocols with worktree management, zero-tolerance enforcement, and 75+ documented patterns for multi-repo development.",
+
+  "long_description": "A comprehensive autonomous development system featuring:\n- Atomic worktree allocation for parallel agent work\n- Zero-tolerance enforcement hooks preventing protocol violations\n- 75+ documented CI/CD, build, and development patterns\n- Cross-repo coordination for complex multi-repository workflows\n- Self-improving system with reflection logging\n- 10 productivity tools (dashboard, PR status, coverage, etc.)\n\nDesigned for serious multi-repo development with enforced best practices.",
+
+  "author": {
+    "name": "Claude Agent Community",
+    "url": "https://github.com/claudescripts/autonomous-dev-system"
+  },
+
+  "homepage": "https://github.com/claudescripts/autonomous-dev-system",
+  "documentation": "https://github.com/claudescripts/autonomous-dev-system/blob/main/README.md",
+
+  "keywords": [
+    "worktree",
+    "automation",
+    "multi-repo",
+    "git-workflow",
+    "autonomous-agent",
+    "productivity",
+    "ci-cd",
+    "patterns",
+    "development",
+    "enforcement"
+  ],
+
+  "license": "MIT",
+
+  "compatibility": {
+    "claude_code": ">=0.10.0",
+    "platforms": ["win32", "darwin", "linux"],
+    "runtimes": {
+      "node": ">=16.0.0"
+    }
+  },
+
+  "user_config_schema": {
+    "controlPlane": {
+      "type": "string",
+      "title": "Control Plane Directory",
+      "description": "Directory where pool, activity, and reflection logs are stored",
+      "required": true,
+      "default": "${HOME}/.autonomous-dev"
+    },
+
+    "repos": {
+      "type": "array",
+      "title": "Managed Repositories",
+      "description": "Repositories under autonomous management (base repos for worktrees)",
+      "required": true,
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Repository Name",
+            "description": "Short name for this repo (e.g., 'client-manager')"
+          },
+          "path": {
+            "type": "string",
+            "title": "Repository Path",
+            "description": "Absolute path to the base repository"
+          },
+          "baseBranch": {
+            "type": "string",
+            "title": "Base Branch",
+            "description": "Default branch (usually 'develop' or 'main')",
+            "default": "develop"
+          }
+        },
+        "required": ["name", "path"]
+      }
+    },
+
+    "worktreePath": {
+      "type": "string",
+      "title": "Worktree Base Path",
+      "description": "Where agent worktrees are created (e.g., /path/to/worker-agents)",
+      "required": true
+    },
+
+    "agentPoolSize": {
+      "type": "integer",
+      "title": "Agent Pool Size",
+      "description": "Number of parallel agents (worktree seats) available",
+      "default": 12,
+      "minimum": 1,
+      "maximum": 50
+    },
+
+    "shell": {
+      "type": "string",
+      "title": "Preferred Shell",
+      "description": "Shell to use for commands (bash, zsh, pwsh, cmd)",
+      "enum": ["auto", "bash", "zsh", "pwsh", "cmd"],
+      "default": "auto"
+    }
+  },
+
+  "commands": [
+    {
+      "name": "worktree:claim",
+      "description": "Atomically allocate a worktree from the agent pool",
+      "file": "commands/worktree-claim.md"
+    },
+    {
+      "name": "worktree:release",
+      "description": "Complete work and release worktree back to pool",
+      "file": "commands/worktree-release.md"
+    },
+    {
+      "name": "worktree:status",
+      "description": "Show current agent pool status and allocations",
+      "file": "commands/worktree-status.md"
+    },
+    {
+      "name": "dashboard",
+      "description": "Show comprehensive repository status (branches, PRs, CI, agents)",
+      "file": "commands/dashboard.md"
+    },
+    {
+      "name": "pr:status",
+      "description": "Show all open PRs with CI status across repos",
+      "file": "commands/pr-status.md"
+    },
+    {
+      "name": "patterns:search",
+      "description": "Search 75+ documented patterns for solutions",
+      "file": "commands/patterns-search.md"
+    }
+  ],
+
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "script": "hooks/pre-tool-use.js",
+      "description": "Enforce zero-tolerance rules before file edits"
+    },
+    {
+      "event": "PreCompact",
+      "script": "hooks/pre-compact.js",
+      "description": "Verify state before conversation compression"
+    },
+    {
+      "event": "SessionEnd",
+      "script": "hooks/session-end.js",
+      "description": "Ensure worktrees are released at session end"
+    }
+  ],
+
+  "agents": [
+    {
+      "name": "worktree-manager",
+      "description": "Specialist in atomic worktree allocation and release protocols",
+      "file": "agents/worktree-manager.md"
+    },
+    {
+      "name": "pattern-expert",
+      "description": "Searches 75+ documented patterns for CI/CD and development solutions",
+      "file": "agents/pattern-expert.md"
+    },
+    {
+      "name": "pr-creator",
+      "description": "Handles PR creation with dependency tracking and proper base branches",
+      "file": "agents/pr-creator.md"
+    }
+  ]
+}
