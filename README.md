@@ -38,7 +38,7 @@ Designed for serious multi-repo development with enforced best practices.
 1. **Clone or download this repository:**
 
    ```bash
-   git clone https://github.com/yourusername/autonomous-dev-system.git
+   git clone https://github.com/martiendejong/autonomous-dev-system.git
    cd autonomous-dev-system
    ```
 
@@ -414,8 +414,8 @@ Built from battle-tested protocols developed across hundreds of development sess
 ## 🚀 Happy Autonomous Developing!
 
 Questions? Issues? Contributions?
-- GitHub Issues: [Report a bug](https://github.com/yourusername/autonomous-dev-system/issues)
-- Discussions: [Share patterns](https://github.com/yourusername/autonomous-dev-system/discussions)
-- PR: [Contribute code](https://github.com/yourusername/autonomous-dev-system/pulls)
+- GitHub Issues: [Report a bug](https://github.com/martiendejong/autonomous-dev-system/issues)
+- Discussions: [Share patterns](https://github.com/martiendejong/autonomous-dev-system/discussions)
+- PR: [Contribute code](https://github.com/martiendejong/autonomous-dev-system/pulls)
 
 **May your worktrees always be clean and your PRs always mergeable! ✨**

@@ -23,12 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/autonomous-dev-system.git"
+    "url": "https://github.com/martiendejong/autonomous-dev-system.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/autonomous-dev-system/issues"
+    "url": "https://github.com/martiendejong/autonomous-dev-system/issues"
   },
-  "homepage": "https://github.com/yourusername/autonomous-dev-system#readme",
+  "homepage": "https://github.com/martiendejong/autonomous-dev-system#readme",
   "peerDependencies": {
     "@anthropic-ai/claude-code": ">=0.10.0"
   },
