@@ -1,0 +1,37 @@
+{
+  "name": "autonomous-dev-system",
+  "version": "1.0.0",
+  "description": "Battle-tested autonomous agent protocols for Claude Code with worktree management, zero-tolerance enforcement, and 75+ documented patterns",
+  "main": ".claude-plugin/plugin.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "worktree",
+    "git",
+    "automation",
+    "development-workflow",
+    "pattern-library",
+    "ci-cd"
+  ],
+  "author": "Autonomous Development System Contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/autonomous-dev-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/autonomous-dev-system/issues"
+  },
+  "homepage": "https://github.com/yourusername/autonomous-dev-system#readme",
+  "peerDependencies": {
+    "@anthropic-ai/claude-code": ">=0.10.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
