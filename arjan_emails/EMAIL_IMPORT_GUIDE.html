@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Import Guide - Arjan Stroeve</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .status-box {
+            background: #f7fafc;
+            border-left: 4px solid #4299e1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .status-box h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .status-box ul {
+            margin-left: 20px;
+            color: #4a5568;
+        }
+
+        .status-box ul li {
+            margin: 8px 0;
+        }
+
+        .method {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .method:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .method.recommended {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .method h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #48bb78;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .difficulty {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .steps {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .steps ol {
+            margin-left: 20px;
+        }
+
+        .steps li {
+            margin: 12px 0;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .code {
+            background: #2d3748;
+            color: #48bb78;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            display: block;
+            overflow-x: auto;
+        }
+
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px 10px 0;
+        }
+
+        .button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .button.secondary {
+            background: #4299e1;
+        }
+
+        .button.success {
+            background: #48bb78;
+        }
+
+        .warning {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .warning strong {
+            color: #c53030;
+        }
+
+        .info {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .info strong {
+            color: #2c5282;
+        }
+
+        .next-steps {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .next-steps h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .next-steps ul {
+            margin-left: 20px;
+        }
+
+        .next-steps li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Email Import Guide</h1>
+        <p class="subtitle">Arjan Stroeve & Gerelateerde Contacten</p>
+
+        <div class="status-box">
+            <h3>📋 Wat Gaat Er Geïmporteerd Worden?</h3>
+            <ul>
+                <li><strong>Contacten:</strong> Arjan Stroeve, Allan Drenth, Rinus Huisman, Social Media Hulp</li>
+                <li><strong>Projecten:</strong> Cassandra, Eethuys de Steen</li>
+                <li><strong>Email Accounts:</strong> info@martiendejong.nl + martiendejong2008@gmail.com</li>
+                <li><strong>Output:</strong> C:\scripts\arjan_emails\emails\</li>
+            </ul>
+        </div>
+
+        <h2 style="color: #2d3748; margin: 30px 0 20px 0;">Kies Een Import Methode:</h2>
+
+        <!-- METHODE 1: Python Script -->
+        <div class="method recommended">
+            <h2>
+                🚀 Methode 1: Python Script
+                <span class="badge">AANBEVOLEN</span>
+            </h2>
+            <p class="difficulty">⏱️ Tijd: 5-10 minuten | 💡 Moeilijkheid: Gemakkelijk</p>
+
+            <div class="steps">
+                <h3>Stappen:</h3>
+                <ol>
+                    <li>Dubbelklik op: <code>C:\scripts\arjan_emails\START_EMAIL_IMPORT.bat</code></li>
+                    <li>Volg de instructies op het scherm</li>
+                    <li>Voer wachtwoord in voor info@martiendejong.nl</li>
+                    <li>Voer wachtwoord in voor martiendejong2008@gmail.com</li>
+                    <li>Wacht tot import compleet is</li>
+                </ol>
+
+                <div class="warning">
+                    <strong>⚠️ 2FA (Twee-Factor Authenticatie)?</strong><br>
+                    Als je 2FA hebt ingeschakeld, heb je een <strong>App Password</strong> nodig:
+                    <ol style="margin: 10px 0 10px 20px;">
+                        <li>Ga naar: <a href="https://myaccount.google.com/apppasswords" target="_blank">https://myaccount.google.com/apppasswords</a></li>
+                        <li>Selecteer: App = Mail, Device = Windows</li>
+                        <li>Klik "Generate"</li>
+                        <li>Kopieer het 16-karakter wachtwoord</li>
+                        <li>Gebruik DIT wachtwoord in plaats van je normale wachtwoord</li>
+                    </ol>
+                </div>
+
+                <div class="info">
+                    <strong>ℹ️ IMAP Moet Ingeschakeld Zijn</strong><br>
+                    Gmail > Settings > Forwarding and POP/IMAP > Enable IMAP
+                </div>
+
+                <a href="file:///C:/scripts/arjan_emails" class="button success">📁 Open Arjan Emails Folder</a>
+            </div>
+        </div>
+
+        <!-- METHODE 2: Handmatig -->
+        <div class="method">
+            <h2>✋ Methode 2: Handmatig (Gmail Website)</h2>
+            <p class="difficulty">⏱️ Tijd: 15-30 minuten | 💡 Moeilijkheid: Gemakkelijk</p>
+
+            <div class="steps">
+                <h3>Voor info@martiendejong.nl:</h3>
+                <ol>
+                    <li>Open Gmail: <a href="https://mail.google.com" target="_blank">mail.google.com</a></li>
+                    <li>Log in met info@martiendejong.nl</li>
+                    <li>Zoekbalk: <code class="code">from:arjan OR to:arjan OR from:allan OR to:allan OR from:rinus OR to:rinus OR subject:cassandra</code></li>
+                    <li>Selecteer alle emails (checkbox bovenaan)</li>
+                    <li>Klik "Meer" (drie puntjes) > "Berichten downloaden"</li>
+                    <li>Save in: <code>C:\scripts\arjan_emails\emails\</code></li>
+                </ol>
+
+                <h3 style="margin-top: 20px;">Herhaal voor martiendejong2008@gmail.com:</h3>
+                <ol>
+                    <li>Log uit van info@martiendejong.nl</li>
+                    <li>Log in met martiendejong2008@gmail.com</li>
+                    <li>Herhaal stappen 3-6</li>
+                </ol>
+
+                <a href="https://mail.google.com" target="_blank" class="button">📧 Open Gmail</a>
+                <a href="file:///C:/scripts/arjan_emails/emails" class="button secondary">📁 Open Output Folder</a>
+            </div>
+        </div>
+
+        <!-- METHODE 3: Gmail Takeout -->
+        <div class="method">
+            <h2>📦 Methode 3: Gmail Takeout (Volledig)</h2>
+            <p class="difficulty">⏱️ Tijd: 1-4 uur (wachttijd) | 💡 Moeilijkheid: Gemakkelijk maar traag</p>
+
+            <div class="steps">
+                <h3>Stappen:</h3>
+                <ol>
+                    <li>Ga naar: <a href="https://takeout.google.com" target="_blank">Google Takeout</a></li>
+                    <li>Deselecteer alles behalve "Gmail"</li>
+                    <li>Kies formaat: MBOX of EML</li>
+                    <li>Klik "Start export"</li>
+                    <li>Wacht op email met downloadlink (kan uren duren)</li>
+                    <li>Download en extract naar: <code>C:\scripts\arjan_emails\emails\</code></li>
+                </ol>
+
+                <div class="info">
+                    <strong>ℹ️ Let Op:</strong><br>
+                    Deze methode exporteert ALLE emails, niet alleen van Arjan. Je zult daarna moeten filteren.
+                </div>
+
+                <a href="https://takeout.google.com" target="_blank" class="button">📦 Open Google Takeout</a>
+            </div>
+        </div>
+
+        <!-- VOLGENDE STAPPEN -->
+        <div class="next-steps">
+            <h2>✅ Na Succesvolle Import</h2>
+            <ol>
+                <li>📄 Open <code>C:\scripts\arjan_emails\emails\email_index.txt</code> - Bekijk lijst van alle emails</li>
+                <li>📖 Lees emails chronologisch (oudste eerst)</li>
+                <li>📝 Update <code>TIJDLIJN_ARJAN_STROEVE_COMPLEET.md</code> met echte data</li>
+                <li>❓ Vul <code>OPENSTAANDE_VRAGEN.md</code> in op basis van emails</li>
+                <li>📊 Maak <code>SAMENVATTING_SITUATIE_ARJAN.md</code> (1 pagina)</li>
+                <li>🔍 Maak <code>ANALYSE_RELATIE_ARJAN_STROEVE.md</code> (neutrale analyse)</li>
+            </ol>
+
+            <a href="file:///C:/scripts/arjan_emails/README.md" class="button" style="background: white; color: #48bb78;">📖 Lees README.md</a>
+            <a href="file:///C:/scripts/arjan_emails/START_HIER.md" class="button" style="background: white; color: #48bb78;">🚀 Lees START_HIER.md</a>
+        </div>
+
+        <div class="info" style="margin-top: 30px;">
+            <strong>📞 Hulp Nodig?</strong><br>
+            Zie: <code>C:\scripts\arjan_emails\HOE_EMAILS_IMPORTEREN.md</code> voor gedetailleerde troubleshooting.
+        </div>
+    </div>
+</body>
+</html>

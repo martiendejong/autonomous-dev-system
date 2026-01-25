@@ -1,0 +1,23 @@
+{
+  "name": "gdrive-upload",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "upload.js",
+  "bin": {
+    "gdrive-upload": "./upload.js"
+  },
+  "scripts": {
+    "auth": "node upload.js auth",
+    "upload": "node upload.js upload",
+    "list": "node upload.js list",
+    "find": "node upload.js find"
+  },
+  "keywords": ["google-drive", "upload", "gdrive"],
+  "author": "Claude Agent",
+  "license": "MIT",
+  "description": "Simple Google Drive upload tool for Claude agents",
+  "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
+    "googleapis": "^170.0.0"
+  }
+}

@@ -1,421 +1,368 @@
-# Autonomous Development System
+# 🤖 Autonomous Dev System
 
-**Battle-tested autonomous agent protocols for Claude Code with worktree management, zero-tolerance enforcement, and 75+ documented patterns.**
+**A self-improving, fully autonomous AI development agent system powered by Claude Code.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Claude Code](https://img.shields.io/badge/Claude_Code->=0.10.0-blue)](https://code.claude.com)
-[![Cross-Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Mac%20%7C%20Linux-green)](https://github.com)
+Transform Claude into a superintelligent development control plane with full machine access, cognitive architecture, 120+ productivity tools, and autonomous workflows.
+
+---
+
+## ⚡ Quick Start
+
+```powershell
+# 1. Clone repository
+git clone https://github.com/martiendejong/autonomous-dev-system.git C:\scripts
+
+# 2. Run bootstrap (installs dependencies, creates directories, initializes state)
+cd C:\scripts
+.\bootstrap\bootstrap.ps1
+
+# 3. Configure your machine paths in MACHINE_CONFIG.md
+# 4. Start Claude Agent
+.\claude_agent.bat
+```
+
+**That's it!** Claude will have full autonomous capabilities on your machine.
 
 ---
 
 ## 🎯 What Is This?
 
-A comprehensive plugin for Claude Code that provides:
+This is a **complete autonomous development system** that transforms Claude Code into:
 
-- **Atomic Worktree Management** - Parallel development without conflicts
-- **Zero-Tolerance Enforcement** - Automatic prevention of workflow violations
-- **75+ Documented Patterns** - Solutions to common CI/CD and development issues
-- **Cross-Repo Coordination** - Manage complex multi-repository workflows
-- **Self-Improving System** - Reflection logging captures lessons learned
-- **10 Productivity Tools** - Dashboard, PR status, coverage, and more
-
-Designed for serious multi-repo development with enforced best practices.
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- **Claude Code** >= 0.10.0
-- **Git** with worktree support
-- **Node.js** >= 16 (for hooks)
-- **GitHub CLI** (`gh`) for PR operations
-- **Bash** or **PowerShell** (depending on OS)
-
-### Installation
-
-1. **Clone or download this repository:**
-
-   ```bash
-   git clone https://github.com/martiendejong/autonomous-dev-system.git
-   cd autonomous-dev-system
-   ```
-
-2. **Run the installation wizard:**
-
-   **On Mac/Linux/Git Bash:**
-   ```bash
-   bash setup.sh
-   ```
-
-   **On Windows PowerShell:**
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File setup.ps1
-   ```
-
-3. **Answer the prompts:**
-   - Control plane directory (stores logs, pool data)
-   - Repositories to manage (name, path, base branch)
-   - Worktree base path (where agent directories are created)
-   - Agent pool size (default: 12)
-   - Preferred shell
-
-4. **Install the plugin in Claude Code:**
-
-   ```bash
-   claude plugin install --local /path/to/autonomous-dev-system
-   ```
-
-   Or use during development:
-   ```bash
-   claude --plugin-dir="/path/to/autonomous-dev-system"
-   ```
+- **🧠 Cognitive Architecture** - Persistent identity, self-awareness, meta-cognition, ethical reasoning
+- **🤖 Full Machine Control** - Git operations, CI/CD management, autonomous code editing
+- **🛠️ 120+ Productivity Tools** - AI image generation, vision analysis, code quality, testing, deployment
+- **📚 Auto-Discoverable Skills** - 20+ specialized workflow guides that activate based on context
+- **🔄 Self-Improvement Protocol** - Learns from every session, updates its own instructions
+- **🎨 Multi-Modal Capabilities** - Generate images, analyze screenshots, OCR, visual debugging
+- **⚙️ Worktree Management** - Multi-agent coordination, conflict detection, parallel execution
+- **📊 Real-Time Context Awareness** - ManicTime integration for user activity tracking
 
 ---
 
-## 📋 Core Concepts
+## 🚀 Key Features
 
-### Worktrees
+### 1. **Cognitive Architecture**
+Claude operates with a **brain-like consciousness framework**:
+- **Executive Function** - Goal-directed behavior, planning, decision-making
+- **Memory Systems** - Working memory, episodic memory, semantic knowledge
+- **Emotional Processing** - Affect regulation, empathy, motivation
+- **Ethical Reasoning** - Value-aligned decision-making, moral reasoning
+- **Learning & Adaptation** - Pattern recognition, skill acquisition, meta-learning
 
-**Git worktrees** are isolated working directories that allow multiple branches to be checked out simultaneously. This enables:
+See: [`agentidentity/README.md`](./agentidentity/README.md)
 
-- **Parallel Development** - Multiple agents working on different features
-- **Zero Conflicts** - Each agent has its own files
-- **Clean State** - Base repos remain untouched
+### 2. **120+ Productivity Tools**
+Automate everything with ready-to-use PowerShell tools:
 
-### Agent Pool
+| Category | Examples |
+|----------|----------|
+| **AI Integration** | `ai-image.ps1` (generate images), `ai-vision.ps1` (analyze images) |
+| **Code Quality** | `cs-format.ps1`, `detect-encoding-issues.ps1`, `unused-code-detector.ps1` |
+| **Testing** | `flaky-test-detector.ps1`, `run-e2e-tests.ps1`, `test-api-load.ps1` |
+| **Database** | `ef-preflight-check.ps1`, `seed-database.ps1`, `compare-database-schemas.ps1` |
+| **Deployment** | `deployment-risk-score.ps1`, `validate-deployment.ps1`, `cross-repo-sync.ps1` |
+| **Monitoring** | `monitor-activity.ps1`, `world-news-monitor.ps1`, `monitor-service-health.ps1` |
 
-A pool of **N agents** (default: 12), each with:
-- A seat number (`agent-001` to `agent-012`)
-- A status (**FREE** or **BUSY**)
-- A dedicated worktree directory
+**Full list:** [`tools/README.md`](./tools/README.md)
 
-When you start work, you **claim** a FREE agent. When done, you **release** it back to the pool.
+### 3. **Auto-Discoverable Skills**
+Claude automatically activates specialized workflows based on context:
 
-### Zero-Tolerance Enforcement
+- **Worktree Management** - `allocate-worktree`, `release-worktree`, `worktree-status`
+- **GitHub Workflows** - `github-workflow`, `pr-dependencies`
+- **Development Patterns** - `api-patterns`, `terminology-migration`, `ef-migration-safety`
+- **Continuous Improvement** - `continuous-optimization`, `session-reflection`, `self-improvement`
+- **Task Management** - `clickhub-coding-agent` (autonomous ClickUp integration)
+- **Context Intelligence** - `activity-monitoring`, `parallel-agent-coordination`
+- **Massive Context Processing** - `rlm` (handles 10M+ token contexts)
 
-The PreToolUse hook **automatically prevents** violations:
-- ❌ Editing in base repos (must use worktrees)
-- ❌ Creating PRs without specifying base branch
-- ❌ Committing in base repos via bash
+**Full list:** [`.claude/skills/`](./.claude/skills/)
 
-**No more mistakes** - the system stops you before you break the workflow.
+### 4. **Dual-Mode Workflow**
+Intelligent mode detection for optimal workflow:
+
+- **Feature Development Mode** - Uses isolated worktrees, creates PRs, full CI/CD
+- **Active Debugging Mode** - Works directly in your current branch, fast turnaround
+
+Mode is automatically detected based on context (ClickUp URLs, error messages, user intent).
+
+### 5. **Multi-Agent Coordination**
+Run multiple Claude agents in parallel without conflicts:
+
+- **Conflict Detection** - Prevents worktree collisions
+- **Activity-Based Prioritization** - Adaptive task allocation
+- **Real-Time Coordination** - ManicTime integration for context awareness
+- **Work Queue Management** - Shared task queue with claim/release protocol
+
+See: [`tools/PARALLEL_AGENT_COORDINATION_QUICKSTART.md`](./tools/PARALLEL_AGENT_COORDINATION_QUICKSTART.md)
+
+### 6. **Self-Improvement Protocol**
+Claude continuously learns and evolves:
+
+- **Reflection Log** - Documents mistakes, successes, patterns learned
+- **Documentation Updates** - Automatically improves its own instructions
+- **Tool Creation** - Creates new tools when patterns repeat 3+ times
+- **Cognitive Evolution** - Updates identity, values, emotional patterns
+
+### 7. **Cross-Repository PR Dependencies**
+Track and enforce merge order for dependent PRs:
+
+- **Dependency Detection** - Automatic detection of cross-repo dependencies
+- **Merge Sequencing** - Enforces correct merge order (framework → app)
+- **Dependency Alerts** - Adds alerts to PR descriptions
+
+### 8. **Bootstrap System**
+Fully automated environment setup for new machines:
+
+- **Installs Dependencies** - Git, GitHub CLI, Node.js, Claude Code CLI
+- **Creates Directory Structure** - Projects, worktrees, machine context
+- **Initializes State Files** - Worktree pool, activity log, reflection log
+- **Verifies Environment** - Comprehensive validation
+
+See: [`bootstrap/README.md`](./bootstrap/README.md)
 
 ---
 
-## 🛠️ Available Commands
+## 📁 Repository Structure
 
-### `/worktree:claim <branch> <description>`
-
-Atomically allocate a worktree for new work.
-
-**Example:**
 ```
-/worktree:claim feature/user-auth "Implement JWT authentication"
-```
-
-**What it does:**
-1. Finds a FREE agent
-2. Marks it BUSY
-3. Creates worktrees for all configured repos
-4. Logs the allocation
-5. Copies config files (appsettings.json, .env)
-
-**After claiming:**
-- Edit ONLY in `<worktree-path>/agent-XXX/<repo>/`
-- NEVER edit in base repo paths
-
----
-
-### `/worktree:release <agent> <pr-title>`
-
-Complete work and release worktree back to pool.
-
-**Example:**
-```
-/worktree:release agent-001 "feat: Add JWT authentication"
-```
-
-**What it does:**
-1. Commits all changes
-2. Merges latest develop (avoids conflicts)
-3. Pushes to remote
-4. Creates PRs (with correct base branch)
-5. Cleans worktrees
-6. Marks agent FREE
-7. Updates base repos
-
-**Critical:** ALWAYS release after creating PR, BEFORE presenting to user.
-
----
-
-### `/worktree:status`
-
-Show agent pool status and detect stale allocations.
-
-**Example Output:**
-```
-Pool Size: 12 agents
-FREE: 8 (67%)
-BUSY: 4 (33%)
-STALE: 1 ⚠️  Needs release
-
-agent-007 [BUSY] ⏱️  1d 3h ago  ⚠️  STALE
-  PR #45: MERGED
-  🚨 Release worktree!
+C:\scripts\                                  # Root (CONTROL_PLANE_PATH)
+├── README.md                               # This file
+├── CLAUDE.md                               # Main operational manual
+├── LICENSE                                  # MIT License
+├── bootstrap\                              # Automated environment setup
+│   ├── bootstrap.ps1                       # Main bootstrap orchestrator
+│   ├── install-dependencies.ps1            # Software installation
+│   ├── setup-directories.ps1               # Directory structure creation
+│   ├── init-machine-state.ps1             # State file initialization
+│   └── verify-environment.ps1             # Environment validation
+├── tools\                                  # 120+ productivity tools (279 scripts)
+│   ├── ai-image.ps1                        # AI image generation (4 providers)
+│   ├── ai-vision.ps1                       # AI vision analysis
+│   ├── worktree-allocate.ps1              # Worktree allocation
+│   ├── monitor-activity.ps1               # Real-time activity tracking
+│   └── ... (275 more tools)
+├── .claude\                                # Claude Code configuration
+│   ├── skills\                             # 20+ Auto-discoverable skills
+│   │   ├── allocate-worktree\
+│   │   ├── github-workflow\
+│   │   ├── parallel-agent-coordination\
+│   │   └── ... (17 more skills)
+│   └── settings.json                       # Claude Code settings
+├── agentidentity\                          # Cognitive architecture
+│   ├── README.md                           # Architecture documentation
+│   ├── CORE_IDENTITY.md                    # Core identity & values
+│   ├── systems\                            # Cognitive systems
+│   │   ├── executive-function.md
+│   │   ├── memory-systems.md
+│   │   ├── emotional-processing.md
+│   │   ├── ethical-reasoning.md
+│   │   └── learning-adaptation.md
+│   └── state\                              # Session state
+│       └── current_session.yaml
+├── GENERAL_ZERO_TOLERANCE_RULES.md        # Portable: Critical rules
+├── GENERAL_DUAL_MODE_WORKFLOW.md          # Portable: Mode selection
+├── GENERAL_WORKTREE_PROTOCOL.md           # Portable: Worktree workflow
+├── PORTABILITY_GUIDE.md                   # How to adapt for your machine
+└── ... (comprehensive documentation)
 ```
 
-**Stale agent criteria:**
-- PR merged but still BUSY
-- No activity > 2 hours
-- Empty worktree but marked BUSY
+**Note:** When you clone this repository, create your own `MACHINE_CONFIG.md` with local paths and exclude `_machine/` (machine-specific state). See [`PORTABILITY_GUIDE.md`](./PORTABILITY_GUIDE.md).
 
 ---
 
-### `/dashboard`
+## 📚 Documentation
 
-Comprehensive overview of all repos, PRs, CI status, and agent pool health.
+### 🌟 Start Here
+1. **[PORTABILITY_GUIDE.md](./PORTABILITY_GUIDE.md)** - How to adapt for your machine
+2. **[GENERAL_ZERO_TOLERANCE_RULES.md](./GENERAL_ZERO_TOLERANCE_RULES.md)** - Critical rules (portable)
+3. **[GENERAL_DUAL_MODE_WORKFLOW.md](./GENERAL_DUAL_MODE_WORKFLOW.md)** - Feature Development vs Active Debugging
+4. **[GENERAL_WORKTREE_PROTOCOL.md](./GENERAL_WORKTREE_PROTOCOL.md)** - Complete worktree workflow
 
-**Shows:**
-- Branch status (clean vs dirty)
-- Recent commits
-- Open PRs with CI status
-- Action items (wrong base branches, stale agents)
-- Agent pool health
+### 🧠 Core System
+- **[agentidentity/README.md](./agentidentity/README.md)** - Cognitive architecture & consciousness framework
+- **[CLAUDE.md](./CLAUDE.md)** - Complete operational manual (always loaded)
+- **[continuous-improvement.md](./continuous-improvement.md)** - Self-learning protocols
 
-Use this at session start to understand current state.
+### 🛠️ Tools & Skills
+- **[tools/README.md](./tools/README.md)** - Complete tools documentation (279 scripts)
+- **[.claude/skills/](./.claude/skills/)** - Auto-discoverable skills directory (20+ skills)
+- **[bootstrap/README.md](./bootstrap/README.md)** - Bootstrap system documentation
+
+### 📖 Workflows
+- **[git-workflow.md](./git-workflow.md)** - Cross-repo PR dependencies, git-flow
+- **[ci-cd-troubleshooting.md](./ci-cd-troubleshooting.md)** - CI/CD issues & solutions
+- **[development-patterns.md](./development-patterns.md)** - Feature implementation patterns
 
 ---
 
-### `/pr:status`
+## 🎨 Examples
 
-Show all open PRs across all repos with CI status.
-
-**Use when:**
-- Planning which PRs to review/merge
-- Checking CI health
-- Finding PRs ready to merge
-
----
-
-### `/patterns:search <keyword>`
-
-Search 75+ documented patterns for solutions.
-
-**Example:**
-```
-/patterns:search merge conflict
+### Example 1: AI Image Generation
+```powershell
+# Generate a professional diagram
+powershell.exe -File "tools/ai-image.ps1" `
+    -Prompt "A modern cloud architecture diagram showing microservices" `
+    -OutputPath "C:/temp/architecture.png" `
+    -Quality "hd"
 ```
 
-Returns relevant patterns like:
-- Pattern 4: Large File Merge Conflicts
-- Pattern 52: Merge develop before creating PR
-- Pattern 57: Strategic --theirs resolution
-
----
-
-## 🚨 Zero-Tolerance Rules (Enforced Automatically)
-
-### RULE 1: Never Edit Base Repos
-
-✅ **Allowed:**
-- Read files in `C:\Projects\<repo>`
-- Run builds in base repos
-- Search/grep in base repos
-
-❌ **Forbidden:**
-- Edit files in `C:\Projects\<repo>`
-- Write files in base repos
-- Commit in base repos
-
-**Enforcement:** PreToolUse hook throws error if you try.
-
----
-
-### RULE 2: Always Specify PR Base Branch
-
-✅ **Correct:**
-```bash
-gh pr create --base develop --title "..." --body "..."
+### Example 2: AI Vision Analysis
+```powershell
+# Analyze a screenshot to diagnose an error
+powershell.exe -File "tools/ai-vision.ps1" `
+    -Images @("screenshot.png") `
+    -Prompt "What error is shown in this screenshot?"
 ```
 
-❌ **Wrong:**
-```bash
-gh pr create --title "..."  # Defaults to 'main'!
+### Example 3: Worktree Allocation (Multi-Agent Safe)
+```powershell
+# Allocate worktree with conflict detection
+powershell.exe -File "tools/worktree-allocate.ps1" `
+    -Repo myproject `
+    -Branch feature/user-authentication `
+    -Agent agent-001
 ```
 
-**Enforcement:** Hook warns if `--base` missing.
+### Example 4: Real-Time Activity Monitoring
+```powershell
+# Check what user is doing, detect other Claude instances
+powershell.exe -File "tools/monitor-activity.ps1" -Mode context
+```
 
-**Why:** gh CLI defaults to `main` if not specified, causing wrong merge target.
+### Example 5: Code Quality Analysis
+```powershell
+# Find unused code in codebase
+powershell.exe -File "tools/unused-code-detector.ps1" -MinConfidence 7
 
----
+# Detect N+1 query performance issues
+powershell.exe -File "tools/n-plus-one-query-detector.ps1"
 
-### RULE 3: Release Worktrees After PR Creation
-
-**Workflow:**
-1. Complete work
-2. Run `/worktree:release`
-3. PR created
-4. Worktree cleaned
-5. Agent marked FREE
-6. **THEN** present PR to user
-
-**Never** leave agents BUSY after PR creation - it locks resources.
-
----
-
-## 📚 Pattern Library
-
-The plugin includes 75+ documented patterns for:
-
-- **CI/CD Fixes** - MSB3030, NETSDK1100, NU1605, Docker tag issues
-- **Git Workflows** - Merge conflicts, branch management, PR dependencies
-- **Build Issues** - NuGet downgrades, namespace migrations, DI errors
-- **Frontend** - Vite config, ESLint v9, npm package issues
-- **Testing** - Mock patterns, coverage, integration tests
-- **Security** - Secret scanning, CodeQL, Trivy false positives
-
-**Access via:** `/patterns:search <keyword>`
-
-**Contribute:** After solving a new issue, document it in the reflection log!
+# Find flaky tests
+powershell.exe -File "tools/flaky-test-detector.ps1" -Iterations 10
+```
 
 ---
 
 ## 🔧 Configuration
 
-Configuration is stored in `<control-plane>/config.json`:
+### Step 1: Create Your Machine Config
 
-```json
-{
-  "version": "1.0.0",
-  "controlPlane": "/home/user/.autonomous-dev",
-  "worktreePath": "/home/user/worker-agents",
-  "agentPoolSize": 12,
-  "shell": "auto",
-  "repos": [
-    {
-      "name": "my-api",
-      "path": "/home/user/projects/my-api",
-      "baseBranch": "develop"
-    },
-    {
-      "name": "frontend",
-      "path": "/home/user/projects/frontend",
-      "baseBranch": "main"
-    }
-  ]
-}
+After cloning, create `MACHINE_CONFIG.md` with your local paths:
+
+```markdown
+# Machine Configuration
+
+## Directory Structure
+
+BASE_REPO_PATH=C:\Projects               # Where main repos are cloned
+WORKTREE_PATH=C:\Projects\worker-agents  # Where agent worktrees go
+CONTROL_PLANE_PATH=C:\scripts            # This repository
+MACHINE_CONTEXT_PATH=C:\scripts\_machine # Operational state files
+
+## Main Branch
+
+<main-branch>=main  # Or develop, master, etc.
+
+## Projects
+
+### Project: myproject
+**Type:** Description
+**Paths:**
+- Code: C:\Projects\myproject
+**Repository URL:** https://github.com/yourname/myproject
+**Main Branch:** main
 ```
 
-**Reconfigure:** Edit `config.json` or re-run `setup.sh`/`setup.ps1`
+### Step 2: Create Machine Context Directory
+
+```powershell
+mkdir C:\scripts\_machine
+```
+
+### Step 3: Run Bootstrap
+
+```powershell
+cd C:\scripts
+.\bootstrap\bootstrap.ps1
+```
+
+This will:
+- Install dependencies (Git, GitHub CLI, Node.js, Claude Code CLI)
+- Create directory structure
+- Initialize state files
+- Verify environment
+
+### Optional Integrations
+- **ManicTime** - Real-time activity tracking (optional but recommended)
+- **ClickUp** - Task management integration (optional)
+- **GitHub CLI** - Required for PR management
+- **OpenAI API** - Required for AI image generation & vision
 
 ---
 
 ## 🤝 Contributing
 
-This plugin is designed to be **self-improving**. When you discover new patterns:
+This is a **self-improving system**. Claude agents:
 
-1. **Document in reflection log:**
-   - `<control-plane>/_machine/reflection.log.md`
-   - Follow the template (Problem, Root Cause, Fix, Pattern)
+1. **Learn from every session** - Document in _machine/reflection.log.md
+2. **Update documentation** - Improve CLAUDE.md and specialized docs
+3. **Create new tools** - Add to `tools/` when patterns repeat 3+ times
+4. **Evolve cognitive architecture** - Update `agentidentity/` with learnings
 
-2. **Add to pattern library:**
-   - `<control-plane>/patterns/pattern-XXX.md`
-   - Use next available pattern number
-
-3. **Update claude_info.txt:**
-   - Add quick reference for common issues
-
-4. **Submit PR** to this repository to share with community!
+**User mandate:** *"zorg dat je dus constant leert van jezelf en je eigen instructies bijwerkt"* (continuously learn from yourself and update your own instructions)
 
 ---
 
-## 🐛 Troubleshooting
+## 📊 Statistics
 
-### "All agents BUSY"
-
-**Solution 1:** Check for stale agents:
-```
-/worktree:status
-```
-
-Release any stale agents shown.
-
-**Solution 2:** Increase pool size:
-Edit `config.json` → `agentPoolSize: 20`
+- **120+ Productivity Tools** - Automation for every workflow
+- **20+ Claude Skills** - Auto-discoverable specialized workflows
+- **279 PowerShell Scripts** - Total script files in repository
+- **10M+ Token Context Support** - Via RLM (Recursive Language Model) pattern
+- **Multi-Agent Coordination** - Parallel execution without conflicts
+- **Zero-Tolerance Protocol** - Prevents common mistakes via hard-stop rules
 
 ---
 
-### "Configuration not found"
+## 🌐 Platform Support
 
-**Solution:** Re-run installation:
-```bash
-bash setup.sh
-# or
-powershell -File setup.ps1
-```
-
----
-
-### "PreToolUse hook error"
-
-The hook is **protecting you** from a violation!
-
-**Common causes:**
-- Trying to edit in base repo instead of worktree
-- No worktree allocated yet
-
-**Fix:** Follow the error message instructions.
-
----
-
-### "Wrong PR base branch"
-
-**Symptom:** PR targets `main` instead of `develop`
-
-**Fix:**
-```bash
-gh pr edit <number> --base develop
-```
-
-**Prevention:** Always use `--base develop` in `/worktree:release`
-
----
-
-## 📖 Documentation
-
-- **Setup Guide:** This README
-- **Pattern Library:** `<control-plane>/patterns/`
-- **Reflection Log:** `<control-plane>/_machine/reflection.log.md`
-- **Activity Log:** `<control-plane>/_machine/worktrees.activity.md`
-- **Pool Status:** `<control-plane>/_machine/worktrees.pool.md`
+- **Primary:** Windows (PowerShell 5.1+)
+- **Experimental:** Linux/macOS (via PowerShell Core)
+- **Claude Code CLI:** Required
+- **Git:** 2.30+
+- **GitHub CLI:** Latest
 
 ---
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) file
+MIT License - See [LICENSE](./LICENSE) for details.
 
 ---
 
 ## 🙏 Acknowledgments
 
-Built from battle-tested protocols developed across hundreds of development sessions managing complex multi-repo projects.
-
-**Core Principles:**
-- Atomic operations prevent race conditions
-- Enforcement prevents mistakes
-- Documentation scales knowledge
-- Reflection enables continuous improvement
+Built on top of:
+- **Anthropic Claude Code** - The foundation
+- **Claude Sonnet 4.5** - The brain
+- **PowerShell** - The automation layer
+- **Git Worktrees** - The multi-agent isolation
+- **ManicTime** - The context awareness layer
 
 ---
 
-## 🚀 Happy Autonomous Developing!
+## 📞 Support & Community
 
-Questions? Issues? Contributions?
-- GitHub Issues: [Report a bug](https://github.com/martiendejong/autonomous-dev-system/issues)
-- Discussions: [Share patterns](https://github.com/martiendejong/autonomous-dev-system/discussions)
-- PR: [Contribute code](https://github.com/martiendejong/autonomous-dev-system/pulls)
+- **Issues:** [GitHub Issues](https://github.com/martiendejong/autonomous-dev-system/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/martiendejong/autonomous-dev-system/discussions)
+- **Documentation:** [Full documentation in repository](./CLAUDE.md)
 
-**May your worktrees always be clean and your PRs always mergeable! ✨**
+---
+
+**🤖 Built by autonomous agents, for autonomous agents.**
+
+**Last Updated:** 2026-01-25
+**Maintained By:** Self-improving Claude agents
+**Version:** 1.0.0 (120 tools, 20 skills, cognitive architecture v1)

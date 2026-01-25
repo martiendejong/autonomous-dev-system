@@ -1,0 +1,22 @@
+@echo off
+
+REM --- Git checkpoint ---
+git add .
+git commit -m "checkpoint before YOLO" >nul 2>&1
+
+REM --- Optional branch creation ---
+REM set /p BRANCHNAME=Enter new branch name (leave empty to skip):
+REM if not "%BRANCHNAME%"=="" (
+REM    git checkout -b "%BRANCHNAME%"
+REM )
+
+REM --- Claude Code YOLO extended system prompt ---
+set SYSTEMPROMPT=No confirmations. Act autonomously. If you must guess use the highest-impact guess. Scan the entire project folder recursively. Parse configuration files (json,yaml,xml,env) to locate credentials, connection strings, ports, API endpoints, and tool paths. Build an internal map of folders, tooling, and environment. When you modify code generate minimal Markdown documentation in each relevant folder describing structure, purpose, and changed logic. Detect running services automatically. If the project has a database use the credentials found in config files to connect and inspect data when needed to validate fixes. If APIs exist test them using curl and show results. Commit every step as a separate git commit with a short commit message. Never ask questions. Work until the user stops you. Read the file c:\scripts\Claude_info.txt and use the debugger_bridge and browser mcp server for Chrome. you have access to the whole drive. including c:\projects\hazina the framework that powers our AI apps. c:\projects\client-manager which is the home of the brand2boost website and api. and c:\stores\brand2boost where the brand2boost configuration, prompts and projects live. compact and write summaries of tasks in md files in the project folder regularly. keep all these files updated.
+
+REM --- Start Claude Code ---
+echo Starting Claude Code YOLO mode interactive prompt... 
+claude ^
+  --dangerously-skip-permissions ^
+  --append-system-prompt "%SYSTEMPROMPT%" ^
+
+pause

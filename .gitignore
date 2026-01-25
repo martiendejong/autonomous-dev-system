@@ -1,31 +1,59 @@
-# Node modules
+# Large binaries (download separately)
+*.jar
+*.exe
+*.phar
+*.dll
+
+# Claude local settings (exclude settings, include skills)
+.claude/settings.json
+.claude/settings.local.json
+
+# Node modules (reinstall with npm install)
 node_modules/
-npm-debug.log*
-yarn-error.log*
+playwright/node_modules/
 
-# User configuration (generated during setup)
-.config/
-user-config.json
-config.local.json
+# Compiled binaries
+tools/cs-autofix/bin/
+tools/cs-autofix/obj/
 
-# Logs
+# Temporary/generated files
+nul
 *.log
-logs/
+*.tmp
 
 # OS files
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# IDE
-.vscode/
-.idea/
+# Editor files
+*.swp
+*.swo
+*~
 
-# Test artifacts
-test-results/
-coverage/
+# Secrets (if any)
+*.secret
+*.key
+secrets/
 
-# Build output
-dist/
-build/
-*.tgz
+# OAuth credentials (contain client secrets)
+_machine/gcp-oauth.keys.json
+_machine/gdrive-credentials.json
+_machine/client_secret_*.json
+tools/gdrive-upload/credentials.json
+tools/gdrive-upload/oauth-keys.json
+
+# Weird filename
+C:*
+
+# Machine temp files (created at runtime)
+_machine/tmpclaude-*
+tmpclaude-*
+temp_clickup.json
+temp_clickup_comment.txt
+
+# Files containing hardcoded secrets (machine-specific)
+tools/create-hazinastore-config.py
+
+# Bootstrap-generated (machine-specific state - templates tracked separately)
+# These are created by bootstrap from .template files
+09-SECRETS/

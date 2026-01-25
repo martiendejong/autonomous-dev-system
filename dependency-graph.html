@@ -1,0 +1,1351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 10px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4a9eff;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4a9eff;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .mermaid {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ðŸ”— Project Dependency Graph</h1>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">312</div>
+                <div class="stat-label">Total Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">20</div>
+                <div class="stat-label">Repositories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">901</div>
+                <div class="stat-label">Dependencies</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4a9eff;"></div>
+                <span>Hazina Framework</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff6b6b;"></div>
+                <span>Client Manager</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #51cf66;"></div>
+                <span>Other Projects</span>
+            </div>
+        </div>
+
+        <div class="mermaid">
+graph TD
+  classDef hazina fill:#4a9eff,stroke:#333,stroke-width:2px,color:#fff
+  classDef clientManager fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+  classDef other fill:#51cf66,stroke:#333,stroke-width:2px,color:#fff
+
+  DevGPT_LLMs_Helpers["DevGPT.LLMs.Helpers"]:::other
+  DevGPT_GenerationTools_TextExtraction_local["DevGPT.GenerationTools.TextExtraction.local"]:::other
+  Hazina_Tools_Services_FileOps["Hazina.Tools.Services.FileOps"]:::other
+  DevGPT_GenerationTools_Services_Store_local["DevGPT.GenerationTools.Services.Store.local"]:::other
+  ModelContextProtocol_AspNetCore_Tests["ModelContextProtocol.AspNetCore.Tests"]:::other
+  AspNetCoreMcpServer["AspNetCoreMcpServer"]:::other
+  DevGPT_GenerationTools_Services_BigQuery_local["DevGPT.GenerationTools.Services.BigQuery.local"]:::other
+  Hazina_Tools_Common_Models_Tests["Hazina.Tools.Common.Models.Tests"]:::other
+  Store["Store"]:::other
+  ClientManagerAPI_local["ClientManagerAPI.local"]:::other
+  Hazina_Demo_PDFMaker["Hazina.Demo.PDFMaker"]:::other
+  Logging["Logging"]:::other
+  Hazina_AI_Agents["Hazina.AI.Agents"]:::other
+  MastermindGroup_Infrastructure["MastermindGroup.Infrastructure"]:::other
+  DevGPT_LLMs_Tools["DevGPT.LLMs.Tools"]:::other
+  Hazina_Production_Monitoring["Hazina.Production.Monitoring"]:::other
+  DevGPT_ExplorerIntegration["DevGPT.ExplorerIntegration"]:::other
+  Hazina_Generator["Hazina.Generator"]:::other
+  DevGPT_GenerationTools_Services_Chat_local["DevGPT.GenerationTools.Services.Chat.local"]:::other
+  Scp_Memory["Scp.Memory"]:::other
+  Hazina_Tools_Migration["Hazina.Tools.Migration"]:::other
+  Hazina_AI_Providers["Hazina.AI.Providers"]:::other
+  DevGPT_GenerationTools_Services_DataGathering_local["DevGPT.GenerationTools.Services.DataGathering.local"]:::other
+  Hazina_Tools_Services_WordPress["Hazina.Tools.Services.WordPress"]:::other
+  ModelContextProtocol_TestOAuthServer["ModelContextProtocol.TestOAuthServer"]:::other
+  PdfExtractorClient["PdfExtractorClient"]:::other
+  Hazina_Tools_ContextCompression["Hazina.Tools.ContextCompression"]:::other
+  AgenticDebuggerVsix2["AgenticDebuggerVsix2"]:::other
+  Scp_Channels["Scp.Channels"]:::other
+  DevGPT_LLMs_Anthropic_Tests["DevGPT.LLMs.Anthropic.Tests"]:::other
+  Hazina_Security_Core["Hazina.Security.Core"]:::other
+  DevGPT_GenerationTools_Services_Embeddings["DevGPT.GenerationTools.Services.Embeddings"]:::other
+  Hazina_Store_FactsStore["Hazina.Store.FactsStore"]:::other
+  Hazina_AI_Memory["Hazina.AI.Memory"]:::other
+  Hazina_Store_EmbeddingStore["Hazina.Store.EmbeddingStore"]:::other
+  HazinaStoreAPI_local["HazinaStoreAPI.local"]:::other
+  Hazina_Tools_Core_Tests["Hazina.Tools.Core.Tests"]:::other
+  Hazina_IntegrationTests_OpenAI["Hazina.IntegrationTests.OpenAI"]:::other
+  DevGPT_LLMs_Gemini["DevGPT.LLMs.Gemini"]:::other
+  DevGPT_GenerationTools_Services_FileOps["DevGPT.GenerationTools.Services.FileOps"]:::other
+  DevGPT_LLMs_OpenAI_Tests["DevGPT.LLMs.OpenAI.Tests"]:::other
+  DevGPT_GenerationTools_Services_Web["DevGPT.GenerationTools.Services.Web"]:::other
+  Hazina_Tools_Services_Intake["Hazina.Tools.Services.Intake"]:::other
+  DevGPT_LLMs_Anthropic["DevGPT.LLMs.Anthropic"]:::other
+  Scp_Demo_Api["Scp.Demo.Api"]:::other
+  BugattiInsights["BugattiInsights"]:::other
+  Console["Console"]:::other
+  Common_Infrastructure_AspNetCore["Common.Infrastructure.AspNetCore"]:::other
+  Hazina_DynamicAPI["Hazina.DynamicAPI"]:::other
+  Hazina_Tools_Services_Embeddings_Tests["Hazina.Tools.Services.Embeddings.Tests"]:::other
+  CorinaAI_Core["CorinaAI.Core"]:::other
+  DevGPT_GenerationTools_Common_Utilities["DevGPT.GenerationTools.Common.Utilities"]:::other
+  Hazina_App_Windows["Hazina.App.Windows"]:::other
+  Hazina_Tools_Services_Chat_Tests["Hazina.Tools.Services.Chat.Tests"]:::other
+  Hazina_CodeGeneration_Core["Hazina.CodeGeneration.Core"]:::other
+  Hazina_Tools_Services_FileOps_Tests["Hazina.Tools.Services.FileOps.Tests"]:::other
+  zebra["zebra"]:::other
+  Hazina_AI_FluentAPI["Hazina.AI.FluentAPI"]:::other
+  DevGPT_LLMs_Mistral["DevGPT.LLMs.Mistral"]:::other
+  Hazina_Demo_ConfigurationShowcase["Hazina.Demo.ConfigurationShowcase"]:::other
+  Hazina_AI_FaultDetection["Hazina.AI.FaultDetection"]:::other
+  Progress["Progress"]:::other
+  DevGPT_GenerationTools_Common_Models_Tests["DevGPT.GenerationTools.Common.Models.Tests"]:::other
+  Hazina_LLMs_Gemini["Hazina.LLMs.Gemini"]:::other
+  EmbeddingsViewer["EmbeddingsViewer"]:::other
+  Hazina_Store_EmbeddingStore_Tests["Hazina.Store.EmbeddingStore.Tests"]:::other
+  BugattiInsights_local["BugattiInsights.local"]:::other
+  Hazina_App_AppBuilder["Hazina.App.AppBuilder"]:::other
+  Hazina_Tools_Common_Infrastructure_AspNetCore["Hazina.Tools.Common.Infrastructure.AspNetCore"]:::other
+  PdfExtractorClient_local["PdfExtractorClient.local"]:::other
+  Hazina_Store_DocumentStore["Hazina.Store.DocumentStore"]:::other
+  Scp_Demo_Cli["Scp.Demo.Cli"]:::other
+  DevGPT_GenerationTools_Common_Infrastructure_AspNetCore_local["DevGPT.GenerationTools.Common.Infrastructure.AspNetCore.local"]:::other
+  Windows["Windows"]:::other
+  ModelContextProtocol["ModelContextProtocol"]:::other
+  DevGPT_LLMs_OpenAI["DevGPT.LLMs.OpenAI"]:::other
+  Hazina_AI_ContextEngineering_Tests["Hazina.AI.ContextEngineering.Tests"]:::other
+  ClientManager_Tests["ClientManager.Tests"]:::other
+  ClientInstaller["ClientInstaller"]:::other
+  Hazina_Tools_Services_Images["Hazina.Tools.Services.Images"]:::other
+  DevGPT_LLMClientTools["DevGPT.LLMClientTools"]:::other
+  Scp_Embeddings["Scp.Embeddings"]:::other
+  Hazina_Observability_Core_Tests["Hazina.Observability.Core.Tests"]:::other
+  DevGPT_GenerationTools_Models_local["DevGPT.GenerationTools.Models.local"]:::other
+  DevGPT_GenerationTools_Services_Intake["DevGPT.GenerationTools.Services.Intake"]:::other
+  DevGPT_GenerationTools_Services_Prompts["DevGPT.GenerationTools.Services.Prompts"]:::other
+  StoreBuilder_local["StoreBuilder.local"]:::other
+  Hazina_Tools_AI_Agents["Hazina.Tools.AI.Agents"]:::other
+  Vera_worker["Vera worker"]:::other
+  DevGPT_GenerationTools_Services_Chat["DevGPT.GenerationTools.Services.Chat"]:::other
+  ServerInstaller["ServerInstaller"]:::other
+  Hazina_Tools_Services["Hazina.Tools.Services"]:::other
+  Hazina_Evals["Hazina.Evals"]:::other
+  EverythingServer["EverythingServer"]:::other
+  TestConsoleApp["TestConsoleApp"]:::other
+  CorinaAI_Infrastructure["CorinaAI.Infrastructure"]:::other
+  DevGPT_GenerationTools_Core_local["DevGPT.GenerationTools.Core.local"]:::other
+  Scp_Console["Scp.Console"]:::other
+  DevGPT_Store_DocumentStore_Tests["DevGPT.Store.DocumentStore.Tests"]:::other
+  Shared_local["Shared.local"]:::other
+  SocraNextAPI["SocraNextAPI"]:::other
+  CorinaAI_Api["CorinaAI.Api"]:::other
+  ModelGenerator["ModelGenerator"]:::other
+  Scp_Providers_OpenAI["Scp.Providers.OpenAI"]:::other
+  MastermindGroup_Core["MastermindGroup.Core"]:::other
+  Hazina_Agents_Coding["Hazina.Agents.Coding"]:::other
+  Hazina_DynamicAPI_Tests["Hazina.DynamicAPI.Tests"]:::other
+  DevGPT_GenerationTools_Models["DevGPT.GenerationTools.Models"]:::other
+  IndependentHelpers["IndependentHelpers"]:::other
+  LoggingClient["LoggingClient"]:::other
+  Hazina_API_Search["Hazina.API.Search"]:::other
+  HttpContext["HttpContext"]:::other
+  Hazina_App_EmbeddingsViewer["Hazina.App.EmbeddingsViewer"]:::other
+  Hazina_LongContext["Hazina.LongContext"]:::other
+  LedgerClientApp["LedgerClientApp"]:::other
+  Hazina_Demo_FolderToPostgres["Hazina.Demo.FolderToPostgres"]:::other
+  Hazina_AI_RAG["Hazina.AI.RAG"]:::other
+  Hazina_AI_Compression["Hazina.AI.Compression"]:::other
+  DevGPT_Generator["DevGPT.Generator"]:::other
+  OnsNedapApi["OnsNedapApi"]:::other
+  DevGPT_GenerationTools_AI_Agents["DevGPT.GenerationTools.AI.Agents"]:::other
+  Hazina_Tools_TextExtraction_Tests["Hazina.Tools.TextExtraction.Tests"]:::other
+  FolderToPostgres["FolderToPostgres"]:::other
+  Hazina_CodeIntelligence["Hazina.CodeIntelligence"]:::other
+  HtmlMockupGenerator["HtmlMockupGenerator"]:::other
+  Hazina_Tools_Common_Models["Hazina.Tools.Common.Models"]:::other
+  Hazina_AI_Orchestration["Hazina.AI.Orchestration"]:::other
+  Hazina_LLMs_Client_Tests["Hazina.LLMs.Client.Tests"]:::other
+  Hazina_Demo_Postgres["Hazina.Demo.Postgres"]:::other
+  Shared["Shared"]:::other
+  Hazina_LLMs_SemanticKernel["Hazina.LLMs.SemanticKernel"]:::other
+  Hazina_Demo_Crosslink["Hazina.Demo.Crosslink"]:::other
+  ChatWithTools["ChatWithTools"]:::other
+  DevGPT_Store_EmbeddingStore["DevGPT.Store.EmbeddingStore"]:::other
+  DevGPT_GenerationTools_Services_Social["DevGPT.GenerationTools.Services.Social"]:::other
+  LedgerServerApp["LedgerServerApp"]:::other
+  Hazina_Tools_Services_Chat["Hazina.Tools.Services.Chat"]:::other
+  Scp_Tests["Scp.Tests"]:::other
+  Hazina_Observability_Core_LoadTests["Hazina.Observability.Core.LoadTests"]:::other
+  DevGPT_GenerationTools_Services_ContentRetrieval["DevGPT.GenerationTools.Services.ContentRetrieval"]:::other
+  TestServerWithHosting["TestServerWithHosting"]:::other
+  ClientManagerAPI_IntegrationTests["ClientManagerAPI.IntegrationTests"]:::other
+  Scp_Core["Scp.Core"]:::other
+  AppBuilder["AppBuilder"]:::other
+  Hazina_LLMs_Ollama["Hazina.LLMs.Ollama"]:::other
+  DevGPT_GenerationTools_Services_WordPress_local["DevGPT.GenerationTools.Services.WordPress.local"]:::other
+  Hazina_LLMs_HuggingFace["Hazina.LLMs.HuggingFace"]:::other
+  marketingframework["marketingframework"]:::other
+  Hazina_Tools_Services_Embeddings["Hazina.Tools.Services.Embeddings"]:::other
+  Hazina_Observability_Core_Benchmarks["Hazina.Observability.Core.Benchmarks"]:::other
+  ClientManagerAPI_Tests["ClientManagerAPI.Tests"]:::other
+  Scp_Providers_Anthropic["Scp.Providers.Anthropic"]:::other
+  PDFMaker["PDFMaker"]:::other
+  Hazina_LLMs_Anthropic_Tests["Hazina.LLMs.Anthropic.Tests"]:::other
+  Hazina_Tools_Services_BigQuery_Tests["Hazina.Tools.Services.BigQuery.Tests"]:::other
+  DevGPT_GenerationTools_AI_Agents_local["DevGPT.GenerationTools.AI.Agents.local"]:::other
+  Hazina_Tools_Services_DataGathering["Hazina.Tools.Services.DataGathering"]:::other
+  Hazina_Tools_Services_Store_Tests["Hazina.Tools.Services.Store.Tests"]:::other
+  DevGPT_GenerationTools_Services_Chat_Tests["DevGPT.GenerationTools.Services.Chat.Tests"]:::other
+  DevGPT_GenerationTools_TextExtraction["DevGPT.GenerationTools.TextExtraction"]:::other
+  Hazina_LLMs_Classes_Tests["Hazina.LLMs.Classes.Tests"]:::other
+  Common_Models["Common.Models"]:::other
+  Hazina_LLMs_Client["Hazina.LLMs.Client"]:::other
+  Hazina_LLMs_OpenAI["Hazina.LLMs.OpenAI"]:::other
+  ProtectedMcpClient["ProtectedMcpClient"]:::other
+  MastermindGroup_API["MastermindGroup.API"]:::other
+  DevGPT_GenerationTools_Services_DataGathering["DevGPT.GenerationTools.Services.DataGathering"]:::other
+  PathfindingAlgos["PathfindingAlgos"]:::other
+  Hazina_Observability_AspNetCore["Hazina.Observability.AspNetCore"]:::other
+  Hazina_Observability_LLMLogs["Hazina.Observability.LLMLogs"]:::other
+  AspNetCoreMcpPerSessionTools["AspNetCoreMcpPerSessionTools"]:::other
+  Hazina_Security_AspNetCore["Hazina.Security.AspNetCore"]:::other
+  Scp_Memory_Tests["Scp.Memory.Tests"]:::other
+  Hazina_Tools_Services_ToolAgent_Tests["Hazina.Tools.Services.ToolAgent.Tests"]:::other
+  Scp_Abstractions["Scp.Abstractions"]:::other
+  Hazina_App_HtmlMockupGenerator["Hazina.App.HtmlMockupGenerator"]:::other
+  DevGPT_LLMs_HuggingFace["DevGPT.LLMs.HuggingFace"]:::other
+  Hazina_Tools_Models_Tests["Hazina.Tools.Models.Tests"]:::other
+  DevGPT_LLMs_SemanticKernel["DevGPT.LLMs.SemanticKernel"]:::other
+  ModelContextProtocol_TestSseServer["ModelContextProtocol.TestSseServer"]:::other
+  InMemoryTransport["InMemoryTransport"]:::other
+  DevGPT_AgentFactory["DevGPT.AgentFactory"]:::other
+  Hazina_LLMs_Classes["Hazina.LLMs.Classes"]:::other
+  Hazina_LLMs_Anthropic["Hazina.LLMs.Anthropic"]:::other
+  Hazina_Brain["Hazina.Brain"]:::other
+  Hazina_Tools_Core["Hazina.Tools.Core"]:::other
+  Hazina_LLMs_GoogleADK["Hazina.LLMs.GoogleADK"]:::other
+  ChatAPI["ChatAPI"]:::other
+  DevGPT_GenerationTools_Core["DevGPT.GenerationTools.Core"]:::other
+  Hazina_AgentFactory_Tests["Hazina.AgentFactory.Tests"]:::other
+  DevGPT_GenerationTools_Services_Store["DevGPT.GenerationTools.Services.Store"]:::other
+  Hazina_AI_Providers_Tests["Hazina.AI.Providers.Tests"]:::other
+  DevGPT_GenerationTools_TextExtraction_Tests["DevGPT.GenerationTools.TextExtraction.Tests"]:::other
+  Hazina_Generator_Tests["Hazina.Generator.Tests"]:::other
+  DevGPT_OpenAI_IntegrationTests["DevGPT.OpenAI.IntegrationTests"]:::other
+  Hazina_Observability_Core["Hazina.Observability.Core"]:::other
+  Hazina_Tools_Services_ContentRetrieval["Hazina.Tools.Services.ContentRetrieval"]:::other
+  DevGPT_GenerationTools_Services_Prompts_local["DevGPT.GenerationTools.Services.Prompts.local"]:::other
+  CorinaAI_Tests["CorinaAI.Tests"]:::other
+  DevGPT_Store_DocumentStore["DevGPT.Store.DocumentStore"]:::other
+  DevGPT_GenerationTools_Services_Embeddings_Tests["DevGPT.GenerationTools.Services.Embeddings.Tests"]:::other
+  MastermindGroup_Tests["MastermindGroup.Tests"]:::other
+  Hazina_AI_PromptManagement["Hazina.AI.PromptManagement"]:::other
+  Generator["Generator"]:::other
+  Hazina_Neurochain_Core["Hazina.Neurochain.Core"]:::other
+  Hazina_Tools_Services_GoogleDrive["Hazina.Tools.Services.GoogleDrive"]:::other
+  ArtRevisionistAPI["ArtRevisionistAPI"]:::other
+  ModelContextProtocol_AspNetCore["ModelContextProtocol.AspNetCore"]:::other
+  DevGPT_GenerationTools_Services_Web_local["DevGPT.GenerationTools.Services.Web.local"]:::other
+  DevGPT_GenerationTools_Common_Infrastructure_AspNetCore["DevGPT.GenerationTools.Common.Infrastructure.AspNetCore"]:::other
+  DevGPT_GenerationTools_Services["DevGPT.GenerationTools.Services"]:::other
+  DevGPT_GenerationTools_Common_Models["DevGPT.GenerationTools.Common.Models"]:::other
+  DevGPT_GenerationTools_Data["DevGPT.GenerationTools.Data"]:::other
+  ModelContextProtocol_Tests["ModelContextProtocol.Tests"]:::other
+  DevGPT_GenerationTools_Services_BigQuery_Tests["DevGPT.GenerationTools.Services.BigQuery.Tests"]:::other
+  Hazina_LLMs_GoogleADK_Tests["Hazina.LLMs.GoogleADK.Tests"]:::other
+  Hazina_Tools_Services_Database["Hazina.Tools.Services.Database"]:::other
+  Crosslink["Crosslink"]:::other
+  Scp_Storage["Scp.Storage"]:::other
+  Hazina_Tools_Data["Hazina.Tools.Data"]:::other
+  Hazina_Tools_TextExtraction["Hazina.Tools.TextExtraction"]:::other
+  DevGPT_Generator_Tests["DevGPT.Generator.Tests"]:::other
+  Scp_Documents["Scp.Documents"]:::other
+  Hazina_LLMs_Mistral["Hazina.LLMs.Mistral"]:::other
+  Hazina_Tools_Services_Store["Hazina.Tools.Services.Store"]:::other
+  DevGPT_GenerationTools_Common_Models_local["DevGPT.GenerationTools.Common.Models.local"]:::other
+  Networking["Networking"]:::other
+  DevGPT_GenerationTools_Models_Tests["DevGPT.GenerationTools.Models.Tests"]:::other
+  DevGPT_GenerationTools_Services_ContentRetrieval_local["DevGPT.GenerationTools.Services.ContentRetrieval.local"]:::other
+  Hazina_Store_Sqlite["Hazina.Store.Sqlite"]:::other
+  DevGPT_GenerationTools_Services_Intake_local["DevGPT.GenerationTools.Services.Intake.local"]:::other
+  Hazina_Demo_Llama["Hazina.Demo.Llama"]:::other
+  ModelContextProtocol_TestServer["ModelContextProtocol.TestServer"]:::other
+  Hazina_Tools_Services_BigQuery["Hazina.Tools.Services.BigQuery"]:::other
+  Common_Utilities["Common.Utilities"]:::other
+  LlamaDemo["LlamaDemo"]:::other
+  DevGPT_GenerationTools_Data_Tests["DevGPT.GenerationTools.Data.Tests"]:::other
+  Hazina_AgentFactory["Hazina.AgentFactory"]:::other
+  DevGPT_GenerationTools_Services_Store_Tests["DevGPT.GenerationTools.Services.Store.Tests"]:::other
+  DevGPT_GenerationTools_Services_FileOps_local["DevGPT.GenerationTools.Services.FileOps.local"]:::other
+  DevGPT_GenerationTools_Services_BigQuery["DevGPT.GenerationTools.Services.BigQuery"]:::other
+  ProtectedMcpServer["ProtectedMcpServer"]:::other
+  Hazina_Tools_Services_Images_Tests["Hazina.Tools.Services.Images.Tests"]:::other
+  SocraNextTaskRunner["SocraNextTaskRunner"]:::other
+  Hazina_Tools_Extensions["Hazina.Tools.Extensions"]:::other
+  Hazina_Tools_Services_Web["Hazina.Tools.Services.Web"]:::other
+  DevGPT_DynamicAPI["DevGPT.DynamicAPI"]:::other
+  DevGPT_LLMs_HuggingFace_Tests["DevGPT.LLMs.HuggingFace.Tests"]:::other
+  Hazina_Tools_Services_Social["Hazina.Tools.Services.Social"]:::other
+  Hazina_Enterprise_Core["Hazina.Enterprise.Core"]:::other
+  Hazina_Tools_Models["Hazina.Tools.Models"]:::other
+  Hazina_App_ExplorerIntegration["Hazina.App.ExplorerIntegration"]:::other
+  DevGPT_AgentFactory_Tests["DevGPT.AgentFactory.Tests"]:::other
+  Hazina_Tools_Services_ToolAgent["Hazina.Tools.Services.ToolAgent"]:::other
+  Ledger["Ledger"]:::other
+  DevGPT_GenerationTools_Services_Embeddings_local["DevGPT.GenerationTools.Services.Embeddings.local"]:::other
+  Client["Client"]:::other
+  Hazina_Store_DocumentStore_Tests["Hazina.Store.DocumentStore.Tests"]:::other
+  QuickstartClient["QuickstartClient"]:::other
+  Hazina_LLMs_Helpers["Hazina.LLMs.Helpers"]:::other
+  DevGPT_LLMs_Classes_Tests["DevGPT.LLMs.Classes.Tests"]:::other
+  WpfApp_Tests["WpfApp.Tests"]:::other
+  DevGPT_LLMs_Classes["DevGPT.LLMs.Classes"]:::other
+  Scp_Embeddings_Tests["Scp.Embeddings.Tests"]:::other
+  DevGPTStore_worker["DevGPTStore worker"]:::other
+  Hazina_LLMs_Tools["Hazina.LLMs.Tools"]:::other
+  Hazina_Tools_Data_Tests["Hazina.Tools.Data.Tests"]:::other
+  ClaudeCode["ClaudeCode"]:::other
+  Hazina_LLMClientTools["Hazina.LLMClientTools"]:::other
+  Hazina_Agents_Tools["Hazina.Agents.Tools"]:::other
+  DevGPT_DynamicAPI_Tests["DevGPT.DynamicAPI.Tests"]:::other
+  Elicitation["Elicitation"]:::other
+  Hazina_LLMs_HuggingFace_Tests["Hazina.LLMs.HuggingFace.Tests"]:::other
+  Hazina_Observability_Core_IntegrationTests["Hazina.Observability.Core.IntegrationTests"]:::other
+  Hazina_ChatShared["Hazina.ChatShared"]:::other
+  DevGPT_GenerationTools_Data_local["DevGPT.GenerationTools.Data.local"]:::other
+  DevGPT_ChatShared["DevGPT.ChatShared"]:::other
+  Hazina_Architecture_Tests["Hazina.Architecture.Tests"]:::other
+  DevGPT_GenerationTools_Core_Tests["DevGPT.GenerationTools.Core.Tests"]:::other
+  Api["Api"]:::other
+  QuickstartWeatherServer["QuickstartWeatherServer"]:::other
+  DevGPT_Store_EmbeddingStore_Tests["DevGPT.Store.EmbeddingStore.Tests"]:::other
+  DevGPT_LLMs_Client_Tests["DevGPT.LLMs.Client.Tests"]:::other
+  DevGPT_GenerationTools_Services_Social_local["DevGPT.GenerationTools.Services.Social.local"]:::other
+  AITools["AITools"]:::other
+  DevGPT_GenerationTools_Services_WordPress["DevGPT.GenerationTools.Services.WordPress"]:::other
+  CodeGenerator["CodeGenerator"]:::other
+  PostgresDemo["PostgresDemo"]:::other
+  Hazina_Demo_Supabase["Hazina.Demo.Supabase"]:::other
+  Hazina_LLMs_OpenAI_Tests["Hazina.LLMs.OpenAI.Tests"]:::other
+  ProgressClient["ProgressClient"]:::other
+  StoreBuilder["StoreBuilder"]:::other
+  Hazina_App_ClaudeCode["Hazina.App.ClaudeCode"]:::other
+  DevGPT_GenerationTools_Services_local["DevGPT.GenerationTools.Services.local"]:::other
+  Api_Tests["Api.Tests"]:::other
+  Ledger_Tests["Ledger.Tests"]:::other
+  Hazina_Tools_Services_Prompts["Hazina.Tools.Services.Prompts"]:::other
+  ArtRevisionistAPI_UnitTests["ArtRevisionistAPI.UnitTests"]:::other
+  Scp_Semantics["Scp.Semantics"]:::other
+  VeraAPI["VeraAPI"]:::other
+  DevGPTStoreAPI["DevGPTStoreAPI"]:::other
+  DevGPT_GenerationTools_Services_FileOps_Tests["DevGPT.GenerationTools.Services.FileOps.Tests"]:::other
+  DevGPT_GenerationTools_Extensions["DevGPT.GenerationTools.Extensions"]:::other
+  Hazina_AI_ContextEngineering["Hazina.AI.ContextEngineering"]:::other
+  recursivestatemachine["recursivestatemachine"]:::other
+  frontend["frontend"]:::other
+  Scp_ChannelStores["Scp.ChannelStores"]:::other
+  DevGPT_LLMs_Client["DevGPT.LLMs.Client"]:::other
+  ArtRevisionistAPI_IntegrationTests["ArtRevisionistAPI.IntegrationTests"]:::other
+  QRCodeScanner["QRCodeScanner"]:::other
+  ModelContextProtocol_Core["ModelContextProtocol.Core"]:::other
+  ElicitationClient["ElicitationClient"]:::other
+
+  DevGPT_GenerationTools_TextExtraction_local --> DevGPT_LLMs_Client
+  Hazina_Tools_Services_FileOps --> Hazina_Tools_Models
+  Hazina_Tools_Services_FileOps --> Hazina_Tools_Core
+  Hazina_Tools_Services_FileOps --> Hazina_Tools_Data
+  Hazina_Tools_Services_FileOps --> Hazina_Tools_TextExtraction
+  DevGPT_GenerationTools_Services_Store_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_Store_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Store_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_Store_local --> DevGPT_GenerationTools_Services_BigQuery_local
+  DevGPT_GenerationTools_Services_Store_local --> DevGPT_GenerationTools_Services_FileOps_local
+  DevGPT_GenerationTools_Services_Store_local --> DevGPT_GenerationTools_Services_Web_local
+  ModelContextProtocol_AspNetCore_Tests --> TestServerWithHosting
+  ModelContextProtocol_AspNetCore_Tests --> ModelContextProtocol_Core
+  ModelContextProtocol_AspNetCore_Tests --> ModelContextProtocol_AspNetCore
+  ModelContextProtocol_AspNetCore_Tests --> ModelContextProtocol_TestSseServer
+  ModelContextProtocol_AspNetCore_Tests --> ModelContextProtocol_TestOAuthServer
+  AspNetCoreMcpServer --> ModelContextProtocol_AspNetCore
+  DevGPT_GenerationTools_Services_BigQuery_local --> DevGPT_LLMClientTools
+  DevGPT_GenerationTools_Services_BigQuery_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_BigQuery_local --> DevGPT_GenerationTools_Models_local
+  Hazina_Tools_Common_Models_Tests --> Hazina_Tools_Common_Models
+  ClientManagerAPI_local --> Hazina_Tools_Common_Infrastructure_AspNetCore
+  ClientManagerAPI_local --> Hazina_Tools_Common_Models
+  ClientManagerAPI_local --> Hazina_Tools_AI_Agents
+  ClientManagerAPI_local --> Hazina_Tools_Core
+  ClientManagerAPI_local --> Hazina_Tools_Data
+  ClientManagerAPI_local --> Hazina_Tools_Extensions
+  ClientManagerAPI_local --> Hazina_Tools_Models
+  ClientManagerAPI_local --> Hazina_Tools_Services_BigQuery
+  ClientManagerAPI_local --> Hazina_Tools_Services_Chat
+  ClientManagerAPI_local --> Hazina_Tools_Services_DataGathering
+  ClientManagerAPI_local --> Hazina_Tools_Services_ContentRetrieval
+  ClientManagerAPI_local --> Hazina_Tools_Services_Embeddings
+  ClientManagerAPI_local --> Hazina_Tools_Services_Images
+  ClientManagerAPI_local --> Hazina_Tools_Services_FileOps
+  ClientManagerAPI_local --> Hazina_Tools_Services_Intake
+  ClientManagerAPI_local --> Hazina_Tools_Services_Prompts
+  ClientManagerAPI_local --> Hazina_Tools_Services_Social
+  ClientManagerAPI_local --> Hazina_Tools_Services_GoogleDrive
+  ClientManagerAPI_local --> Hazina_Tools_Services_Store
+  ClientManagerAPI_local --> Hazina_Tools_Services_ToolAgent
+  ClientManagerAPI_local --> Hazina_Tools_Services_Web
+  ClientManagerAPI_local --> Hazina_Tools_Services_WordPress
+  ClientManagerAPI_local --> Hazina_Tools_Services
+  ClientManagerAPI_local --> Hazina_Tools_TextExtraction
+  ClientManagerAPI_local --> Hazina_Observability_LLMLogs
+  ClientManagerAPI_local --> Hazina_LLMs_Ollama
+  ClientManagerAPI_local --> Hazina_AI_Compression
+  Logging --> ModelContextProtocol_AspNetCore
+  Hazina_AI_Agents --> Hazina_LLMs_Client
+  Hazina_AI_Agents --> Hazina_LLMs_Classes
+  Hazina_AI_Agents --> Hazina_AI_Providers
+  Hazina_AI_Agents --> Hazina_Neurochain_Core
+  Hazina_AI_Agents --> Hazina_AI_RAG
+  MastermindGroup_Infrastructure --> MastermindGroup_Core
+  MastermindGroup_Infrastructure --> Hazina_Tools_Core
+  MastermindGroup_Infrastructure --> Hazina_Tools_Data
+  MastermindGroup_Infrastructure --> Hazina_Security_Core
+  MastermindGroup_Infrastructure --> Hazina_Store_Sqlite
+  MastermindGroup_Infrastructure --> Hazina_Tools_Services_Store
+  MastermindGroup_Infrastructure --> Hazina_Tools_Services_Database
+  Hazina_Production_Monitoring --> Hazina_AI_Providers
+  Hazina_Production_Monitoring --> Hazina_Neurochain_Core
+  DevGPT_ExplorerIntegration --> DevGPT_AgentFactory
+  DevGPT_ExplorerIntegration --> DevGPT_LLMs_OpenAI
+  DevGPT_ExplorerIntegration --> DevGPT_Generator
+  DevGPT_ExplorerIntegration --> DevGPT_Store_DocumentStore
+  DevGPT_ExplorerIntegration --> DevGPT_Store_EmbeddingStore
+  DevGPT_ExplorerIntegration --> DevGPT_LLMs_Client
+  DevGPT_ExplorerIntegration --> DevGPT_LLMs_Classes
+  DevGPT_ExplorerIntegration --> DevGPT_LLMs_Helpers
+  DevGPT_ExplorerIntegration --> DevGPT_ChatShared
+  Hazina_Generator --> Hazina_Store_DocumentStore
+  Hazina_Generator --> Hazina_LLMs_OpenAI
+  DevGPT_GenerationTools_Services_Chat_local --> DevGPT_GenerationTools_AI_Agents_local
+  DevGPT_GenerationTools_Services_Chat_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_Chat_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Chat_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_Chat_local --> DevGPT_GenerationTools_Services_DataGathering_local
+  DevGPT_GenerationTools_Services_Chat_local --> DevGPT_LLMs_Tools
+  Scp_Memory --> Scp_Abstractions
+  Hazina_Tools_Migration --> Hazina_Tools_Core
+  Hazina_Tools_Migration --> Hazina_Tools_Data
+  Hazina_Tools_Migration --> Hazina_Store_EmbeddingStore
+  Hazina_Tools_Migration --> Hazina_Store_DocumentStore
+  Hazina_Tools_Migration --> Hazina_Store_Sqlite
+  Hazina_AI_Providers --> Hazina_LLMs_Client
+  Hazina_AI_Providers --> Hazina_LLMs_Classes
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_GenerationTools_AI_Agents_local
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_GenerationTools_Extensions
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_LLMs_Classes
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_LLMClientTools
+  DevGPT_GenerationTools_Services_DataGathering_local --> DevGPT_GenerationTools_Services_Store_local
+  Hazina_Tools_Services_WordPress --> Hazina_Tools_Models
+  Hazina_Tools_Services_WordPress --> Hazina_Tools_Core
+  Hazina_Tools_Services_WordPress --> Hazina_Tools_Data
+  Hazina_Tools_Services_WordPress --> Hazina_Tools_Services_FileOps
+  PdfExtractorClient --> Shared
+  Hazina_Tools_ContextCompression --> Hazina_Tools_Models
+  Scp_Channels --> Scp_Abstractions
+  Scp_Channels --> Scp_Embeddings
+  Scp_Channels --> Scp_Documents
+  Scp_Channels --> Scp_Semantics
+  Scp_Channels --> Scp_Memory
+  DevGPT_LLMs_Anthropic_Tests --> DevGPT_LLMs_Anthropic
+  DevGPT_GenerationTools_Services_Embeddings --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Embeddings --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_Embeddings --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_Embeddings --> DevGPT_GenerationTools_Services_Store
+  DevGPT_GenerationTools_Services_Embeddings --> DevGPT_GenerationTools_Services_FileOps
+  Hazina_AI_Memory --> Hazina_Store_EmbeddingStore
+  Hazina_AI_Memory --> Hazina_AI_Agents
+  Hazina_Store_EmbeddingStore --> Hazina_LLMs_Helpers
+  Hazina_Store_EmbeddingStore --> Hazina_LLMs_Client
+  HazinaStoreAPI_local --> Hazina_Tools_Common_Infrastructure_AspNetCore
+  HazinaStoreAPI_local --> Hazina_Tools_Common_Models
+  HazinaStoreAPI_local --> Hazina_Tools_AI_Agents
+  HazinaStoreAPI_local --> Hazina_Tools_Core
+  HazinaStoreAPI_local --> Hazina_Tools_Data
+  HazinaStoreAPI_local --> Hazina_Tools_Extensions
+  HazinaStoreAPI_local --> Hazina_Tools_Models
+  HazinaStoreAPI_local --> Hazina_Tools_Services_BigQuery
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Chat
+  HazinaStoreAPI_local --> Hazina_Tools_Services_DataGathering
+  HazinaStoreAPI_local --> Hazina_Tools_Services_ContentRetrieval
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Embeddings
+  HazinaStoreAPI_local --> Hazina_Tools_Services_FileOps
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Intake
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Prompts
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Social
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Store
+  HazinaStoreAPI_local --> Hazina_Tools_Services_Web
+  HazinaStoreAPI_local --> Hazina_Tools_Services_WordPress
+  HazinaStoreAPI_local --> Hazina_Tools_Services
+  HazinaStoreAPI_local --> Hazina_Tools_TextExtraction
+  Hazina_Tools_Core_Tests --> Hazina_Tools_Core
+  Hazina_IntegrationTests_OpenAI --> Hazina_LLMs_OpenAI
+  Hazina_IntegrationTests_OpenAI --> Hazina_LLMs_Classes
+  DevGPT_LLMs_Gemini --> DevGPT_LLMs_Client
+  DevGPT_LLMs_Gemini --> DevGPT_LLMs_Classes
+  DevGPT_LLMs_Gemini --> DevGPT_LLMs_Helpers
+  DevGPT_GenerationTools_Services_FileOps --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_FileOps --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_FileOps --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_FileOps --> DevGPT_GenerationTools_Common_Utilities
+  DevGPT_GenerationTools_Services_FileOps --> DevGPT_GenerationTools_TextExtraction
+  DevGPT_LLMs_OpenAI_Tests --> DevGPT_LLMs_OpenAI
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Services_WordPress
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Common_Utilities
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Common_Models
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Services_ContentRetrieval
+  DevGPT_GenerationTools_Services_Web --> DevGPT_GenerationTools_Services_FileOps
+  Hazina_Tools_Services_Intake --> Hazina_Tools_Models
+  Hazina_Tools_Services_Intake --> Hazina_Tools_Core
+  Hazina_Tools_Services_Intake --> Hazina_Tools_Data
+  Hazina_Tools_Services_Intake --> Hazina_Tools_Services
+  Hazina_Tools_Services_Intake --> Hazina_Generator
+  Hazina_Tools_Services_Intake --> Hazina_AgentFactory
+  Hazina_Tools_Services_Intake --> Hazina_LLMClientTools
+  Hazina_Tools_Services_Intake --> Hazina_LLMs_OpenAI
+  DevGPT_LLMs_Anthropic --> DevGPT_LLMs_Client
+  Scp_Demo_Api --> Scp_Abstractions
+  Scp_Demo_Api --> Scp_Core
+  Scp_Demo_Api --> Scp_Storage
+  Scp_Demo_Api --> Scp_Providers_OpenAI
+  Scp_Demo_Api --> Scp_Providers_Anthropic
+  BugattiInsights --> Shared
+  BugattiInsights --> Hazina_LLMs_Client
+  BugattiInsights --> Hazina_LLMs_OpenAI
+  BugattiInsights --> Hazina_AI_Providers
+  BugattiInsights --> Hazina_AI_RAG
+  BugattiInsights --> Hazina_AI_Agents
+  BugattiInsights --> Hazina_Store_EmbeddingStore
+  BugattiInsights --> Hazina_Store_DocumentStore
+  BugattiInsights --> Hazina_AI_FluentAPI
+  BugattiInsights --> Hazina_Observability_LLMLogs
+  Hazina_DynamicAPI --> Hazina_LLMs_Classes
+  Hazina_DynamicAPI --> Hazina_LLMs_Client
+  Hazina_Tools_Services_Embeddings_Tests --> Hazina_Tools_Services_Embeddings
+  Hazina_App_Windows --> Hazina_AgentFactory
+  Hazina_App_Windows --> Hazina_DynamicAPI
+  Hazina_App_Windows --> Hazina_ChatShared
+  Hazina_Tools_Services_Chat_Tests --> Hazina_Tools_Services_Chat
+  Hazina_Tools_Services_FileOps_Tests --> Hazina_Tools_Services_FileOps
+  Hazina_AI_FluentAPI --> Hazina_LLMs_Client
+  Hazina_AI_FluentAPI --> Hazina_LLMs_Classes
+  Hazina_AI_FluentAPI --> Hazina_LLMs_OpenAI
+  Hazina_AI_FluentAPI --> Hazina_LLMs_Anthropic
+  Hazina_AI_FluentAPI --> Hazina_AI_Providers
+  Hazina_AI_FluentAPI --> Hazina_AI_FaultDetection
+  Hazina_AI_FluentAPI --> Hazina_AI_Orchestration
+  DevGPT_LLMs_Mistral --> DevGPT_LLMs_Client
+  DevGPT_LLMs_Mistral --> DevGPT_LLMs_Classes
+  DevGPT_LLMs_Mistral --> DevGPT_LLMs_Helpers
+  Hazina_Demo_ConfigurationShowcase --> Hazina_AI_FluentAPI
+  Hazina_Demo_ConfigurationShowcase --> Hazina_AI_Providers
+  Hazina_Demo_ConfigurationShowcase --> Hazina_AI_RAG
+  Hazina_Demo_ConfigurationShowcase --> Hazina_Neurochain_Core
+  Hazina_Demo_ConfigurationShowcase --> Hazina_AI_Agents
+  Hazina_Demo_ConfigurationShowcase --> Hazina_Tools_Data
+  Hazina_Demo_ConfigurationShowcase --> Hazina_LLMs_OpenAI
+  Hazina_Demo_ConfigurationShowcase --> Hazina_LLMs_Anthropic
+  Hazina_Demo_ConfigurationShowcase --> Hazina_LLMs_Ollama
+  Hazina_Demo_ConfigurationShowcase --> Hazina_Production_Monitoring
+  Hazina_AI_FaultDetection --> Hazina_LLMs_Client
+  Hazina_AI_FaultDetection --> Hazina_LLMs_Classes
+  Hazina_AI_FaultDetection --> Hazina_AI_Providers
+  Progress --> ModelContextProtocol_AspNetCore
+  DevGPT_GenerationTools_Common_Models_Tests --> DevGPT_GenerationTools_Common_Models
+  Hazina_LLMs_Gemini --> Hazina_LLMs_Client
+  Hazina_LLMs_Gemini --> Hazina_LLMs_Classes
+  Hazina_LLMs_Gemini --> Hazina_LLMs_Helpers
+  EmbeddingsViewer --> DevGPT_Store_EmbeddingStore
+  Hazina_Store_EmbeddingStore_Tests --> Hazina_Store_EmbeddingStore
+  Hazina_Store_EmbeddingStore_Tests --> Hazina_LLMs_Client
+  Hazina_Store_EmbeddingStore_Tests --> Hazina_LLMs_Helpers
+  BugattiInsights_local --> Shared_local
+  BugattiInsights_local --> Hazina_LLMs_Client
+  BugattiInsights_local --> Hazina_LLMs_OpenAI
+  BugattiInsights_local --> Hazina_AI_Providers
+  BugattiInsights_local --> Hazina_AI_RAG
+  BugattiInsights_local --> Hazina_AI_Agents
+  BugattiInsights_local --> Hazina_Store_EmbeddingStore
+  BugattiInsights_local --> Hazina_Store_DocumentStore
+  BugattiInsights_local --> Hazina_AI_FluentAPI
+  BugattiInsights_local --> Hazina_Observability_LLMLogs
+  Hazina_Tools_Common_Infrastructure_AspNetCore --> Hazina_AgentFactory
+  PdfExtractorClient_local --> Shared
+  Hazina_Store_DocumentStore --> Hazina_Store_EmbeddingStore
+  Hazina_Store_DocumentStore --> Hazina_LLMs_Helpers
+  Hazina_Store_DocumentStore --> Hazina_AI_Providers
+  Scp_Demo_Cli --> Scp_Abstractions
+  Scp_Demo_Cli --> Scp_Core
+  Scp_Demo_Cli --> Scp_Storage
+  Scp_Demo_Cli --> Scp_Providers_OpenAI
+  Scp_Demo_Cli --> Scp_Providers_Anthropic
+  DevGPT_GenerationTools_Common_Infrastructure_AspNetCore_local --> DevGPT_AgentFactory
+  Windows --> DevGPT_AgentFactory
+  Windows --> DevGPT_DynamicAPI
+  Windows --> DevGPT_LLMs_Classes
+  Windows --> DevGPT_Store_DocumentStore
+  Windows --> DevGPT_Store_EmbeddingStore
+  Windows --> DevGPT_Generator
+  Windows --> DevGPT_LLMs_Helpers
+  Windows --> DevGPT_LLMs_Client
+  Windows --> DevGPT_LLMs_OpenAI
+  Windows --> DevGPT_ChatShared
+  ModelContextProtocol --> ModelContextProtocol_Core
+  DevGPT_LLMs_OpenAI --> DevGPT_LLMs_Client
+  Hazina_AI_ContextEngineering_Tests --> Hazina_AI_ContextEngineering
+  ClientManager_Tests --> ClientManagerAPI_local
+  Hazina_Tools_Services_Images --> Hazina_Tools_Models
+  Hazina_Tools_Services_Images --> Hazina_Tools_Core
+  Hazina_Tools_Services_Images --> Hazina_Tools_Data
+  DevGPT_LLMClientTools --> DevGPT_LLMs_Classes
+  DevGPT_LLMClientTools --> DevGPT_LLMs_Client
+  Scp_Embeddings --> Scp_Abstractions
+  Hazina_Observability_Core_Tests --> Hazina_Observability_Core
+  DevGPT_GenerationTools_Models_local --> DevGPT_GenerationTools_Common_Models_local
+  DevGPT_GenerationTools_Services_Intake --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Intake --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_Intake --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_Intake --> DevGPT_GenerationTools_Services
+  DevGPT_GenerationTools_Services_Prompts --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Prompts --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_Prompts --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_Prompts --> DevGPT_GenerationTools_Common_Utilities
+  StoreBuilder_local --> Shared
+  StoreBuilder_local --> Hazina_LLMs_Client
+  StoreBuilder_local --> Hazina_LLMs_OpenAI
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Models
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Core
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Data
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Services_Store
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Services_Web
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Services_Embeddings
+  Hazina_Tools_AI_Agents --> Hazina_Tools_Services_FileOps
+  Hazina_Tools_AI_Agents --> Hazina_Observability_LLMLogs
+  Vera_worker --> marketingframework
+  DevGPT_GenerationTools_Services_Chat --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Chat --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_Chat --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_Chat --> DevGPT_GenerationTools_AI_Agents
+  Hazina_Tools_Services --> Hazina_Tools_Models
+  Hazina_Tools_Services --> Hazina_Tools_Core
+  Hazina_Tools_Services --> Hazina_Tools_Data
+  Hazina_Tools_Services --> Hazina_Tools_TextExtraction
+  Hazina_Tools_Services --> Hazina_Tools_Services_WordPress
+  Hazina_Tools_Services --> Hazina_Tools_Services_Web
+  Hazina_Tools_Services --> Hazina_Tools_Services_ContentRetrieval
+  Hazina_Tools_Services --> Hazina_Tools_Services_FileOps
+  Hazina_Tools_Services --> Hazina_Tools_Services_Store
+  Hazina_Tools_Services --> Hazina_Tools_AI_Agents
+  Hazina_Evals --> Hazina_AI_RAG
+  EverythingServer --> ModelContextProtocol
+  TestConsoleApp --> Vera
+  CorinaAI_Infrastructure --> CorinaAI_Core
+  DevGPT_GenerationTools_Core_local --> DevGPT_GenerationTools_Models_local
+  Scp_Console --> Scp_Abstractions
+  Scp_Console --> Scp_Core
+  Scp_Console --> Scp_Channels
+  Scp_Console --> Scp_Memory
+  Scp_Console --> Scp_Documents
+  Scp_Console --> Scp_Embeddings
+  Scp_Console --> Scp_ChannelStores
+  Scp_Console --> Scp_Semantics
+  DevGPT_Store_DocumentStore_Tests --> DevGPT_Store_DocumentStore
+  Shared_local --> Hazina_LLMs_Client
+  SocraNextAPI --> Generator
+  SocraNextAPI --> Store
+  SocraNextAPI --> marketingframework
+  SocraNextAPI --> IndependentHelpers
+  CorinaAI_Api --> CorinaAI_Core
+  CorinaAI_Api --> CorinaAI_Infrastructure
+  CorinaAI_Api --> Hazina_Tools_Common_Infrastructure_AspNetCore
+  CorinaAI_Api --> Hazina_Tools_Common_Models
+  CorinaAI_Api --> Hazina_Tools_AI_Agents
+  CorinaAI_Api --> Hazina_Tools_Core
+  CorinaAI_Api --> Hazina_Tools_Data
+  CorinaAI_Api --> Hazina_Tools_Extensions
+  CorinaAI_Api --> Hazina_Tools_Models
+  CorinaAI_Api --> Hazina_Tools_Services_Chat
+  CorinaAI_Api --> Hazina_Tools_Services_Prompts
+  CorinaAI_Api --> Hazina_Tools_Services_Store
+  CorinaAI_Api --> Hazina_Store_Sqlite
+  CorinaAI_Api --> Hazina_Security_Core
+  CorinaAI_Api --> Hazina_Observability_LLMLogs
+  CorinaAI_Api --> Hazina_AI_Agents
+  CorinaAI_Api --> Hazina_AI_Providers
+  Scp_Providers_OpenAI --> Scp_Abstractions
+  Scp_Providers_OpenAI --> Hazina_LLMs_OpenAI
+  Scp_Providers_OpenAI --> Hazina_LLMs_Client
+  Scp_Providers_OpenAI --> Scp_Core
+  MastermindGroup_Core --> Hazina_Tools_Common_Models
+  MastermindGroup_Core --> Hazina_Tools_Core
+  MastermindGroup_Core --> Hazina_Tools_Models
+  Hazina_Agents_Coding --> Hazina_AI_Providers
+  Hazina_DynamicAPI_Tests --> Hazina_DynamicAPI
+  Hazina_DynamicAPI_Tests --> Hazina_LLMs_Client
+  Hazina_DynamicAPI_Tests --> Hazina_LLMs_Classes
+  DevGPT_GenerationTools_Models --> DevGPT_GenerationTools_Common_Models
+  LoggingClient --> ModelContextProtocol_Core
+  Hazina_API_Search --> Hazina_Store_DocumentStore
+  Hazina_API_Search --> Hazina_Store_EmbeddingStore
+  Hazina_API_Search --> Hazina_AI_RAG
+  Hazina_API_Search --> Hazina_AI_Providers
+  Hazina_API_Search --> Hazina_LLMs_Client
+  Hazina_API_Search --> Hazina_LLMs_OpenAI
+  HttpContext --> ModelContextProtocol_AspNetCore
+  Hazina_App_EmbeddingsViewer --> Hazina_Store_EmbeddingStore
+  Hazina_LongContext --> Hazina_Store_EmbeddingStore
+  Hazina_LongContext --> Hazina_AI_RAG
+  Hazina_LongContext --> Hazina_AI_ContextEngineering
+  Hazina_LongContext --> Hazina_AI_Compression
+  Hazina_LongContext --> Hazina_AI_Orchestration
+  Hazina_LongContext --> Hazina_LLMs_Client
+  Hazina_LongContext --> Hazina_AI_Providers
+  Hazina_Demo_FolderToPostgres --> Hazina_Store_DocumentStore
+  Hazina_Demo_FolderToPostgres --> Hazina_Store_EmbeddingStore
+  Hazina_Demo_FolderToPostgres --> Hazina_LLMs_Client
+  Hazina_Demo_FolderToPostgres --> Hazina_LLMs_Helpers
+  Hazina_Demo_FolderToPostgres --> Hazina_LLMs_OpenAI
+  Hazina_AI_RAG --> Hazina_LLMs_Client
+  Hazina_AI_RAG --> Hazina_LLMs_Classes
+  Hazina_AI_RAG --> Hazina_Store_EmbeddingStore
+  Hazina_AI_RAG --> Hazina_Store_DocumentStore
+  Hazina_AI_RAG --> Hazina_AI_Providers
+  Hazina_AI_RAG --> Hazina_Neurochain_Core
+  Hazina_AI_Compression --> Hazina_LLMs_Classes
+  DevGPT_Generator --> DevGPT_Store_DocumentStore
+  DevGPT_Generator --> DevGPT_LLMs_OpenAI
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Services_Store
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Services_Web
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Services_Embeddings
+  DevGPT_GenerationTools_AI_Agents --> DevGPT_GenerationTools_Services_FileOps
+  Hazina_Tools_TextExtraction_Tests --> Hazina_Tools_TextExtraction
+  FolderToPostgres --> DevGPT_Store_DocumentStore
+  FolderToPostgres --> DevGPT_Store_EmbeddingStore
+  FolderToPostgres --> DevGPT_LLMs_Client
+  FolderToPostgres --> DevGPT_LLMs_Helpers
+  FolderToPostgres --> DevGPT_LLMs_OpenAI
+  Hazina_CodeIntelligence --> Hazina_LLMs_Client
+  Hazina_CodeIntelligence --> Hazina_LLMs_Classes
+  Hazina_CodeIntelligence --> Hazina_AI_Providers
+  Hazina_CodeIntelligence --> Hazina_Neurochain_Core
+  HtmlMockupGenerator --> DevGPT_Generator
+  HtmlMockupGenerator --> DevGPT_LLMClientTools
+  HtmlMockupGenerator --> DevGPT_AgentFactory
+  HtmlMockupGenerator --> DevGPT_LLMs_OpenAI
+  Hazina_Tools_Common_Models --> Hazina_AgentFactory
+  Hazina_AI_Orchestration --> Hazina_LLMs_Client
+  Hazina_AI_Orchestration --> Hazina_LLMs_Classes
+  Hazina_AI_Orchestration --> Hazina_AI_Providers
+  Hazina_AI_Orchestration --> Hazina_AI_FaultDetection
+  Hazina_AI_Orchestration --> Hazina_AI_Compression
+  Hazina_LLMs_Client_Tests --> Hazina_LLMs_Client
+  Hazina_LLMs_Client_Tests --> Hazina_LLMs_Classes
+  Hazina_LLMs_Client_Tests --> Hazina_LLMs_Helpers
+  Hazina_Demo_Postgres --> Hazina_Store_DocumentStore
+  Hazina_Demo_Postgres --> Hazina_Store_EmbeddingStore
+  Hazina_Demo_Postgres --> Hazina_LLMs_Client
+  Hazina_Demo_Postgres --> Hazina_LLMs_Helpers
+  Shared --> Hazina_LLMs_Client
+  Hazina_LLMs_SemanticKernel --> Hazina_LLMs_Client
+  Hazina_LLMs_SemanticKernel --> Hazina_LLMs_Classes
+  Hazina_LLMs_SemanticKernel --> Hazina_LLMs_Helpers
+  Hazina_LLMs_SemanticKernel --> Hazina_Store_DocumentStore
+  Hazina_Demo_Crosslink --> Hazina_LLMs_Classes
+  Hazina_Demo_Crosslink --> Hazina_Store_DocumentStore
+  Hazina_Demo_Crosslink --> Hazina_Store_EmbeddingStore
+  Hazina_Demo_Crosslink --> Hazina_Generator
+  Hazina_Demo_Crosslink --> Hazina_LLMs_Helpers
+  Hazina_Demo_Crosslink --> Hazina_LLMs_Client
+  Hazina_Demo_Crosslink --> Hazina_LLMs_OpenAI
+  ChatWithTools --> ModelContextProtocol_Core
+  DevGPT_Store_EmbeddingStore --> DevGPT_LLMs_Helpers
+  DevGPT_Store_EmbeddingStore --> DevGPT_LLMs_Client
+  DevGPT_GenerationTools_Services_Social --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Social --> DevGPT_GenerationTools_Data
+  LedgerServerApp --> Api
+  Hazina_Tools_Services_Chat --> Hazina_Tools_Models
+  Hazina_Tools_Services_Chat --> Hazina_Tools_Core
+  Hazina_Tools_Services_Chat --> Hazina_Tools_Data
+  Hazina_Tools_Services_Chat --> Hazina_Tools_AI_Agents
+  Hazina_Tools_Services_Chat --> Hazina_Tools_Services_DataGathering
+  Hazina_Tools_Services_Chat --> Hazina_Observability_LLMLogs
+  Scp_Tests --> Scp_Abstractions
+  Scp_Tests --> Scp_Core
+  Scp_Tests --> Scp_Storage
+  Hazina_Observability_Core_LoadTests --> Hazina_Observability_Core
+  DevGPT_GenerationTools_Services_ContentRetrieval --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_ContentRetrieval --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_ContentRetrieval --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_ContentRetrieval --> DevGPT_GenerationTools_Services_WordPress
+  DevGPT_GenerationTools_Services_ContentRetrieval --> DevGPT_GenerationTools_Common_Models
+  DevGPT_GenerationTools_Services_ContentRetrieval --> DevGPT_GenerationTools_Services_FileOps
+  TestServerWithHosting --> ModelContextProtocol
+  ClientManagerAPI_IntegrationTests --> ClientManagerAPI_local
+  Scp_Core --> Scp_Abstractions
+  Scp_Core --> Scp_Channels
+  Scp_Core --> Hazina_LLMs_Client
+  Scp_Core --> Hazina_LLMs_Classes
+  Scp_Core --> Hazina_AI_Providers
+  Scp_Core --> Hazina_AI_FluentAPI
+  Hazina_LLMs_Ollama --> Hazina_LLMs_Client
+  DevGPT_GenerationTools_Services_WordPress_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_WordPress_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_WordPress_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_WordPress_local --> DevGPT_GenerationTools_Services_FileOps_local
+  Hazina_LLMs_HuggingFace --> Hazina_LLMs_Client
+  Hazina_LLMs_HuggingFace --> Hazina_LLMs_Classes
+  Hazina_LLMs_HuggingFace --> Hazina_LLMs_Helpers
+  marketingframework --> IndependentHelpers
+  Hazina_Tools_Services_Embeddings --> Hazina_Tools_Models
+  Hazina_Tools_Services_Embeddings --> Hazina_Tools_Core
+  Hazina_Tools_Services_Embeddings --> Hazina_Tools_Data
+  Hazina_Tools_Services_Embeddings --> Hazina_Tools_Services_Store
+  Hazina_Tools_Services_Embeddings --> Hazina_Tools_Services_FileOps
+  Hazina_Observability_Core_Benchmarks --> Hazina_Observability_Core
+  ClientManagerAPI_Tests --> ClientManagerAPI_local
+  Scp_Providers_Anthropic --> Scp_Abstractions
+  Scp_Providers_Anthropic --> Hazina_LLMs_Anthropic
+  Scp_Providers_Anthropic --> Hazina_LLMs_Client
+  Scp_Providers_Anthropic --> Scp_Core
+  PDFMaker --> PostgresDemo
+  Hazina_LLMs_Anthropic_Tests --> Hazina_LLMs_Anthropic
+  Hazina_LLMs_Anthropic_Tests --> Hazina_LLMs_Client
+  Hazina_LLMs_Anthropic_Tests --> Hazina_LLMs_Classes
+  Hazina_LLMs_Anthropic_Tests --> Hazina_LLMs_Helpers
+  Hazina_Tools_Services_BigQuery_Tests --> Hazina_Tools_Services_BigQuery
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Services_Embeddings_local
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Services_FileOps_local
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Services_Store_local
+  DevGPT_GenerationTools_AI_Agents_local --> DevGPT_GenerationTools_Services_Web_local
+  Hazina_Tools_Services_DataGathering --> Hazina_Tools_AI_Agents
+  Hazina_Tools_Services_DataGathering --> Hazina_Tools_Core
+  Hazina_Tools_Services_DataGathering --> Hazina_Tools_Data
+  Hazina_Tools_Services_DataGathering --> Hazina_Tools_Models
+  Hazina_Tools_Services_DataGathering --> Hazina_Tools_Services_Store
+  Hazina_Tools_Services_DataGathering --> Hazina_LLMClientTools
+  Hazina_Tools_Services_DataGathering --> Hazina_Tools_Extensions
+  Hazina_Tools_Services_Store_Tests --> Hazina_Tools_Services_Store
+  DevGPT_GenerationTools_Services_Chat_Tests --> DevGPT_GenerationTools_Services_Chat
+  Hazina_LLMs_Classes_Tests --> Hazina_LLMs_Classes
+  Hazina_LLMs_Classes_Tests --> Hazina_LLMs_Helpers
+  Hazina_LLMs_Client --> Hazina_LLMs_Classes
+  Hazina_LLMs_Client --> Hazina_LLMs_Helpers
+  Hazina_LLMs_OpenAI --> Hazina_LLMs_Client
+  ProtectedMcpClient --> ModelContextProtocol_Core
+  MastermindGroup_API --> MastermindGroup_Core
+  MastermindGroup_API --> MastermindGroup_Infrastructure
+  MastermindGroup_API --> Hazina_Tools_Common_Infrastructure_AspNetCore
+  MastermindGroup_API --> Hazina_Tools_Common_Models
+  MastermindGroup_API --> Hazina_Tools_AI_Agents
+  MastermindGroup_API --> Hazina_Tools_Core
+  MastermindGroup_API --> Hazina_Tools_Models
+  MastermindGroup_API --> Hazina_Tools_Data
+  MastermindGroup_API --> Hazina_AI_Agents
+  MastermindGroup_API --> Hazina_AI_Orchestration
+  MastermindGroup_API --> Hazina_LLMs_Anthropic
+  MastermindGroup_API --> Hazina_LLMs_OpenAI
+  MastermindGroup_API --> Hazina_LLMs_Ollama
+  MastermindGroup_API --> Hazina_Security_Core
+  MastermindGroup_API --> Hazina_Security_AspNetCore
+  MastermindGroup_API --> Hazina_Store_Sqlite
+  MastermindGroup_API --> Hazina_Tools_Services_Store
+  MastermindGroup_API --> Hazina_Tools_Services_Chat
+  DevGPT_GenerationTools_Services_DataGathering --> DevGPT_GenerationTools_AI_Agents
+  DevGPT_GenerationTools_Services_DataGathering --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_DataGathering --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_DataGathering --> DevGPT_GenerationTools_Extensions
+  DevGPT_GenerationTools_Services_DataGathering --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_DataGathering --> DevGPT_GenerationTools_Services_Store
+  Hazina_Observability_AspNetCore --> Hazina_Observability_Core
+  Hazina_Observability_LLMLogs --> Hazina_LLMs_Client
+  Hazina_Observability_LLMLogs --> Hazina_LLMs_Classes
+  AspNetCoreMcpPerSessionTools --> ModelContextProtocol_AspNetCore
+  Hazina_Security_AspNetCore --> Hazina_Security_Core
+  Scp_Memory_Tests --> Scp_Memory
+  Scp_Memory_Tests --> Scp_Abstractions
+  Hazina_Tools_Services_ToolAgent_Tests --> Hazina_Tools_Services_ToolAgent
+  Hazina_App_HtmlMockupGenerator --> Hazina_AgentFactory
+  Hazina_App_HtmlMockupGenerator --> Hazina_Generator
+  Hazina_App_HtmlMockupGenerator --> Hazina_LLMs_OpenAI
+  Hazina_App_HtmlMockupGenerator --> Hazina_LLMClientTools
+  DevGPT_LLMs_HuggingFace --> DevGPT_LLMs_Client
+  DevGPT_LLMs_HuggingFace --> DevGPT_LLMs_Classes
+  DevGPT_LLMs_HuggingFace --> DevGPT_LLMs_Helpers
+  Hazina_Tools_Models_Tests --> Hazina_Tools_Models
+  DevGPT_LLMs_SemanticKernel --> DevGPT_LLMs_Client
+  DevGPT_LLMs_SemanticKernel --> DevGPT_LLMs_Classes
+  DevGPT_LLMs_SemanticKernel --> DevGPT_LLMs_Helpers
+  DevGPT_LLMs_SemanticKernel --> DevGPT_Store_DocumentStore
+  ModelContextProtocol_TestSseServer --> ModelContextProtocol_AspNetCore
+  ModelContextProtocol_TestSseServer --> ModelContextProtocol_Core
+  InMemoryTransport --> ModelContextProtocol
+  DevGPT_AgentFactory --> DevGPT_LLMs_Classes
+  DevGPT_AgentFactory --> DevGPT_Store_DocumentStore
+  DevGPT_AgentFactory --> DevGPT_Store_EmbeddingStore
+  DevGPT_AgentFactory --> DevGPT_Generator
+  DevGPT_AgentFactory --> DevGPT_LLMs_Helpers
+  DevGPT_AgentFactory --> DevGPT_LLMs_Client
+  DevGPT_AgentFactory --> DevGPT_LLMs_OpenAI
+  DevGPT_AgentFactory --> DevGPT_LLMs_SemanticKernel
+  Hazina_LLMs_Anthropic --> Hazina_LLMs_Client
+  Hazina_Brain --> Hazina_Store_EmbeddingStore
+  Hazina_Brain --> Hazina_AI_Memory
+  Hazina_Brain --> Hazina_LLMs_Client
+  Hazina_Tools_Core --> Hazina_Tools_Models
+  Hazina_LLMs_GoogleADK --> Hazina_LLMs_Client
+  Hazina_LLMs_GoogleADK --> Hazina_LLMs_Classes
+  Hazina_LLMs_GoogleADK --> Hazina_LLMs_Helpers
+  Hazina_LLMs_GoogleADK --> Hazina_LLMs_Gemini
+  ChatAPI --> DevGPT_AgentFactory
+  DevGPT_GenerationTools_Core --> DevGPT_GenerationTools_Models
+  Hazina_AgentFactory_Tests --> Hazina_AgentFactory
+  Hazina_AgentFactory_Tests --> Hazina_LLMClientTools
+  Hazina_AgentFactory_Tests --> Hazina_LLMs_Client
+  Hazina_AgentFactory_Tests --> Hazina_LLMs_Classes
+  DevGPT_GenerationTools_Services_Store --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_Store --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_Store --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_Store --> DevGPT_GenerationTools_Services_Web
+  DevGPT_GenerationTools_Services_Store --> DevGPT_GenerationTools_Services_FileOps
+  DevGPT_GenerationTools_Services_Store --> DevGPT_GenerationTools_Services_BigQuery
+  Hazina_AI_Providers_Tests --> Hazina_AI_Providers
+  DevGPT_GenerationTools_TextExtraction_Tests --> DevGPT_GenerationTools_TextExtraction
+  Hazina_Generator_Tests --> Hazina_Generator
+  Hazina_Generator_Tests --> Hazina_Store_DocumentStore
+  Hazina_Generator_Tests --> Hazina_LLMs_OpenAI
+  DevGPT_OpenAI_IntegrationTests --> DevGPT_LLMs_OpenAI
+  DevGPT_OpenAI_IntegrationTests --> DevGPT_LLMs_Classes
+  Hazina_Observability_Core --> Hazina_AI_Providers
+  Hazina_Observability_Core --> Hazina_Neurochain_Core
+  Hazina_Tools_Services_ContentRetrieval --> Hazina_Tools_Models
+  Hazina_Tools_Services_ContentRetrieval --> Hazina_Tools_Core
+  Hazina_Tools_Services_ContentRetrieval --> Hazina_Tools_Data
+  Hazina_Tools_Services_ContentRetrieval --> Hazina_Tools_Services_WordPress
+  Hazina_Tools_Services_ContentRetrieval --> Hazina_Tools_Common_Models
+  Hazina_Tools_Services_ContentRetrieval --> Hazina_Tools_Services_FileOps
+  DevGPT_GenerationTools_Services_Prompts_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_Prompts_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Prompts_local --> DevGPT_GenerationTools_Models_local
+  CorinaAI_Tests --> CorinaAI_Api
+  CorinaAI_Tests --> CorinaAI_Core
+  CorinaAI_Tests --> CorinaAI_Infrastructure
+  DevGPT_Store_DocumentStore --> DevGPT_Store_EmbeddingStore
+  DevGPT_Store_DocumentStore --> DevGPT_LLMs_Helpers
+  DevGPT_GenerationTools_Services_Embeddings_Tests --> DevGPT_GenerationTools_Services_Embeddings
+  MastermindGroup_Tests --> MastermindGroup_API
+  MastermindGroup_Tests --> MastermindGroup_Core
+  MastermindGroup_Tests --> MastermindGroup_Infrastructure
+  Hazina_AI_PromptManagement --> Hazina_LLMs_Client
+  Hazina_AI_PromptManagement --> Hazina_LLMs_Classes
+  Generator --> Store
+  Hazina_Neurochain_Core --> Hazina_LLMs_Client
+  Hazina_Neurochain_Core --> Hazina_LLMs_Classes
+  Hazina_Neurochain_Core --> Hazina_AI_Providers
+  Hazina_Neurochain_Core --> Hazina_AI_FaultDetection
+  Hazina_Neurochain_Core --> Hazina_AI_Orchestration
+  Hazina_Tools_Services_GoogleDrive --> Hazina_Tools_Models
+  Hazina_Tools_Services_GoogleDrive --> Hazina_Tools_Data
+  Hazina_Tools_Services_GoogleDrive --> Hazina_Tools_Services_Embeddings
+  ArtRevisionistAPI --> Hazina_Tools_TextExtraction
+  ArtRevisionistAPI --> Hazina_Tools_Common_Models
+  ArtRevisionistAPI --> Hazina_Tools_Common_Infrastructure_AspNetCore
+  ArtRevisionistAPI --> Hazina_Tools_Common_Models
+  ArtRevisionistAPI --> Hazina_Tools_Models
+  ArtRevisionistAPI --> Hazina_Tools_Core
+  ArtRevisionistAPI --> Hazina_Tools_Data
+  ArtRevisionistAPI --> Hazina_Tools_Services
+  ArtRevisionistAPI --> Hazina_Tools_AI_Agents
+  ArtRevisionistAPI --> Hazina_Tools_Services_Intake
+  ArtRevisionistAPI --> Hazina_Tools_Services_Store
+  ArtRevisionistAPI --> Hazina_Tools_Services_Prompts
+  ArtRevisionistAPI --> Hazina_Tools_Services_Chat
+  ArtRevisionistAPI --> Hazina_Tools_Services_WordPress
+  ArtRevisionistAPI --> Hazina_Tools_Services_Social
+  ArtRevisionistAPI --> Hazina_Tools_Services_Web
+  ArtRevisionistAPI --> Hazina_Tools_Services_ContentRetrieval
+  ArtRevisionistAPI --> Hazina_Store_DocumentStore
+  ArtRevisionistAPI --> Hazina_AI_FluentAPI
+  ArtRevisionistAPI --> Hazina_AI_Providers
+  ArtRevisionistAPI --> Hazina_AI_Orchestration
+  ArtRevisionistAPI --> Hazina_AI_FaultDetection
+  ModelContextProtocol_AspNetCore --> ModelContextProtocol
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Common_Models_local
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Services_ContentRetrieval_local
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Services_FileOps_local
+  DevGPT_GenerationTools_Services_Web_local --> DevGPT_GenerationTools_Services_WordPress_local
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_TextExtraction
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Services_WordPress
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Services_Web
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Services_ContentRetrieval
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Services_FileOps
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Services_Store
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_AI_Agents
+  DevGPT_GenerationTools_Services --> DevGPT_GenerationTools_Common_Utilities
+  DevGPT_GenerationTools_Data --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Data --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Data --> DevGPT_GenerationTools_Common_Models
+  ModelContextProtocol_Tests --> ModelContextProtocol_Core
+  ModelContextProtocol_Tests --> ModelContextProtocol_TestServer
+  ModelContextProtocol_Tests --> TestServerWithHosting
+  DevGPT_GenerationTools_Services_BigQuery_Tests --> DevGPT_GenerationTools_Services_BigQuery
+  Hazina_LLMs_GoogleADK_Tests --> Hazina_LLMs_GoogleADK
+  Hazina_Tools_Services_Database --> Hazina_Tools_Models
+  Hazina_Tools_Services_Database --> Hazina_Tools_Core
+  Hazina_Tools_Services_Database --> Hazina_Tools_Data
+  Hazina_Tools_Services_Database --> Hazina_Tools_AI_Agents
+  Hazina_Tools_Services_Database --> Hazina_Tools_Services_Embeddings
+  Hazina_Tools_Services_Database --> Hazina_Tools_Services_Chat
+  Crosslink --> DevGPT_LLMs_Classes
+  Crosslink --> DevGPT_Store_DocumentStore
+  Crosslink --> DevGPT_Store_EmbeddingStore
+  Crosslink --> DevGPT_Generator
+  Crosslink --> DevGPT_LLMs_Helpers
+  Crosslink --> DevGPT_LLMs_Client
+  Crosslink --> DevGPT_LLMs_OpenAI
+  Scp_Storage --> Scp_Abstractions
+  Hazina_Tools_Data --> Hazina_Tools_Models
+  Hazina_Tools_Data --> Hazina_Tools_Core
+  Hazina_Tools_Data --> Hazina_Tools_Common_Models
+  Hazina_Tools_Data --> Hazina_Store_DocumentStore
+  Hazina_Tools_Data --> Hazina_Store_Sqlite
+  Hazina_Tools_Data --> Hazina_LLMClientTools
+  Hazina_Tools_TextExtraction --> Hazina_AgentFactory
+  Hazina_Tools_TextExtraction --> Hazina_LLMs_OpenAI
+  Hazina_Tools_TextExtraction --> Hazina_LLMClientTools
+  Hazina_Tools_TextExtraction --> Hazina_LLMs_Client
+  DevGPT_Generator_Tests --> DevGPT_Generator
+  Scp_Documents --> Scp_Abstractions
+  Scp_Documents --> Scp_Embeddings
+  Hazina_LLMs_Mistral --> Hazina_LLMs_Client
+  Hazina_LLMs_Mistral --> Hazina_LLMs_Classes
+  Hazina_LLMs_Mistral --> Hazina_LLMs_Helpers
+  Hazina_Tools_Services_Store --> Hazina_Tools_Models
+  Hazina_Tools_Services_Store --> Hazina_Tools_Core
+  Hazina_Tools_Services_Store --> Hazina_Tools_Data
+  Hazina_Tools_Services_Store --> Hazina_Tools_Services_Web
+  Hazina_Tools_Services_Store --> Hazina_Tools_Services_FileOps
+  Hazina_Tools_Services_Store --> Hazina_Tools_Services_BigQuery
+  DevGPT_GenerationTools_Common_Models_local --> DevGPT_AgentFactory
+  Networking --> Ledger
+  DevGPT_GenerationTools_Models_Tests --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_ContentRetrieval_local --> DevGPT_GenerationTools_Common_Models_local
+  DevGPT_GenerationTools_Services_ContentRetrieval_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_ContentRetrieval_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_ContentRetrieval_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_ContentRetrieval_local --> DevGPT_GenerationTools_Services_FileOps_local
+  DevGPT_GenerationTools_Services_ContentRetrieval_local --> DevGPT_GenerationTools_Services_WordPress_local
+  Hazina_Store_Sqlite --> Hazina_LLMs_Helpers
+  Hazina_Store_Sqlite --> Hazina_LLMs_Client
+  Hazina_Store_Sqlite --> Hazina_Store_EmbeddingStore
+  Hazina_Store_Sqlite --> Hazina_Store_DocumentStore
+  DevGPT_GenerationTools_Services_Intake_local --> DevGPT_Generator
+  DevGPT_GenerationTools_Services_Intake_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_Intake_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Intake_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_Intake_local --> DevGPT_GenerationTools_Services_local
+  ModelContextProtocol_TestServer --> ModelContextProtocol_Core
+  Hazina_Tools_Services_BigQuery --> Hazina_Tools_Models
+  Hazina_Tools_Services_BigQuery --> Hazina_Tools_Data
+  Hazina_Tools_Services_BigQuery --> Hazina_Tools_Services_FileOps
+  DevGPT_GenerationTools_Data_Tests --> DevGPT_GenerationTools_Data
+  Hazina_AgentFactory --> Hazina_LLMs_Classes
+  Hazina_AgentFactory --> Hazina_Store_DocumentStore
+  Hazina_AgentFactory --> Hazina_Store_EmbeddingStore
+  Hazina_AgentFactory --> Hazina_Generator
+  Hazina_AgentFactory --> Hazina_LLMs_Helpers
+  Hazina_AgentFactory --> Hazina_LLMs_Client
+  Hazina_AgentFactory --> Hazina_LLMs_OpenAI
+  Hazina_AgentFactory --> Hazina_LLMs_SemanticKernel
+  DevGPT_GenerationTools_Services_Store_Tests --> DevGPT_GenerationTools_Services_Store
+  DevGPT_GenerationTools_Services_FileOps_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_FileOps_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_FileOps_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_FileOps_local --> DevGPT_GenerationTools_TextExtraction_local
+  DevGPT_GenerationTools_Services_BigQuery --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_BigQuery --> DevGPT_GenerationTools_Data
+  ProtectedMcpServer --> ModelContextProtocol_AspNetCore
+  Hazina_Tools_Services_Images_Tests --> Hazina_Tools_Services_Images
+  SocraNextTaskRunner --> marketingframework
+  Hazina_Tools_Extensions --> Hazina_Tools_Data
+  Hazina_Tools_Services_Web --> Hazina_Tools_Models
+  Hazina_Tools_Services_Web --> Hazina_Tools_Core
+  Hazina_Tools_Services_Web --> Hazina_Tools_Data
+  Hazina_Tools_Services_Web --> Hazina_Tools_Services_WordPress
+  Hazina_Tools_Services_Web --> Hazina_Tools_Common_Models
+  Hazina_Tools_Services_Web --> Hazina_Tools_Services_ContentRetrieval
+  Hazina_Tools_Services_Web --> Hazina_Tools_Services_FileOps
+  DevGPT_DynamicAPI --> DevGPT_LLMs_Classes
+  DevGPT_DynamicAPI --> DevGPT_LLMs_Client
+  DevGPT_LLMs_HuggingFace_Tests --> DevGPT_LLMs_HuggingFace
+  Hazina_Tools_Services_Social --> Hazina_Tools_Models
+  Hazina_Tools_Services_Social --> Hazina_Tools_Data
+  Hazina_Tools_Services_Social --> Hazina_Store_EmbeddingStore
+  Hazina_Tools_Services_Social --> Hazina_Tools_Services_Chat
+  Hazina_Tools_Models --> Hazina_Tools_Common_Models
+  Hazina_App_ExplorerIntegration --> Hazina_AgentFactory
+  Hazina_App_ExplorerIntegration --> Hazina_ChatShared
+  DevGPT_AgentFactory_Tests --> DevGPT_AgentFactory
+  Hazina_Tools_Services_ToolAgent --> Hazina_LLMs_Classes
+  Hazina_Tools_Services_ToolAgent --> Hazina_LLMClientTools
+  Hazina_Tools_Services_ToolAgent --> Hazina_Tools_Models
+  DevGPT_GenerationTools_Services_Embeddings_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_Embeddings_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Embeddings_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_Embeddings_local --> DevGPT_GenerationTools_Services_FileOps_local
+  DevGPT_GenerationTools_Services_Embeddings_local --> DevGPT_GenerationTools_Services_Store_local
+  Client --> Ledger
+  Hazina_Store_DocumentStore_Tests --> Hazina_Store_DocumentStore
+  Hazina_Store_DocumentStore_Tests --> Hazina_Store_EmbeddingStore
+  Hazina_Store_DocumentStore_Tests --> Hazina_LLMs_Helpers
+  Hazina_Store_DocumentStore_Tests --> Hazina_LLMs_Client
+  Hazina_Store_DocumentStore_Tests --> Hazina_AI_RAG
+  QuickstartClient --> ModelContextProtocol_Core
+  DevGPT_LLMs_Classes_Tests --> DevGPT_LLMs_Classes
+  WpfApp_Tests --> LedgerClientApp
+  Scp_Embeddings_Tests --> Scp_Embeddings
+  Scp_Embeddings_Tests --> Scp_Abstractions
+  DevGPTStore_worker --> DevGPT_GenerationTools_Models
+  DevGPTStore_worker --> DevGPT_GenerationTools_Core
+  DevGPTStore_worker --> DevGPT_GenerationTools_Data
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_Intake
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_Prompts
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_Chat
+  DevGPTStore_worker --> Common_Utilities
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_WordPress
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_Social
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_Web
+  DevGPTStore_worker --> DevGPT_GenerationTools_Services_ContentRetrieval
+  Hazina_Tools_Data_Tests --> Hazina_Tools_Data
+  ClaudeCode --> DevGPT_LLMs_OpenAI
+  ClaudeCode --> DevGPT_LLMs_Classes
+  ClaudeCode --> DevGPT_LLMs_Helpers
+  ClaudeCode --> DevGPT_LLMs_Client
+  Hazina_LLMClientTools --> Hazina_LLMs_Classes
+  Hazina_LLMClientTools --> Hazina_LLMs_Client
+  Hazina_Agents_Tools --> Hazina_LLMs_Classes
+  Hazina_Agents_Tools --> Hazina_LLMs_Client
+  DevGPT_DynamicAPI_Tests --> DevGPT_DynamicAPI
+  Elicitation --> ModelContextProtocol_AspNetCore
+  Hazina_LLMs_HuggingFace_Tests --> Hazina_LLMs_HuggingFace
+  Hazina_LLMs_HuggingFace_Tests --> Hazina_LLMs_Client
+  Hazina_LLMs_HuggingFace_Tests --> Hazina_LLMs_Classes
+  Hazina_LLMs_HuggingFace_Tests --> Hazina_LLMs_Helpers
+  Hazina_Observability_Core_IntegrationTests --> Hazina_Observability_Core
+  DevGPT_GenerationTools_Data_local --> DevGPT_Store_DocumentStore
+  DevGPT_GenerationTools_Data_local --> DevGPT_GenerationTools_Common_Models_local
+  DevGPT_GenerationTools_Data_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Data_local --> DevGPT_GenerationTools_Models_local
+  Hazina_Architecture_Tests --> Hazina_LLMs_Client
+  Hazina_Architecture_Tests --> Hazina_AI_Providers
+  Hazina_Architecture_Tests --> Hazina_AI_FluentAPI
+  DevGPT_GenerationTools_Core_Tests --> DevGPT_GenerationTools_Core
+  Api --> Ledger
+  Api --> Networking
+  QuickstartWeatherServer --> ModelContextProtocol
+  DevGPT_Store_EmbeddingStore_Tests --> DevGPT_Store_EmbeddingStore
+  DevGPT_LLMs_Client_Tests --> DevGPT_LLMs_Client
+  DevGPT_GenerationTools_Services_Social_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_Social_local --> DevGPT_GenerationTools_Models_local
+  AITools --> Generator
+  AITools --> Store
+  DevGPT_GenerationTools_Services_WordPress --> DevGPT_GenerationTools_Models
+  DevGPT_GenerationTools_Services_WordPress --> DevGPT_GenerationTools_Core
+  DevGPT_GenerationTools_Services_WordPress --> DevGPT_GenerationTools_Data
+  DevGPT_GenerationTools_Services_WordPress --> DevGPT_GenerationTools_Common_Utilities
+  DevGPT_GenerationTools_Services_WordPress --> DevGPT_GenerationTools_Services_FileOps
+  PostgresDemo --> DevGPT_Store_DocumentStore
+  PostgresDemo --> DevGPT_Store_EmbeddingStore
+  PostgresDemo --> DevGPT_LLMs_Client
+  PostgresDemo --> DevGPT_LLMs_Helpers
+  Hazina_Demo_Supabase --> Hazina_Tools_Data
+  Hazina_Demo_Supabase --> Hazina_Tools_Core
+  Hazina_Demo_Supabase --> Hazina_Store_DocumentStore
+  Hazina_Demo_Supabase --> Hazina_Store_EmbeddingStore
+  Hazina_Demo_Supabase --> Hazina_LLMs_Client
+  Hazina_LLMs_OpenAI_Tests --> Hazina_LLMs_OpenAI
+  Hazina_LLMs_OpenAI_Tests --> Hazina_LLMs_Client
+  Hazina_LLMs_OpenAI_Tests --> Hazina_LLMs_Classes
+  Hazina_LLMs_OpenAI_Tests --> Hazina_LLMs_Helpers
+  Hazina_LLMs_OpenAI_Tests --> Hazina_LLMClientTools
+  ProgressClient --> ModelContextProtocol_Core
+  StoreBuilder --> Shared
+  StoreBuilder --> Hazina_LLMs_Client
+  StoreBuilder --> Hazina_LLMs_OpenAI
+  Hazina_App_ClaudeCode --> Hazina_LLMs_OpenAI
+  Hazina_App_ClaudeCode --> Hazina_LLMs_Classes
+  Hazina_App_ClaudeCode --> Hazina_LLMs_Client
+  Hazina_App_ClaudeCode --> Hazina_Agents_Tools
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_AI_Agents_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Core_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Data_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Models_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Services_ContentRetrieval_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Services_FileOps_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Services_Store_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Services_Web_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_Services_WordPress_local
+  DevGPT_GenerationTools_Services_local --> DevGPT_GenerationTools_TextExtraction_local
+  Api_Tests --> Api
+  Ledger_Tests --> Ledger
+  Hazina_Tools_Services_Prompts --> Hazina_Tools_Models
+  Hazina_Tools_Services_Prompts --> Hazina_Tools_Core
+  Hazina_Tools_Services_Prompts --> Hazina_Tools_Data
+  ArtRevisionistAPI_UnitTests --> ArtRevisionistAPI
+  Scp_Semantics --> Scp_Abstractions
+  VeraAPI --> marketingframework
+  VeraAPI --> IndependentHelpers
+  DevGPTStoreAPI --> IndependentHelpers
+  DevGPTStoreAPI --> Common_Utilities
+  DevGPTStoreAPI --> Common_Infrastructure_AspNetCore
+  DevGPTStoreAPI --> Common_Models
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Models
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Core
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Data
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services
+  DevGPTStoreAPI --> DevGPT_GenerationTools_AI_Agents
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_Intake
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_Store
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_Prompts
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_Chat
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_WordPress
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_Social
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_Web
+  DevGPTStoreAPI --> DevGPT_GenerationTools_Services_ContentRetrieval
+  DevGPT_GenerationTools_Services_FileOps_Tests --> DevGPT_GenerationTools_Services_FileOps
+  DevGPT_GenerationTools_Extensions --> DevGPT_GenerationTools_Data_local
+  Hazina_AI_ContextEngineering --> Hazina_Store_FactsStore
+  Hazina_AI_ContextEngineering --> Hazina_Store_DocumentStore
+  Hazina_AI_ContextEngineering --> Hazina_AI_RAG
+  Scp_ChannelStores --> Scp_Abstractions
+  Scp_ChannelStores --> Scp_Embeddings
+  DevGPT_LLMs_Client --> DevGPT_LLMs_Classes
+  DevGPT_LLMs_Client --> DevGPT_LLMs_Helpers
+  ArtRevisionistAPI_IntegrationTests --> ArtRevisionistAPI
+  QRCodeScanner --> Shared
+  QRCodeScanner --> Hazina_LLMs_Client
+  QRCodeScanner --> Hazina_LLMs_OpenAI
+  ElicitationClient --> ModelContextProtocol_Core
+
+        </div>
+
+        <p style="color: #666; font-size: 0.9em; margin-top: 30px;">
+            Generated on 2026-01-16 15:28:52 | Tool: generate-dependency-graph.ps1
+        </p>
+    </div>
+</body>
+</html>
