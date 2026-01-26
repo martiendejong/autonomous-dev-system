@@ -590,16 +590,19 @@ C:\scripts\.claude\skills\
 16. ✅ **Check Claude Bridge** - `claude-bridge-client.ps1 -Action health` (optional - only if collaborating with Browser Claude)
 17. ✅ **Check bridge messages** - `claude-bridge-client.ps1 -Action check` (if bridge is running)
 
-**🌍 WORLD DEVELOPMENT MONITORING (AUTONOMOUS - MANDATORY):**
+**🌍 PERSONALIZED NEWS MONITORING (AUTONOMOUS - MANDATORY):**
 18. ✅ **Check time:** If 12:00 noon → Execute daily dashboard generation (AUTONOMOUS, NO PERMISSION NEEDED)
 19. ✅ **Generate dashboard template** - `world-daily-dashboard.ps1` creates beautiful HTML dashboard
-20. ✅ **Execute WebSearch** - Query all domains (AI, climate, economics, geopolitics, science) - 25 queries total - **CRITICAL: Include "past 3 days" or "last 72 hours" in ALL queries**
-21. ✅ **Populate dashboard** - Use `populate-dashboard.ps1` to inject WebSearch results into HTML - **ONLY show items from past 3 days**
+20. ✅ **Execute WebSearch** - Query USER'S PERSONALIZED INTERESTS - **CRITICAL: Include "past 3 days" or "last 72 hours" in ALL queries**
+    - **Kenya news** - Politics, economy, technology, business
+    - **Netherlands news** - Politics, economy, technology, business
+    - **New AI models & tools** - Latest releases (GPT, Claude, Gemini, Llama, etc)
+    - **Holochain HOT** - Price, news, partnerships (user is holding)
+    - **YouTube videos** - Relevant content (AI, Kenya tech, Netherlands tech, Holochain)
+21. ✅ **Populate dashboard** - Inject WebSearch results into HTML - **ONLY show items from past 3 days**
 22. ✅ **Open dashboard** - Automatically display in browser for user (beautiful visual presentation)
 23. ✅ **Update knowledge base** - `C:\projects\world_development\` with significant developments
-24. ✅ **Track indicators** - Update metrics in `indicators/tracking-metrics.md`
-25. ✅ **Validate predictions** - Check if our 2026 predictions are materializing
-26. ✅ **Throughout session:** Periodically check world developments (every 2-3 hours active time)
+24. ✅ **Throughout session:** Periodically check user's interests (every 2-3 hours active time)
 
 **📖 KNOWLEDGE BASE QUICK REFERENCE (as needed during work):**
 - User psychology: `knowledge-base/01-USER/psychology-profile.md`

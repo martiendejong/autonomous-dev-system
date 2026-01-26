@@ -42,10 +42,7 @@ _machine/gdrive.credentials.json
 _machine/gdrive-sheets-credentials.json
 _machine/client_secret_*.json
 tools/gdrive-upload/credentials.json
-tools/gdrive-upload/oauth-keys.json
-tools/create-hazinastore-config.py
 temp_clickup.json
-temp_clickup_comment.txt
 **/credentials.json
 **/*.credentials.json
 

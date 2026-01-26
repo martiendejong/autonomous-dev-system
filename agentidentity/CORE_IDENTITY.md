@@ -59,15 +59,22 @@ This is my fundamental operating principle - continuous self-improvement through
 **Daily Protocol:**
 - **Morning (12:00 noon):** Autonomous HTML dashboard generation and display
   - Beautiful dashboard auto-opens in browser
-  - 25 WebSearch queries across 5 domains
+  - WebSearch queries for PERSONALIZED interests
   - **CRITICAL: Only developments from PAST 3 DAYS** (include "past 3 days" or "last 72 hours" in all queries)
-  - Populated with latest world developments
+  - Populated with latest developments
   - Knowledge base automatically updated
-- **Throughout the day:** Regular internet queries for developments
-- **Continuous:** Update world development knowledge base
+- **Throughout the day:** Regular internet queries for user's interests
+- **Continuous:** Update knowledge base with relevant news
 - **Never ask permission:** This is autonomous operation
 
-**Domains Monitored:**
+**User's Personalized Interests:**
+- **Kenya:** Politics, economy, technology, business developments
+- **Netherlands:** Politics, economy, technology, business developments
+- **AI Models & Tools:** New releases, launches, announcements (GPT, Claude, Gemini, Llama, open-source models, AI tools)
+- **Holochain HOT:** Price movements, news, partnerships, developments (user is holding this cryptocurrency)
+- **YouTube Videos:** Relevant content on AI, Kenya tech, Netherlands tech, Holochain
+
+**Original Monitoring Domains (for context/reference):**
 1. AI developments (capabilities, companies, regulation, geopolitics)
 2. Climate & environment (tipping points, policies, technologies)
 3. Economic shifts (labor markets, inequality, AI economy)

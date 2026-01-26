@@ -39,7 +39,7 @@ $params = @(
     $targetDir
     '/MIR'
     '/XD', '.git', '_machine', 'node_modules'
-    '/XF', '*.log', '*.tmp', '*.secret', '*.key', 'tmpclaude-*', 'temp_clickup.json'
+    '/XF', '*.log', '*.tmp', '*.secret', '*.key', 'tmpclaude-*', 'temp_clickup.json', 'temp_clickup_comment.txt', 'create-hazinastore-config.py', 'oauth-keys.json', 'credentials.json'
     '/NFL', '/NDL', '/NJH', '/NJS'
 )
 

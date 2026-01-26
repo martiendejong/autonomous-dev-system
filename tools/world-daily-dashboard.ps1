@@ -287,7 +287,7 @@ $html = @"
             </div>
             <div class="status-bar">
                 <div class="status">
-                    📡 Monitoring past 3 days across 5 domains | 25 queries executed
+                    📡 Personalized monitoring: Kenya, Netherlands, AI, Holochain HOT, YouTube | Past 3 Days
                 </div>
                 <div class="badge">
                     LIVE UPDATE - PAST 3 DAYS
@@ -305,86 +305,72 @@ $html = @"
 
         <!-- MAIN GRID -->
         <div class="grid">
-            <!-- AI Card -->
+            <!-- Kenya News Card -->
             <div class="card">
                 <div class="card-header">
-                    <div class="icon">🤖</div>
-                    <h2>Artificial Intelligence</h2>
+                    <div class="icon">[KE]</div>
+                    <h2>Kenya News</h2>
+                </div>
+                <div class="card-content" id="kenya-content">
+                    <div class="loading">
+                        <div class="loading-animation"></div>
+                        <p>Querying Kenya developments...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Netherlands News Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">[NL]</div>
+                    <h2>Netherlands News</h2>
+                </div>
+                <div class="card-content" id="netherlands-content">
+                    <div class="loading">
+                        <div class="loading-animation"></div>
+                        <p>Querying Netherlands developments...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Models & Tools Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">[AI]</div>
+                    <h2>New AI Models & Tools</h2>
                 </div>
                 <div class="card-content" id="ai-content">
                     <div class="loading">
                         <div class="loading-animation"></div>
-                        <p>Querying latest AI developments...</p>
+                        <p>Querying latest AI models and tools...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Climate Card -->
+            <!-- Holochain HOT Card -->
             <div class="card">
                 <div class="card-header">
-                    <div class="icon">🌍</div>
-                    <h2>Climate & Environment</h2>
+                    <div class="icon">[HOT]</div>
+                    <h2>Holochain HOT</h2>
                 </div>
-                <div class="card-content" id="climate-content">
+                <div class="card-content" id="holochain-content">
                     <div class="loading">
                         <div class="loading-animation"></div>
-                        <p>Querying climate developments...</p>
+                        <p>Querying Holochain HOT developments...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Economics Card -->
+            <!-- YouTube Videos Card -->
             <div class="card">
                 <div class="card-header">
-                    <div class="icon">💰</div>
-                    <h2>Economics</h2>
+                    <div class="icon">[YT]</div>
+                    <h2>Relevant YouTube Videos</h2>
                 </div>
-                <div class="card-content" id="economics-content">
+                <div class="card-content" id="youtube-content">
                     <div class="loading">
                         <div class="loading-animation"></div>
-                        <p>Querying economic developments...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Geopolitics Card -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon">🌐</div>
-                    <h2>Geopolitics</h2>
-                </div>
-                <div class="card-content" id="geopolitics-content">
-                    <div class="loading">
-                        <div class="loading-animation"></div>
-                        <p>Querying geopolitical developments...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Science Card -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon">🔬</div>
-                    <h2>Science & Breakthroughs</h2>
-                </div>
-                <div class="card-content" id="science-content">
-                    <div class="loading">
-                        <div class="loading-animation"></div>
-                        <p>Querying scientific developments...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Prediction Validation Card -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon">🎯</div>
-                    <h2>Prediction Validation</h2>
-                </div>
-                <div class="card-content" id="predictions-content">
-                    <div class="loading">
-                        <div class="loading-animation"></div>
-                        <p>Validating predictions against reality...</p>
+                        <p>Querying relevant YouTube content...</p>
                     </div>
                 </div>
             </div>
