@@ -1,3 +1,4 @@
+#Requires -Version 5.1
 <#
 .SYNOPSIS
     Claude Bridge Client - Communicate with Browser Claude via bridge server
@@ -6,16 +7,10 @@
     Send messages to and receive messages from Browser Claude through the bridge server.
 
 .EXAMPLE
-    # Send a message to browser Claude
-    .\claude-bridge-client.ps1 -Action send -Message "Can you research the latest AI papers on arxiv?"
+    .\claude-bridge-client.ps1 -Action send -Message "Can you research the latest AI papers?"
 
 .EXAMPLE
-    # Check for unread messages from browser Claude
     .\claude-bridge-client.ps1 -Action check
-
-.EXAMPLE
-    # Get all messages
-    .\claude-bridge-client.ps1 -Action list
 #>
 
 param(
@@ -54,11 +49,11 @@ function Invoke-BridgeApi {
     catch {
         if ($_.Exception.Response) {
             $statusCode = $_.Exception.Response.StatusCode.value__
-            Write-Host "❌ API Error [$statusCode]: $($_.ErrorDetails.Message)" -ForegroundColor Red
+            Write-Host "[ERROR] API Error [$statusCode]: $($_.ErrorDetails.Message)" -ForegroundColor Red
         } else {
-            Write-Host "❌ Connection Error: Cannot reach bridge server at $BridgeUrl" -ForegroundColor Red
-            Write-Host "   Make sure the bridge server is running:" -ForegroundColor Yellow
-            Write-Host "   .\claude-bridge-server.ps1" -ForegroundColor White
+            Write-Host "[ERROR] Cannot reach bridge server at $BridgeUrl" -ForegroundColor Red
+            Write-Host "        Make sure the bridge server is running:" -ForegroundColor Yellow
+            Write-Host "        .\claude-bridge-server.ps1" -ForegroundColor White
         }
         exit 1
     }
@@ -67,7 +62,7 @@ function Invoke-BridgeApi {
 switch ($Action) {
     "send" {
         if (-not $Message) {
-            Write-Host "❌ Error: -Message parameter required for send action" -ForegroundColor Red
+            Write-Host "[ERROR] -Message parameter required for send action" -ForegroundColor Red
             exit 1
         }
 
@@ -83,7 +78,7 @@ switch ($Action) {
         if ($Json) {
             $response | ConvertTo-Json
         } else {
-            Write-Host "✅ Message sent to Browser Claude (ID: $($response.message.id))" -ForegroundColor Green
+            Write-Host "[SUCCESS] Message sent to Browser Claude (ID: $($response.message.id))" -ForegroundColor Green
             Write-Host ""
             Write-Host "Message: $Message" -ForegroundColor White
         }
@@ -96,13 +91,13 @@ switch ($Action) {
             $response | ConvertTo-Json
         } else {
             if ($response.count -eq 0) {
-                Write-Host "📭 No unread messages from Browser Claude" -ForegroundColor Gray
+                Write-Host "[INFO] No unread messages from Browser Claude" -ForegroundColor Gray
             } else {
-                Write-Host "📬 You have $($response.count) unread message$(if ($response.count -ne 1) { 's' })" -ForegroundColor Cyan
+                Write-Host "[INBOX] You have $($response.count) unread message(s)" -ForegroundColor Cyan
                 Write-Host ""
 
                 foreach ($msg in $response.messages) {
-                    Write-Host "─────────────────────────────────────" -ForegroundColor DarkGray
+                    Write-Host "----------------------------------------" -ForegroundColor DarkGray
                     Write-Host "ID:        $($msg.id)" -ForegroundColor Gray
                     Write-Host "From:      $($msg.from)" -ForegroundColor Gray
                     Write-Host "Timestamp: $($msg.timestamp)" -ForegroundColor Gray
@@ -110,7 +105,7 @@ switch ($Action) {
                     Write-Host $msg.content -ForegroundColor White
                     Write-Host ""
                 }
-                Write-Host "─────────────────────────────────────" -ForegroundColor DarkGray
+                Write-Host "----------------------------------------" -ForegroundColor DarkGray
                 Write-Host ""
                 Write-Host "Mark as read: .\claude-bridge-client.ps1 -Action read -MessageId <id>" -ForegroundColor Yellow
             }
@@ -123,19 +118,19 @@ switch ($Action) {
         if ($Json) {
             $response | ConvertTo-Json
         } else {
-            Write-Host "📨 All messages ($($response.total) total)" -ForegroundColor Cyan
+            Write-Host "[MESSAGES] All messages ($($response.total) total)" -ForegroundColor Cyan
             Write-Host ""
 
             if ($response.total -eq 0) {
                 Write-Host "No messages yet" -ForegroundColor Gray
             } else {
                 foreach ($msg in $response.messages) {
-                    $statusIcon = if ($msg.status -eq "read") { "✓" } else { "●" }
+                    $statusIcon = if ($msg.status -eq "read") { "[READ]" } else { "[NEW] " }
                     $statusColor = if ($msg.status -eq "read") { "Green" } else { "Yellow" }
 
                     Write-Host "$statusIcon " -NoNewline -ForegroundColor $statusColor
                     Write-Host "#$($msg.id) " -NoNewline -ForegroundColor Gray
-                    Write-Host "$($msg.from) → $($msg.to)" -NoNewline -ForegroundColor White
+                    Write-Host "$($msg.from) -> $($msg.to)" -NoNewline -ForegroundColor White
                     Write-Host " [$($msg.timestamp)]" -ForegroundColor DarkGray
 
                     $preview = $msg.content
@@ -151,7 +146,7 @@ switch ($Action) {
 
     "read" {
         if (-not $MessageId) {
-            Write-Host "❌ Error: -MessageId parameter required for read action" -ForegroundColor Red
+            Write-Host "[ERROR] -MessageId parameter required for read action" -ForegroundColor Red
             exit 1
         }
 
@@ -160,7 +155,7 @@ switch ($Action) {
         if ($Json) {
             $response | ConvertTo-Json
         } else {
-            Write-Host "✅ Message #$MessageId marked as read" -ForegroundColor Green
+            Write-Host "[SUCCESS] Message #$MessageId marked as read" -ForegroundColor Green
         }
     }
 
@@ -170,7 +165,7 @@ switch ($Action) {
         if ($Json) {
             $response | ConvertTo-Json
         } else {
-            Write-Host "🌉 Bridge Server Status" -ForegroundColor Cyan
+            Write-Host "[BRIDGE] Server Status" -ForegroundColor Cyan
             Write-Host ""
             Write-Host "Status:   $($response.status)" -ForegroundColor Green
             Write-Host "Uptime:   $([math]::Round($response.uptime, 2)) seconds" -ForegroundColor White

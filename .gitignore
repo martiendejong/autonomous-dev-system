@@ -38,21 +38,19 @@ secrets/
 # OAuth credentials (contain client secrets)
 _machine/gcp-oauth.keys.json
 _machine/gdrive-credentials.json
+_machine/gdrive.credentials.json
+_machine/gdrive-sheets-credentials.json
 _machine/client_secret_*.json
 tools/gdrive-upload/credentials.json
-tools/gdrive-upload/oauth-keys.json
+temp_clickup.json
+**/credentials.json
+**/*.credentials.json
 
 # Weird filename
 C:*
 
 # Machine temp files (created at runtime)
 _machine/tmpclaude-*
-tmpclaude-*
-temp_clickup.json
-temp_clickup_comment.txt
-
-# Files containing hardcoded secrets (machine-specific)
-tools/create-hazinastore-config.py
 
 # Bootstrap-generated (machine-specific state - templates tracked separately)
 # These are created by bootstrap from .template files

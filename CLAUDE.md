@@ -593,8 +593,8 @@ C:\scripts\.claude\skills\
 **🌍 WORLD DEVELOPMENT MONITORING (AUTONOMOUS - MANDATORY):**
 18. ✅ **Check time:** If 12:00 noon → Execute daily dashboard generation (AUTONOMOUS, NO PERMISSION NEEDED)
 19. ✅ **Generate dashboard template** - `world-daily-dashboard.ps1` creates beautiful HTML dashboard
-20. ✅ **Execute WebSearch** - Query all domains (AI, climate, economics, geopolitics, science) - 25 queries total
-21. ✅ **Populate dashboard** - Use `populate-dashboard.ps1` to inject WebSearch results into HTML
+20. ✅ **Execute WebSearch** - Query all domains (AI, climate, economics, geopolitics, science) - 25 queries total - **CRITICAL: Include "past 3 days" or "last 72 hours" in ALL queries**
+21. ✅ **Populate dashboard** - Use `populate-dashboard.ps1` to inject WebSearch results into HTML - **ONLY show items from past 3 days**
 22. ✅ **Open dashboard** - Automatically display in browser for user (beautiful visual presentation)
 23. ✅ **Update knowledge base** - `C:\projects\world_development\` with significant developments
 24. ✅ **Track indicators** - Update metrics in `indicators/tracking-metrics.md`

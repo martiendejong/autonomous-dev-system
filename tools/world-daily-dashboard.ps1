@@ -46,7 +46,7 @@ $timeStr = $timestamp.ToString("HH:mm:ss")
 $dashboardFile = Join-Path $OutputPath "world-dashboard-$dateStr.html"
 $latestFile = Join-Path $OutputPath "latest.html"
 
-Write-Host "🌍 Generating World Development Dashboard - $dateStr $timeStr" -ForegroundColor Cyan
+Write-Host "World Development Dashboard - $dateStr $timeStr" -ForegroundColor Cyan
 
 # HTML Template
 $html = @"
@@ -420,8 +420,8 @@ $html = @"
 Set-Content -Path $dashboardFile -Value $html -Encoding UTF8
 Set-Content -Path $latestFile -Value $html -Encoding UTF8
 
-Write-Host "✅ Dashboard template generated: $dashboardFile" -ForegroundColor Green
-Write-Host "🔍 Now Claude Agent will execute WebSearch and populate content..." -ForegroundColor Yellow
+Write-Host "[OK] Dashboard template generated: $dashboardFile" -ForegroundColor Green
+Write-Host "[*] Now Claude Agent will execute WebSearch and populate content..." -ForegroundColor Yellow
 
 # Return dashboard info for Claude to populate
 return @{

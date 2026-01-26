@@ -29,7 +29,7 @@ $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://localhost:$Port/")
 $listener.Start()
 
-Write-Host "🌉 Claude Bridge Server started on http://localhost:$Port" -ForegroundColor Green
+Write-Host "[BRIDGE] Claude Bridge Server started on http://localhost:$Port" -ForegroundColor Green
 Write-Host ""
 Write-Host "Endpoints:" -ForegroundColor Cyan
 Write-Host "  POST   /messages          - Send a message" -ForegroundColor White
@@ -156,7 +156,8 @@ try {
                         continue
                     }
 
-                    $message = New-Message -From $body.from -To $body.to -Content $body.content -Type ($body.type ?? "text")
+                    $messageType = if ($body.type) { $body.type } else { "text" }
+                    $message = New-Message -From $body.from -To $body.to -Content $body.content -Type $messageType
 
                     Write-JsonResponse $context @{
                         success = $true
