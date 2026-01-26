@@ -16,8 +16,7 @@ git clone https://github.com/martiendejong/autonomous-dev-system.git C:\scripts
 cd C:\scripts
 .\bootstrap\bootstrap.ps1
 
-# 3. Configure your machine paths in MACHINE_CONFIG.md
-# 4. Start Claude Agent
+# 3. Start Claude Agent
 .\claude_agent.bat
 ```
 
@@ -109,7 +108,7 @@ Claude continuously learns and evolves:
 Track and enforce merge order for dependent PRs:
 
 - **Dependency Detection** - Automatic detection of cross-repo dependencies
-- **Merge Sequencing** - Enforces correct merge order (framework → app)
+- **Merge Sequencing** - Enforces correct merge order (Hazina → client-manager)
 - **Dependency Alerts** - Adds alerts to PR descriptions
 
 ### 8. **Bootstrap System**
@@ -130,21 +129,20 @@ See: [`bootstrap/README.md`](./bootstrap/README.md)
 C:\scripts\                                  # Root (CONTROL_PLANE_PATH)
 ├── README.md                               # This file
 ├── CLAUDE.md                               # Main operational manual
-├── LICENSE                                  # MIT License
 ├── bootstrap\                              # Automated environment setup
 │   ├── bootstrap.ps1                       # Main bootstrap orchestrator
 │   ├── install-dependencies.ps1            # Software installation
 │   ├── setup-directories.ps1               # Directory structure creation
 │   ├── init-machine-state.ps1             # State file initialization
 │   └── verify-environment.ps1             # Environment validation
-├── tools\                                  # 120+ productivity tools (279 scripts)
-│   ├── ai-image.ps1                        # AI image generation (4 providers)
+├── tools\                                  # 120+ productivity tools
+│   ├── ai-image.ps1                        # AI image generation
 │   ├── ai-vision.ps1                       # AI vision analysis
 │   ├── worktree-allocate.ps1              # Worktree allocation
 │   ├── monitor-activity.ps1               # Real-time activity tracking
-│   └── ... (275 more tools)
+│   └── ... (116 more tools)
 ├── .claude\                                # Claude Code configuration
-│   ├── skills\                             # 20+ Auto-discoverable skills
+│   ├── skills\                             # Auto-discoverable skills
 │   │   ├── allocate-worktree\
 │   │   ├── github-workflow\
 │   │   ├── parallel-agent-coordination\
@@ -161,21 +159,31 @@ C:\scripts\                                  # Root (CONTROL_PLANE_PATH)
 │   │   └── learning-adaptation.md
 │   └── state\                              # Session state
 │       └── current_session.yaml
+├── _machine\                               # Machine-specific context
+│   ├── worktrees.pool.md                   # Agent worktree allocations
+│   ├── worktrees.activity.md              # Activity log
+│   ├── reflection.log.md                   # Lessons learned
+│   ├── pr-dependencies.md                  # Cross-repo PR tracking
+│   ├── knowledge-base\                     # Persistent knowledge
+│   │   ├── 01-USER\                        # User psychology & preferences
+│   │   ├── 02-MACHINE\                     # File system & environment
+│   │   ├── 09-SECRETS\                     # API keys & credentials
+│   │   └── ...
+│   └── ...
 ├── GENERAL_ZERO_TOLERANCE_RULES.md        # Portable: Critical rules
 ├── GENERAL_DUAL_MODE_WORKFLOW.md          # Portable: Mode selection
 ├── GENERAL_WORKTREE_PROTOCOL.md           # Portable: Worktree workflow
 ├── PORTABILITY_GUIDE.md                   # How to adapt for your machine
+├── MACHINE_CONFIG.md                      # Machine-specific paths
 └── ... (comprehensive documentation)
 ```
-
-**Note:** When you clone this repository, create your own `MACHINE_CONFIG.md` with local paths and exclude `_machine/` (machine-specific state). See [`PORTABILITY_GUIDE.md`](./PORTABILITY_GUIDE.md).
 
 ---
 
 ## 📚 Documentation
 
 ### 🌟 Start Here
-1. **[PORTABILITY_GUIDE.md](./PORTABILITY_GUIDE.md)** - How to adapt for your machine
+1. **[MACHINE_CONFIG.md](./MACHINE_CONFIG.md)** - Configure paths for your machine
 2. **[GENERAL_ZERO_TOLERANCE_RULES.md](./GENERAL_ZERO_TOLERANCE_RULES.md)** - Critical rules (portable)
 3. **[GENERAL_DUAL_MODE_WORKFLOW.md](./GENERAL_DUAL_MODE_WORKFLOW.md)** - Feature Development vs Active Debugging
 4. **[GENERAL_WORKTREE_PROTOCOL.md](./GENERAL_WORKTREE_PROTOCOL.md)** - Complete worktree workflow
@@ -183,17 +191,23 @@ C:\scripts\                                  # Root (CONTROL_PLANE_PATH)
 ### 🧠 Core System
 - **[agentidentity/README.md](./agentidentity/README.md)** - Cognitive architecture & consciousness framework
 - **[CLAUDE.md](./CLAUDE.md)** - Complete operational manual (always loaded)
+- **[_machine/SYSTEM_INTEGRATION.md](./_machine/SYSTEM_INTEGRATION.md)** - Master integration guide
 - **[continuous-improvement.md](./continuous-improvement.md)** - Self-learning protocols
 
 ### 🛠️ Tools & Skills
-- **[tools/README.md](./tools/README.md)** - Complete tools documentation (279 scripts)
-- **[.claude/skills/](./.claude/skills/)** - Auto-discoverable skills directory (20+ skills)
+- **[tools/README.md](./tools/README.md)** - Complete tools documentation
+- **[.claude/skills/](./.claude/skills/)** - Auto-discoverable skills directory
 - **[bootstrap/README.md](./bootstrap/README.md)** - Bootstrap system documentation
 
 ### 📖 Workflows
 - **[git-workflow.md](./git-workflow.md)** - Cross-repo PR dependencies, git-flow
 - **[ci-cd-troubleshooting.md](./ci-cd-troubleshooting.md)** - CI/CD issues & solutions
 - **[development-patterns.md](./development-patterns.md)** - Feature implementation patterns
+- **[_machine/SOFTWARE_DEVELOPMENT_PRINCIPLES.md](./_machine/SOFTWARE_DEVELOPMENT_PRINCIPLES.md)** - Code quality standards
+
+### 🔧 Portability
+- **[PORTABILITY_GUIDE.md](./PORTABILITY_GUIDE.md)** - Adapt for any machine
+- **[bootstrap/README.md](./bootstrap/README.md)** - Automated setup guide
 
 ---
 
@@ -202,7 +216,7 @@ C:\scripts\                                  # Root (CONTROL_PLANE_PATH)
 ### Example 1: AI Image Generation
 ```powershell
 # Generate a professional diagram
-powershell.exe -File "tools/ai-image.ps1" `
+powershell.exe -File "C:/scripts/tools/ai-image.ps1" `
     -Prompt "A modern cloud architecture diagram showing microservices" `
     -OutputPath "C:/temp/architecture.png" `
     -Quality "hd"
@@ -211,7 +225,7 @@ powershell.exe -File "tools/ai-image.ps1" `
 ### Example 2: AI Vision Analysis
 ```powershell
 # Analyze a screenshot to diagnose an error
-powershell.exe -File "tools/ai-vision.ps1" `
+powershell.exe -File "C:/scripts/tools/ai-vision.ps1" `
     -Images @("screenshot.png") `
     -Prompt "What error is shown in this screenshot?"
 ```
@@ -219,8 +233,8 @@ powershell.exe -File "tools/ai-vision.ps1" `
 ### Example 3: Worktree Allocation (Multi-Agent Safe)
 ```powershell
 # Allocate worktree with conflict detection
-powershell.exe -File "tools/worktree-allocate.ps1" `
-    -Repo myproject `
+powershell.exe -File "C:/scripts/tools/worktree-allocate.ps1" `
+    -Repo client-manager `
     -Branch feature/user-authentication `
     -Agent agent-001
 ```
@@ -228,71 +242,34 @@ powershell.exe -File "tools/worktree-allocate.ps1" `
 ### Example 4: Real-Time Activity Monitoring
 ```powershell
 # Check what user is doing, detect other Claude instances
-powershell.exe -File "tools/monitor-activity.ps1" -Mode context
+powershell.exe -File "C:/scripts/tools/monitor-activity.ps1" -Mode context
 ```
 
 ### Example 5: Code Quality Analysis
 ```powershell
 # Find unused code in codebase
-powershell.exe -File "tools/unused-code-detector.ps1" -MinConfidence 7
+powershell.exe -File "C:/scripts/tools/unused-code-detector.ps1" -MinConfidence 7
 
 # Detect N+1 query performance issues
-powershell.exe -File "tools/n-plus-one-query-detector.ps1"
+powershell.exe -File "C:/scripts/tools/n-plus-one-query-detector.ps1"
 
 # Find flaky tests
-powershell.exe -File "tools/flaky-test-detector.ps1" -Iterations 10
+powershell.exe -File "C:/scripts/tools/flaky-test-detector.ps1" -Iterations 10
 ```
 
 ---
 
 ## 🔧 Configuration
 
-### Step 1: Create Your Machine Config
-
-After cloning, create `MACHINE_CONFIG.md` with your local paths:
+### Required Environment Variables
+Set in your `MACHINE_CONFIG.md`:
 
 ```markdown
-# Machine Configuration
-
-## Directory Structure
-
 BASE_REPO_PATH=C:\Projects               # Where main repos are cloned
 WORKTREE_PATH=C:\Projects\worker-agents  # Where agent worktrees go
 CONTROL_PLANE_PATH=C:\scripts            # This repository
 MACHINE_CONTEXT_PATH=C:\scripts\_machine # Operational state files
-
-## Main Branch
-
-<main-branch>=main  # Or develop, master, etc.
-
-## Projects
-
-### Project: myproject
-**Type:** Description
-**Paths:**
-- Code: C:\Projects\myproject
-**Repository URL:** https://github.com/yourname/myproject
-**Main Branch:** main
 ```
-
-### Step 2: Create Machine Context Directory
-
-```powershell
-mkdir C:\scripts\_machine
-```
-
-### Step 3: Run Bootstrap
-
-```powershell
-cd C:\scripts
-.\bootstrap\bootstrap.ps1
-```
-
-This will:
-- Install dependencies (Git, GitHub CLI, Node.js, Claude Code CLI)
-- Create directory structure
-- Initialize state files
-- Verify environment
 
 ### Optional Integrations
 - **ManicTime** - Real-time activity tracking (optional but recommended)
@@ -306,8 +283,8 @@ This will:
 
 This is a **self-improving system**. Claude agents:
 
-1. **Learn from every session** - Document in _machine/reflection.log.md
-2. **Update documentation** - Improve CLAUDE.md and specialized docs
+1. **Learn from every session** - Document in `_machine/reflection.log.md`
+2. **Update documentation** - Improve `CLAUDE.md` and specialized docs
 3. **Create new tools** - Add to `tools/` when patterns repeat 3+ times
 4. **Evolve cognitive architecture** - Update `agentidentity/` with learnings
 
@@ -319,7 +296,7 @@ This is a **self-improving system**. Claude agents:
 
 - **120+ Productivity Tools** - Automation for every workflow
 - **20+ Claude Skills** - Auto-discoverable specialized workflows
-- **279 PowerShell Scripts** - Total script files in repository
+- **299 PowerShell Scripts** - Total script files in repository
 - **10M+ Token Context Support** - Via RLM (Recursive Language Model) pattern
 - **Multi-Agent Coordination** - Parallel execution without conflicts
 - **Zero-Tolerance Protocol** - Prevents common mistakes via hard-stop rules
