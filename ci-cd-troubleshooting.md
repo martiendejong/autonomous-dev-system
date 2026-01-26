@@ -2,7 +2,7 @@
 
 > 📚 **Knowledge Base References:**
 > - **GitHub Integration** → `C:\scripts\_machine\knowledge-base\04-EXTERNAL-SYSTEMS\github-integration.md` (workflows, PRs, CI/CD)
-> - **Project Architecture** → `C:\scripts\_machine\knowledge-base\05-PROJECTS\myproject\architecture.md` (build pipeline details)
+> - **Project Architecture** → `C:\scripts\_machine\knowledge-base\05-PROJECTS\client-manager\architecture.md` (build pipeline details)
 > - **Workflows** → `C:\scripts\_machine\knowledge-base\06-WORKFLOWS\INDEX.md` (documented procedures)
 
 ## ⚠️ FRONTEND CI TROUBLESHOOTING (React/Vite/npm) ⚠️
@@ -246,7 +246,7 @@ var authSettings = builder.Configuration.GetSection("AuthOptions");
        .WithParameterName("providerName");
 
    // AFTER (fully qualified if needed):
-   await act.Should().ThrowAsync<myframework.AI.Providers.Resilience.FailoverException>()
+   await act.Should().ThrowAsync<Hazina.AI.Providers.Resilience.FailoverException>()
        .WithParameterName("name");
    ```
 
@@ -382,7 +382,7 @@ public async Task<IActionResult> Upload(IFormFile file, [FromForm] string projec
 
 **Search command:**
 ```bash
-grep -rn "\[FromForm\].*IFormFile" C:\Projects\myproject\ClientManagerAPI
+grep -rn "\[FromForm\].*IFormFile" C:\Projects\client-manager\ClientManagerAPI
 ```
 
 ---
@@ -393,7 +393,7 @@ grep -rn "\[FromForm\].*IFormFile" C:\Projects\myproject\ClientManagerAPI
 
 **Fix:** Install the missing package:
 ```bash
-cd /c/Projects/myproject/ClientManagerFrontend && npm install <package-name>
+cd /c/Projects/client-manager/ClientManagerFrontend && npm install <package-name>
 ```
 
 ---
@@ -418,17 +418,17 @@ cd /c/Projects/myproject/ClientManagerFrontend && npm install <package-name>
 
 **Quick Fix via Python:**
 ```bash
-python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'); conn.execute('ALTER TABLE TableName ADD COLUMN ColumnName TYPE DEFAULT value'); conn.commit()"
+python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/brand2boost/identity.db'); conn.execute('ALTER TABLE TableName ADD COLUMN ColumnName TYPE DEFAULT value'); conn.commit()"
 ```
 
 **List tables:**
 ```bash
-python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'); print([r[0] for r in conn.execute(\"SELECT name FROM sqlite_master WHERE type='table'\")])"
+python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/brand2boost/identity.db'); print([r[0] for r in conn.execute(\"SELECT name FROM sqlite_master WHERE type='table'\")])"
 ```
 
 **Check columns:**
 ```bash
-python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'); [print(r[1], r[2]) for r in conn.execute('PRAGMA table_info(TableName)')]"
+python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/brand2boost/identity.db'); [print(r[1], r[2]) for r in conn.execute('PRAGMA table_info(TableName)')]"
 ```
 
 **Note:** Table names may be singular (`UserTokenBalance`) not plural (`UserTokenBalances`).
@@ -447,22 +447,22 @@ python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'
 
 ```powershell
 # Backend deployment
-powershell -ExecutionPolicy Bypass -File "C:/Projects/myproject/publish-myapp-backend.ps1"
+powershell -ExecutionPolicy Bypass -File "C:/Projects/client-manager/publish-brand2boost-backend.ps1"
 
 # Frontend deployment
-powershell -ExecutionPolicy Bypass -File "C:/Projects/myproject/publish-myapp-frontend.ps1"
+powershell -ExecutionPolicy Bypass -File "C:/Projects/client-manager/publish-brand2boost-frontend.ps1"
 ```
 
 ### What the Scripts Do
 
-1. **Backend (`publish-myapp-backend.ps1`):**
+1. **Backend (`publish-brand2boost-backend.ps1`):**
    - Cleans `dist/backend`
    - Runs `dotnet publish` (Release config)
    - Copies `env/prod/backend/*` config files
-   - Deploys via msdeploy to VPS (your-server-ip)
+   - Deploys via msdeploy to VPS (85.215.217.154)
    - Skips: identity.db, certs/, web.config, log files, hangfire.db
 
-2. **Frontend (`publish-myapp-frontend.ps1`):**
+2. **Frontend (`publish-brand2boost-frontend.ps1`):**
    - Cleans `dist/www`
    - Runs `npm ci && npm run build`
    - Copies `env/prod/frontend/*` config files
@@ -474,12 +474,12 @@ powershell -ExecutionPolicy Bypass -File "C:/Projects/myproject/publish-myapp-fr
   - `env/prod/backend.publish.password`
   - `env/prod/www.publish.password`
 - IIS Web Deploy V3 must be installed (`msdeploy.exe`)
-- VPS must be accessible at your-server-ip:8172
+- VPS must be accessible at 85.215.217.154:8172
 
 ### Pre-Deployment Checklist
 
-1. ✅ Merge develop → main for myframework (if myframework changes)
-2. ✅ Merge develop → main for myproject
+1. ✅ Merge develop → main for hazina (if hazina changes)
+2. ✅ Merge develop → main for client-manager
 3. ✅ Ensure no uncommitted changes (stash if needed)
 4. ✅ Run backend deployment
 5. ✅ Run frontend deployment

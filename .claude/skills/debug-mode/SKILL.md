@@ -40,10 +40,10 @@ Enter this mode if ANY are true:
 
 ```powershell
 # Check user's current branch
-git -C C:\Projects\myproject branch --show-current
+git -C C:\Projects\client-manager branch --show-current
 
 # Check for uncommitted changes
-git -C C:\Projects\myproject status
+git -C C:\Projects\client-manager status
 
 # Make fixes directly in C:\Projects\<repo>
 # User will test and commit when ready

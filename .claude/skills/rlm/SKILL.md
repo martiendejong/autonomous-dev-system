@@ -269,8 +269,8 @@ def cross_repo_analysis(repos, search_pattern):
 # Usage
 result = cross_repo_analysis(
     repos=[
-        "C:/Projects/myproject",
-        "C:/Projects/myframework"
+        "C:/Projects/client-manager",
+        "C:/Projects/hazina"
     ],
     search_pattern="API authentication"
 )

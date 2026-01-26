@@ -200,15 +200,15 @@ grep -r "const API_BASE = '/v" ClientManagerFrontend/src/services/
 3. ✅ Test actual URL in browser dev tools
 4. ✅ Search for similar services as reference
 
-## Pattern 4: myframework LLM Framework Integration
+## Pattern 4: Hazina LLM Framework Integration
 
 ### Correct API Usage
 
 ```csharp
-// ✅ CORRECT - ImyframeworkAIService (high-level)
-private readonly ImyframeworkAIService _aiService;
+// ✅ CORRECT - IHazinaAIService (high-level)
+private readonly IHazinaAIService _aiService;
 
-public MyService(ImyframeworkAIService aiService)
+public MyService(IHazinaAIService aiService)
 {
     _aiService = aiService;
 }
@@ -242,12 +242,12 @@ var client = factory.CreateClient("haiku");  // Takes no parameters
 
 ```csharp
 // Dependency injection in Program.cs
-builder.Services.AddSingleton<ImyframeworkAIService, myframeworkAIService>();
+builder.Services.AddSingleton<IHazinaAIService, HazinaAIService>();
 
 // Service usage
-private readonly ImyframeworkAIService _aiService;
+private readonly IHazinaAIService _aiService;
 
-public MyService(ImyframeworkAIService aiService)
+public MyService(IHazinaAIService aiService)
 {
     _aiService = aiService;
 }
@@ -562,7 +562,7 @@ grep -rE "^\s+\w+ = .*,\s*$" --include="*.cs" -A 1 | grep -E "^\s+[a-z]\w+ = "
 
 **Use this Skill when:**
 - Creating new API endpoints
-- Integrating OpenAI or myframework AI services
+- Integrating OpenAI or Hazina AI services
 - Fixing "ArgumentException: Model cannot be empty"
 - Debugging missing data in frontend
 - Seeing 404 errors with `/api/api/` in URLs

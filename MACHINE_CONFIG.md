@@ -46,24 +46,24 @@ MACHINE_CONTEXT_PATH=C:\scripts\_machine
 
 ## 📦 Projects
 
-### Project 1: myproject / myapp
+### Project 1: client-manager / brand2boost
 **Type:** Promotion and brand development SaaS software
 
 **Paths:**
-- Frontend + API code: `C:\Projects\myproject`
-- Framework: `C:\Projects\myframework`
-- Store config + data: `C:\stores\myapp`
+- Frontend + API code: `C:\Projects\client-manager`
+- Framework: `C:\Projects\hazina`
+- Store config + data: `C:\stores\brand2boost`
 
 **Repository URLs:**
-- myproject: (Add your repo URL here)
-- myframework: (Add your repo URL here)
+- client-manager: (Add your repo URL here)
+- hazina: (Add your repo URL here)
 
 **Main Branch:**
 - `develop` (feature branches created from develop)
 
 **Admin Access:**
-- Username: `admin`
-- Password: `YourSecurePassword`
+- Username: `wreckingball`
+- Password: `Th1s1sSp4rt4!`
 
 **Development Environment:**
 - IDE: Visual Studio (user runs from VS, not command line)
@@ -105,23 +105,23 @@ MACHINE_CONTEXT_PATH=C:\scripts\_machine
 
 ## 🔗 Paired Worktree Allocation (Pattern 73)
 
-**CRITICAL FOR THIS MACHINE:** myproject depends on myframework framework.
+**CRITICAL FOR THIS MACHINE:** client-manager depends on Hazina framework.
 
-**When allocating worktree for myproject, MUST ALSO allocate myframework worktree:**
+**When allocating worktree for client-manager, MUST ALSO allocate Hazina worktree:**
 ```bash
 # Allocate BOTH in same agent folder with SAME branch name
-cd C:/Projects/myproject
-git worktree add C:/Projects/worker-agents/agent-001/myproject -b agent-001-feature
+cd C:/Projects/client-manager
+git worktree add C:/Projects/worker-agents/agent-001/client-manager -b agent-001-feature
 
-cd C:/Projects/myframework
-git worktree add C:/Projects/worker-agents/agent-001/myframework -b agent-001-feature
+cd C:/Projects/hazina
+git worktree add C:/Projects/worker-agents/agent-001/hazina -b agent-001-feature
 ```
 
 **Result:**
 ```
 C:\Projects\worker-agents\agent-001\
-├── myproject\    ← Branch: agent-001-feature
-└── myframework\            ← Branch: agent-001-feature (SAME!)
+├── client-manager\    ← Branch: agent-001-feature
+└── hazina\            ← Branch: agent-001-feature (SAME!)
 ```
 
 **Why:** Build verification and tests require both repos present.
@@ -228,7 +228,7 @@ ${CONTROL_PLANE_PATH}/status/notifications.html
 **CRITICAL:** Claude has autonomous image generation capability.
 
 **Tool:** `C:\scripts\tools\ai-image.ps1`
-**API Key:** Auto-loaded from `C:\Projects\myproject\ClientManagerAPI\appsettings.Secrets.json`
+**API Key:** Auto-loaded from `C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json`
 
 **Usage:**
 ```powershell

@@ -55,12 +55,3 @@ _machine/tmpclaude-*
 # Bootstrap-generated (machine-specific state - templates tracked separately)
 # These are created by bootstrap from .template files
 09-SECRETS/
-
-# Project-specific files (exclude from public repo)
-analysis-*-brand2boost.md
-tools/backup-brand2boost.ps1
-tools/*database*.py
-tools/ssh-*.py
-tools/*-vps*.ps1
-tools/upload-config.py
-tools/create-project-kb.ps1

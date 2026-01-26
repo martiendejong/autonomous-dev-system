@@ -377,7 +377,7 @@ echo "=== TIER 1: CRITICAL CHECKS ==="
 
 # Check base repos are on develop (HIGHEST PRIORITY)
 echo "Checking base repo branches..."
-for repo in myproject myframework; do
+for repo in client-manager hazina; do
   cd "/c/Projects/$repo"
   branch=$(git branch --show-current)
   if [[ "$branch" != "develop" ]]; then
@@ -391,7 +391,7 @@ done
 # Check for uncommitted changes in base repos
 echo ""
 echo "Checking for uncommitted changes..."
-for repo in myproject myframework; do
+for repo in client-manager hazina; do
   cd "/c/Projects/$repo"
   if [[ -n $(git status --porcelain) ]]; then
     echo "⚠️ $repo has uncommitted changes:"
@@ -406,7 +406,7 @@ echo "=== TIER 2: WORK STATUS CHECKS ==="
 
 # Check PR states
 echo "Checking recent PR activity..."
-cd "/c/Projects/myproject"
+cd "/c/Projects/client-manager"
 gh pr list --state all --limit 5 --json number,title,state,mergeable | jq -r '.[] | "\(.number): \(.title) - \(.state) (\(.mergeable))"'
 
 # Check documentation commits
@@ -512,13 +512,13 @@ git push origin backup/pre-major-refactor-$(date +%Y%m%d)
 **Example:**
 ```bash
 # During planning
-C:\scripts\myframework-integration-roadmap.md
+C:\scripts\hazina-integration-roadmap.md
 
 # After implementation complete
-C:\scripts\_machine\knowledge\myframework-analysis\myframework-integration-roadmap.md
+C:\scripts\_machine\knowledge\hazina-analysis\hazina-integration-roadmap.md
 
 # If approach abandoned
-C:\scripts\_archive\myframework-integration-roadmap-abandoned-2026-01.md
+C:\scripts\_archive\hazina-integration-roadmap-abandoned-2026-01.md
 ```
 
 ### Stale Script Detection

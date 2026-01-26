@@ -15,7 +15,7 @@ All launchers are in `C:\scripts\` and work immediately with CTRL+R.
 
 | Command | Description | Project Location | Full Path |
 |---------|-------------|------------------|-----------|
-| **`cm`** | Client Manager (myapp) | `C:\Projects\myproject\ClientManagerFrontend` | `C:\scripts\cm.bat` |
+| **`cm`** | Client Manager (Brand2Boost) | `C:\Projects\client-manager\ClientManagerFrontend` | `C:\scripts\cm.bat` |
 | **`ar`** | ArtRevisionist | `C:\Projects\artrevisionist\artrevisionist` | `C:\scripts\ar.bat` |
 | **`bi`** | Bugatti Insights | `C:\Projects\bugattiinsights\sourcecode\frontend` | `C:\scripts\bi.bat` |
 
@@ -96,7 +96,7 @@ echo %PATH% | findstr scripts
 
 ### `cm` - Client Manager Frontend
 - Opens new CMD window titled "Client Manager Frontend"
-- Navigates to `C:\Projects\myproject\ClientManagerFrontend`
+- Navigates to `C:\Projects\client-manager\ClientManagerFrontend`
 - **Auto-validates node_modules** (runs npm install if corrupt)
 - Runs `npm run dev`
 - Starts Vite dev server (typically http://localhost:5173)
@@ -145,7 +145,7 @@ CTRL+R → c
 Window title: "MAIN"
 
 # Session 2: Working on feature branch (in another terminal)
-cd C:\Projects\myproject
+cd C:\Projects\client-manager
 git checkout agent-003-new-feature
 CTRL+R → c
 Window title: "AGENT-003-NEW-FEATURE"
@@ -235,12 +235,12 @@ start "<Window Title>" cmd /k "cd /d <project-path> && <command>"
 3. Update this file with the new command
 4. Commit to machine_agents repo
 
-**Example - Add myframework test runner:**
+**Example - Add Hazina test runner:**
 ```batch
 @echo off
-REM Quick launcher for myframework Tests
+REM Quick launcher for Hazina Tests
 REM Usage: CTRL+R → ht
-start "myframework Tests" cmd /k "cd /d C:\Projects\myframework && dotnet test"
+start "Hazina Tests" cmd /k "cd /d C:\Projects\hazina && dotnet test"
 ```
 
 ---

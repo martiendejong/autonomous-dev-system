@@ -34,7 +34,7 @@ Before any code edit in Feature Development Mode:
 
 ```powershell
 # Allocate worktree for feature work
-.\tools\worktree-allocate.ps1 -Repo myproject -Branch feature/<name> -Paired
+.\tools\worktree-allocate.ps1 -Repo client-manager -Branch feature/<name> -Paired
 
 # Check status
 .\tools\worktree-status.ps1 -Compact

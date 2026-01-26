@@ -2,25 +2,25 @@
 
 ## 🔗 CROSS-REPO PR DEPENDENCIES
 
-**CRITICAL: When myproject PR depends on myframework PR, CLEARLY MARK IT!**
+**CRITICAL: When client-manager PR depends on hazina PR, CLEARLY MARK IT!**
 
 ### Why This Matters
-- myproject uses myframework as a submodule/package reference
-- If myframework changes aren't merged first, myproject PR will fail CI
+- Client-manager uses Hazina as a submodule/package reference
+- If Hazina changes aren't merged first, client-manager PR will fail CI
 - User needs to know which PRs to merge together
 
 ### PR Description Template (MANDATORY)
 
-When creating a PR in myproject that depends on myframework changes:
+When creating a PR in client-manager that depends on Hazina changes:
 
 ```markdown
 ## ⚠️ DEPENDENCY ALERT ⚠️
 
-**This PR depends on the following myframework PR(s):**
-- [ ] https://github.com/yourname/myframework/pull/XXX - [Brief description]
+**This PR depends on the following Hazina PR(s):**
+- [ ] https://github.com/martiendejong/Hazina/pull/XXX - [Brief description]
 
 **Merge order:**
-1. First merge the myframework PR(s) above
+1. First merge the Hazina PR(s) above
 2. Then merge this PR
 
 ---
@@ -29,13 +29,13 @@ When creating a PR in myproject that depends on myframework changes:
 [rest of PR description]
 ```
 
-### For myframework PRs that myproject depends on:
+### For Hazina PRs that client-manager depends on:
 
 ```markdown
 ## ⚠️ DOWNSTREAM DEPENDENCIES ⚠️
 
-**The following myproject PR(s) depend on this:**
-- https://github.com/yourname/myproject/pull/YYY - [Brief description]
+**The following client-manager PR(s) depend on this:**
+- https://github.com/martiendejong/client-manager/pull/YYY - [Brief description]
 
 **Merge this PR first before the dependent PRs above.**
 
@@ -52,22 +52,22 @@ Maintain a live tracking file:
 ```markdown
 # Active PR Dependencies
 
-| Downstream PR | Depends On (myframework) | Status |
+| Downstream PR | Depends On (Hazina) | Status |
 |---------------|---------------------|--------|
-| myproject#45 | myframework#2, myframework#8 | ⏳ Waiting |
-| myproject#46 | myframework#7 | ✅ Ready (myframework merged) |
+| client-manager#45 | Hazina#2, Hazina#8 | ⏳ Waiting |
+| client-manager#46 | Hazina#7 | ✅ Ready (Hazina merged) |
 ```
 
 ### ENFORCEMENT
 
-**Before creating ANY myproject PR:**
-1. Check if it uses new myframework features/changes
-2. If YES: Find or create the corresponding myframework PR
+**Before creating ANY client-manager PR:**
+1. Check if it uses new Hazina features/changes
+2. If YES: Find or create the corresponding Hazina PR
 3. Add dependency header to BOTH PRs
 4. Update pr-dependencies.md
 
-**Before merging ANY myframework PR:**
-1. Check pr-dependencies.md for dependent myproject PRs
+**Before merging ANY Hazina PR:**
+1. Check pr-dependencies.md for dependent client-manager PRs
 2. Notify user about merge order
 3. Update tracking after merge
 
@@ -107,12 +107,12 @@ git fetch origin          # If pushed to feature branch (for PR)
 ### Examples
 
 ```bash
-# After pushing build fixes to myproject develop:
-cd /c/Projects/myproject
+# After pushing build fixes to client-manager develop:
+cd /c/Projects/client-manager
 git pull origin develop
 
-# After pushing CI fix to myframework develop:
-cd /c/Projects/myframework
+# After pushing CI fix to hazina develop:
+cd /c/Projects/hazina
 git pull origin develop
 ```
 
@@ -194,8 +194,8 @@ git push origin --delete <branch-name>
 
 **Tagging workflow:**
 ```bash
-# Tag myframework
-cd /c/Projects/myframework && git checkout main && git pull origin main
+# Tag Hazina
+cd /c/Projects/hazina && git checkout main && git pull origin main
 git tag -a "vYYYY.MM.DD-stable" -m "Stable release checkpoint - YYYY-MM-DD
 
 Summary of changes:
@@ -205,8 +205,8 @@ Summary of changes:
 Signed-off-by: Claude <noreply@anthropic.com>"
 git push origin vYYYY.MM.DD-stable
 
-# Tag myproject (SAME tag name!)
-cd /c/Projects/myproject && git checkout main && git pull origin main
+# Tag Client-Manager (SAME tag name!)
+cd /c/Projects/client-manager && git checkout main && git pull origin main
 git tag -a "vYYYY.MM.DD-stable" -m "Stable release checkpoint - YYYY-MM-DD
 
 Summary of changes:
@@ -217,8 +217,8 @@ Signed-off-by: Claude <noreply@anthropic.com>"
 git push origin vYYYY.MM.DD-stable
 
 # Return to develop
-cd /c/Projects/myframework && git checkout develop
-cd /c/Projects/myproject && git checkout develop
+cd /c/Projects/hazina && git checkout develop
+cd /c/Projects/client-manager && git checkout develop
 ```
 
 **When to tag:**

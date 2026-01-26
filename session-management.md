@@ -399,7 +399,7 @@ gh pr create --title "..." --body "..."
 ```html
 <div class="notification pr">
     <h3>🔀 PR #123: Add ROI Calculator Feature</h3>
-    <p><strong>Repo:</strong> myproject</p>
+    <p><strong>Repo:</strong> client-manager</p>
     <p><strong>Description:</strong> Implements comprehensive ROI calculation with industry benchmarks, backend API, frontend components, and documentation.</p>
     <p><strong>Status:</strong> Awaiting review and merge</p>
     <p><strong>URL:</strong> <a href="https://github.com/user/repo/pull/123" target="_blank">View PR</a></p>

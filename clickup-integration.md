@@ -23,8 +23,8 @@ Claude Agent can synchronize with ClickUp to:
 
 | Repository | Workspace | Folder | List | List ID |
 |------------|-----------|--------|------|---------|
-| myproject | GigsHub | Internal | Brand Designer | 901214097647 |
-| myframework | GigsHub | Internal | Brand Designer | (shared list) |
+| client-manager | GigsHub | Internal | Brand Designer | 901214097647 |
+| hazina | GigsHub | Internal | Brand Designer | (shared list) |
 
 ---
 
@@ -43,7 +43,7 @@ Claude Agent can synchronize with ClickUp to:
 ### 3. GigsHub Workspace (PRIMARY)
 - **ID:** 9012956001
 - **Role:** Member
-- **Usage:** **myproject/myframework development tasks**
+- **Usage:** **client-manager/hazina development tasks**
 - **Key List:** Brand Designer (901214097647) - 100 tasks
 
 ---

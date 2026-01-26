@@ -3,7 +3,7 @@
 ## Overview
 
 The **ClickHub Coding Agent** is an autonomous task management system that:
-- Monitors ClickUp tasks for myproject project
+- Monitors ClickUp tasks for client-manager project
 - Identifies uncertainties and asks questions
 - Implements clear tasks automatically
 - Operates in a continuous loop with configurable sleep cycles
@@ -17,7 +17,7 @@ You can invoke the ClickHub Coding Agent by asking Claude:
 ```
 "Run the ClickHub coding agent"
 "Start autonomous ClickUp task management"
-"Manage my ClickUp tasks for myproject"
+"Manage my ClickUp tasks for client-manager"
 ```
 
 Or using the Skill tool directly:

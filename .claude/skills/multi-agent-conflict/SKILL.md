@@ -19,7 +19,7 @@ bash C:/scripts/tools/check-branch-conflicts.sh <repo> <branch-name>
 
 **Example:**
 ```bash
-bash C:/scripts/tools/check-branch-conflicts.sh myproject agent-001-new-feature
+bash C:/scripts/tools/check-branch-conflicts.sh client-manager agent-001-new-feature
 ```
 
 ## Conflict Detection Protocol
@@ -201,8 +201,8 @@ bash C:/scripts/tools/check-branch-conflicts.sh <repo> <branch-name>
 
 | Agent | Repo | Branch | Started | Description | Last Heartbeat |
 |-------|------|--------|---------|-------------|----------------|
-| agent-001 | myproject | agent-001-feature-x | 2026-01-12 20:00 | Implementing feature X | 2026-01-12 20:30 |
-| agent-002 | myframework | agent-002-fix-y | 2026-01-12 20:15 | Fixing bug Y | 2026-01-12 20:45 |
+| agent-001 | client-manager | agent-001-feature-x | 2026-01-12 20:00 | Implementing feature X | 2026-01-12 20:30 |
+| agent-002 | hazina | agent-002-fix-y | 2026-01-12 20:15 | Fixing bug Y | 2026-01-12 20:45 |
 ```
 
 **Update heartbeat every 30 minutes of work** (optional but recommended)
@@ -224,7 +224,7 @@ bash C:/scripts/tools/check-branch-conflicts.sh <repo> <branch-name>
 
 **Example output (no conflicts):**
 ```
-Checking for conflicts: myproject / agent-001-new-feature
+Checking for conflicts: client-manager / agent-001-new-feature
 
 ✅ Check 1: Git worktree list - No conflict
 ✅ Check 2: instances.map.md - No conflict
@@ -236,7 +236,7 @@ Checking for conflicts: myproject / agent-001-new-feature
 
 **Example output (conflict detected):**
 ```
-Checking for conflicts: myproject / agent-001-feature-x
+Checking for conflicts: client-manager / agent-001-feature-x
 
 ✅ Check 1: Git worktree list - No conflict
 ❌ Check 2: instances.map.md - CONFLICT DETECTED

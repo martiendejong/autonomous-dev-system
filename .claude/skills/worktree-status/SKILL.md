@@ -40,11 +40,11 @@ cat C:/scripts/_machine/worktrees.pool.md
 ### 2. Active Worktrees (Git View)
 
 ```bash
-# Check myproject worktrees
-git -C C:/Projects/myproject worktree list
+# Check client-manager worktrees
+git -C C:/Projects/client-manager worktree list
 
-# Check myframework worktrees
-git -C C:/Projects/myframework worktree list
+# Check hazina worktrees
+git -C C:/Projects/hazina worktree list
 ```
 
 **This shows actual git worktree state** (source of truth).
@@ -69,8 +69,8 @@ Shows recent allocations and releases.
 
 ```bash
 # Check current branches
-git -C C:/Projects/myproject branch --show-current
-git -C C:/Projects/myframework branch --show-current
+git -C C:/Projects/client-manager branch --show-current
+git -C C:/Projects/hazina branch --show-current
 ```
 
 **Should ALWAYS be:** `develop`
@@ -99,7 +99,7 @@ grep "BUSY" C:/scripts/_machine/worktrees.pool.md
 
 ```bash
 # Compare git worktree list with pool.md
-git -C C:/Projects/myproject worktree list | grep agent-
+git -C C:/Projects/client-manager worktree list | grep agent-
 ```
 
 **If worktree exists but seat is FREE:**
@@ -241,7 +241,7 @@ When reporting status to user:
 
 Available Seats: X FREE
 Active Allocations: Y BUSY
-Base Repos: myproject (develop ✅), myframework (develop ✅)
+Base Repos: client-manager (develop ✅), hazina (develop ✅)
 
 Active Sessions:
 - agent-XXX: <repo> / <branch> - <description>
@@ -259,8 +259,8 @@ Recent Activity:
 bash C:/scripts/tools/repo-dashboard.sh
 
 # 2. Verify base repos
-git -C C:/Projects/myproject branch --show-current
-git -C C:/Projects/myframework branch --show-current
+git -C C:/Projects/client-manager branch --show-current
+git -C C:/Projects/hazina branch --show-current
 
 # 3. Check pool for FREE seats
 grep "FREE" C:/scripts/_machine/worktrees.pool.md | head -5
