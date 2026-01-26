@@ -7,7 +7,7 @@
 
 ## Overview
 
-This document defines how ClickUp tasks are linked to GitHub branches and PRs for the client-manager and hazina repositories.
+This document defines how ClickUp tasks are linked to GitHub branches and PRs for the myproject and myframework repositories.
 
 ---
 
@@ -51,7 +51,7 @@ fix: Images not generating in chat [869bpz2c0]
 
 A ClickUp task gets linked to GitHub when:
 - Task status changes to **"busy"** (in progress)
-- Task requires code changes in client-manager or hazina
+- Task requires code changes in myproject or myframework
 
 ### When to Link GitHub → ClickUp
 
@@ -120,7 +120,7 @@ After acceptance test:
    > gh pr create --title "feat: Restaurant menu [869bhfw7r]"
 
 7. Add PR link to ClickUp (keep status "busy")
-   > clickup-sync.ps1 -Action comment -TaskId 869bhfw7r -Comment "PR #148: https://github.com/martiendejong/client-manager/pull/148"
+   > clickup-sync.ps1 -Action comment -TaskId 869bhfw7r -Comment "PR #148: https://github.com/yourname/myproject/pull/148"
 
 8. Release worktree per zero-tolerance rules
 ```
@@ -159,7 +159,7 @@ After acceptance test:
 ```
 ## GitHub
 - Branch: `feature/869bhfw7r-restaurant-menu`
-- PR: #148 - https://github.com/martiendejong/client-manager/pull/148
+- PR: #148 - https://github.com/yourname/myproject/pull/148
 - Status: Merged ✅
 ```
 

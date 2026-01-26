@@ -1,7 +1,7 @@
 # Current Task Status
 
 **Date:** 2026-01-20
-**Project:** client-manager (ClientManagerFrontend)
+**Project:** myproject (ClientManagerFrontend)
 **Related PR:** #259 (AI-Powered Dynamic Action Suggestions System)
 
 ---
@@ -86,7 +86,7 @@
 
 ## Current State
 
-- All changes are in `C:\Projects\client-manager` (base repo)
+- All changes are in `C:\Projects\myproject` (base repo)
 - Changes are NOT yet committed
 - This was Active Debugging Mode work (direct edits, no worktree)
 
@@ -110,7 +110,7 @@
 ## Files to Review
 
 ```
-C:\Projects\client-manager\ClientManagerFrontend\src\
+C:\Projects\myproject\ClientManagerFrontend\src\
 ├── stores/activityStore.ts (memoization fix)
 ├── hooks/useActivityItems.ts (removed unused subs)
 └── components/actions/

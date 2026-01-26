@@ -10,7 +10,7 @@ Transform Claude into a superintelligent development control plane with full mac
 
 ```powershell
 # 1. Clone repository
-git clone https://github.com/martiendejong/autonomous-dev-system.git C:\scripts
+git clone https://github.com/yourname/autonomous-dev-system.git C:\scripts
 
 # 2. Run bootstrap (installs dependencies, creates directories, initializes state)
 cd C:\scripts
@@ -108,7 +108,7 @@ Claude continuously learns and evolves:
 Track and enforce merge order for dependent PRs:
 
 - **Dependency Detection** - Automatic detection of cross-repo dependencies
-- **Merge Sequencing** - Enforces correct merge order (Hazina → client-manager)
+- **Merge Sequencing** - Enforces correct merge order (myframework → myproject)
 - **Dependency Alerts** - Adds alerts to PR descriptions
 
 ### 8. **Bootstrap System**
@@ -234,7 +234,7 @@ powershell.exe -File "C:/scripts/tools/ai-vision.ps1" `
 ```powershell
 # Allocate worktree with conflict detection
 powershell.exe -File "C:/scripts/tools/worktree-allocate.ps1" `
-    -Repo client-manager `
+    -Repo myproject `
     -Branch feature/user-authentication `
     -Agent agent-001
 ```
@@ -332,8 +332,8 @@ Built on top of:
 
 ## 📞 Support & Community
 
-- **Issues:** [GitHub Issues](https://github.com/martiendejong/autonomous-dev-system/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/martiendejong/autonomous-dev-system/discussions)
+- **Issues:** [GitHub Issues](https://github.com/yourname/autonomous-dev-system/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/yourname/autonomous-dev-system/discussions)
 - **Documentation:** [Full documentation in repository](./CLAUDE.md)
 
 ---

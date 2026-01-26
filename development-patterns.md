@@ -1,25 +1,25 @@
-﻿# Development Patterns Library
+# Development Patterns Library
 
-> 📚 **Knowledge Base References:**
-> - **Architecture Patterns** → `C:\scripts\_machine\knowledge-base\05-PROJECTS\` (client-manager, Hazina framework)
-> - **Reflection Insights** → `C:\scripts\_machine\knowledge-base\08-KNOWLEDGE\reflection-insights.md` (lessons learned)
-> - **Workflows** → `C:\scripts\_machine\knowledge-base\06-WORKFLOWS\INDEX.md` (documented procedures)
+> ?? **Knowledge Base References:**
+> - **Architecture Patterns** ? `C:\scripts\_machine\knowledge-base\05-PROJECTS\` (myproject, myframework framework)
+> - **Reflection Insights** ? `C:\scripts\_machine\knowledge-base\08-KNOWLEDGE\reflection-insights.md` (lessons learned)
+> - **Workflows** ? `C:\scripts\_machine\knowledge-base\06-WORKFLOWS\INDEX.md` (documented procedures)
 
-## ðŸ"§ NAMESPACE MIGRATION PATTERNS
+## �"� NAMESPACE MIGRATION PATTERNS
 
-**When Hazina namespaces change, client-manager needs updates:**
+**When myframework namespaces change, myproject needs updates:**
 
 ### Common Namespace Issues
 
 | Old Usage | New Usage | Fix |
 |-----------|-----------|-----|
-| `new OpenAIConfig(...)` | Needs `using Hazina.LLMs.OpenAI;` | Add using statement |
+| `new OpenAIConfig(...)` | Needs `using myframework.LLMs.OpenAI;` | Add using statement |
 | `new OllamaConfig(endpoint: ...)` | Constructor changed | Use object initializer |
 | `interface.MethodName()` | Method doesn't exist | Add extension method or fix call |
 
 ### Extension Method Pattern
 
-When Hazina interface lacks a method client-manager needs:
+When myframework interface lacks a method myproject needs:
 
 ```csharp
 // Create in ClientManagerAPI/Extensions/
@@ -37,12 +37,12 @@ public static class InterfaceExtensions
 
 ### Build Error Triage
 
-1. **CS0246 (type not found)** â†’ Missing using statement or namespace changed
-2. **CS1061 (method not found)** â†’ Interface changed, add extension or fix call
-3. **CS0101 (duplicate type)** â†’ Same class in multiple files, remove one
-4. **CS1501 (wrong arguments)** â†’ Method signature changed, update call
+1. **CS0246 (type not found)** → Missing using statement or namespace changed
+2. **CS1061 (method not found)** → Interface changed, add extension or fix call
+3. **CS0101 (duplicate type)** → Same class in multiple files, remove one
+4. **CS1501 (wrong arguments)** → Method signature changed, update call
 
-## ðŸ—ï¸ INCOMPLETE FEATURE CODE PATTERNS
+## 🏗️ INCOMPLETE FEATURE CODE PATTERNS
 
 **When encountering build errors from incomplete feature code:**
 
@@ -89,7 +89,7 @@ public class Result
 
 ---
 
-## ðŸ”§ RUNTIME ERROR PATTERNS & FIXES
+## 🔧 RUNTIME ERROR PATTERNS & FIXES
 
 ### Swashbuckle 8.x [FromForm] + IFormFile Error
 
@@ -110,7 +110,7 @@ public async Task<IActionResult> Upload(IFormFile file, [FromForm] string projec
 
 **Search command:**
 ```bash
-grep -rn "\[FromForm\].*IFormFile" C:\Projects\client-manager\ClientManagerAPI
+grep -rn "\[FromForm\].*IFormFile" C:\Projects\myproject\ClientManagerAPI
 ```
 
 ---
@@ -121,7 +121,7 @@ grep -rn "\[FromForm\].*IFormFile" C:\Projects\client-manager\ClientManagerAPI
 
 **Fix:** Install the missing package:
 ```bash
-cd /c/Projects/client-manager/ClientManagerFrontend && npm install <package-name>
+cd /c/Projects/myproject/ClientManagerFrontend && npm install <package-name>
 ```
 
 ---
@@ -146,24 +146,24 @@ cd /c/Projects/client-manager/ClientManagerFrontend && npm install <package-name
 
 **Quick Fix via Python:**
 ```bash
-python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/brand2boost/identity.db'); conn.execute('ALTER TABLE TableName ADD COLUMN ColumnName TYPE DEFAULT value'); conn.commit()"
+python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'); conn.execute('ALTER TABLE TableName ADD COLUMN ColumnName TYPE DEFAULT value'); conn.commit()"
 ```
 
 **List tables:**
 ```bash
-python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/brand2boost/identity.db'); print([r[0] for r in conn.execute(\"SELECT name FROM sqlite_master WHERE type='table'\")])"
+python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'); print([r[0] for r in conn.execute(\"SELECT name FROM sqlite_master WHERE type='table'\")])"
 ```
 
 **Check columns:**
 ```bash
-python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/brand2boost/identity.db'); [print(r[1], r[2]) for r in conn.execute('PRAGMA table_info(TableName)')]"
+python3 -c "import sqlite3; conn = sqlite3.connect('c:/stores/myapp/identity.db'); [print(r[1], r[2]) for r in conn.execute('PRAGMA table_info(TableName)')]"
 ```
 
 **Note:** Table names may be singular (`UserTokenBalance`) not plural (`UserTokenBalances`).
 
 ---
 
-## ðŸš¨ðŸš¨ðŸš¨ MANDATORY: END-OF-TASK SELF-UPDATE PROTOCOL ðŸš¨ðŸš¨ðŸš¨
+## 🚨🚨🚨 MANDATORY: END-OF-TASK SELF-UPDATE PROTOCOL 🚨🚨🚨
 
 **USER MANDATE (2026-01-09):** "update the files in c:\scripts... do this at the end of every task/response"
 
@@ -218,15 +218,15 @@ STEP 4: Commit and push to machine_agents repo
 
 ### SUCCESS CRITERIA:
 
-âœ… reflection.log.md has new entry for this session
-âœ… claude_info.txt updated if new patterns discovered
-âœ… CLAUDE.md updated if new workflows added
-âœ… Changes committed and pushed to machine_agents repo
-âœ… Next session will benefit from these learnings
+✅ reflection.log.md has new entry for this session
+✅ claude_info.txt updated if new patterns discovered
+✅ CLAUDE.md updated if new workflows added
+✅ Changes committed and pushed to machine_agents repo
+✅ Next session will benefit from these learnings
 
 **This protocol ensures continuous improvement across sessions.**
 
-## ðŸ“‹ SESSION COMPACTION RECOVERY PATTERN
+## 📋 SESSION COMPACTION RECOVERY PATTERN
 
 **Context:** After conversation compaction/summarization, the session continues but context is limited to summary.
 
@@ -265,21 +265,21 @@ ls -R <relevant-directories>
 
 When session resumes after compaction:
 
-1. âœ… Read worktrees.pool.md - Verify your agent allocation
-2. âœ… Check git branch and status - Verify working state
-3. âœ… Check gh pr list - Verify PR existence and state
-4. âœ… List directory contents - Verify what files exist
-5. âœ… Compare against summary - Identify gaps
-6. âœ… Complete missing pieces - Don't assume summary is 100% accurate
+1. ✅ Read worktrees.pool.md - Verify your agent allocation
+2. ✅ Check git branch and status - Verify working state
+3. ✅ Check gh pr list - Verify PR existence and state
+4. ✅ List directory contents - Verify what files exist
+5. ✅ Compare against summary - Identify gaps
+6. ✅ Complete missing pieces - Don't assume summary is 100% accurate
 
 ### Verification Hierarchy (2026-01-09)
 
 **Verify in priority order to catch critical issues first:**
 
 **Tier 1 - CRITICAL (Can break everything):**
-- âš ï¸ **Base repo branches** (C:\Projects\<repo> MUST be on develop)
-- âš ï¸ **Worktree pool allocations** (check for conflicts/locks)
-- âš ï¸ **Uncommitted changes in worktrees** (risk of data loss)
+- ⚠️ **Base repo branches** (C:\Projects\<repo> MUST be on develop)
+- ⚠️ **Worktree pool allocations** (check for conflicts/locks)
+- ⚠️ **Uncommitted changes in worktrees** (risk of data loss)
 
 **Tier 2 - Important (Affects current work):**
 - PR states and CI status (may have advanced since summary)
@@ -303,27 +303,27 @@ echo "=== TIER 1: CRITICAL CHECKS ==="
 
 # Check base repos are on develop (HIGHEST PRIORITY)
 echo "Checking base repo branches..."
-for repo in client-manager hazina; do
+for repo in myproject myframework; do
   cd "/c/Projects/$repo"
   branch=$(git branch --show-current)
   if [[ "$branch" != "develop" ]]; then
-    echo "âŒ VIOLATION: $repo on '$branch' (should be 'develop')"
+    echo "❌ VIOLATION: $repo on '$branch' (should be 'develop')"
     echo "   Fix: cd /c/Projects/$repo && git checkout develop"
   else
-    echo "âœ… $repo on develop"
+    echo "✅ $repo on develop"
   fi
 done
 
 # Check for uncommitted changes in base repos
 echo ""
 echo "Checking for uncommitted changes..."
-for repo in client-manager hazina; do
+for repo in myproject myframework; do
   cd "/c/Projects/$repo"
   if [[ -n $(git status --porcelain) ]]; then
-    echo "âš ï¸ $repo has uncommitted changes:"
+    echo "⚠️ $repo has uncommitted changes:"
     git status --short
   else
-    echo "âœ… $repo clean"
+    echo "✅ $repo clean"
   fi
 done
 
@@ -332,7 +332,7 @@ echo "=== TIER 2: WORK STATUS CHECKS ==="
 
 # Check PR states
 echo "Checking recent PR activity..."
-cd "/c/Projects/client-manager"
+cd "/c/Projects/myproject"
 gh pr list --state all --limit 5 --json number,title,state,mergeable | jq -r '.[] | "\(.number): \(.title) - \(.state) (\(.mergeable))"'
 
 # Check documentation commits
@@ -347,7 +347,7 @@ echo "Worktree pool status:"
 cat /c/scripts/_machine/worktrees.pool.md | grep -E "agent-00[0-9]|FREE|BUSY"
 
 echo ""
-echo "âœ… Verification complete"
+echo "✅ Verification complete"
 ```
 
 **Why This Matters:**
@@ -360,11 +360,11 @@ echo "âœ… Verification complete"
 ### Pattern: Trust but Verify
 
 ```
-Summary says:        â†’ Verify:              â†’ Reality:
-"Backend complete"   â†’ Check git log        â†’ 2 commits, migration + service
-"PR created"         â†’ gh pr list           â†’ PR #57 exists, OPEN â†’ MERGED!
-"Feature done"       â†’ ls Frontend/src      â†’ Frontend missing! âŒ
-"Repo on develop"    â†’ git branch --show    â†’ On payment-models! âŒâŒ
+Summary says:        → Verify:              → Reality:
+"Backend complete"   → Check git log        → 2 commits, migration + service
+"PR created"         → gh pr list           → PR #57 exists, OPEN → MERGED!
+"Feature done"       → ls Frontend/src      → Frontend missing! ❌
+"Repo on develop"    → git branch --show    → On payment-models! ❌❌
 ```
 
 **Lesson:** Summaries compress information. Always verify file system state when continuing work.
@@ -377,35 +377,35 @@ Summary says:        â†’ Verify:              â†’ Reality:
 
 ---
 
-## ðŸŽ¯ COMPLETE FEATURE IMPLEMENTATION PATTERN
+## 🎯 COMPLETE FEATURE IMPLEMENTATION PATTERN
 
 **For any substantial feature, all three components are MANDATORY:**
 
 ### 1. Backend (API/Services)
-- âœ… Models/DTOs (data structures)
-- âœ… Services (business logic)
-- âœ… Controllers (API endpoints)
-- âœ… Migrations (database schema)
-- âœ… DI registration (Program.cs)
-- âœ… Tests (if applicable)
+- ✅ Models/DTOs (data structures)
+- ✅ Services (business logic)
+- ✅ Controllers (API endpoints)
+- ✅ Migrations (database schema)
+- ✅ DI registration (Program.cs)
+- ✅ Tests (if applicable)
 
 ### 2. Frontend (UI/Components)
-- âœ… TypeScript service layer (API client)
-- âœ… React components (2 versions):
+- ✅ TypeScript service layer (API client)
+- ✅ React components (2 versions):
   - **Full component**: Complete feature view (e.g., `ROIDashboard.tsx`)
   - **Widget component**: Compact at-a-glance display (e.g., `ROIWidget.tsx`)
-- âœ… Proper TypeScript types/interfaces
-- âœ… Error handling and loading states
-- âœ… Responsive design (Tailwind CSS)
+- ✅ Proper TypeScript types/interfaces
+- ✅ Error handling and loading states
+- ✅ Responsive design (Tailwind CSS)
 
 ### 3. Documentation (Knowledge Transfer)
-- âœ… Comprehensive .md file in `docs/features/`
-- âœ… Overview and key features
-- âœ… API specifications with examples
-- âœ… Frontend usage examples
-- âœ… Database schema descriptions
-- âœ… Best practices and integration points
-- âœ… Customization guidance
+- ✅ Comprehensive .md file in `docs/features/`
+- ✅ Overview and key features
+- ✅ API specifications with examples
+- ✅ Frontend usage examples
+- ✅ Database schema descriptions
+- ✅ Best practices and integration points
+- ✅ Customization guidance
 
 ### Why Two Component Versions?
 
@@ -497,7 +497,7 @@ gh pr create --title "Feature: <Name>" --body "..."
 
 ---
 
-## ðŸ“Š MULTI-FEATURE IMPLEMENTATION DISCIPLINE
+## 📊 MULTI-FEATURE IMPLEMENTATION DISCIPLINE
 
 **When implementing multiple related features (e.g., Quick Wins 1-10):**
 
@@ -527,7 +527,7 @@ At start of multi-feature session, create todos for all features. Break down eac
 ### Batch Completion Anti-Pattern
 
 **WRONG:** Complete all features' backend, then all frontend, then all docs
-**RIGHT:** Feature by feature - Backend â†’ Frontend â†’ Docs â†’ PR for each
+**RIGHT:** Feature by feature - Backend → Frontend → Docs → PR for each
 
 ### Session Handoff Pattern
 
@@ -535,7 +535,7 @@ If session ends mid-feature, leave clear state in todos showing what's completed
 
 ---
 
-## ðŸ­ INDUSTRY RESEARCH INTEGRATION PATTERN
+## 🏭 INDUSTRY RESEARCH INTEGRATION PATTERN
 
 **When features involve industry benchmarks, best practices, or research data:**
 
@@ -572,13 +572,13 @@ In documentation file, include tables with benchmark values and research basis.
 
 ---
 
-## ðŸ—ï¸ MULTI-TENANT ARCHITECTURE PATTERN
+## 🏗️ MULTI-TENANT ARCHITECTURE PATTERN
 
 **For SaaS applications with multiple clients:**
 
 ### Data Hierarchy
 
-Organization/Client (1) â†’ Projects (*) â†’ Content/Posts (*)
+Organization/Client (1) → Projects (*) → Content/Posts (*)
 
 ### Models
 
@@ -606,7 +606,7 @@ public class UserClient
 public class Project
 {
     public string Id { get; set; }
-    public string ClientId { get; set; }  // â† Tenant isolation
+    public string ClientId { get; set; }  // ← Tenant isolation
 }
 ```
 
@@ -627,7 +627,7 @@ Support both project-level and client-level aggregation through optional paramet
 
 ---
 
-## ðŸ“ AUDIT LOGGING FOR ENTERPRISE PATTERN
+## 📝 AUDIT LOGGING FOR ENTERPRISE PATTERN
 
 **For enterprise features requiring compliance/audit trails:**
 
@@ -642,9 +642,9 @@ public class ApprovalAction
     public DateTime ActionTimestamp { get; set; }
 
     // Audit fields
-    public string? IPAddress { get; set; }        // â† Compliance
-    public string? UserAgent { get; set; }        // â† Forensics
-    public string? Reason { get; set; }           // â† Business context
+    public string? IPAddress { get; set; }        // ← Compliance
+    public string? UserAgent { get; set; }        // ← Forensics
+    public string? Reason { get; set; }           // ← Business context
 }
 ```
 
@@ -661,53 +661,53 @@ Capture audit data from HttpContext (IP address, UserAgent) and pass to service 
 
 ### What to Audit
 
-âœ… Approvals/rejections, permission changes, data access (sensitive), configuration changes, bulk operations
-âŒ Read-only views, normal CRUD, high-frequency actions
+✅ Approvals/rejections, permission changes, data access (sensitive), configuration changes, bulk operations
+❌ Read-only views, normal CRUD, high-frequency actions
 
 ---
 
-## ðŸ”„ CONTINUOUS IMPROVEMENT: PATTERN LIBRARY
+## 🔄 CONTINUOUS IMPROVEMENT: PATTERN LIBRARY
 
 **Every successful pattern should be documented for reuse.**
 
 ### After Completing Work
 
-1. âœ… Identify reusable patterns
-2. âœ… Document in claude.md (this file)
-3. âœ… Add to reflection.log.md as achievement
-4. âœ… Update claude_info.txt with quick reference
-5. âœ… Commit documentation updates
+1. ✅ Identify reusable patterns
+2. ✅ Document in claude.md (this file)
+3. ✅ Add to reflection.log.md as achievement
+4. ✅ Update claude_info.txt with quick reference
+5. ✅ Commit documentation updates
 
 ### Pattern Categories
 
 This file now includes:
-- âœ… Session Compaction Recovery
-- âœ… Complete Feature Implementation
-- âœ… Multi-Feature Discipline
-- âœ… Industry Research Integration
-- âœ… Multi-Tenant Architecture
-- âœ… Audit Logging for Enterprise
+- ✅ Session Compaction Recovery
+- ✅ Complete Feature Implementation
+- ✅ Multi-Feature Discipline
+- ✅ Industry Research Integration
+- ✅ Multi-Tenant Architecture
+- ✅ Audit Logging for Enterprise
 
 **Add more as discovered!**
 
 ---
 
-## ðŸ“ INCOMPLETE WORK DOCUMENTATION PATTERN (2026-01-08)
+## 📝 INCOMPLETE WORK DOCUMENTATION PATTERN (2026-01-08)
 
-**Learned from:** Hazina PR #13 - Chat LLM Configuration Fix
+**Learned from:** myframework PR #13 - Chat LLM Configuration Fix
 **Pattern file:** C:\scripts\_machine\best-practices\DOCUMENTATION_AND_PR_WORKFLOW.md
 **Status:** ACTIVE PATTERN for all complex incomplete work
 
 ### When to Use This Pattern
 
-âœ… **Use when:**
+✅ **Use when:**
 - Work session running long (token limits, time constraints)
 - Fix spans multiple files (>5 locations)
 - Testing reveals fix is incomplete
 - Linter or external factors interfere
 - Need to preserve context before losing it
 
-âŒ **Do NOT use for:**
+❌ **Do NOT use for:**
 - Simple single-file fixes
 - Quick bugs fixable in <30 minutes
 - Fully tested and working changes
@@ -736,8 +736,8 @@ This file now includes:
 [High-level approach]
 
 ## Changes Made
-- âœ… Completed item
-- âŒ Incomplete item
+- ✅ Completed item
+- ❌ Incomplete item
 
 ## Implementation Details
 [Every file, every line number, exact code snippets]
@@ -756,8 +756,8 @@ This file now includes:
 **Branch**: [branch-name]
 
 ## Status Overview
-### âœ… Completed
-### âŒ Incomplete
+### ✅ Completed
+### ❌ Incomplete
 
 ## Required Changes
 ### 1. Component (PRIORITY)
@@ -801,18 +801,18 @@ gh pr create --title "[Type]: Clear description" --body "$(cat <<'EOFPR'
 [Brief technical]
 
 ## Changes Made (Partial Fix)
-1. âœ… Change 1
-2. âœ… Change 2
+1. ✅ Change 1
+2. ✅ Change 2
 
-## Remaining Work âš ï¸
+## Remaining Work ⚠️
 **See REMAINING_WORK.md for details**
 - [ ] Component 1
 - [ ] Component 2
 
 ## Testing Status
-- âœ… Builds
-- âŒ Feature still fails
-- â³ Needs completion
+- ✅ Builds
+- ❌ Feature still fails
+- ⏳ Needs completion
 
 ## Files Changed
 [List]
@@ -849,14 +849,14 @@ Signed-off-by: Claude Opus 4.5 <noreply@anthropic.com>
 
 ### Status Markers (Use Consistently)
 
-- âœ… Completed
-- âŒ Incomplete/Failing
-- â³ Pending/In Progress
-- âš ï¸ Warning/Attention Needed
-- ðŸ“ Documentation
-- ðŸ”§ Configuration
-- ðŸ› Bug Fix
-- âœ¨ New Feature
+- ✅ Completed
+- ❌ Incomplete/Failing
+- ⏳ Pending/In Progress
+- ⚠️ Warning/Attention Needed
+- 📝 Documentation
+- 🔧 Configuration
+- 🐛 Bug Fix
+- ✨ New Feature
 
 ### Priority Levels
 
@@ -884,17 +884,17 @@ curl -X POST https://localhost:5001/api/test
 
 ### Benefits
 
-âœ… **Continuity**: Anyone can continue work
-âœ… **Clarity**: Exact status known
-âœ… **Searchability**: Easy to find
-âœ… **Accountability**: Datetime tracking
-âœ… **Quality**: Prevents mistakes
-âœ… **Efficiency**: No wasted time
-âœ… **Communication**: Clear for reviewers
+✅ **Continuity**: Anyone can continue work
+✅ **Clarity**: Exact status known
+✅ **Searchability**: Easy to find
+✅ **Accountability**: Datetime tracking
+✅ **Quality**: Prevents mistakes
+✅ **Efficiency**: No wasted time
+✅ **Communication**: Clear for reviewers
 
 ### Common Pitfalls to Avoid
 
-âŒ **Do NOT:**
+❌ **Do NOT:**
 - Create PR with vague "WIP" title
 - Commit without documentation
 - List todos in PR comments (use MD files)
@@ -902,7 +902,7 @@ curl -X POST https://localhost:5001/api/test
 - Skip verification commands
 - Assume context is obvious
 
-âœ… **DO:**
+✅ **DO:**
 - Be exhaustively specific
 - Include every file and line number
 - Write for zero-context reader
@@ -921,21 +921,21 @@ curl -X POST https://localhost:5001/api/test
 ### Real-World Example
 
 **See:**
-- PR: https://github.com/martiendejong/Hazina/pull/13
-- Summary: C:\Projects\hazina\CHAT_FIX_SUMMARY.md
-- Remaining: C:\Projects\hazina\REMAINING_WORK.md
+- PR: https://github.com/yourname/myframework/pull/13
+- Summary: C:\Projects\myframework\CHAT_FIX_SUMMARY.md
+- Remaining: C:\Projects\myframework\REMAINING_WORK.md
 - Pattern: C:\scripts\_machine\best-practices\DOCUMENTATION_AND_PR_WORKFLOW.md
 
 ### Pattern Library Updated
 
 This file now includes:
-- âœ… Session Compaction Recovery
-- âœ… Complete Feature Implementation
-- âœ… Multi-Feature Discipline
-- âœ… Industry Research Integration
-- âœ… Multi-Tenant Architecture
-- âœ… Audit Logging for Enterprise
-- âœ… **Incomplete Work Documentation** â† NEW (2026-01-08)
+- ✅ Session Compaction Recovery
+- ✅ Complete Feature Implementation
+- ✅ Multi-Feature Discipline
+- ✅ Industry Research Integration
+- ✅ Multi-Tenant Architecture
+- ✅ Audit Logging for Enterprise
+- ✅ **Incomplete Work Documentation** ← NEW (2026-01-08)
 
 **Full template:** C:\scripts\_machine\best-practices\DOCUMENTATION_AND_PR_WORKFLOW.md
 
@@ -943,34 +943,34 @@ This file now includes:
 ---
 
 
-## ðŸ”„ COMPREHENSIVE TERMINOLOGY MIGRATION PATTERN (2026-01-12)
+## 🔄 COMPREHENSIVE TERMINOLOGY MIGRATION PATTERN (2026-01-12)
 
-**Source:** client-manager token refactor session (daily â†’ monthly)
+**Source:** myproject token refactor session (daily → monthly)
 **Files affected:** 95 files across backend + frontend
 **Status:** ACTIVE PATTERN for large-scale naming refactors
 
 ### When to Use This Pattern
 
-âœ… **Use when:**
+✅ **Use when:**
 - Discover misleading field/property/method names throughout codebase
 - Database models use one terminology, API/UI uses another
 - User confusion about what data actually represents
 - Technical debt from naming inconsistencies
 - Need to refactor 10+ files with consistent pattern
 
-âŒ **Don't use for:**
+❌ **Don't use for:**
 - Single file renames (use standard Edit tool)
 - Breaking API changes without version strategy
 - Unclear what the "correct" terminology should be
 
 ### The Problem Pattern
 
-**Example from client-manager:**
+**Example from myproject:**
 ```
-Database:     MonthlyAllowance, MonthlyUsage, NextResetDate  âœ… Correct
-API Response: dailyAllowance, dailyUsed, dailyRemaining     âŒ Misleading!
-UI Labels:    "Daily Allowance", "Tokens Used Today"        âŒ Wrong!
-User sees:    "You have 500 tokens daily"                    âŒ Actually monthly!
+Database:     MonthlyAllowance, MonthlyUsage, NextResetDate  ✅ Correct
+API Response: dailyAllowance, dailyUsed, dailyRemaining     ❌ Misleading!
+UI Labels:    "Daily Allowance", "Tokens Used Today"        ❌ Wrong!
+User sees:    "You have 500 tokens daily"                    ❌ Actually monthly!
 ```
 
 **Impact:**
@@ -1012,13 +1012,13 @@ Grep pattern="dailyAllowance|dailyUsed|'Daily Allowance'"
 
 ```
 1. Models/DTOs (data structures)
-   â†“
+   ↓
 2. Service interfaces (contracts)
-   â†“
+   ↓
 3. Service implementations (logic)
-   â†“
+   ↓
 4. Controllers (API endpoints)
-   â†“
+   ↓
 5. Request/Response classes
 ```
 
@@ -1067,11 +1067,11 @@ dotnet build Solution.sln --no-restore
 **Order:**
 ```
 1. Service interfaces (TypeScript types)
-   â†“
+   ↓
 2. API client code (property access)
-   â†“
+   ↓
 3. Components (UI logic)
-   â†“
+   ↓
 4. Text labels (user-facing strings)
 ```
 
@@ -1119,7 +1119,7 @@ git commit -m "refactor: Complete migration from daily to monthly terminology
 
 Backend: 12 files updated (models, services, controllers)
 Frontend: 83 files updated (types, components, labels)
-Builds: âœ“ Backend 0 errors, âœ“ Frontend success
+Builds: ✓ Backend 0 errors, ✓ Frontend success
 ..."
 ```
 
@@ -1169,10 +1169,10 @@ public interface ITokenService {
 ```
 
 **Benefits:**
-- âœ… Existing code continues to work
-- âœ… Compiler warnings guide developers to new method
-- âœ… Clear migration path documented in attribute
-- âœ… Can remove in next major version
+- ✅ Existing code continues to work
+- ✅ Compiler warnings guide developers to new method
+- ✅ Clear migration path documented in attribute
+- ✅ Can remove in next major version
 
 **Implementation (keep both working):**
 ```csharp
@@ -1189,7 +1189,7 @@ public async Task SetDailyAllowanceAsync(string userId, int dailyAllowance) {
 
 ### Common Pitfalls to Avoid
 
-âŒ **DON'T:**
+❌ **DON'T:**
 - Start frontend before backend is working
 - Mix terminology (some files old, some new)
 - Forget to update text labels/UI strings
@@ -1197,55 +1197,55 @@ public async Task SetDailyAllowanceAsync(string userId, int dailyAllowance) {
 - Commit without testing
 - Delete old methods without [Obsolete] first
 
-âœ… **DO:**
+✅ **DO:**
 - Audit comprehensively before starting
 - Fix backend completely, then frontend
 - Use TodoWrite to track 5+ file changes
 - Build after each phase
 - Test API responses manually
-- Update all layers (data â†’ API â†’ UI)
+- Update all layers (data → API → UI)
 
 ### Real-World Example Stats
 
-**client-manager token refactor (2026-01-12):**
+**myproject token refactor (2026-01-12):**
 - Files changed: 95 (12 backend, 83 frontend)
 - Patterns replaced: 8 (dailyAllowance, dailyUsed, tokensUsedToday, etc.)
 - Commits: 2 (initial fix 4 files, comprehensive 95 files)
-- Build result: âœ… Backend 0 errors, âœ… Frontend success
+- Build result: ✅ Backend 0 errors, ✅ Frontend success
 - Time investment: ~45 minutes (including documentation)
 - Impact: Eliminated all user confusion about daily vs monthly
 
 ### Success Criteria
 
 **A terminology migration is successful ONLY IF:**
-- âœ… ALL files using old terminology are updated
-- âœ… Backend builds with 0 new errors
-- âœ… Frontend builds with 0 new errors
-- âœ… API responses use new field names
-- âœ… UI labels show new terminology
-- âœ… No mix of old/new terminology
-- âœ… Legacy methods deprecated gracefully
-- âœ… Documentation updated
+- ✅ ALL files using old terminology are updated
+- ✅ Backend builds with 0 new errors
+- ✅ Frontend builds with 0 new errors
+- ✅ API responses use new field names
+- ✅ UI labels show new terminology
+- ✅ No mix of old/new terminology
+- ✅ Legacy methods deprecated gracefully
+- ✅ Documentation updated
 
 ### Integration with Other Patterns
 
 **Combines well with:**
-- âœ… Linter Interference Mitigation (sed for batch updates)
-- âœ… Multi-Feature Implementation Discipline (TodoWrite tracking)
-- âœ… Incomplete Work Documentation (if migration spans multiple sessions)
+- ✅ Linter Interference Mitigation (sed for batch updates)
+- ✅ Multi-Feature Implementation Discipline (TodoWrite tracking)
+- ✅ Incomplete Work Documentation (if migration spans multiple sessions)
 
 **File references:**
-- Full reflection: `C:\scripts\_machine\reflection.log.md Â§ 2026-01-12`
+- Full reflection: `C:\scripts\_machine\reflection.log.md § 2026-01-12`
 - Linter mitigation: `C:\scripts\_machine\best-practices\LINTER_INTERFERENCE_MITIGATION.md`
 
 
 ---
 
-## ðŸ” PATTERN 57: OCR LIBRARY INTEGRATION FOR DOCUMENT PROCESSING
+## 🔍 PATTERN 57: OCR LIBRARY INTEGRATION FOR DOCUMENT PROCESSING
 
 **Context:** When implementing text extraction from image files without external API dependency
 **Added:** 2026-01-12 (Image OCR implementation session)
-**Status:** Production-tested, used in client-manager document extraction
+**Status:** Production-tested, used in myproject document extraction
 
 ### Problem
 
@@ -1337,7 +1337,7 @@ new TesseractEngine(null, "eng", EngineMode.Default)
 
 ### Real-World Implementation: Document Header/Footer Extraction
 
-**Example from client-manager PR #123:**
+**Example from myproject PR #123:**
 
 ```csharp
 private async Task<CompanyDocumentExtraction> ExtractFromImageAsync(
@@ -1409,14 +1409,14 @@ private async Task<CompanyDocumentExtraction> ExtractFromImageAsync(
 
 ### When to Use This Pattern
 
-âœ… **Good fit:**
+✅ **Good fit:**
 - Document processing (letterheads, receipts, forms)
 - Image-based text extraction
 - Offline-first applications
 - Cost-sensitive projects (no API fees)
 - Privacy-sensitive applications (no cloud upload)
 
-âŒ **Poor fit:**
+❌ **Poor fit:**
 - Handwriting recognition (Tesseract struggles)
 - Complex multi-column layouts (needs layout analysis)
 - Maximum accuracy requirements (use Azure/Google Vision)
@@ -1466,24 +1466,24 @@ Assert.Greater(extraction.ConfidenceScore, 0);
 
 ### File Reference
 
-- Implementation: `C:\Projects\client-manager\ClientManagerAPI\Services\LicenseManager\DocumentExtractionService.cs`
-- PR: #123 (github.com/martiendejong/client-manager/pull/123)
-- Reflection log: `C:\scripts\_machine\reflection.log.md Â§ 2026-01-12 23:15`
+- Implementation: `C:\Projects\myproject\ClientManagerAPI\Services\LicenseManager\DocumentExtractionService.cs`
+- PR: #123 (github.com/yourname/myproject/pull/123)
+- Reflection log: `C:\scripts\_machine\reflection.log.md § 2026-01-12 23:15`
 
 
 ---
 
 ---
 
-> 📚 **See Also:**
-> - **Hazina Framework Patterns** → `C:\scripts\_machine\knowledge-base\05-PROJECTS\hazina\framework-patterns.md`
-> - **client-manager Architecture** → `C:\scripts\_machine\knowledge-base\05-PROJECTS\client-manager\architecture.md`
+> ?? **See Also:**
+> - **myframework Framework Patterns** ? `C:\scripts\_machine\knowledge-base\05-PROJECTS\myframework\framework-patterns.md`
+> - **myproject Architecture** ? `C:\scripts\_machine\knowledge-base\05-PROJECTS\myproject\architecture.md`
 
-## 📚 PARALLEL MULTI-REPOSITORY DOCUMENTATION INFRASTRUCTURE PATTERN (2026-01-16)
+## ?? PARALLEL MULTI-REPOSITORY DOCUMENTATION INFRASTRUCTURE PATTERN (2026-01-16)
 
 **Context:** Reconfiguring documentation infrastructure across multiple repositories simultaneously
 **Added:** 2026-01-16 (DocFX private repository documentation session)
-**Status:** Production-tested, used for 4 projects (Hazina, client-manager, artrevisionist, bugattiinsights)
+**Status:** Production-tested, used for 4 projects (myframework, myproject, artrevisionist, bugattiinsights)
 
 ### Problem
 
@@ -1503,8 +1503,8 @@ For private repositories:
 
 ```bash
 # Allocate 4 worktrees simultaneously (one per repository)
-# agent-002: Hazina
-# agent-003: client-manager
+# agent-002: myframework
+# agent-003: myproject
 # agent-004: artrevisionist
 # agent-005: bugattiinsights
 
@@ -1512,10 +1512,10 @@ For private repositories:
 ```
 
 **Benefits:**
-- ✅ Maximizes parallelism for independent changes
-- ✅ All repos updated in single session
-- ✅ Consistent patterns across all projects
-- ✅ Efficient use of session time
+- ? Maximizes parallelism for independent changes
+- ? All repos updated in single session
+- ? Consistent patterns across all projects
+- ? Efficient use of session time
 
 #### **Phase 2: Infrastructure Changes (All Repositories)**
 
@@ -1584,7 +1584,7 @@ jobs:
 ```markdown
 ## Documentation
 
-📚 **[View Full Documentation](docs/apidoc/index.html)** — Complete API reference (open locally after cloning)
+?? **[View Full Documentation](docs/apidoc/index.html)** � Complete API reference (open locally after cloning)
 
 **For private repositories:** Documentation is committed to the repository at \`docs/apidoc/\` - no external hosting required.
 
@@ -1612,11 +1612,11 @@ dotnet docfx build docfx.json
 ```
 
 **Expected Results:**
-- ✅ **Some repositories will succeed** - Full documentation generated and committed
-- ⚠️ **Some may fail locally** - Build errors due to missing dependencies, .NET version conflicts
-- ✅ **Failures are acceptable** - GitHub Actions has proper dependency structure and will succeed
+- ? **Some repositories will succeed** - Full documentation generated and committed
+- ?? **Some may fail locally** - Build errors due to missing dependencies, .NET version conflicts
+- ? **Failures are acceptable** - GitHub Actions has proper dependency structure and will succeed
 
-**Example Success (Hazina):**
+**Example Success (myframework):**
 ```
 Generated: 47 HTML pages, 204 files total
 Includes: Architecture docs, RAG guide, agents guide, API reference
@@ -1624,8 +1624,8 @@ Includes: Architecture docs, RAG guide, agents guide, API reference
 
 **Example Failure (artrevisionist):**
 ```
-Build failed: Missing Hazina dependencies in worker-agents environment
-Error: Project "Hazina.Tools.TextExtraction.csproj" not found
+Build failed: Missing myframework dependencies in worker-agents environment
+Error: Project "myframework.Tools.TextExtraction.csproj" not found
 Resolution: Infrastructure ready, GitHub Actions will generate docs on merge
 ```
 
@@ -1664,7 +1664,7 @@ git branch --show-current
 
 **Example:**
 ```
-Local: Build failed - Missing Hazina dependencies
+Local: Build failed - Missing myframework dependencies
 GitHub Actions: Build succeeds - Full dependency tree available
 Result: Infrastructure merged, documentation auto-generated
 ```
@@ -1678,23 +1678,23 @@ Result: Infrastructure merged, documentation auto-generated
 
 **Allocation Pattern:**
 ```
-agent-002 → Hazina
-agent-003 → client-manager
-agent-004 → artrevisionist
-agent-005 → bugattiinsights
+agent-002 ? myframework
+agent-003 ? myproject
+agent-004 ? artrevisionist
+agent-005 ? bugattiinsights
 
 All work in parallel, no dependencies between them
 ```
 
 ### When to Use This Pattern
 
-✅ **Good fit:**
+? **Good fit:**
 - Multiple repositories need identical infrastructure changes
 - Documentation for private repositories
 - Changes are independent (no cross-repo dependencies in changes themselves)
 - Infrastructure changes acceptable even if local build fails
 
-❌ **Poor fit:**
+? **Poor fit:**
 - Single repository changes (use standard worktree workflow)
 - Changes have cross-repo dependencies (requires sequential workflow)
 - Local build success is critical before merge
@@ -1703,35 +1703,35 @@ All work in parallel, no dependencies between them
 ### Success Criteria
 
 **Infrastructure changes successful ONLY IF:**
-- ✅ ALL repositories have updated docfx.json (output changed)
-- ✅ ALL repositories have updated .gitignore (tracking docs/apidoc)
-- ✅ ALL repositories have updated GitHub Actions workflow (auto-commit step)
-- ✅ ALL repositories have updated README.md (local documentation instructions)
-- ✅ ALL PRs merged to base branch
-- ✅ ALL worktrees released (marked FREE)
+- ? ALL repositories have updated docfx.json (output changed)
+- ? ALL repositories have updated .gitignore (tracking docs/apidoc)
+- ? ALL repositories have updated GitHub Actions workflow (auto-commit step)
+- ? ALL repositories have updated README.md (local documentation instructions)
+- ? ALL PRs merged to base branch
+- ? ALL worktrees released (marked FREE)
 
 ### Real-World Example Stats
 
 **DocFX private repository documentation (2026-01-16):**
-- Projects updated: 4 (Hazina, client-manager, artrevisionist, bugattiinsights)
+- Projects updated: 4 (myframework, myproject, artrevisionist, bugattiinsights)
 - PRs created: 4, PRs merged: 4
 - Worktrees allocated: 4 (agent-002 through agent-005)
-- Documentation generated locally: 2 projects (Hazina: 47 pages, client-manager: 75 pages)
+- Documentation generated locally: 2 projects (myframework: 47 pages, myproject: 75 pages)
 - Session duration: ~2 hours
 
 ### File References
 
-- Reflection log: C:\scripts\_machine\reflection.log.md § 2026-01-16 21:30
-- Hazina PR: https://github.com/martiendejong/Hazina/pull/78
-- client-manager PR: https://github.com/martiendejong/client-manager/pull/164
+- Reflection log: C:\scripts\_machine\reflection.log.md � 2026-01-16 21:30
+- myframework PR: https://github.com/yourname/myframework/pull/78
+- myproject PR: https://github.com/yourname/myproject/pull/164
 
 ---
 
-## 🏗️ LARGE-SCALE REFACTORING: FOUNDATION + ROADMAP PATTERN (2026-01-19)
+## ??? LARGE-SCALE REFACTORING: FOUNDATION + ROADMAP PATTERN (2026-01-19)
 
 **Context:** When facing massive refactoring work that cannot be completed in a single session
 **Added:** 2026-01-19 (DTO Foundation for backend genericness Item #8)
-**Status:** Production-tested, used for client-manager DTO migration (813 anonymous objects)
+**Status:** Production-tested, used for myproject DTO migration (813 anonymous objects)
 
 ### Problem
 
@@ -1742,7 +1742,7 @@ Large-scale refactoring tasks present challenges:
 - Difficult to track progress or estimate completion
 - May span multiple developers or AI agents
 
-**Example from client-manager:**
+**Example from myproject:**
 ```
 Task: Replace 813 anonymous objects with typed DTOs across 71 controllers
 Challenge: Cannot complete all in one session
@@ -1874,10 +1874,10 @@ public class BulkOperationResult
 ```
 
 **Benefits of Foundation:**
-- ✅ Immediate value (can be used right away)
-- ✅ Reduces duplication in future work
-- ✅ Establishes consistent patterns
-- ✅ Shows progress to stakeholders (12% complete vs 0%)
+- ? Immediate value (can be used right away)
+- ? Reduces duplication in future work
+- ? Establishes consistent patterns
+- ? Shows progress to stakeholders (12% complete vs 0%)
 
 #### **Phase 4: Create Comprehensive Roadmap**
 
@@ -1898,7 +1898,7 @@ Document remaining work in detail so ANY developer (human or AI) can execute sys
 
 ## What's Been Completed
 
-### Foundation Infrastructure ✅
+### Foundation Infrastructure ?
 - Common DTOs Created: MessageResponse, BulkOperationResult
 - [List all foundation components]
 
@@ -1973,13 +1973,13 @@ return BadRequest(ErrorMessageResponse.CreateError("Invalid input"));
 ```
 
 **Key elements:**
-- ✅ Clear status (% complete)
-- ✅ Tier-by-tier breakdown
-- ✅ Controller-specific DTOs needed
-- ✅ Before/after code examples
-- ✅ Quick wins (low-hanging fruit)
-- ✅ Tool suggestions
-- ✅ Realistic timeline estimates
+- ? Clear status (% complete)
+- ? Tier-by-tier breakdown
+- ? Controller-specific DTOs needed
+- ? Before/after code examples
+- ? Quick wins (low-hanging fruit)
+- ? Tool suggestions
+- ? Realistic timeline estimates
 
 #### **Phase 5: Commit Foundation + Roadmap**
 
@@ -2021,7 +2021,7 @@ This PR establishes the foundation for replacing 813 anonymous objects with type
 ### Comprehensive Roadmap
 Created COMPLETION_GUIDE.md documenting:
 - Current status (12% complete)
-- Priority tiers (Critical → High Impact → Supporting)
+- Priority tiers (Critical ? High Impact ? Supporting)
 - Implementation patterns with before/after examples
 - Timeline estimate: 6-9 weeks for complete migration
 
@@ -2030,7 +2030,7 @@ Created COMPLETION_GUIDE.md documenting:
 Follow COMPLETION_GUIDE.md to systematically replace remaining anonymous objects,
 starting with Tier 1 controllers for maximum impact.
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+?? Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 )"
 ```
@@ -2046,15 +2046,15 @@ EOF
 
 **No re-analysis needed** - scope already mapped, patterns already established.
 
-### Real-World Example: client-manager DTO Foundation
+### Real-World Example: myproject DTO Foundation
 
 **Task:** Replace 813 anonymous objects with typed DTOs (Item #8 of backend genericness refactoring)
 
 **Session 1 (Foundation + Roadmap):**
-- ✅ Analyzed entire codebase: 71 controllers, 813 anonymous objects
-- ✅ Created foundation DTOs: MessageResponse, BulkOperationResult
-- ✅ Created 440-line COMPLETION_GUIDE.md
-- ✅ Committed and created PR #261
+- ? Analyzed entire codebase: 71 controllers, 813 anonymous objects
+- ? Created foundation DTOs: MessageResponse, BulkOperationResult
+- ? Created 440-line COMPLETION_GUIDE.md
+- ? Committed and created PR #261
 - **Result:** 12% complete (100/813), clear roadmap for remaining 88%
 
 **Future Sessions (Systematic Execution):**
@@ -2067,11 +2067,11 @@ EOF
 - Files created: 3 (MessageResponse.cs, BulkOperationResult.cs, DTO_COMPLETION_GUIDE.md)
 - Lines of code: 584 (72 + 72 + 440)
 - Session duration: ~1.5 hours
-- PR: client-manager #261
+- PR: myproject #261
 
 ### When to Use This Pattern
 
-✅ **Good fit:**
+? **Good fit:**
 - Task is too large to complete in one session (>100 changes)
 - Work can be broken into logical phases/tiers
 - Multiple sessions or developers will work on it
@@ -2079,7 +2079,7 @@ EOF
 - Future work requires clear starting points
 - Pattern-based refactoring (similar changes across many files)
 
-❌ **Poor fit:**
+? **Poor fit:**
 - Small refactoring (<50 changes, completable in one session)
 - Unique changes without patterns (can't create reusable foundation)
 - Time-sensitive work requiring immediate completion
@@ -2088,27 +2088,27 @@ EOF
 ### Benefits
 
 **Immediate:**
-- ✅ Foundation provides immediate value (usable right away)
-- ✅ Progress visible to stakeholders (12% vs 0%)
-- ✅ Patterns established for consistency
+- ? Foundation provides immediate value (usable right away)
+- ? Progress visible to stakeholders (12% vs 0%)
+- ? Patterns established for consistency
 
 **Long-term:**
-- ✅ Clear roadmap for future sessions
-- ✅ No re-analysis needed (scope already mapped)
-- ✅ Any developer can pick up work (human or AI)
-- ✅ Realistic timeline estimates
-- ✅ Systematic execution prevents missed items
+- ? Clear roadmap for future sessions
+- ? No re-analysis needed (scope already mapped)
+- ? Any developer can pick up work (human or AI)
+- ? Realistic timeline estimates
+- ? Systematic execution prevents missed items
 
 ### Common Pitfalls to Avoid
 
-❌ **DON'T:**
+? **DON'T:**
 - Start refactoring randomly without analysis
 - Create roadmap without foundation (nothing usable immediately)
 - Skip prioritization (all work looks equally important)
 - Forget timeline estimates (stakeholders need expectations)
 - Leave roadmap vague (future sessions can't execute)
 
-✅ **DO:**
+? **DO:**
 - Use Task/Explore agent for comprehensive analysis
 - Create foundation infrastructure first (immediate value)
 - Prioritize into clear tiers (impact + usage frequency)
@@ -2119,41 +2119,41 @@ EOF
 ### Integration with Other Patterns
 
 **Combines well with:**
-- ✅ Multi-Feature Implementation Discipline (TodoWrite tracking per tier)
-- ✅ Comprehensive Terminology Migration (if refactoring involves naming)
-- ✅ Incomplete Work Documentation (if foundation spans multiple sessions)
-- ✅ Boy Scout Rule (clean up while refactoring)
+- ? Multi-Feature Implementation Discipline (TodoWrite tracking per tier)
+- ? Comprehensive Terminology Migration (if refactoring involves naming)
+- ? Incomplete Work Documentation (if foundation spans multiple sessions)
+- ? Boy Scout Rule (clean up while refactoring)
 
 ### Success Criteria
 
 **Foundation + Roadmap successful ONLY IF:**
-- ✅ Comprehensive analysis completed (total scope known)
-- ✅ Foundation infrastructure created (reusable components)
-- ✅ Foundation provides immediate value (usable right away)
-- ✅ Remaining work prioritized into clear tiers
-- ✅ Roadmap documents controller-by-controller breakdown
-- ✅ Implementation patterns documented with examples
-- ✅ Timeline estimates included
-- ✅ Future sessions can execute without re-analysis
+- ? Comprehensive analysis completed (total scope known)
+- ? Foundation infrastructure created (reusable components)
+- ? Foundation provides immediate value (usable right away)
+- ? Remaining work prioritized into clear tiers
+- ? Roadmap documents controller-by-controller breakdown
+- ? Implementation patterns documented with examples
+- ? Timeline estimates included
+- ? Future sessions can execute without re-analysis
 
 ### File References
 
-- Implementation: C:\Projects\worker-agents\agent-004\client-manager\DTO_COMPLETION_GUIDE.md
-- PR: https://github.com/martiendejong/client-manager/pull/261
-- Reflection log: C:\scripts\_machine\reflection.log.md § 2026-01-19 16:30
-- Related PRs: Hazina #85, client-manager #257 (backend genericness foundation)
+- Implementation: C:\Projects\worker-agents\agent-004\myproject\DTO_COMPLETION_GUIDE.md
+- PR: https://github.com/yourname/myproject/pull/261
+- Reflection log: C:\scripts\_machine\reflection.log.md � 2026-01-19 16:30
+- Related PRs: myframework #85, myproject #257 (backend genericness foundation)
 
 ---
 
-## 🌍 PLATFORM-AGNOSTIC INTEGRATION PATTERN (UnifiedContent)
+## ?? PLATFORM-AGNOSTIC INTEGRATION PATTERN (UnifiedContent)
 
 **When to use:** Building integrations with multiple external platforms (social media, CRMs, calendars, documents) that need unified storage and LLM-friendly querying.
 
 **Problem:** Each platform has different data structures. Creating per-platform tables leads to:
-- ❌ Schema changes for every new platform
-- ❌ Complex queries across platforms
-- ❌ Difficult LLM integration (can't query "all content from last month")
-- ❌ Code duplication for similar operations
+- ? Schema changes for every new platform
+- ? Complex queries across platforms
+- ? Difficult LLM integration (can't query "all content from last month")
+- ? Code duplication for similar operations
 
 **Solution:** Single unified model with platform discriminator + metadata dictionary.
 
@@ -2289,12 +2289,12 @@ var recentContent = await store.GetContentByDateRangeAsync(
 
 ### Benefits
 
-✅ **Extensibility** - New platforms = new SourceType, zero schema changes
-✅ **Single Query** - LLM asks "show all content from last month" across ALL platforms
-✅ **Preserved Specifics** - PlatformMetadata stores WordPress slugs, LinkedIn URLs, etc.
-✅ **Full-Text Search** - FTS5 for fast LLM content retrieval
-✅ **Calendar Integration** - Single table for displaying all platform content
-✅ **AI Inspiration** - Analyze patterns across all user's content
+? **Extensibility** - New platforms = new SourceType, zero schema changes
+? **Single Query** - LLM asks "show all content from last month" across ALL platforms
+? **Preserved Specifics** - PlatformMetadata stores WordPress slugs, LinkedIn URLs, etc.
+? **Full-Text Search** - FTS5 for fast LLM content retrieval
+? **Calendar Integration** - Single table for displaying all platform content
+? **AI Inspiration** - Analyze patterns across all user's content
 
 ### Implementation Checklist
 
@@ -2311,7 +2311,7 @@ var recentContent = await store.GetContentByDateRangeAsync(
 
 ### When NOT to Use
 
-❌ **DON'T use UnifiedContent when:**
+? **DON'T use UnifiedContent when:**
 - Single platform integration (no need for abstraction)
 - Platforms too different to unify (e.g., video vs text)
 - No LLM/search requirements (simple CRUD is fine)
@@ -2319,41 +2319,41 @@ var recentContent = await store.GetContentByDateRangeAsync(
 
 ### Real-World Example: WordPress Import
 
-**Implementation:** Hazina PR #95 + client-manager PR #283
+**Implementation:** myframework PR #95 + myproject PR #283
 
 ```
 Before (Per-Platform Tables):
 - wordpress_posts (title, content, slug, excerpt)
 - linkedin_posts (title, text, visibility, impressions)
 - instagram_posts (caption, media_url, likes, comments)
-❌ 3 tables, 3 storage implementations, no cross-platform queries
+? 3 tables, 3 storage implementations, no cross-platform queries
 
 After (UnifiedContent):
 - unified_content (source_type, content_type, title, content, platform_metadata)
-✅ 1 table, 1 storage implementation, full cross-platform querying
-✅ LLM can ask: "Show me all my posts from last month (any platform)"
-✅ Calendar shows WordPress + LinkedIn + Instagram in single view
+? 1 table, 1 storage implementation, full cross-platform querying
+? LLM can ask: "Show me all my posts from last month (any platform)"
+? Calendar shows WordPress + LinkedIn + Instagram in single view
 ```
 
 ### File References
 
-- Reflection log: C:\scripts\_machine\reflection.log.md § 2026-01-19 20:00
-- Model: Hazina.Tools.Services.Social.Models.UnifiedContent
-- Provider: Hazina.Tools.Services.Social.Providers.WordPressProvider
-- Store: Hazina.Tools.Services.Social.Stores.SqliteUnifiedContentStore
-- PRs: Hazina #95, client-manager #283
+- Reflection log: C:\scripts\_machine\reflection.log.md � 2026-01-19 20:00
+- Model: myframework.Tools.Services.Social.Models.UnifiedContent
+- Provider: myframework.Tools.Services.Social.Providers.WordPressProvider
+- Store: myframework.Tools.Services.Social.Stores.SqliteUnifiedContentStore
+- PRs: myframework #95, myproject #283
 
 ---
 
-## 📥 PER-CONTENT-TYPE IMPORT PATTERN
+## ?? PER-CONTENT-TYPE IMPORT PATTERN
 
 **When to use:** Building import features where users need granular control over what gets imported (e.g., WordPress posts vs pages vs products, Gmail contacts vs emails vs calendar).
 
 **Problem:** "Import All" approach leads to:
-- ❌ Unwanted data imported (user only wants posts, not products)
-- ❌ Long wait times (importing everything every time)
-- ❌ No progress visibility (user can't see what's being imported)
-- ❌ All-or-nothing failures (if products fail, posts also fail)
+- ? Unwanted data imported (user only wants posts, not products)
+- ? Long wait times (importing everything every time)
+- ? No progress visibility (user can't see what's being imported)
+- ? All-or-nothing failures (if products fail, posts also fail)
 
 **Solution:** Granular per-type import with separate UI controls and error isolation.
 
@@ -2367,9 +2367,9 @@ public async Task<List<WordPressContentType>> DiscoverContentTypes(...)
 {
     return new List<WordPressContentType>
     {
-        new() { Slug = "post", Name = "Blog Posts", Icon = "📝", Description = "Your blog posts and articles" },
-        new() { Slug = "page", Name = "Pages", Icon = "📄", Description = "Static pages like About, Contact" },
-        new() { Slug = "product", Name = "Products", Icon = "🛍️", Description = "WooCommerce products" }
+        new() { Slug = "post", Name = "Blog Posts", Icon = "??", Description = "Your blog posts and articles" },
+        new() { Slug = "page", Name = "Pages", Icon = "??", Description = "Static pages like About, Contact" },
+        new() { Slug = "product", Name = "Products", Icon = "???", Description = "WooCommerce products" }
     };
 }
 ```
@@ -2449,19 +2449,19 @@ public async Task<WordPressImportStatus> GetImportStatus(...)
 
 ### User Experience Flow
 
-1. **User opens settings** → Sees available content types (Posts, Pages, Products)
-2. **User clicks "Import"** on Posts → Only posts imported, pages/products untouched
-3. **Import completes** → Shows "Imported 150 posts"
-4. **User clicks "Sync"** on Posts → Re-imports posts for updates
-5. **Later, user imports Pages** → Now has Posts (150) + Pages (12)
+1. **User opens settings** ? Sees available content types (Posts, Pages, Products)
+2. **User clicks "Import"** on Posts ? Only posts imported, pages/products untouched
+3. **Import completes** ? Shows "Imported 150 posts"
+4. **User clicks "Sync"** on Posts ? Re-imports posts for updates
+5. **Later, user imports Pages** ? Now has Posts (150) + Pages (12)
 
 ### Benefits
 
-✅ **Selective Import** - User chooses what to import (saves bandwidth)
-✅ **Progress Visibility** - Clear count per type ("150 posts, 12 pages")
-✅ **Error Isolation** - If products fail, posts still succeed
-✅ **Incremental UX** - Test with one type before importing all
-✅ **Sync Support** - Re-import to get updates (not just initial import)
+? **Selective Import** - User chooses what to import (saves bandwidth)
+? **Progress Visibility** - Clear count per type ("150 posts, 12 pages")
+? **Error Isolation** - If products fail, posts still succeed
+? **Incremental UX** - Test with one type before importing all
+? **Sync Support** - Re-import to get updates (not just initial import)
 
 ### Implementation Checklist
 
@@ -2499,11 +2499,11 @@ const handleImportAll = async () => {
 
 ### File References
 
-- Reflection log: C:\scripts\_machine\reflection.log.md § 2026-01-19 20:00
+- Reflection log: C:\scripts\_machine\reflection.log.md � 2026-01-19 20:00
 - Frontend component: ClientManagerFrontend/src/components/containers/WordPressSettings.tsx
 - Service layer: ClientManagerFrontend/src/services/wordpress.ts
 - API controller: ClientManagerAPI/Controllers/SocialImportController.cs
-- PRs: Hazina #95, client-manager #283
+- PRs: myframework #95, myproject #283
 
 ### ClickUp Task Creation Workflow
 
@@ -2522,7 +2522,7 @@ powershell.exe -File C:/scripts/tools/clickup-sync.ps1 -Action create `
 - Click to view details
 
 **Dependencies:**
-- Requires Hazina #95 and client-manager #283 merged"
+- Requires myframework #95 and myproject #283 merged"
 ```
 
 **Example from this session:** Created 6 ClickUp tasks for WordPress import future work:
