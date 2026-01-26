@@ -143,7 +143,7 @@ Can you fix it?"
 
 Claude Action:
 → Mode: Active Debugging (build error posted)
-→ Location: C:\Projects\client-manager (current branch)
+→ Location: C:\Projects\myproject (current branch)
 → Action: Add `using System.Text.Json;` to the file
 → Output: "Added missing using statement to <file>:5"
 ```
@@ -155,7 +155,7 @@ Can you update the ValidateInput method to check for null?"
 
 Claude Action:
 → Mode: Active Debugging (user is debugging)
-→ Location: C:\Projects\client-manager (current branch)
+→ Location: C:\Projects\myproject (current branch)
 → Action: Edit ValidateInput method
 → Output: "Updated validation logic in <file>:45"
 ```
@@ -168,7 +168,7 @@ to add error handling to the ExportService."
 Claude Action:
 → Mode: Active Debugging (user stated current branch)
 → Verify: git branch --show-current → feature/add-export-functionality
-→ Location: C:\Projects\client-manager
+→ Location: C:\Projects\myproject
 → Action: Add error handling
 → Output: "Added try-catch to ExportService.cs:78"
 ```
@@ -300,7 +300,7 @@ Claude Action:
 → Mode: Feature Development (new feature request)
 → Allocate: agent-001, create worktree
 → Branch: agent-001-add-pdf-export
-→ Location: C:\Projects\worker-agents\agent-001\client-manager
+→ Location: C:\Projects\worker-agents\agent-001\myproject
 → Develop: Implement PDF export service
 → PR: Create PR #123 "feat: Add PDF export for reports"
 → Release: Clean agent-001, mark FREE, switch to develop
@@ -315,7 +315,7 @@ Claude Action:
 → Mode: Feature Development (architectural change)
 → Allocate: agent-002, create worktree
 → Branch: agent-002-refactor-auth-di
-→ Location: C:\Projects\worker-agents\agent-002\client-manager
+→ Location: C:\Projects\worker-agents\agent-002\myproject
 → Develop: Refactor AuthService
 → PR: Create PR #124 "refactor: Use DI in AuthService"
 → Release: Clean agent-002, mark FREE, switch to develop
@@ -330,7 +330,7 @@ Claude Action:
 → Mode: Feature Development (complex feature)
 → Allocate: agent-003, create worktree
 → Branch: agent-003-user-profile-management
-→ Location: C:\Projects\worker-agents\agent-003\client-manager
+→ Location: C:\Projects\worker-agents\agent-003\myproject
 → Develop:
   - Backend: ProfileService, AvatarStorage
   - Frontend: ProfilePage, AvatarUpload component

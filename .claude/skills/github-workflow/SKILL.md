@@ -67,9 +67,9 @@ If PR depends on another repo's PR, add to body:
 ## ⚠️ DEPENDENCY ALERT
 
 This PR depends on:
-- Hazina PR #XX - <description>
+- myframework PR #XX - <description>
 
-**Merge order:** Hazina first, then this PR
+**Merge order:** myframework first, then this PR
 ```
 
 ## Reviewing Pull Requests

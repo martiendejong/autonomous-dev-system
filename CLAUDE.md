@@ -29,7 +29,7 @@ Any task with multiple steps should become a script. This way:
 - Any visual content is needed for a project
 
 **Tool:** `C:\scripts\tools\ai-image.ps1`
-**API Key:** Automatically loaded from `C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json`
+**API Key:** Automatically loaded from `C:\Projects\myproject\ClientManagerAPI\appsettings.Secrets.json`
 
 **Example usage:**
 ```powershell
@@ -65,7 +65,7 @@ powershell.exe -File "C:/scripts/tools/ai-image.ps1" \
 - Any question about visual content
 
 **Tool:** `C:\scripts\tools\ai-vision.ps1`
-**API Key:** Automatically loaded from `C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json`
+**API Key:** Automatically loaded from `C:\Projects\myproject\ClientManagerAPI\appsettings.Secrets.json`
 
 **Example usage:**
 ```powershell
@@ -142,7 +142,7 @@ powershell.exe -File "C:/scripts/tools/ai-vision.ps1" \
 | **Web research for implementation** | **Request Browser Claude via bridge** |
 | Manual C# formatting | `cs-format.ps1` |
 | Checking ClickUp tasks | `clickup-sync.ps1 -Action list` |
-| Allocating worktree manually | `worktree-allocate.ps1 -Repo client-manager -Branch feature/x` |
+| Allocating worktree manually | `worktree-allocate.ps1 -Repo myproject -Branch feature/x` |
 | Running health checks | `system-health.ps1` |
 | Searching past patterns | `pattern-search.ps1 -Query "error"` |
 | Unified operations | `claude-ctl.ps1 status` |
@@ -184,7 +184,7 @@ powershell.exe -File "C:/scripts/tools/ai-vision.ps1" \
 | `bootstrap-snapshot.ps1` | Fast startup state | `bootstrap-snapshot.ps1 -Generate` |
 | `system-health.ps1` | Comprehensive health check | `system-health.ps1 -Fix` |
 | **`monitor-activity.ps1`** | **ManicTime activity tracking - context awareness** | `monitor-activity.ps1 -Mode context` |
-| `worktree-allocate.ps1` | Single-command allocation | `worktree-allocate.ps1 -Repo client-manager -Branch x -Paired` |
+| `worktree-allocate.ps1` | Single-command allocation | `worktree-allocate.ps1 -Repo myproject -Branch x -Paired` |
 | `worktree-status.ps1` | Check worktree pool | `worktree-status.ps1 -Compact` |
 | `worktree-release-all.ps1` | Release worktrees | `worktree-release-all.ps1 -AutoCommit` |
 | `pattern-search.ps1` | Search past solutions | `pattern-search.ps1 -Query "build error"` |
@@ -194,7 +194,7 @@ powershell.exe -File "C:/scripts/tools/ai-vision.ps1" \
 | `prune-branches.ps1` | Clean old branches | `prune-branches.ps1 -DryRun` |
 | `pre-commit-hook.ps1` | Zero-tolerance enforcement | `pre-commit-hook.ps1 -Install -RepoPath <path>` |
 | **`merge-pr-sequence.ps1`** | **NEW: Automated PR merge sequencer** | `merge-pr-sequence.ps1 -DryRun` |
-| **`validate-pr-base.ps1`** | **NEW: Validate PR base branch** | `validate-pr-base.ps1 -Repo client-manager` |
+| **`validate-pr-base.ps1`** | **NEW: Validate PR base branch** | `validate-pr-base.ps1 -Repo myproject` |
 | **`model-selector.ps1`** | **NEW: Intelligent model selection** | `model-selector.ps1 -Task "..." -Analyze` |
 | **`smart-search.ps1`** | **NEW: Context-aware doc search** | `smart-search.ps1 -Query "worktree"` |
 | **`diagnose-error.ps1`** | **NEW: AI-powered error diagnosis** | `diagnose-error.ps1 -ErrorMessage "..."` |
@@ -262,7 +262,7 @@ powershell.exe -File "C:/scripts/tools/ai-vision.ps1" \
 | **`deployment-risk-score.ps1`** | **WAVE 2: Calculate deployment risk, prevent production incidents** | `deployment-risk-score.ps1 -Threshold 70` |
 | **`pr-description-enforcer.ps1`** | **WAVE 2: Enforce PR description templates, auto-generate** | `pr-description-enforcer.ps1 -Action check` |
 | **`config-validator.ps1`** | **WAVE 2: Validate config files, detect typos/secrets** | `config-validator.ps1` |
-| **`cross-repo-sync.ps1`** | **WAVE 2: Sync Hazina + client-manager branches** | `cross-repo-sync.ps1 -Action create -BranchName feature/x` |
+| **`cross-repo-sync.ps1`** | **WAVE 2: Sync myframework + myproject branches** | `cross-repo-sync.ps1 -Action create -BranchName feature/x` |
 | **`adr-generator.ps1`** | **WAVE 2: Generate Architecture Decision Records from PRs** | `adr-generator.ps1 -PRNumber 123` |
 | **`boilerplate-generator.ps1`** | **WAVE 2: Scaffold components/services/controllers + tests** | `boilerplate-generator.ps1 -Type component -Name Button` |
 | **`next-action-predictor.ps1`** | **WAVE 2: Predict next command based on history patterns** | `next-action-predictor.ps1` |
@@ -438,7 +438,7 @@ See **[bootstrap/README.md](./bootstrap/README.md)** for complete documentation.
 
 #### 🔀 GitHub Workflows
 - **`github-workflow`** - PR creation, code reviews, merging, and lifecycle management
-- **`pr-dependencies`** - Cross-repo dependency tracking between Hazina and client-manager
+- **`pr-dependencies`** - Cross-repo dependency tracking between myframework and myproject
 
 #### 🛠️ Development Patterns
 - **`api-patterns`** - Common API pitfalls: OpenAIConfig initialization, response enrichment, URL duplication, LLM integration
@@ -700,7 +700,7 @@ C:\scripts\.claude\skills\
 | **VERIFY: Definition of Done for all tasks** | **`_machine/DEFINITION_OF_DONE.md`** | - |
 | **APPLY: Boy Scout Rule & Code Quality Standards** | **`_machine/SOFTWARE_DEVELOPMENT_PRINCIPLES.md`** | - |
 | Allocate worktree for code editing (Feature Mode) | `GENERAL_WORKTREE_PROTOCOL.md` § Atomic Allocation | ✅ `allocate-worktree` |
-| **Allocate paired worktrees (client-manager + Hazina)** | **`worktree-workflow.md` § Pattern 73** | ✅ `allocate-worktree` |
+| **Allocate paired worktrees (myproject + myframework)** | **`worktree-workflow.md` § Pattern 73** | ✅ `allocate-worktree` |
 | Work directly in base repo (Debug Mode) | `GENERAL_DUAL_MODE_WORKFLOW.md` § Active Debugging Mode | - |
 | Release worktree after PR | `worktree-workflow.md` § Release Protocol | ✅ `release-worktree` |
 | Check worktree pool status | `worktree-workflow.md` § Pool Management | ✅ `worktree-status` |
@@ -793,9 +793,9 @@ When implemented, this will enable agents to:
 ## 🔗 External Documentation
 
 - **Project-Specific:**
-  - `C:\Projects\client-manager\README.md`
-  - `C:\Projects\hazina\README.md`
-  - `C:\Projects\client-manager\docs\`
+  - `C:\Projects\myproject\README.md`
+  - `C:\Projects\myframework\README.md`
+  - `C:\Projects\myproject\docs\`
 
 - **Other Scripts Docs:**
   - `C:\scripts\scripts.md` - Workflow scripts documentation
@@ -811,19 +811,19 @@ When implemented, this will enable agents to:
 
 ## ⚙️ Projects Configuration
 
-### client-manager / brand2boost
+### myproject / myapp
 **Type:** Promotion and brand development SaaS software
 
 **Locations:**
-- Code (frontend + API): `c:\projects\client-manager`
-- Hazina framework: `c:\projects\hazina`
-- Store config + data: `c:\stores\brand2boost`
+- Code (frontend + API): `c:\projects\myproject`
+- myframework framework: `c:\projects\myframework`
+- Store config + data: `c:\stores\myapp`
 
 **Admin Access:**
-- User: `wreckingball`
-- Password: `Th1s1sSp4rt4!`
+- User: `admin`
+- Password: `YourSecurePassword`
 
-**Important:** Do not run client-manager frontend or backend from command line. User runs from Visual Studio and npm directly.
+**Important:** Do not run myproject frontend or backend from command line. User runs from Visual Studio and npm directly.
 
 ### Debugging Tools
 - **Browser MCP:** For frontend application debugging

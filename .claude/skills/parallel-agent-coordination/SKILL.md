@@ -531,7 +531,7 @@ function Invoke-CoordinationValidation {
     }
 
     # Validation 2: Git worktrees vs. Pool state
-    $repos = @("client-manager", "hazina")
+    $repos = @("myproject", "myframework")
     foreach ($repo in $repos) {
         $gitWorktrees = git -C "C:\Projects\$repo" worktree list | Select-Object -Skip 1  # Skip main worktree
 
@@ -710,8 +710,8 @@ CREATE TABLE IF NOT EXISTS allocation_log (
         $cmd.CommandText = @"
 INSERT OR IGNORE INTO worktrees (worktree_id, seat_name, path, repo, state, version)
 VALUES
-    ('$agentId-client-manager', '$agentId', 'C:\Projects\worker-agents\$agentId\client-manager', 'client-manager', 'FREE', 1),
-    ('$agentId-hazina', '$agentId', 'C:\Projects\worker-agents\$agentId\hazina', 'hazina', 'FREE', 1);
+    ('$agentId-myproject', '$agentId', 'C:\Projects\worker-agents\$agentId\myproject', 'myproject', 'FREE', 1),
+    ('$agentId-myframework', '$agentId', 'C:\Projects\worker-agents\$agentId\myframework', 'myframework', 'FREE', 1);
 "@
         $cmd.ExecuteNonQuery() | Out-Null
     }

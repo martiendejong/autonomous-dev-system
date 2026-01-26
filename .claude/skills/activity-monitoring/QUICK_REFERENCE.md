@@ -64,7 +64,7 @@ monitor-activity.ps1 -Mode patterns -Hours 8
 ### Current Activity
 ```
 Active Window:
-  Title: Visual Studio - client-manager
+  Title: Visual Studio - myproject
   Process: devenv (PID: 12345)
   Path: C:\Program Files\Microsoft Visual Studio\...
 ```

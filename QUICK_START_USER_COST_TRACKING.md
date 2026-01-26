@@ -2,7 +2,7 @@
 
 **Goal:** Show users their total AI usage cost in your application's frontend
 
-**Works with:** ArtRevisionist, Client-Manager, or any Hazina-based app
+**Works with:** ArtRevisionist, myproject, or any myframework-based app
 
 ---
 
@@ -22,7 +22,7 @@ cp C:\scripts\code-samples\UserTokenCostService.cs YourApp/Services/
 namespace YourApp.Services
 
 // To match your app:
-namespace ClientManagerAPI.Services  // For Client-Manager
+namespace ClientManagerAPI.Services  // For myproject
 // OR
 namespace ArtRevisionistAPI.Services  // For ArtRevisionist
 ```
@@ -45,7 +45,7 @@ cp C:\scripts\code-samples\UserTokenCostController.cs YourApp/Controllers/
 using YourApp.Services;
 
 // To match your app:
-using ClientManagerAPI.Services;  // For Client-Manager
+using ClientManagerAPI.Services;  // For myproject
 // OR
 using ArtRevisionistAPI.Services;  // For ArtRevisionist
 ```
@@ -149,7 +149,7 @@ export const DashboardPage = () => {
 };
 ```
 
-**Option D: Show in billing page (Client-Manager example)**
+**Option D: Show in billing page (myproject example)**
 
 ```tsx
 // ClientManager/Frontend/src/pages/Billing.tsx
@@ -174,7 +174,7 @@ export const BillingPage = () => {
 
 1. **Start backend:**
    ```bash
-   cd C:\Projects\client-manager  # or artrevisionist
+   cd C:\Projects\myproject  # or artrevisionist
    dotnet run
    ```
 
@@ -254,8 +254,8 @@ private const int CacheDurationMinutes = 5;  // ← Change this
 - ✅ First and last request timestamps
 
 **Data source:**
-- Uses existing `ILLMLogRepository` from Hazina.Observability.LLMLogs
-- If you're already using Hazina's LLM logging, this works immediately
+- Uses existing `ILLMLogRepository` from myframework.Observability.LLMLogs
+- If you're already using myframework's LLM logging, this works immediately
 - No additional database tables or configuration needed
 
 ---
@@ -290,7 +290,7 @@ var userId = User.FindFirst("sub")?.Value; // or "userId", etc.
 **Possible causes:**
 1. No LLM usage yet → Use a feature that calls LLMs
 2. Pricing not configured for your model → Check CalculateOpenAICost()
-3. ILLMLogRepository not capturing logs → Verify Hazina.Observability.LLMLogs is set up
+3. ILLMLogRepository not capturing logs → Verify myframework.Observability.LLMLogs is set up
 
 **Debug:**
 ```csharp
@@ -321,7 +321,7 @@ Console.WriteLine($"Found {logs.Count()} logs for user {userId}");
 
 For advanced features, see:
 - **C:\scripts\user-cost-tracking-implementation.md** - Complete architecture guide
-- **C:\scripts\hazina-dual-app-analysis.md** - Feature analysis and prioritization
+- **C:\scripts\myframework-dual-app-analysis.md** - Feature analysis and prioritization
 
 ---
 

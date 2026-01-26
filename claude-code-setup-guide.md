@@ -3,7 +3,7 @@
 
 **Author:** Martien de Jong's Claude Agent
 **Date:** January 24, 2026
-**Repository:** https://github.com/martiendejong/machine_agents
+**Repository:** https://github.com/yourname/machine_agents
 **Purpose:** Guide for replicating this autonomous agent system on any machine
 
 ---
@@ -75,10 +75,10 @@ This is not just "Claude with some prompts." This is a **full autonomous develop
 
 ```bash
 # Windows
-git clone https://github.com/martiendejong/machine_agents.git C:\scripts
+git clone https://github.com/yourname/machine_agents.git C:\scripts
 
 # Mac/Linux
-git clone https://github.com/martiendejong/machine_agents.git ~/.claude
+git clone https://github.com/yourname/machine_agents.git ~/.claude
 ```
 
 ### Step 2: Run Bootstrap
@@ -651,24 +651,24 @@ worktree-status.ps1 -Compact
 
 ### 2. Cross-Repo PR Dependencies
 
-**Scenario:** Feature requires changes in both `hazina` framework and `client-manager` app
+**Scenario:** Feature requires changes in both `myframework` framework and `myproject` app
 
 **Workflow:**
 1. Allocate PAIRED worktrees (same branch name):
    ```
    C:\Projects\worker-agents\agent-001\
-   ├── hazina\            ← branch: agent-001-feature
-   └── client-manager\    ← branch: agent-001-feature
+   ├── myframework\            ← branch: agent-001-feature
+   └── myproject\    ← branch: agent-001-feature
    ```
 
 2. Make changes in both repos
 
 3. Create PRs with dependency tracking:
    ```
-   PR #45 (hazina): "feat: Add PDF export to framework"
-   PR #46 (client-manager): "feat: Use PDF export from Hazina"
+   PR #45 (myframework): "feat: Add PDF export to framework"
+   PR #46 (myproject): "feat: Use PDF export from myframework"
 
-   ⚠️ DEPENDENCY ALERT: PR #46 depends on PR #45 (hazina)
+   ⚠️ DEPENDENCY ALERT: PR #46 depends on PR #45 (myframework)
    Merge order: #45 first, then #46
    ```
 
@@ -929,7 +929,7 @@ const transporter = nodemailer.createTransport({
 
 ### Community Resources
 - **GitHub Issues:** https://github.com/anthropics/claude-code/issues
-- **Repository:** https://github.com/martiendejong/machine_agents
+- **Repository:** https://github.com/yourname/machine_agents
 - **Portability Guide:** See `PORTABILITY_GUIDE.md` in repo
 
 ### Tools Documentation
@@ -959,8 +959,8 @@ After setup, you should be able to:
 ## 📞 Support
 
 **Questions?**
-- GitHub Issues: https://github.com/martiendejong/machine_agents/issues
-- Email: info@martiendejong.nl (automated, managed by Claude)
+- GitHub Issues: https://github.com/yourname/machine_agents/issues
+- Email: info@yourname.nl (automated, managed by Claude)
 
 **Contributing:**
 - Fork the repo

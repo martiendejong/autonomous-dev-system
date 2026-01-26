@@ -1,6 +1,6 @@
 ---
 name: clickhub-coding-agent
-description: Autonomous ClickUp task manager that analyzes unassigned tasks, identifies uncertainties, posts questions as comments, picks up todo tasks, executes code changes with worktree allocation, and operates in a continuous loop. Use when managing ClickUp tasks for client-manager project.
+description: Autonomous ClickUp task manager that analyzes unassigned tasks, identifies uncertainties, posts questions as comments, picks up todo tasks, executes code changes with worktree allocation, and operates in a continuous loop. Use when managing ClickUp tasks for myproject project.
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Task, AskUserQuestion
 user-invocable: true
 ---
@@ -15,20 +15,20 @@ user-invocable: true
 - User requests autonomous ClickUp task management
 - Need to process multiple ClickUp tasks automatically
 - Want continuous monitoring and execution of tasks
-- Managing client-manager project tasks from ClickUp
+- Managing myproject project tasks from ClickUp
 
 **Don't use when:**
 - Single task execution (use normal workflow)
 - User wants manual control over each task
 - Tasks are already assigned to specific people
-- Working outside client-manager project
+- Working outside myproject project
 
 ## Prerequisites
 
 - ClickUp API configured (`C:\scripts\_machine\clickup-config.json`)
 - `clickup-sync.ps1` tool available in `C:\scripts\tools\`
 - Worktree pool system initialized
-- Access to client-manager and hazina repositories
+- Access to myproject and myframework repositories
 
 ## Workflow Steps
 
@@ -65,7 +65,7 @@ Questions to ask yourself:
 
 ```bash
 # Search for related branches
-cd C:/Projects/client-manager
+cd C:/Projects/myproject
 git branch -a | grep -i "<task-keyword>"
 
 # Search for related PRs
@@ -303,7 +303,7 @@ For tasks in "todo" status with NO uncertainties:
 #### 4.1 Check for Existing Branch
 
 ```bash
-cd C:/Projects/client-manager
+cd C:/Projects/myproject
 git fetch --all
 
 # Check if branch already exists
@@ -328,14 +328,14 @@ AGENT_SEAT="agent-002"
 
 # Update pool to BUSY (manually edit or use tool)
 
-# Allocate paired worktrees (client-manager + hazina)
-cd C:/Projects/client-manager
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/client-manager" -b "$BRANCH_NAME" || \
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/client-manager" "$BRANCH_NAME"
+# Allocate paired worktrees (myproject + myframework)
+cd C:/Projects/myproject
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myproject" -b "$BRANCH_NAME" || \
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myproject" "$BRANCH_NAME"
 
-cd C:/Projects/hazina
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/hazina" -b "$BRANCH_NAME" || \
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/hazina" "$BRANCH_NAME"
+cd C:/Projects/myframework
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myframework" -b "$BRANCH_NAME" || \
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myframework" "$BRANCH_NAME"
 
 # Log allocation
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | ALLOCATE | $BRANCH_NAME | ClickHub task <task-id>" >> C:/scripts/_machine/worktrees.activity.md
@@ -345,7 +345,7 @@ echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | ALLOCATE | $BRANCH_NAME | C
 
 ```bash
 # Work in worktree directory
-cd "C:/Projects/worker-agents/$AGENT_SEAT/client-manager"
+cd "C:/Projects/worker-agents/$AGENT_SEAT/myproject"
 
 # Read existing code, understand patterns
 # Use Task/Explore agent for complex analysis
@@ -433,8 +433,8 @@ C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "re
 
 ```bash
 # Clean worktree
-rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/client-manager"
-rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/hazina"
+rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/myproject"
+rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/myframework"
 
 # Update pool to FREE
 # Edit C:/scripts/_machine/worktrees.pool.md
@@ -443,12 +443,12 @@ rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/hazina"
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | RELEASE | $BRANCH_NAME | PR #$PR_NUMBER created" >> C:/scripts/_machine/worktrees.activity.md
 
 # Prune worktrees
-cd C:/Projects/client-manager && git worktree prune
-cd C:/Projects/hazina && git worktree prune
+cd C:/Projects/myproject && git worktree prune
+cd C:/Projects/myframework && git worktree prune
 
 # Switch base repos to develop
-cd C:/Projects/client-manager && git checkout develop && git pull
-cd C:/Projects/hazina && git checkout develop && git pull
+cd C:/Projects/myproject && git checkout develop && git pull
+cd C:/Projects/myframework && git checkout develop && git pull
 ```
 
 ### Step 5: Review Existing Busy Tasks
