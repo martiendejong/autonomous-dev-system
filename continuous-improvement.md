@@ -666,3 +666,75 @@ C:\scripts\_machine\archive/
 - **Smart Search:** `C:\scripts\tools\smart-search.ps1`
 
 ---
+
+## 🆕 Recent Learnings (2026-02-09)
+
+### Pattern: DI Factory vs Direct Injection
+
+**Problem:** Factory is registered in DI container, but services inject the product type directly → DI resolution fails
+
+**Example from today:**
+```csharp
+// ❌ This was registered
+builder.Services.AddSingleton<ILLMProviderFactory, LLMProviderFactory>();
+
+// ❌ Services injected this (not registered)
+public RepurposingService(ILLMClient llmClient, ...) { }
+
+// ✅ Solution: Register product using factory
+builder.Services.AddScoped<ILLMClient>(sp =>
+    sp.GetRequiredService<ILLMProviderFactory>().CreateClient());
+```
+
+**When to apply:**
+- Error: "Unable to resolve service for type 'X' while attempting to activate 'Y'"
+- Factory for X exists but X itself not registered
+- Services inject X directly in constructors
+
+**Detection:**
+1. Check if `IXFactory` is registered
+2. Check if `IX` itself is registered
+3. If only factory registered → register product using factory
+
+### Pattern: Configuration Path Mismatches
+
+**Problem:** Code looks for `Section:Key` but config has `DifferentSection:Key` → runtime crash
+
+**Example from today:**
+```csharp
+// ❌ Code looked for this
+options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+
+// ✅ But config had this
+"GoogleOAuth": {
+  "ClientId": "..."
+}
+
+// ✅ Fix: Match config structure
+options.ClientId = builder.Configuration["GoogleOAuth:ClientId"];
+```
+
+**Detection:**
+1. Exception: "X not configured"
+2. Grep config files for X
+3. If value exists → check path structure
+4. Update code to match config (config is usually correct)
+
+### Pattern: Build File Locks
+
+**Problem:** Process still running from previous debug session → DLL files locked → build fails
+
+**Quick fix:**
+```powershell
+# Find process
+tasklist | findstr <PID>
+
+# Kill it
+Stop-Process -Id <PID> -Force
+```
+
+**Root cause:** Visual Studio doesn't always properly terminate processes on stop
+
+**Prevention:** Check running processes before rebuilding if DLL lock errors appear
+
+---
