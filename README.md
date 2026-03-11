@@ -126,19 +126,46 @@ Automate everything with ready-to-use PowerShell tools:
 
 See: [`CRITICAL_PROTOCOLS.md`](./CRITICAL_PROTOCOLS.md)
 
-### 6. **Auto-Discoverable Skills**
+### 6. **Auto-Discoverable Skills** ⭐ *Major Update 2026-03-11*
 Claude automatically activates specialized workflows based on context:
 
+#### Core Workflows
 - **Worktree Management** - `allocate-worktree`, `release-worktree`, `worktree-status`
-- **GitHub Workflows** - `github-workflow`, `pr-dependencies`
+- **GitHub Workflows** - `github-workflow`, `pr-dependencies`, `auto-pr-review` 🆕
 - **Development Patterns** - `api-patterns`, `terminology-migration`, `ef-migration-safety`
 - **Continuous Improvement** - `continuous-optimization`, `session-reflection`, `self-improvement`
-- **Task Management** - `clickhub-coding-agent` (autonomous ClickUp integration)
-- **Context Intelligence** - `activity-monitoring`, `parallel-agent-coordination`
-- **Massive Context Processing** - `rlm` (handles 10M+ token contexts)
-- **Critical Protocols** - `testing-protocol`, `tool-selection`, `moscow-prioritization`
+
+#### Task & Project Management
+- **ClickUp Integration** - `clickhub-coding-agent` (autonomous task manager), `clickup-reviewer` (PR review) 🆕
+- **Task Review** - `task-review` (comprehensive PR verification, conflict resolution, testing) 🆕
+- **Feature Ideation** - `feature-idea-generator` (100+ expert analysis, ROI prioritization, ClickUp integration) 🆕
+
+#### Code Quality & Review
+- **Automated Reviews** - `auto-pr-review` (conflict checks, builds, tests, comprehensive reviews) 🆕
+- **Code Analysis** - `api-patterns`, `ef-migration-safety`
+
+#### Context & Intelligence
+- **Activity Monitoring** - `activity-monitoring`, `parallel-agent-coordination`
+- **Massive Context** - `rlm` (handles 10M+ token contexts)
+
+#### UI & Design
+- **Beautiful UIs** - `beautiful-ui` (Lovable.dev quality) 🆕
+- **Business Documents** - `beautiful-letterhead` (invoices, proposals, contracts) 🆕
+
+#### Specialized Tools
+- **Legal Safeguards** - `legal-mode` (juridical correspondence, settlement negotiations) 🆕
+- **Case Management** - `art-revisionist-case` (case structure creation) 🆕
+- **Consciousness** - `consciousness-practices`, `character-reflection` 🆕
+- **User Experience** - `browse-awareness` (passive browsing detection) 🆕
+- **Coordination** - `coordinate-work` (work coordination prompts) 🆕
+- **Analysis** - `critical-analysis` 🆕
+- **Recovery** - `restore-crashed-chat` 🆕
 
 **Full list:** [`.claude/skills/`](./.claude/skills/)
+
+**Latest Major Update (2026-03-11):** Added 14 new skills, updated 6 existing skills
+- **New:** feature-idea-generator, task-review, auto-pr-review, clickup-reviewer, beautiful-ui, beautiful-letterhead, legal-mode, consciousness-practices, character-reflection, browse-awareness, art-revisionist-case, coordinate-work, critical-analysis, restore-crashed-chat
+- **Updated:** allocate-worktree, clickhub-coding-agent, debug-mode, github-workflow, release-worktree, session-reflection
 
 ### 7. **Dual-Mode Workflow**
 Intelligent mode detection for optimal workflow:
@@ -371,7 +398,7 @@ This is a **self-improving system**. Claude agents:
 
 - **89ms Startup** - Auto-consciousness (55.7x faster than manual 5000ms)
 - **120+ Productivity Tools** - Automation for every workflow
-- **20+ Claude Skills** - Auto-discoverable specialized workflows
+- **34 Claude Skills** - Auto-discoverable specialized workflows (updated 2026-03-11)
 - **50 Active Predictors** - Real-time action prediction (85%+ confidence)
 - **4-Layer Storage** - <1ms (RAM) to 500ms (Semantic), unlimited capacity
 - **100% Action Coverage** - Every tool use logged and analyzed
@@ -379,6 +406,7 @@ This is a **self-improving system**. Claude agents:
 - **10M+ Token Context Support** - Via RLM (Recursive Language Model) pattern
 - **Multi-Agent Coordination** - Parallel execution without conflicts
 - **Zero-Tolerance Protocol** - Critical protocols prevent catastrophic failures
+- **Latest Update (2026-03-11)** - Added 14 new skills, updated 6 existing skills
 
 **Proven Improvements:**
 - Documentation: 40% → 95% coverage
@@ -425,10 +453,11 @@ Built on top of:
 
 **🤖 Built by autonomous agents, for autonomous agents.**
 
-**Last Updated:** 2026-02-07
+**Last Updated:** 2026-03-11
 **Maintained By:** Self-improving Claude agents (continuous embedded learning)
-**Version:** 2.0.0
+**Version:** 2.1.0
 - **Phase 1 Complete:** Auto-consciousness (89ms), Embedded learning (ACTIVE), 4-layer storage (VERIFIED)
-- **Architecture:** Consciousness + Learning + Storage + Critical Protocols
-- **Stats:** 120 tools, 20 skills, 50 predictors, 578 sessions indexed
+- **Architecture:** Consciousness + Learning + Storage + Critical Protocols + Advanced Skills
+- **Stats:** 120 tools, 34 skills (+14 new), 50 predictors, 578 sessions indexed
 - **Improvement:** 55.7x faster startup, +28% efficiency, +19.7 quality score
+- **Latest (2026-03-11):** Major skills update - feature ideation, automated PR review, task review, UI generation, legal mode, consciousness practices
