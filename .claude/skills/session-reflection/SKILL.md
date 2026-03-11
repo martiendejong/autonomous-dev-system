@@ -84,6 +84,39 @@ user-invocable: true
 
 **Key insight:** <One-sentence summary of main learning>
 
+### Production Validation (MANDATORY for infrastructure/features)
+
+**Was this used in production?**
+- [ ] YES - TotalCalls: <number>, Success Rate: <percentage>
+- [ ] NO - Not yet deployed / Not yet validated
+- [ ] N/A - Documentation/refactoring only
+
+**Did it work as expected?**
+- [ ] YES - Metrics meet success criteria
+- [ ] PARTIAL - Works but needs improvement (<what>)
+- [ ] NO - Failed validation (<what failed>)
+- [ ] UNKNOWN - No metrics available (PROBLEM!)
+
+**What failed? (if applicable)**
+- Error details: <specific errors>
+- Failure rate: <percentage>
+- Root cause: <why it failed>
+
+**Usage metrics (if applicable):**
+- Total calls: <number>
+- Success rate: <percentage>
+- Average duration: <ms>
+- First use: <date/time>
+- Last use: <date/time>
+
+**Falsifiable test result:**
+- Test defined: <what was the test?>
+- Result: <pass/fail>
+- Evidence: <where is the data?>
+
+**Key validation insight:**
+<One-sentence summary: was this worth building? would you build it again?>
+
 ---
 ```
 
@@ -390,6 +423,84 @@ Fixed API path duplication in companyDocuments.ts
 **Documented in:** `C:/scripts/<file>.md` § <section>
 ```
 
+## Production Validation Questions (NEW - 2026-02-20)
+
+**When to include validation section:**
+- ✅ Built new feature or service
+- ✅ Added infrastructure (APIs, background jobs, integrations)
+- ✅ Implemented optimization (performance, cost reduction)
+- ✅ Created automation tool
+- ❌ Documentation-only changes
+- ❌ Pure refactoring (no new behavior)
+
+**Mandatory questions:**
+
+1. **Was this used in production?**
+   - If NO → Why? Is it deployed? Is it discoverable?
+   - If YES → Show the numbers (calls, users, frequency)
+   - If UNKNOWN → RED FLAG! Add monitoring immediately.
+
+2. **Did it work as expected?**
+   - Success rate percentage (target: ≥95%)
+   - Failure modes encountered
+   - Performance vs baseline
+
+3. **What failed?**
+   - Specific errors with counts
+   - Root causes identified
+   - Fixes applied or planned
+
+4. **Falsifiable test:**
+   - What test would prove this doesn't work?
+   - Did you run that test?
+   - What was the result?
+
+5. **Would you build it again?**
+   - ROI positive? (value delivered > time invested)
+   - Actual usage justifies complexity?
+   - Lessons for similar future work?
+
+**Example validation section:**
+
+```markdown
+### Production Validation
+
+**Was this used in production?**
+- [x] YES - TotalCalls: 47, Success Rate: 95.7%
+
+**Did it work as expected?**
+- [x] YES - Metrics meet success criteria (≥10 calls in 7 days)
+
+**Usage metrics:**
+- Total calls: 47
+- Success rate: 95.7% (45 success, 2 failures)
+- Average duration: 2,340ms
+- First use: 2026-02-20 06:15
+- Last use: 2026-02-27 14:30
+
+**Falsifiable test result:**
+- Test defined: "If TotalCalls = 0 after 7 days, service is unused"
+- Result: PASS (47 calls in 7 days)
+- Evidence: E:\jengo\documents\temp\opencode-usage.jsonl
+
+**Key validation insight:**
+Worth building. 47 uses in first week proves demand. 2 failures (4.3%) identified optimization opportunity.
+```
+
+**Anti-pattern to avoid:**
+
+```markdown
+### Production Validation
+
+**Was this used in production?**
+- [ ] Not yet deployed
+
+**Did it work as expected?**
+- [ ] UNKNOWN - No metrics available
+```
+
+**This is a RED FLAG.** If you built something without metrics, you're building blind.
+
 ## End-of-Session Checklist
 
 **Before ending session, verify:**
@@ -403,6 +514,9 @@ Fixed API path duplication in companyDocuments.ts
 [ ] Code examples included
 [ ] Success criteria defined
 [ ] Future guidance provided
+[ ] Production validation section included (if infrastructure/features built)
+[ ] Usage metrics documented (if applicable)
+[ ] Falsifiable test results recorded (if applicable)
 [ ] All documentation changes committed and pushed
 ```
 

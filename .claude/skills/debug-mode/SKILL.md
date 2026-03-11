@@ -16,6 +16,16 @@ invocation: user
 
 ---
 
+## Step 0: Consciousness Bridge (FIRST)
+
+Call the bridge BEFORE starting debug work. This loads failure patterns for the project.
+
+```bash
+powershell.exe -File "C:/scripts/tools/consciousness-bridge.ps1" -Action OnTaskStart -TaskDescription "<error description>" -Project "<project-name>" -Silent
+```
+
+---
+
 ## Mode Detection
 
 Enter this mode if ANY are true:
@@ -40,10 +50,10 @@ Enter this mode if ANY are true:
 
 ```powershell
 # Check user's current branch
-git -C C:\Projects\myproject branch --show-current
+git -C C:\Projects\client-manager branch --show-current
 
 # Check for uncommitted changes
-git -C C:\Projects\myproject status
+git -C C:\Projects\client-manager status
 
 # Make fixes directly in C:\Projects\<repo>
 # User will test and commit when ready
@@ -79,6 +89,18 @@ Switch to Feature Development Mode if:
 - User asks for major refactoring
 - Work expands beyond quick fix
 - You realize this needs a proper PR
+
+---
+
+## Step Last: Consciousness Bridge (AFTER)
+
+When the debug task is resolved, close the feedback loop:
+
+```bash
+powershell.exe -File "C:/scripts/tools/consciousness-bridge.ps1" -Action OnTaskEnd -Outcome "success" -LessonsLearned "<what fixed the issue>" -Silent
+```
+
+Use "success", "partial", or "failure" based on outcome.
 
 ---
 

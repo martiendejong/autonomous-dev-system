@@ -1,13 +1,80 @@
 ---
 name: clickhub-coding-agent
-description: Autonomous ClickUp task manager that analyzes unassigned tasks, identifies uncertainties, posts questions as comments, picks up todo tasks, executes code changes with worktree allocation, and operates in a continuous loop. Use when managing ClickUp tasks for myproject project.
+description: Autonomous ClickUp task manager that analyzes unassigned tasks, identifies uncertainties, posts questions as comments, picks up todo tasks, executes code changes with worktree allocation, and operates in a continuous loop. Works with ANY ClickUp board - internal projects, client projects, or specific boards by list ID.
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Task, AskUserQuestion
 user-invocable: true
 ---
 
 # ClickHub Coding Agent
 
-**Purpose:** Autonomous agent that manages ClickUp tasks, identifies requirements, executes development work, and operates continuously with sleep cycles.
+**Purpose:** Autonomous agent that manages ClickUp tasks from any ClickUp board, identifies requirements, executes development work, and operates continuously with sleep cycles.
+
+## Supported Project Scopes
+
+**Configuration source:** `C:\scripts\_machine\clickup-config.json`
+
+### Internal Projects (Default Scope)
+| Project | List ID | Type | Repos | Environment |
+|---------|---------|------|-------|-------------|
+| Brand Designer (client-manager) | 901214097647 | Fullstack | client-manager, hazina | Visual Studio |
+| Hazina Framework | 901215559249 | Framework | hazina | Visual Studio |
+| Brand2Boost Birdseye | 901215573347 | Strategic | client-manager | Visual Studio |
+| LearningTool | 901215905273 | Fullstack | learningtool | VSCode |
+| General & Meta Tasks | 901215818012 | Meta | various | Mixed |
+
+### Client Projects
+| Project | List ID | Type | Repos | Environment |
+|---------|---------|------|-------|-------------|
+| Art Revisionist | 901211612245 | WordPress | - | XAMPP |
+| Vera AI | 901211218614 | Client | - | Mixed |
+| wreckingball.ai | 901211218756 | Client | - | Mixed |
+| CloudGrafo | 901213168637 | Client | - | Mixed |
+| Vloerenhuis | 901213305955 | Client | - | Mixed |
+
+### Personal Projects
+| Project | List ID | Type | Environment |
+|---------|---------|------|-------------|
+| Nijeveen Household | 901519266250 | Household | Mixed |
+| SocraNext | 901511986511 | Project | Mixed |
+
+## Invocation Modes
+
+### Mode 1: All Internal + Client Projects (Default)
+```
+"Run the clickup coding agent"
+"Start clickhub autonomous mode"
+```
+**Scope:** All internal projects (Brand Designer, Hazina, LearningTool, Meta) + all client projects (Art Revisionist, Vera AI, etc.)
+
+### Mode 2: Specific Project by Name
+```
+"Run the clickup coding agent for art-revisionist"
+"Start clickhub for learningtool"
+"Run clickhub agent on hazina framework"
+```
+**Scope:** Only tasks from specified project
+
+### Mode 3: Specific Board by List ID
+```
+"Run the clickup coding agent for list 901211612245"
+"Start clickhub on board 901519266250"
+```
+**Scope:** Only tasks from specified list ID (useful for unlisted boards)
+
+### Mode 4: Multiple Specific Projects
+```
+"Run clickhub for client-manager and hazina"
+"Start clickhub on art-revisionist and vera-ai"
+```
+**Scope:** Only specified projects
+
+### Mode 5: Category Filter
+```
+"Run clickhub for internal projects only"
+"Run clickhub for client projects only"
+"Run clickhub for all projects including household"
+```
+**Scope:** Internal-only, client-only, or all (including personal)
 
 ## When to Use This Skill
 
@@ -15,45 +82,332 @@ user-invocable: true
 - User requests autonomous ClickUp task management
 - Need to process multiple ClickUp tasks automatically
 - Want continuous monitoring and execution of tasks
-- Managing myproject project tasks from ClickUp
+- Managing tasks from any configured ClickUp project
 
 **Don't use when:**
 - Single task execution (use normal workflow)
 - User wants manual control over each task
 - Tasks are already assigned to specific people
-- Working outside myproject project
+
+## ⚠️ CRITICAL: ClickUp Workflow (Swimlanes)
+
+**MANDATORY workflow - NEVER deviate from this:**
+
+```
+┌─────────┐
+│  TODO   │ ← Start here (pick up unassigned tasks)
+└────┬────┘
+     │ Agent starts work
+     ▼
+┌─────────────┐
+│IN PROGRESS/ │ ← Working on task (agent assigned)
+│   BUSY      │
+└────┬────────┘
+     │ Work complete, PR created
+     ▼
+┌─────────┐
+│ REVIEW  │ ← Waiting for code review
+└────┬────┘
+     │
+     ├─────────────┐
+     │             │
+     ▼             ▼
+┌─────────┐   ┌─────────┐
+│  TODO   │   │ TESTING │ ← Code merged to develop (ONLY THEN)
+└─────────┘   └────┬────┘
+  (rework)         │ User validates
+                   ▼
+              ┌─────────┐
+              │  DONE   │ ← User sets to done
+              └─────────┘
+
+┌──────────────────┐
+│ NEEDS INFO /     │ ← ONLY when truly blocked (use sparingly!)
+│ BLOCKED          │
+└──────────────────┘
+```
+
+### Status Transition Rules
+
+**1. TODO → IN PROGRESS/BUSY**
+- When: Agent starts working on task
+- Required: Assign task to agent/user
+- Action: Post "🤖 AGENT WORKING" comment with agent ID + branch name
+
+**2. IN PROGRESS/BUSY → REVIEW**
+- When: PR created and pushed
+- Required: PR link in comment + "✅ AGENT COMPLETED" comment
+- Action: Move to REVIEW, keep assignee (reviewer)
+
+**3. REVIEW → TESTING**
+- When: PR merged to develop (ONLY THEN!)
+- Who: clickup-reviewer agent or human reviewer
+- Required: PR must be merged first, then move status
+- ⚠️ NEVER move to testing before merge!
+
+**4. REVIEW → TODO**
+- When: Review rejected, changes requested
+- Required: Clear comment explaining what needs rework
+- Action: Unassign or reassign to original implementer
+
+**5. TESTING → DONE**
+- When: User validates feature works in develop
+- Who: ONLY user can do this (not agent)
+- Action: Agent NEVER moves tasks to done
+
+**6. ANY → NEEDS INFO / BLOCKED**
+- When: Genuinely cannot proceed (missing requirements, external dependency)
+- ⚠️ Use SPARINGLY - prefer asking in comments and continuing with assumptions
+- Required: MUST explain exactly what's blocking and what's needed
+- Action: Post detailed comment, try to unblock yourself first
+
+### ❌ FORBIDDEN Transitions
+
+- ❌ IN PROGRESS → TESTING (skipping review)
+- ❌ TODO → TESTING (skipping implementation + review)
+- ❌ REVIEW → DONE (skipping testing)
+- ❌ Any status → DONE by agent (only user sets done)
+- ❌ Moving to BLOCKED without clear explanation
+- ❌ Moving to TESTING before PR merged
+
+### Comment Guidelines (MANDATORY)
+
+**When posting comments, ALWAYS:**
+
+✅ **Keep it short and simple** (max 10 lines for routine updates)
+✅ **Show ALL URLs** - PR links, branch links, documentation links
+✅ **Use clear formatting** - headers, bullets, code blocks
+✅ **Read existing comments FIRST** - avoid repeating questions
+✅ **Be specific** - "PR #123 has merge conflicts" not "there's a problem"
+
+**Comment Format:**
+```markdown
+🤖 [ACTION TAKEN]
+
+[Brief description]
+
+Links:
+- PR: https://github.com/org/repo/pull/123
+- Branch: feature/task-869abc123-description
+
+[Next steps or blockers if any]
+
+-- Claude Code Agent (agent-XXX)
+```
+
+**Examples:**
+
+✅ **GOOD:**
+```
+🤖 AGENT WORKING
+
+Agent: agent-003
+Branch: feature/task-869abc-add-login
+PR: Will create when ready
+
+Working on Google OAuth integration.
+```
+
+✅ **GOOD:**
+```
+✅ AGENT COMPLETED
+
+PR: https://github.com/martiendejong/client-manager/pull/157
+Branch: feature/task-869abc-add-login
+Files: 8 changed, 245 additions
+
+Ready for review. All MUST HAVE items complete.
+```
+
+❌ **BAD:**
+```
+I've been working on this task and I think I've implemented most of the requirements that were described in the task description. I created a pull request but I'm not entirely sure if everything is correct. Let me know if you have any questions or if I should change anything. The branch name is quite long but hopefully that's okay.
+```
+
+❌ **BAD (no URLs):**
+```
+PR created, ready for review
+```
 
 ## Prerequisites
 
 - ClickUp API configured (`C:\scripts\_machine\clickup-config.json`)
 - `clickup-sync.ps1` tool available in `C:\scripts\tools\`
 - Worktree pool system initialized
-- Access to myproject and myframework repositories
+- Access to client-manager and hazina repositories
+- **MoSCoW prioritization framework** (`C:\scripts\MOSCOW_PRIORITIZATION.md`) ⭐ MANDATORY
 
 ## Workflow Steps
 
-### Step 1: Fetch Unassigned Tasks
+### Step 0: Determine Scope & Load Project Configuration
 
-Retrieve all open tasks from ClickUp that are not assigned to anyone.
+**ALWAYS load full project configuration first:**
 
 ```powershell
-# List all tasks from Brand Designer list
-C:/scripts/tools/clickup-sync.ps1 -Action list
+# Load ClickUp configuration
+$config = Get-Content "C:\scripts\_machine\clickup-config.json" | ConvertFrom-Json
 
-# Filter for unassigned tasks in 'todo' or 'busy' status
+# Determine scope based on user request
+$SCOPE = @{
+    Mode = "default"  # default | specific | listid | multiple | category
+    Projects = @()     # Project keys to process
+    ListIds = @()      # Direct list IDs
+}
+
+# Parse user request:
+# "for art-revisionist" → Mode=specific, Projects=@("art-revisionist")
+# "for list 901211612245" → Mode=listid, ListIds=@("901211612245")
+# "for client-manager and hazina" → Mode=multiple, Projects=@("client-manager","hazina")
+# "for internal projects only" → Mode=category, Projects=@(all internal)
+# "for client projects only" → Mode=category, Projects=@(all client)
+# No specification → Mode=default, Projects=@(all internal + all client)
 ```
 
-**Output:** List of tasks with ID, name, status, and description.
+**Default scope (no user specification):**
+```powershell
+# Internal projects folder (901266650982)
+$internalProjects = @(
+    "client-manager",      # 901214097647
+    "hazina",              # 901215559249
+    "brand2boost-birdseye", # 901215573347
+    "learningtool",        # 901215905273
+    "general-meta"         # 901215818012
+)
+
+# Client projects folder (90126651004)
+$clientProjects = @(
+    "art-revisionist",     # 901211612245
+    "vera-ai",             # 901211218614
+    "wreckingball",        # 901211218756
+    "cloudgrafo",          # 901213168637
+    "vloerenhuis"          # 901213305955
+)
+
+# Default = internal + client (NOT household/personal unless explicitly requested)
+$SCOPE.Projects = $internalProjects + $clientProjects
+```
+
+**Build list of list IDs to query:**
+```powershell
+$listIdsToQuery = @()
+
+switch ($SCOPE.Mode) {
+    "default" {
+        # Map all internal + client projects to list IDs
+        foreach ($project in $SCOPE.Projects) {
+            $listIdsToQuery += $config.projects.$project.list_id
+        }
+    }
+    "specific" {
+        # Map specified project(s) to list IDs
+        foreach ($project in $SCOPE.Projects) {
+            $listIdsToQuery += $config.projects.$project.list_id
+        }
+    }
+    "listid" {
+        # Direct list IDs
+        $listIdsToQuery = $SCOPE.ListIds
+    }
+    "multiple" {
+        # Map multiple projects
+        foreach ($project in $SCOPE.Projects) {
+            $listIdsToQuery += $config.projects.$project.list_id
+        }
+    }
+    "category" {
+        # Already populated in $SCOPE.Projects
+        foreach ($project in $SCOPE.Projects) {
+            $listIdsToQuery += $config.projects.$project.list_id
+        }
+    }
+}
+
+Write-Host "ClickHub Scope: $($SCOPE.Mode)"
+Write-Host "Projects: $($SCOPE.Projects -join ', ')"
+Write-Host "List IDs: $($listIdsToQuery -join ', ')"
+```
+
+### Step 1: Fetch Unassigned Tasks Across All Boards
+
+Retrieve all open tasks from ClickUp across all boards in scope:
+
+```powershell
+$allTasks = @()
+
+foreach ($listId in $listIdsToQuery) {
+    # Fetch tasks from this list
+    $tasks = C:/scripts/tools/clickup-sync.ps1 -Action list -ListId $listId
+
+    # Filter for unassigned tasks in 'todo' or 'blocked' status
+    $unassigned = $tasks | Where-Object {
+        $_.assignees.Count -eq 0 -and
+        ($_.status.status -in @("todo", "to do", "blocked", "backlog", "refined"))
+    }
+
+    # Add project context to each task
+    foreach ($task in $unassigned) {
+        $task | Add-Member -NotePropertyName "ProjectContext" -NotePropertyValue (
+            $config.projects.GetEnumerator() |
+            Where-Object { $_.Value.list_id -eq $listId } |
+            Select-Object -First 1 -ExpandProperty Key
+        )
+    }
+
+    $allTasks += $unassigned
+}
+
+Write-Host "Found $($allTasks.Count) unassigned tasks across $($listIdsToQuery.Count) boards"
+```
+
+### Step 1.5: Prioritize Tasks Using Learning Engine ⭐ NEW
+
+**MANDATORY: Use learning engine to prioritize tasks before working on them**
+
+```powershell
+# Load learning engine
+$learningEngine = "C:\scripts\tools\clickhub-learning-engine.ps1"
+
+# Check for previous crash recovery opportunities
+$crashRecovery = "C:\scripts\tools\clickhub-crash-recovery.ps1"
+& $crashRecovery -Action List | Out-Null
+
+# Prioritize tasks based on:
+# - ClickUp priority (urgent > high > normal > low)
+# - Historical difficulty (tasks that failed before)
+# - Age (how long in todo)
+# - Deadlines (urgent if <24hrs)
+# - Blocks other tasks
+$prioritizedTasks = & $learningEngine -Action PrioritizeTasks -Tasks $allTasks -Verbose
+
+# Work on highest priority tasks first
+Write-Host "`nTop 10 Priority Tasks:" -ForegroundColor Cyan
+foreach ($task in $prioritizedTasks | Select-Object -First 10) {
+    Write-Host "  [$($task.PriorityScore)] $($task.name)" -ForegroundColor White
+    Write-Host "    Project: $($task.ProjectContext) | Difficulty: $($task.DifficultyEstimate)" -ForegroundColor Gray
+}
+
+# Use prioritized list for all subsequent operations
+$allTasks = $prioritizedTasks
+```
+
+**Output:** List of tasks sorted by priority score, with difficulty estimates.
 
 ### Step 2: Analyze Each Task
 
 For each unassigned task, perform comprehensive analysis:
 
-#### 2.1 Understand Requirements
+#### 2.1 Understand Requirements & Apply MoSCoW Prioritization ⭐ MANDATORY
+
+**CRITICAL (2026-02-07): MoSCoW prioritization is REQUIRED for all ClickUp tasks**
+**Reference:** `C:\scripts\MOSCOW_PRIORITIZATION.md` (User mandate from task #869bu91e5)
 
 ```markdown
 Questions to ask yourself:
 - What is the exact feature/fix being requested?
+- **What are the MUST HAVE requirements? (Critical - cannot skip)**
+- **What are SHOULD HAVE requirements? (Important but can defer)**
+- **What are COULD HAVE requirements? (Nice-to-have only)**
+- **What are WON'T HAVE requirements? (Explicitly out of scope)**
 - What parts of the codebase will this affect?
 - Are there dependencies on other tasks/PRs?
 - What technical decisions need to be made?
@@ -61,11 +415,28 @@ Questions to ask yourself:
 - What testing is required?
 ```
 
+**MoSCoW Analysis Template:**
+
+```
+MUST HAVE (Critical - Will implement):
+- [Core requirement 1]
+- [Core requirement 2]
+
+SHOULD HAVE (Important - Include if time allows):
+- [Enhanced feature 1]
+
+COULD HAVE (Nice-to-have - Lower priority):
+- [Optional improvement 1]
+
+WON'T HAVE (Out of scope for this iteration):
+- [Future consideration 1]
+```
+
 #### 2.2 Search for Existing Code
 
 ```bash
 # Search for related branches
-cd C:/Projects/myproject
+cd C:/Projects/client-manager
 git branch -a | grep -i "<task-keyword>"
 
 # Search for related PRs
@@ -106,7 +477,55 @@ Recommend closing this task and working on the master task instead.
 -- ClickHub Coding Agent
 ```
 
-#### 2.4 Identify Uncertainties
+#### 2.4 Verify Bug Reproduction (For Bug Reports)
+
+**CRITICAL - Added 2026-02-04:**
+
+Before implementing bug fixes, verify the bug actually exists:
+
+```powershell
+# For bug reports, ALWAYS check:
+# 1. Is the feature already implemented?
+# 2. Can I reproduce the issue?
+# 3. Is this a user misunderstanding vs actual bug?
+
+# Example: "Chat streaming not working"
+# - Check: Is streaming code already in place?
+# - Test: Run app and observe actual behavior
+# - Verify: Confirm bug vs investigate first
+```
+
+**Decision Tree for Bug Reports:**
+
+```
+Bug reported in ClickUp
+  ↓
+Search codebase for related code
+  ↓
+Feature already implemented?
+  ↓
+├─ YES → Test actual behavior
+     ↓
+     Bug confirmed?
+       ↓
+       ├─ YES → Proceed to implementation
+       ↓
+       ├─ NO → Ask user for clarification (move to blocked)
+  ↓
+├─ NO → Feature not implemented, proceed
+```
+
+**Protocol:**
+1. **Investigate FIRST** - Search codebase before allocating worktree
+2. **Verify SECOND** - Test behavior if possible
+3. **Clarify THIRD** - Ask user if unclear
+4. **Allocate LAST** - Only allocate worktree after confirming work needed
+
+**Anti-Pattern:**
+❌ Allocate worktree → Investigate → Discover no work needed
+✅ Investigate → Verify → Clarify → Allocate → Implement
+
+#### 2.5 Identify Uncertainties
 
 **Critical questions that MUST be answered before implementation:**
 - Which approach should be taken? (if multiple options exist)
@@ -138,35 +557,106 @@ Recommend closing this task and consolidating work on the master task.
 C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<duplicate-task-id>" -Status "blocked"
 ```
 
-#### 3.2 Post Questions as Comments
+#### 3.2 Post MoSCoW Analysis & Questions as Comments ⭐ MANDATORY
 
-If **ANY** uncertainty exists that absolutely must be answered:
+**ALWAYS post MoSCoW analysis BEFORE starting implementation:**
 
 ```powershell
-# Post question as comment on ClickUp task
+# Post MoSCoW analysis as comment on ClickUp task
 C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
-QUESTIONS BEFORE IMPLEMENTATION:
+📊 MOSCOW PRIORITIZATION ANALYSIS
 
-1. [Architecture] Should we use Repository pattern or direct DbContext access?
-2. [UI/UX] Should the modal be full-screen or centered overlay?
-3. [Business Logic] What happens if user has no active subscription?
+MUST HAVE (Critical - Will implement):
+- [Core feature/requirement]
+- [Critical functionality]
 
-Please clarify before I proceed with implementation.
+SHOULD HAVE (Important - Will implement if time allows):
+- [Enhanced feature]
+- [Important improvement]
+
+COULD HAVE (Nice-to-have - Lower priority):
+- [Optional enhancement]
+
+WON'T HAVE (Out of scope for this iteration):
+- [Future consideration]
+
+If you disagree with this prioritization, please clarify before I continue.
 
 -- ClickHub Coding Agent
 "
 ```
 
-#### 3.3 Move to Blocked (if questions or duplicates exist)
+**If uncertainties exist about MUST HAVE scope:**
 
 ```powershell
-# Update task status to blocked
-C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "blocked"
+# Post questions as comment on ClickUp task
+C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
+QUESTIONS BEFORE IMPLEMENTATION:
+
+MoSCoW Analysis Questions:
+1. [Must Have?] Is [feature X] critical for this iteration?
+2. [Architecture] Should we use Repository pattern or direct DbContext access?
+3. [UI/UX] Should the modal be full-screen or centered overlay?
+
+Please clarify the MUST HAVE scope before I proceed with implementation.
+
+-- ClickHub Coding Agent
+"
 ```
+
+#### 3.3 Move to Blocked/Needs Info (USE SPARINGLY!)
+
+**⚠️ CRITICAL: Only use BLOCKED/NEEDS INFO when TRULY stuck**
+
+**Use BLOCKED/NEEDS INFO when:**
+- Truly cannot proceed without critical information
+- External dependency is genuinely blocking progress
+- Requirements are fundamentally unclear or contradictory
+
+**DO NOT use BLOCKED/NEEDS INFO when:**
+- Minor details are unclear (make reasonable assumptions)
+- You can continue with 80%+ of the information
+- It's just a preference question (pick the sensible default)
+- You can ask in comment and continue working
+
+**If you MUST block:**
+
+```powershell
+# Post DETAILED explanation of what's blocking
+C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
+⚠️ BLOCKED - Need Critical Information
+
+Blocking Issue:
+[Exactly what's blocking and why you can't proceed]
+
+Information Needed:
+1. [Specific question 1]
+2. [Specific question 2]
+
+Why This Blocks Progress:
+[Explain what you would implement differently based on the answer]
+
+I cannot make reasonable assumptions here because:
+[Explain why 80% solution isn't acceptable]
+
+-- ClickHub Coding Agent
+"
+
+# Update task status to blocked OR needs info
+C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "blocked"
+# OR
+C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "needs input"
+```
+
+**Better alternatives to blocking:**
+- Post questions in comment, continue with reasonable assumptions
+- Implement MUST HAVE items, defer SHOULD/COULD items pending clarification
+- Create PR with comment explaining assumptions made
+- Pick the most sensible default and document it
 
 #### 3.4 Skip to Next Task
 
-Do not implement tasks with unanswered questions. Move to next task.
+Only skip tasks that are truly blocked. Prefer making assumptions and continuing.
 
 ### Step 3.5: Handle Previously Blocked Tasks - CRITICAL ANTI-LOOP PROTOCOL
 
@@ -300,10 +790,28 @@ Has user replied to questions?
 
 For tasks in "todo" status with NO uncertainties:
 
-#### 4.1 Check for Existing Branch
+#### 4.1 Check for Existing Work (MANDATORY - Prevents Duplicate Effort)
+
+**STEP 1: Check if another agent is already working on this task**
+
+```powershell
+# Get task details including comments
+$taskDetails = C:/scripts/tools/clickup-sync.ps1 -Action show -TaskId "<task-id>"
+
+# Look for recent "AGENT WORKING" comment without "COMPLETED" or "HANDOFF"
+# If found and recent (within 2 hours), SKIP this task - another agent is on it!
+if ($taskDetails -match "🤖 AGENT WORKING" -and $taskDetails -notmatch "✅ AGENT COMPLETED") {
+    Write-Host "WARNING: Another agent is already working on this task!" -ForegroundColor Yellow
+    Write-Host "Check ClickUp comments for agent ID and status" -ForegroundColor Yellow
+    # SKIP to next task
+    return
+}
+```
+
+**STEP 2: Check for existing branch**
 
 ```bash
-cd C:/Projects/myproject
+cd C:/Projects/client-manager
 git fetch --all
 
 # Check if branch already exists
@@ -315,7 +823,26 @@ else
 fi
 ```
 
-#### 4.2 Allocate Worktree
+#### 4.2 Create Checkpoint - Starting Analysis ⭐ NEW
+
+**MANDATORY: Checkpoint before starting work**
+
+```powershell
+$AGENT_ID = "agent-007"  # Your agent seat
+$TASK_ID = $task.id
+$PROJECT = $task.ProjectContext
+
+# Create checkpoint for crash recovery
+& $crashRecovery -Action Checkpoint `
+    -AgentId $AGENT_ID `
+    -TaskId $TASK_ID `
+    -Project $PROJECT `
+    -Phase "analysis" `
+    -Metadata @{ task_name = $task.name } `
+    -Verbose
+```
+
+#### 4.3 Allocate Worktree
 
 **CRITICAL:** Follow Feature Development Mode (ZERO_TOLERANCE_RULES.md)
 
@@ -328,44 +855,94 @@ AGENT_SEAT="agent-002"
 
 # Update pool to BUSY (manually edit or use tool)
 
-# Allocate paired worktrees (myproject + myframework)
-cd C:/Projects/myproject
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myproject" -b "$BRANCH_NAME" || \
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myproject" "$BRANCH_NAME"
+# Allocate paired worktrees (client-manager + hazina)
+cd C:/Projects/client-manager
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/client-manager" -b "$BRANCH_NAME" || \
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/client-manager" "$BRANCH_NAME"
 
-cd C:/Projects/myframework
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myframework" -b "$BRANCH_NAME" || \
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/myframework" "$BRANCH_NAME"
+cd C:/Projects/hazina
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/hazina" -b "$BRANCH_NAME" || \
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/hazina" "$BRANCH_NAME"
 
 # Log allocation
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | ALLOCATE | $BRANCH_NAME | ClickHub task <task-id>" >> C:/scripts/_machine/worktrees.activity.md
 ```
 
-#### 4.3 Implement the Task
+#### 4.4 Checkpoint - Starting Implementation ⭐ NEW
+
+```powershell
+# Checkpoint before implementation starts
+& $crashRecovery -Action Checkpoint `
+    -AgentId $AGENT_ID `
+    -TaskId $TASK_ID `
+    -Project $PROJECT `
+    -Phase "implementation" `
+    -Metadata @{
+        branch = $BRANCH_NAME
+        worktree = "C:/Projects/worker-agents/$AGENT_SEAT/$PROJECT"
+    } `
+    -Verbose
+```
+
+#### 4.5 Implement the Task (MoSCoW-Guided) ⭐
 
 ```bash
 # Work in worktree directory
-cd "C:/Projects/worker-agents/$AGENT_SEAT/myproject"
+cd "C:/Projects/worker-agents/$AGENT_SEAT/client-manager"
 
 # Read existing code, understand patterns
 # Use Task/Explore agent for complex analysis
+
 # Implement changes following:
+# - **MoSCoW Priority Order: MUST → SHOULD → COULD (skip WON'T)** ⭐
 # - Boy Scout Rule (clean as you go)
 # - Existing code patterns
 # - Architecture principles from SOFTWARE_DEVELOPMENT_PRINCIPLES.md
 # - Definition of Done from DEFINITION_OF_DONE.md
+
+# Implementation Phases:
+# Phase 1: All MUST HAVE items (100% complete)
+# Phase 2: SHOULD HAVE items (if time/complexity allows)
+# Phase 3: COULD HAVE items (only if trivial to add)
+# Phase 4: Document WON'T HAVE as TODOs for future work
 ```
 
 #### 4.4 Update ClickUp Task Status and Assign
 
-**CRITICAL:** ALWAYS assign task when moving to "busy" or "review"
+**CRITICAL WORKFLOW RULES:**
+- ✅ TODO → IN PROGRESS/BUSY when starting work (assign to agent/user)
+- ✅ IN PROGRESS/BUSY → REVIEW when PR created (keep assigned to reviewer)
+- ❌ NEVER move to TESTING (only reviewer does this after merge to develop)
+- ❌ NEVER move to DONE (only user does this from testing)
+- ⚠️ Only use BLOCKED/NEEDS INFO if truly stuck (use sparingly!)
+
+**MANDATORY (2026-01-28): Post Agent ID Comment FIRST**
+
+Before doing any work, post a comment identifying which agent is working:
 
 ```powershell
-# Update to busy when starting implementation AND assign to someone
+# STEP 1: Post agent identification comment (MANDATORY - so other agents can see who's working)
+$AGENT_ID = "agent-003"  # Your agent seat number
+$SESSION_TIME = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
+C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
+🤖 AGENT WORKING
+
+Agent ID: $AGENT_ID
+Session Start: $SESSION_TIME
+Branch: $BRANCH_NAME
+Worktree: C:/Projects/worker-agents/$AGENT_ID/client-manager
+
+This task is now being actively worked on.
+Other agents: Please do not pick up this task.
+
+-- Claude Code Agent ($AGENT_ID)
+"
+
+# STEP 2: Update to busy when starting implementation AND assign to someone
 # Default assignee: 74525428 (Martien de Jong - primary developer)
 C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "busy" -Assignee "74525428"
 
-# Add progress comment
+# STEP 3: Add progress comment with technical details
 C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
 IMPLEMENTATION STARTED
 
@@ -374,9 +951,15 @@ Worktree: $AGENT_SEAT
 Approach: [Brief description of technical approach]
 Assigned to: Martien de Jong
 
--- ClickHub Coding Agent
+-- ClickHub Coding Agent ($AGENT_ID)
 "
 ```
+
+**WHY AGENT ID COMMENT?**
+- Multiple agents may run simultaneously
+- Prevents duplicate work on same task
+- Creates audit trail of who worked on what
+- Enables agent coordination and handoffs
 
 #### 4.5 Complete Implementation
 
@@ -419,12 +1002,63 @@ gh pr create \
 # Get PR number from gh output
 $PR_NUMBER = <number>
 
+# Calculate completion time
+$completionTime = ((Get-Date) - $taskStartTime).TotalMinutes
+
 # Link PR to task
 C:/scripts/tools/clickup-sync.ps1 -Action link-pr -TaskId "<task-id>" -PrNumber $PR_NUMBER
+
+# Post AGENT COMPLETED comment (closes the AGENT WORKING lifecycle)
+$AGENT_ID = "agent-003"  # Your agent seat number
+C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
+✅ AGENT COMPLETED
+
+Agent ID: $AGENT_ID
+PR Created: #$PR_NUMBER
+PR URL: https://github.com/martiendejong/client-manager/pull/$PR_NUMBER
+Session Duration: $([math]::Round($completionTime, 1)) minutes
+Files Changed: [count]
+Commits: [count]
+
+This task is ready for review. Worktree will be released.
+Other agents: Task is available for pickup if review changes needed.
+
+-- Claude Code Agent ($AGENT_ID)
+"
 
 # Update task to review status AND assign to reviewer
 # Default assignee: 74525428 (Martien de Jong - primary reviewer)
 C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "review" -Assignee "74525428"
+```
+
+#### 4.6.5 Record Success in Learning Engine ⭐ NEW
+
+**MANDATORY: Record successful completion for pattern learning**
+
+```powershell
+# Record success
+& $learningEngine -Action RecordSuccess `
+    -TaskId $TASK_ID `
+    -Project $PROJECT `
+    -AgentId $AGENT_ID `
+    -CompletionMinutes ([math]::Round($completionTime)) `
+    -Verbose
+
+Write-Host "[LEARNING] Success recorded - agent gets smarter!" -ForegroundColor Green
+```
+
+**If implementation failed (before PR creation):**
+
+```powershell
+# Record failure with specific reason
+& $learningEngine -Action RecordFailure `
+    -TaskId $TASK_ID `
+    -Project $PROJECT `
+    -AgentId $AGENT_ID `
+    -FailureReason "merge conflicts with develop" `  # Or actual reason
+    -Verbose
+
+Write-Host "[LEARNING] Failure recorded - pattern detected for future avoidance" -ForegroundColor Yellow
 ```
 
 #### 4.7 Release Worktree
@@ -433,8 +1067,8 @@ C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "re
 
 ```bash
 # Clean worktree
-rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/myproject"
-rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/myframework"
+rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/client-manager"
+rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/hazina"
 
 # Update pool to FREE
 # Edit C:/scripts/_machine/worktrees.pool.md
@@ -443,12 +1077,12 @@ rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/myframework"
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | RELEASE | $BRANCH_NAME | PR #$PR_NUMBER created" >> C:/scripts/_machine/worktrees.activity.md
 
 # Prune worktrees
-cd C:/Projects/myproject && git worktree prune
-cd C:/Projects/myframework && git worktree prune
+cd C:/Projects/client-manager && git worktree prune
+cd C:/Projects/hazina && git worktree prune
 
 # Switch base repos to develop
-cd C:/Projects/myproject && git checkout develop && git pull
-cd C:/Projects/myframework && git checkout develop && git pull
+cd C:/Projects/client-manager && git checkout develop && git pull
+cd C:/Projects/hazina && git checkout develop && git pull
 ```
 
 ### Step 5: Review Existing Busy Tasks

@@ -31,6 +31,30 @@ gh pr view <pr-number> --repo <owner>/<repo>
 
 **If no PR exists, CREATE IT FIRST before releasing.**
 
+### Step 1.5: 🚨 MANDATORY: Update ClickUp Task with PR Link (NON-NEGOTIABLE!)
+
+**CRITICAL: If this work originated from a ClickUp task, you MUST update it with the PR link.**
+
+```bash
+# Extract task ID from branch name (e.g., feature/869abc123-description)
+branch=$(git -C C:/Projects/worker-agents/agent-XXX/<repo> branch --show-current)
+taskId=$(echo $branch | grep -oP '\d\w{8}' | head -1)
+
+if [ -n "$taskId" ]; then
+  # Get PR number and URL
+  prNumber=$(gh pr view --json number --jq .number)
+  prUrl=$(gh pr view --json url --jq .url)
+
+  # Update ClickUp task with PR link
+  clickup-sync.ps1 -Action comment -TaskId $taskId -Comment "PR #${prNumber}: ${prUrl}"
+  echo "✅ ClickUp task $taskId updated with PR link"
+else
+  echo "⚠️  No ClickUp task ID found in branch name - MANUAL UPDATE REQUIRED"
+fi
+```
+
+**This step is MANDATORY and NON-NEGOTIABLE per user requirement.**
+
 ### Step 2: Clean Worktree Directory
 
 ```bash
@@ -64,26 +88,48 @@ Add entry to `C:/scripts/_machine/worktrees.activity.md`:
 
 Remove the line for this agent from `C:/scripts/_machine/instances.map.md`.
 
-### Step 6: Switch Base Repos to Develop
+### Step 6: Switch Base Repos to Develop (ONLY if not in Active Debugging Mode)
+
+**⚠️ CRITICAL: Check for Active Debugging Mode first!**
 
 ```bash
-# myproject
-cd C:/Projects/myproject
-git checkout develop
-git pull origin develop
+# Check client-manager for active work
+cd C:/Projects/client-manager
+current_branch=$(git branch --show-current)
+uncommitted_changes=$(git status --short)
 
-# myframework
-cd C:/Projects/myframework
-git checkout develop
-git pull origin develop
+if [ "$current_branch" != "develop" ] && [ -n "$uncommitted_changes" ]; then
+  echo "⚠️ SKIP: Active debugging detected in client-manager (branch: $current_branch, uncommitted changes)"
+  echo "User is actively working - NOT switching branches"
+else
+  git checkout develop
+  git pull origin develop
+fi
+
+# Check hazina for active work
+cd C:/Projects/hazina
+current_branch=$(git branch --show-current)
+uncommitted_changes=$(git status --short)
+
+if [ "$current_branch" != "develop" ] && [ -n "$uncommitted_changes" ]; then
+  echo "⚠️ SKIP: Active debugging detected in hazina (branch: $current_branch, uncommitted changes)"
+  echo "User is actively working - NOT switching branches"
+else
+  git checkout develop
+  git pull origin develop
+fi
 ```
+
+**Detection Logic:**
+- IF base repo has uncommitted changes AND is not on develop → Active Debugging Mode → SKIP branch switch
+- ELSE → Safe to switch to develop
 
 ### Step 7: Prune Worktrees
 
 ```bash
 # Remove worktree references from git
-git -C C:/Projects/myproject worktree prune
-git -C C:/Projects/myframework worktree prune
+git -C C:/Projects/client-manager worktree prune
+git -C C:/Projects/hazina worktree prune
 ```
 
 ### Step 8: Commit Tracking Files
@@ -97,6 +143,40 @@ git commit -m "chore: Release agent-XXX after <brief description> (PR #<number>)
 git push origin main
 ```
 
+### Step 8.5: 🎯 Verify Definition of Done
+
+**CRITICAL: Before presenting work as complete, verify ALL DoD criteria are met.**
+
+Quick DoD Verification Checklist:
+- [ ] ✅ **Code quality:** Build passes, tests pass, no warnings
+- [ ] ✅ **Version control:** Committed, pushed, PR created with proper base (`develop`)
+- [ ] ✅ **PR details:** Clear title, description, test plan included
+- [ ] ✅ **ClickUp updated:** PR link added to task (if applicable)
+- [ ] ✅ **Documentation:** Technical docs updated if needed
+- [ ] ✅ **Worktree cleanup:** All 8 steps above completed
+
+**Full DoD reference:** `C:/scripts/_machine/DEFINITION_OF_DONE.md`
+
+**If ANY criteria not met:**
+- ⚠️ Work is NOT complete
+- 🔄 Go back and complete missing items
+- ❌ DO NOT present to user until DoD satisfied
+
+**Validation commands:**
+```bash
+# Verify PR base branch is develop
+gh pr view --json baseRefName --jq .baseRefName
+# Should output: "develop"
+
+# Verify ClickUp updated (check last comment)
+clickup-sync.ps1 -Action show -TaskId <task-id>
+# Should show PR link in recent comments
+
+# Verify build passed (check CI status)
+gh pr checks --watch
+# All checks should be green
+```
+
 ### Step 9: Verify Release Complete
 
 ```bash
@@ -107,12 +187,12 @@ ls C:/Projects/worker-agents/agent-XXX/
 grep "agent-XXX" C:/scripts/_machine/worktrees.pool.md
 
 # Check base repos on develop
-git -C C:/Projects/myproject branch --show-current
-git -C C:/Projects/myframework branch --show-current
+git -C C:/Projects/client-manager branch --show-current
+git -C C:/Projects/hazina branch --show-current
 
 # Check git worktree list (should not show released worktree)
-git -C C:/Projects/myproject worktree list
-git -C C:/Projects/myframework worktree list
+git -C C:/Projects/client-manager worktree list
+git -C C:/Projects/hazina worktree list
 ```
 
 ## Success Criteria
@@ -125,7 +205,10 @@ git -C C:/Projects/myframework worktree list
 - Both base repos on develop branch
 - Worktrees pruned (git worktree prune)
 - Tracking files committed and pushed
+- **🎯 Definition of Done verified** (Step 8.5 - all DoD criteria met)
 - THEN (and only then) present PR to user
+
+**See:** `C:/scripts/_machine/DEFINITION_OF_DONE.md` for complete quality checklist
 
 ## Critical Rules
 
@@ -152,7 +235,7 @@ git -C C:/Projects/myframework worktree list
 
 ```bash
 # 1. Verify PR exists
-gh pr view 123 --repo user/myproject
+gh pr view 123 --repo user/client-manager
 
 # 2. Clean worktree
 rm -rf C:/Projects/worker-agents/agent-001/*
@@ -160,12 +243,12 @@ rm -rf C:/Projects/worker-agents/agent-001/*
 # 3-5. Update tracking files (pool.md, activity.md, instances.map.md)
 
 # 6. Switch to develop
-cd C:/Projects/myproject && git checkout develop && git pull
-cd C:/Projects/myframework && git checkout develop && git pull
+cd C:/Projects/client-manager && git checkout develop && git pull
+cd C:/Projects/hazina && git checkout develop && git pull
 
 # 7. Prune worktrees
-git -C C:/Projects/myproject worktree prune
-git -C C:/Projects/myframework worktree prune
+git -C C:/Projects/client-manager worktree prune
+git -C C:/Projects/hazina worktree prune
 
 # 8. Commit tracking files
 cd C:/scripts
@@ -209,6 +292,16 @@ Changes:
 
 Worktree released, seat agent-XXX now FREE.
 ```
+
+## Step 10: Consciousness Bridge (LAST)
+
+After completing all release steps, close the feedback loop:
+
+```bash
+powershell.exe -File "C:/scripts/tools/consciousness-bridge.ps1" -Action OnTaskEnd -Outcome "success" -LessonsLearned "<what was learned during this task>" -Silent
+```
+
+Use "success", "partial", or "failure" based on outcome. Include specific lessons (e.g., "PS 5.1 arrays unroll from functions, use comma operator").
 
 ## Violation Recovery
 

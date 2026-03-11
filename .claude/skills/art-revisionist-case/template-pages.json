@@ -1,0 +1,130 @@
+{
+  "pages": [
+    {
+      "id": "1",
+      "title": "[HOOK PAGE - Question or Problem Statement]",
+      "summary": "[2-3 sentence summary that captures the central mystery or thesis]",
+      "content": "[Full introductory content that hooks the reader and presents the central argument]\n\n**Key Claims:**\n\n• Claim 1\n• Claim 2\n• Claim 3\n\n[Conclude with why this matters]",
+      "featuredImageFilename": null,
+      "wordPressMediaId": null,
+      "additionalImages": [],
+      "details": [
+        {
+          "id": "1",
+          "title": "[First Supporting Argument]",
+          "summary": "[Summary of this argument]",
+          "content": "[Full content explaining this argument in detail]",
+          "featuredImageFilename": null,
+          "wordPressMediaId": null,
+          "additionalImages": [],
+          "evidence": [
+            {
+              "id": "evidence-1",
+              "title": "[Document/Source Title]",
+              "summary": "[What this evidence proves]",
+              "content": "[Full description including transcription, translation, and significance]",
+              "featuredImageFilename": null,
+              "wordPressMediaId": null,
+              "additionalImages": [],
+              "attachments": []
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "[Second Supporting Argument]",
+          "summary": "[Summary]",
+          "content": "[Full content]",
+          "featuredImageFilename": null,
+          "wordPressMediaId": null,
+          "additionalImages": [],
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "[BACKGROUND PAGE - Historical/Biographical Context]",
+      "summary": "[Summary of background information]",
+      "content": "[Full narrative providing necessary context for understanding the case]",
+      "featuredImageFilename": null,
+      "wordPressMediaId": null,
+      "additionalImages": [],
+      "details": [
+        {
+          "id": "1",
+          "title": "[Background Topic 1]",
+          "summary": "[Summary]",
+          "content": "[Full content]",
+          "featuredImageFilename": null,
+          "wordPressMediaId": null,
+          "additionalImages": [],
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "[TECHNICAL PAGE - Process/Method/Context]",
+      "summary": "[Summary of technical or process information]",
+      "content": "[Full explanation of relevant technical context]",
+      "featuredImageFilename": null,
+      "wordPressMediaId": null,
+      "additionalImages": [],
+      "details": [
+        {
+          "id": "1",
+          "title": "[Technical Topic 1]",
+          "summary": "[Summary]",
+          "content": "[Full content]",
+          "featuredImageFilename": null,
+          "wordPressMediaId": null,
+          "additionalImages": [],
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "[EVIDENCE PAGE - Document Archive]",
+      "summary": "[Summary of evidence collection]",
+      "content": "[Overview of the evidence and how to use this archive]",
+      "featuredImageFilename": null,
+      "wordPressMediaId": null,
+      "additionalImages": [],
+      "details": [
+        {
+          "id": "1",
+          "title": "[Evidence Category 1]",
+          "summary": "[Summary]",
+          "content": "[Full content describing this evidence category]",
+          "featuredImageFilename": null,
+          "wordPressMediaId": null,
+          "additionalImages": [],
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "[IMPLICATIONS PAGE - Legacy/Impact/Call to Action]",
+      "summary": "[Summary of why this research matters]",
+      "content": "[Full content explaining the broader implications and calling readers to action]",
+      "featuredImageFilename": null,
+      "wordPressMediaId": null,
+      "additionalImages": [],
+      "details": [
+        {
+          "id": "1",
+          "title": "[Implication 1]",
+          "summary": "[Summary]",
+          "content": "[Full content]",
+          "featuredImageFilename": null,
+          "wordPressMediaId": null,
+          "additionalImages": [],
+          "evidence": []
+        }
+      ]
+    }
+  ]
+}
