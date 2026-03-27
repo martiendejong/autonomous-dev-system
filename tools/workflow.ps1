@@ -81,8 +81,8 @@ function Run-FeatureWorkflow {
         & "$ToolsPath\prevent-errors.ps1" -Action "feature development $FeatureName"
     }
 
-    Execute-Step "Allocate worktree for client-manager" {
-        & "$ToolsPath\worktree-allocate.ps1" -Repo client-manager -Branch $branchName -ErrorAction SilentlyContinue
+    Execute-Step "Allocate worktree for your-project" {
+        & "$ToolsPath\worktree-allocate.ps1" -Repo your-project -Branch $branchName -ErrorAction SilentlyContinue
     }
 
     Execute-Step "Update task predictions" {
@@ -119,7 +119,7 @@ function Run-BugfixWorkflow {
     }
 
     Execute-Step "Allocate worktree" {
-        & "$ToolsPath\worktree-allocate.ps1" -Repo client-manager -Branch $branchName -ErrorAction SilentlyContinue
+        & "$ToolsPath\worktree-allocate.ps1" -Repo your-project -Branch $branchName -ErrorAction SilentlyContinue
     }
 
     Execute-Step "Update task predictions" {

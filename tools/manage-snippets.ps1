@@ -48,7 +48,7 @@
 .EXAMPLE
     .\manage-snippets.ps1 -Action create -Language csharp -SnippetName "prop" -Prefix "prop" -Description "Property with backing field"
     .\manage-snippets.ps1 -Action list -Language typescript
-    .\manage-snippets.ps1 -Action generate -ProjectPath "C:\Projects\client-manager" -Language csharp
+    .\manage-snippets.ps1 -Action generate -ProjectPath "C:\Projects\your-project" -Language csharp
     .\manage-snippets.ps1 -Action export -OutputPath "snippets.json"
     .\manage-snippets.ps1 -Action import -InputPath "snippets.json" -IDE vscode
     .\manage-snippets.ps1 -Action install -Language csharp -IDE both

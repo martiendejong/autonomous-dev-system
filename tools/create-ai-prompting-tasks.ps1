@@ -4,7 +4,7 @@
 .DESCRIPTION
     Creates comprehensive task structure in ClickUp for implementing
     NetworkChuck video insights into Brand2Boost platform.
-    Based on: C:\Projects\client-manager\docs\AI_PROMPTING_ANALYSIS.md
+    Based on: C:\Projects\your-project\docs\AI_PROMPTING_ANALYSIS.md
 #>
 
 $ErrorActionPreference = "Stop"
@@ -87,7 +87,7 @@ $epicDescription = @"
 # AI Prompting Best Practices - Implementation Epic
 
 **Source:** NetworkChuck YouTube video analysis
-**Document:** C:\Projects\client-manager\docs\AI_PROMPTING_ANALYSIS.md
+**Document:** C:\Projects\your-project\docs\AI_PROMPTING_ANALYSIS.md
 **Goal:** Implement advanced AI prompting techniques to improve content quality
 
 ## Overview
@@ -108,7 +108,7 @@ Transform Brand2Boost from generic AI content generation to personalized, brand-
 ## Key Differentiation
 > "Brand2Boost doesn't just generate content - it learns your brand's unique voice and creates content that sounds like you wrote it yourself."
 
-See full analysis: C:\Projects\client-manager\docs\AI_PROMPTING_ANALYSIS.md
+See full analysis: C:\Projects\your-project\docs\AI_PROMPTING_ANALYSIS.md
 "@
 
 $epic = New-ClickUpTask `
@@ -198,7 +198,7 @@ Show warning dialog when context completeness < 70% before generation.
 ### Code Locations
 - Backend: `ClientManagerAPI/Services/Prompting/ContextCompletenessScorer.cs` (new)
 - Controller: `ClientManagerAPI/Controllers/PromptingController.cs` (new)
-- Frontend: `client-manager-frontend/src/components/ContentGeneration/`
+- Frontend: `your-project-frontend/src/components/ContentGeneration/`
 
 ### Acceptance Criteria
 - [ ] ContextCompletenessScorer service created

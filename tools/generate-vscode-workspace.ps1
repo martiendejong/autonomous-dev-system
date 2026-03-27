@@ -37,7 +37,7 @@
     Create multi-root workspace file
 
 .EXAMPLE
-    .\generate-vscode-workspace.ps1 -ProjectPath "C:\Projects\client-manager"
+    .\generate-vscode-workspace.ps1 -ProjectPath "C:\Projects\your-project"
     .\generate-vscode-workspace.ps1 -ProjectPath "." -ProjectType fullstack -MultiRoot -WorkspaceName "ClientManager"
     .\generate-vscode-workspace.ps1 -ProjectPath "." -IncludeExtensions -IncludeTasks -IncludeDebug
 #>

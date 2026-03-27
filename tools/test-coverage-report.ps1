@@ -29,7 +29,7 @@
 
 .EXAMPLE
     .\test-coverage-report.ps1 -ProjectPath "C:\Projects\hazina"
-    .\test-coverage-report.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerFrontend" -Threshold 85
+    .\test-coverage-report.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerFrontend" -Threshold 85
     .\test-coverage-report.ps1 -ProjectPath "." -FailOnLowCoverage -TrackTrend
 #>
 

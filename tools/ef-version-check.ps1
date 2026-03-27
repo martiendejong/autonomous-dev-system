@@ -5,17 +5,17 @@
 .DESCRIPTION
     Scans all .csproj files for EF Core package references and checks version consistency
 .PARAMETER SolutionPath
-    Path to solution or project directory (default: C:\Projects\client-manager)
+    Path to solution or project directory (default: C:\Projects\your-project)
 .PARAMETER Fix
     Automatically update all EF Core packages to the same version
 .EXAMPLE
     .\ef-version-check.ps1
 .EXAMPLE
-    .\ef-version-check.ps1 -SolutionPath C:\Projects\client-manager -Fix
+    .\ef-version-check.ps1 -SolutionPath C:\Projects\your-project -Fix
 #>
 
 param(
-    [string]$SolutionPath = "C:\Projects\client-manager",
+    [string]$SolutionPath = "C:\Projects\your-project",
     [switch]$Fix
 )
 

@@ -49,7 +49,7 @@ $ErrorActionPreference = "Continue"
 # Configuration
 $WorkerAgentsRoot = "C:\Projects\worker-agents"
 $BaseRepos = @(
-    "C:\Projects\client-manager",
+    "C:\Projects\your-project",
     "C:\Projects\hazina"
 )
 $PoolFile = "C:\scripts\_machine\worktrees.pool.md"

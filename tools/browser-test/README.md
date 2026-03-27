@@ -43,7 +43,7 @@ C:\testresults\<application>\<test-name-YYYY-MM-DD>\
 
 Example:
 ```
-C:\testresults\brand2boost\frank-tasks-verification-2026-01-14\
+C:\testresults\your-app\frank-tasks-verification-2026-01-14\
 ├── TEST_SUMMARY.md
 ├── screenshot-filled-v3.png
 ├── screenshot-result-v3.png

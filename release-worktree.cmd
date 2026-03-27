@@ -4,7 +4,7 @@ REM Usage: release-worktree.cmd <agent-seat> <pr-title> [pr-description]
 REM Example: release-worktree.cmd agent-001 "feat: Add new feature" "Implements feature X with Y and Z"
 REM
 REM This script:
-REM 1. Commits all changes in both client-manager and hazina worktrees
+REM 1. Commits all changes in both your-project and hazina worktrees
 REM 2. Pushes branches to origin
 REM 3. Creates PRs for both repos (if changes exist)
 REM 4. Removes the worktrees
@@ -38,7 +38,7 @@ if "%PR_DESC%"=="" set PR_DESC=%PR_TITLE%
 REM === PATHS ===
 set POOL_FILE=C:\scripts\_machine\worktrees.pool.md
 set ACTIVITY_FILE=C:\scripts\_machine\worktrees.activity.md
-set BASE_CLIENT_MANAGER=C:\Projects\client-manager
+set BASE_CLIENT_MANAGER=C:\Projects\your-project
 set BASE_HAZINA=C:\Projects\hazina
 set WORKTREE_ROOT=C:\Projects\worker-agents
 set AGENT_PATH=%WORKTREE_ROOT%\%AGENT_SEAT%
@@ -81,11 +81,11 @@ echo Branch: %BRANCH_NAME%
 
 REM === STEP 1: COMMIT CHANGES IN CLIENT-MANAGER ===
 echo.
-echo === STEP 1: Committing changes in client-manager ===
+echo === STEP 1: Committing changes in your-project ===
 
-set CLIENT_MANAGER_PATH=%AGENT_PATH%\client-manager
+set CLIENT_MANAGER_PATH=%AGENT_PATH%\your-project
 if not exist "%CLIENT_MANAGER_PATH%" (
-    echo WARNING: client-manager worktree not found, skipping
+    echo WARNING: your-project worktree not found, skipping
     set HAS_CLIENT_MANAGER=0
 ) else (
     set HAS_CLIENT_MANAGER=1
@@ -96,23 +96,23 @@ if not exist "%CLIENT_MANAGER_PATH%" (
     for /f %%i in ('git status --short ^| find /c /v ""') do set CHANGES=%%i
 
     if !CHANGES! gtr 0 (
-        echo Found !CHANGES! changed files in client-manager
+        echo Found !CHANGES! changed files in your-project
         echo Staging all changes...
         git add -A || (
-            echo ERROR: Failed to stage changes in client-manager
+            echo ERROR: Failed to stage changes in your-project
             exit /b 1
         )
 
         echo Committing changes...
         git commit -m "%PR_TITLE%" -m "%PR_DESC%" -m "" -m "Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>" || (
-            echo ERROR: Failed to commit changes in client-manager
+            echo ERROR: Failed to commit changes in your-project
             exit /b 1
         )
 
         echo Committed successfully
         set CLIENT_MANAGER_HAS_COMMIT=1
     ) else (
-        echo No changes to commit in client-manager
+        echo No changes to commit in your-project
         set CLIENT_MANAGER_HAS_COMMIT=0
     )
 )
@@ -161,13 +161,13 @@ echo === STEP 3: Pushing to origin ===
 
 if %HAS_CLIENT_MANAGER%==1 (
     if %CLIENT_MANAGER_HAS_COMMIT%==1 (
-        echo Pushing client-manager...
+        echo Pushing your-project...
         cd /d "%CLIENT_MANAGER_PATH%"
         git push -u origin %BRANCH_NAME% || (
-            echo ERROR: Failed to push client-manager
+            echo ERROR: Failed to push your-project
             exit /b 1
         )
-        echo Pushed client-manager successfully
+        echo Pushed your-project successfully
     )
 )
 
@@ -192,7 +192,7 @@ set HAZINA_PR=
 
 if %HAS_CLIENT_MANAGER%==1 (
     if %CLIENT_MANAGER_HAS_COMMIT%==1 (
-        echo Creating client-manager PR...
+        echo Creating your-project PR...
         cd /d "%CLIENT_MANAGER_PATH%"
 
         REM Create PR body
@@ -208,9 +208,9 @@ if %HAS_CLIENT_MANAGER%==1 (
         echo !PR_OUTPUT! | findstr /c:"https://github.com" >nul
         if !errorlevel! equ 0 (
             for /f "tokens=*" %%a in ("!PR_OUTPUT!") do set CLIENT_MANAGER_PR=%%a
-            echo Created client-manager PR: !CLIENT_MANAGER_PR!
+            echo Created your-project PR: !CLIENT_MANAGER_PR!
         ) else (
-            echo WARNING: Could not create client-manager PR
+            echo WARNING: Could not create your-project PR
             echo Output: !PR_OUTPUT!
         )
     )
@@ -224,9 +224,9 @@ if %HAS_HAZINA%==1 (
         REM Create PR body
         set "PR_BODY=%PR_DESC%"
 
-        REM Check if there's a client-manager dependency
+        REM Check if there's a your-project dependency
         if %CLIENT_MANAGER_HAS_COMMIT%==1 (
-            set "PR_BODY=## ⚠️ DOWNSTREAM DEPENDENCIES ⚠️\n\nThe client-manager PR depends on this.\n**Merge this PR first** before the dependent client-manager PR.\n\n---\n\n%PR_DESC%"
+            set "PR_BODY=## ⚠️ DOWNSTREAM DEPENDENCIES ⚠️\n\nThe your-project PR depends on this.\n**Merge this PR first** before the dependent your-project PR.\n\n---\n\n%PR_DESC%"
         )
 
         REM Create PR
@@ -247,10 +247,10 @@ echo.
 echo === STEP 5: Cleaning up worktrees ===
 
 if %HAS_CLIENT_MANAGER%==1 (
-    echo Removing client-manager worktree...
+    echo Removing your-project worktree...
     cd /d "%BASE_CLIENT_MANAGER%"
     git worktree remove "%CLIENT_MANAGER_PATH%" --force || (
-        echo WARNING: Could not remove client-manager worktree
+        echo WARNING: Could not remove your-project worktree
     )
 )
 
@@ -281,7 +281,7 @@ for /f "tokens=1-6 delims=/:. " %%a in ('echo %date% %time%') do (
 
 REM Create summary note
 set "RELEASE_NOTE=✅ Completed: %PR_TITLE%"
-if defined CLIENT_MANAGER_PR set "RELEASE_NOTE=!RELEASE_NOTE! (client-manager PR)"
+if defined CLIENT_MANAGER_PR set "RELEASE_NOTE=!RELEASE_NOTE! (your-project PR)"
 if defined HAZINA_PR set "RELEASE_NOTE=!RELEASE_NOTE! (hazina PR)"
 
 REM Create temporary file with updated pool
@@ -317,10 +317,10 @@ echo.
 echo === STEP 7: Logging release ===
 
 set "ACTIVITY_NOTE=%PR_TITLE%"
-if defined CLIENT_MANAGER_PR set "ACTIVITY_NOTE=!ACTIVITY_NOTE!, client-manager PR created"
+if defined CLIENT_MANAGER_PR set "ACTIVITY_NOTE=!ACTIVITY_NOTE!, your-project PR created"
 if defined HAZINA_PR set "ACTIVITY_NOTE=!ACTIVITY_NOTE!, hazina PR created"
 
-echo %TIMESTAMP% — release — %AGENT_SEAT% — client-manager+hazina — %BRANCH_NAME% — — claude-code — !ACTIVITY_NOTE! >> "%ACTIVITY_FILE%"
+echo %TIMESTAMP% — release — %AGENT_SEAT% — your-project+hazina — %BRANCH_NAME% — — claude-code — !ACTIVITY_NOTE! >> "%ACTIVITY_FILE%"
 
 echo Logged release to activity file
 
@@ -333,7 +333,7 @@ echo Agent: %AGENT_SEAT% (now FREE)
 echo Branch: %BRANCH_NAME%
 echo.
 if defined CLIENT_MANAGER_PR (
-    echo client-manager PR: !CLIENT_MANAGER_PR!
+    echo your-project PR: !CLIENT_MANAGER_PR!
 )
 if defined HAZINA_PR (
     echo hazina PR: !HAZINA_PR!

@@ -128,7 +128,7 @@ bash C:/scripts/tools/find-todos.sh
 ```
 === Base Repo Health Check ===
 
-✅ client-manager on develop
+✅ your-project on develop
 ✅ hazina on develop
 ✅ artrevisionist on develop
 
@@ -139,9 +139,9 @@ bash C:/scripts/tools/find-todos.sh
 ```
 === Base Repo Health Check ===
 
-❌ client-manager on 'agent-001-logo-variation-enhancement' (should be develop)
+❌ your-project on 'agent-001-logo-variation-enhancement' (should be develop)
    ✅ No uncommitted changes - safe to fix
-   Fix: git -C client-manager checkout develop && git -C client-manager pull origin develop
+   Fix: git -C your-project checkout develop && git -C your-project pull origin develop
 ✅ hazina on develop
 ✅ artrevisionist on develop
 
@@ -155,7 +155,7 @@ Step 1: Cleaning worktree directory...
 ✅ Directory cleaned
 
 Step 2: Pruning git worktree references...
-  Pruning client-manager...
+  Pruning your-project...
   Pruning hazina...
   Pruning artrevisionist...
 ✅ Git references pruned

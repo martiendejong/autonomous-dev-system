@@ -192,7 +192,7 @@ if (Test-Path $poolPath) {
 # Phase 2: Branch Cleanup
 Write-Section "2. STALE BRANCH CLEANUP"
 
-$repos = @("C:\Projects\client-manager", "C:\Projects\hazina")
+$repos = @("C:\Projects\your-project", "C:\Projects\hazina")
 $totalPruned = 0
 
 foreach ($repo in $repos) {

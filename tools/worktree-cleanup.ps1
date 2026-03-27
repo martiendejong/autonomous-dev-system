@@ -37,7 +37,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 
 $PoolPath = "C:\scripts\_machine\worktrees.pool.md"
 $WorkerAgentsPath = "C:\Projects\worker-agents"
-$BaseRepos = @("C:\Projects\client-manager", "C:\Projects\hazina")
+$BaseRepos = @("C:\Projects\your-project", "C:\Projects\hazina")
 
 function Get-PoolSeats {
     $seats = @{}

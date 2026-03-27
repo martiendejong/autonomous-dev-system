@@ -194,7 +194,7 @@ function Test-Repositories {
     Write-Host ""
 
     $repos = @(
-        "C:/Projects/client-manager",
+        "C:/Projects/your-project",
         "C:/Projects/hazina"
     )
 

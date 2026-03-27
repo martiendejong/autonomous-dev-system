@@ -24,7 +24,7 @@
 .EXAMPLE
     .\prune-branches.ps1 -DryRun
     .\prune-branches.ps1 -MaxAge 7
-    .\prune-branches.ps1 -IncludeRemote -Repo "C:\Projects\client-manager"
+    .\prune-branches.ps1 -IncludeRemote -Repo "C:\Projects\your-project"
 #>
 
 param(
@@ -40,7 +40,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 
 
 $BaseRepos = @(
-    "C:\Projects\client-manager",
+    "C:\Projects\your-project",
     "C:\Projects\hazina"
 )
 

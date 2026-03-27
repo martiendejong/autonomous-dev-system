@@ -76,7 +76,7 @@ $content = @"
 # Development Workflow Guide
 
 ## Overview
-Comprehensive guide for managing development workflow across client-manager and hazina repositories.
+Comprehensive guide for managing development workflow across your-project and hazina repositories.
 
 ## Dual-Mode Workflow
 
@@ -105,7 +105,7 @@ See complete workflow guide at: `C:\scripts\GENERAL_DUAL_MODE_WORKFLOW.md`
 
 ## Quick Commands
 - Check worktree status: `worktree-status.ps1`
-- Allocate worktree: `worktree-allocate.ps1 -Repo client-manager -Branch feature/xyz`
+- Allocate worktree: `worktree-allocate.ps1 -Repo your-project -Branch feature/xyz`
 - Release worktree: `worktree-release-all.ps1`
 "@
 
@@ -191,7 +191,7 @@ $content = @"
 
 ### Worktree Operations
 - Check status: `worktree-status.ps1`
-- Allocate: `worktree-allocate.ps1 -Repo client-manager -Branch feature/xyz`
+- Allocate: `worktree-allocate.ps1 -Repo your-project -Branch feature/xyz`
 - Release: `worktree-release-all.ps1`
 
 ### Project Status
@@ -200,7 +200,7 @@ $content = @"
 - Bootstrap snapshot: `bootstrap-snapshot.ps1`
 
 ## Repository Structure
-- **client-manager**: `C:\Projects\client-manager` (Frontend + API)
+- **your-project**: `C:\Projects\your-project` (Frontend + API)
 - **hazina**: `C:\Projects\hazina` (Framework)
 - **Worker agents**: `C:\Projects\worker-agents\agent-XXX\`
 - **Scripts**: `C:\scripts`

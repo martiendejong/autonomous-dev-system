@@ -60,7 +60,7 @@ Two CMD scripts automate the worktree allocation and release workflow:
 
 ### 1. claim-worktree.cmd - Allocate and Setup Worktree
 
-**Purpose:** Claims a FREE agent, sets up git worktrees for both client-manager and hazina
+**Purpose:** Claims a FREE agent, sets up git worktrees for both your-project and hazina
 
 **Usage:**
 ```cmd
@@ -74,7 +74,7 @@ claim-worktree.cmd feature/new-feature "Implementing new feature X"
 
 **What it does:**
 1. Finds first FREE agent in worktrees.pool.md
-2. Ensures base repos (C:\Projects\client-manager, C:\Projects\hazina) are on develop
+2. Ensures base repos (C:\Projects\your-project, C:\Projects\hazina) are on develop
 3. Fetches and pulls latest changes (Pattern 3C - always fetch/pull first)
 4. Creates git worktrees for BOTH repos in C:\Projects\worker-agents\agent-XXX\
 5. Copies config files (appsettings.json, .env) to worktrees
@@ -112,7 +112,7 @@ release-worktree.cmd agent-001 "feat: Add new feature" "Implements feature X wit
 
 **What it does:**
 1. Gets branch name from pool file for the specified agent
-2. Commits all changes in client-manager worktree (if any)
+2. Commits all changes in your-project worktree (if any)
 3. Commits all changes in hazina worktree (if any)
 4. Pushes both branches to origin
 5. Creates PRs for both repos targeting develop branch
@@ -124,9 +124,9 @@ release-worktree.cmd agent-001 "feat: Add new feature" "Implements feature X wit
 11. Displays PR URLs and confirmation
 
 **PR Dependency Handling:**
-- If BOTH repos have commits → Adds dependency alert to client-manager PR
+- If BOTH repos have commits → Adds dependency alert to your-project PR
 - Hazina PR gets "DOWNSTREAM DEPENDENCIES" warning
-- client-manager PR gets "DEPENDENCY ALERT" with merge order
+- your-project PR gets "DEPENDENCY ALERT" with merge order
 - Ensures user knows to merge Hazina PR first
 
 **Output:**
@@ -223,7 +223,7 @@ claim-worktree.cmd test/script-test "Testing claim script"
 type C:\scripts\_machine\worktrees.pool.md | findstr BUSY
 
 # Make trivial change
-echo test > C:\Projects\worker-agents\agent-XXX\client-manager\TEST.txt
+echo test > C:\Projects\worker-agents\agent-XXX\your-project\TEST.txt
 
 # Test release
 release-worktree.cmd agent-XXX "test: Script test" "Testing release script"
@@ -366,7 +366,7 @@ cd /c/Projects/hazina && git checkout main && git pull origin main
 git tag -a "vYYYY.MM.DD-stable" -m "Stable release checkpoint - description"
 git push origin vYYYY.MM.DD-stable
 
-cd /c/Projects/client-manager && git checkout main && git pull origin main
+cd /c/Projects/your-project && git checkout main && git pull origin main
 git tag -a "vYYYY.MM.DD-stable" -m "Stable release checkpoint - description"
 git push origin vYYYY.MM.DD-stable
 
@@ -550,19 +550,19 @@ use the browser mcp server for debugging of frontend applications.
 
 projects: 
 
-client-manager / brand2boost:
+your-project / your-app:
 promotion and brand development saas software that helps businesses develop their brand identity.
 
 ### Architecture Overview
 - **Frontend:** React + Vite + TypeScript (port 5173)
 - **Backend:** .NET 9 Web API (port 54501)
 - **Framework:** Hazina (C:\Projects\hazina) - LLM orchestration framework
-- **Store:** C:\stores\brand2boost - Project data, prompts, config files
+- **Store:** C:\stores\your-app - Project data, prompts, config files
 - **Admin:** wreckingball / YOUR_PASSWORD
 
 ### Key Directories
 ```
-C:\Projects\client-manager\
+C:\Projects\your-project\
 ├── ClientManagerAPI\          # .NET 9 Web API
 │   ├── Controllers\           # API endpoints
 │   ├── Services\              # Business logic
@@ -635,7 +635,7 @@ typography, brand-story, business-plan, business-description
 "SemanticCache": {
   "Provider": "Sqlite",  // or Redis, None
   "TtlDays": 7,
-  "Sqlite": { "DatabasePath": "c:\\stores\\brand2boost\\semantic-cache.db" }
+  "Sqlite": { "DatabasePath": "c:\\stores\\your-app\\semantic-cache.db" }
 }
 ```
 Admin: GET /api/admin/cache/metrics, DELETE /api/admin/cache/clear
@@ -1164,17 +1164,17 @@ await provider.GenerateAsync(model, prompt, ct: token);
 
 ### Art Revisionist (WordPress Integration)
 - **Theme:** C:\xampp\htdocs\wp-content\themes\artrevisionist-wp-theme
-  - GitHub: github.com/martiendejong/artrevisionist-wp-theme
+  - GitHub: github.com/yourname/artrevisionist-wp-theme
   - Child theme of Hello Elementor
   - CSS design tokens: --ar-primary: #142A5C, --ar-accent: #D0B263
   - Branches: main, develop, master (default: main)
 - **Plugin:** C:\xampp\htdocs\wp-content\plugins\artrevisionist-wordpress
-  - GitHub: github.com/martiendejong/artrevisionist-wordpress
+  - GitHub: github.com/yourname/artrevisionist-wordpress
   - REST API at `/wp-json/b2b-knowledge/v1/`
   - CPTs: b2bk_topic, b2bk_topic_page, b2bk_detail, b2bk_evidence
   - Branches: main, develop, master (default: main)
 - **Project:** C:\Projects\artrevisionist
-  - GitHub: github.com/martiendejong/artrevisionist (private)
+  - GitHub: github.com/yourname/artrevisionist (private)
   - .NET 8 API + Vue.js/Quasar frontend
   - `wordpress-plugin/` folder is a git SUBMODULE pointing to artrevisionist-wordpress repo
   - WordPressPublishService calls plugin REST API to export content
@@ -1223,7 +1223,7 @@ await provider.GenerateAsync(model, prompt, ct: token);
 
 **Full template:** C:\scripts\_machine\best-practices\DOCUMENTATION_AND_PR_WORKFLOW.md
 
-**Example:** Hazina PR #13 - https://github.com/martiendejong/Hazina/pull/13
+**Example:** Hazina PR #13 - https://github.com/yourname/Hazina/pull/13
 
 
 LINTER INTERFERENCE MITIGATION
@@ -1505,7 +1505,7 @@ Run IMMEDIATELY when session resumes after compaction:
 **Tier 1 - CRITICAL (Can break everything):**
 ```bash
 # Check base repos are on develop (MANDATORY per RULE 3B)
-cd /c/Projects/client-manager && git branch --show-current
+cd /c/Projects/your-project && git branch --show-current
 cd /c/Projects/hazina && git branch --show-current
 # Both MUST show: develop
 
@@ -1513,7 +1513,7 @@ cd /c/Projects/hazina && git branch --show-current
 git checkout develop && git pull origin develop
 
 # Check for uncommitted changes
-cd /c/Projects/client-manager && git status --porcelain
+cd /c/Projects/your-project && git status --porcelain
 cd /c/Projects/hazina && git status --porcelain
 # Both SHOULD be empty
 ```
@@ -1536,13 +1536,13 @@ grep -n "Pattern 56:" /c/scripts/claude_info.txt
 cat /c/scripts/_machine/worktrees.pool.md | grep -E "FREE|BUSY"
 
 # Check recent commits
-cd /c/Projects/client-manager && git log --oneline -10
+cd /c/Projects/your-project && git log --oneline -10
 ```
 
 **Real Example (2026-01-09):**
 - Summary: "PR #66, #61 MERGEABLE, documentation updated"
 - Tier 1 Check: Found base repos on wrong branches! ❌
-  - client-manager: On `payment-models` (should be develop)
+  - your-project: On `payment-models` (should be develop)
   - hazina: On `main` (should be develop)
 - Tier 2 Check: PRs actually **MERGED** (not just mergeable)
 - Action: Restored repos to develop, prevented future worktree corruption
@@ -1867,19 +1867,19 @@ done
 
 ```bash
 # FREE → BUSY (Allocation)
-echo "2026-01-10T14:00:00Z — allocate — agent-001 — client-manager — feature/new-feature — TASK-123 — claude-code — Implementing feature X" >> worktrees.activity.md
-# Update pool: BUSY | client-manager | feature/new-feature | 2026-01-10T14:00:00Z | Implementing feature X
+echo "2026-01-10T14:00:00Z — allocate — agent-001 — your-project — feature/new-feature — TASK-123 — claude-code — Implementing feature X" >> worktrees.activity.md
+# Update pool: BUSY | your-project | feature/new-feature | 2026-01-10T14:00:00Z | Implementing feature X
 
 # BUSY → CLEANUP → FREE (Release)
 # 1. Delete worktree contents
 rm -rf C:/Projects/worker-agents/agent-001/*
 
 # 2. Update pool
-# Change: | agent-001 | ... | BUSY | client-manager | feature/new-feature | ... |
+# Change: | agent-001 | ... | BUSY | your-project | feature/new-feature | ... |
 # To:     | agent-001 | ... | FREE | - | - | 2026-01-10T16:00:00Z | ✅ Completed: Feature X (PR #123 MERGED) |
 
 # 3. Log release
-echo "2026-01-10T16:00:00Z — release — agent-001 — client-manager — feature/new-feature — TASK-123 — claude-code — PR #123 merged, worktree cleaned" >> worktrees.activity.md
+echo "2026-01-10T16:00:00Z — release — agent-001 — your-project — feature/new-feature — TASK-123 — claude-code — PR #123 merged, worktree cleaned" >> worktrees.activity.md
 ```
 
 **When to Use:**
@@ -1937,7 +1937,7 @@ done < missing.txt
 # 5. Verify (repeat 1-3 until missing.txt is empty)
 ```
 
-**Example (client-manager + Hazina):**
+**Example (your-project + Hazina):**
 - Started with: 27 Hazina projects in solution
 - After verification: 39 Hazina projects needed
 - Missing: 12 transitive dependencies
@@ -2234,7 +2234,7 @@ git -C C:/Projects/<repo> worktree list
 **Detection:**
 ```bash
 # Check all base repos
-for repo in client-manager hazina artrevisionist; do
+for repo in your-project hazina artrevisionist; do
   branch=$(git -C C:/Projects/$repo branch --show-current)
   if [ "$branch" != "develop" ]; then
     echo "❌ VIOLATION: $repo on $branch (should be develop)"
@@ -2263,7 +2263,7 @@ git pull origin develop
 - Hours wasted debugging issues that don't exist
 
 **Real Example (2026-01-11):**
-- client-manager was on `agent-001-logo-variation-enhancement`
+- your-project was on `agent-001-logo-variation-enhancement`
 - Discovered during agent-002 release investigation
 - Would have corrupted all future worktree allocations
 - Fixed in 5 minutes, prevented hours of debugging
@@ -2371,7 +2371,7 @@ bash C:/scripts/tools/complete-release.sh agent-XXX
 
 **What it does:**
 1. ✅ Cleans worktree directory (`rm -rf agent-XXX/*`)
-2. ✅ Prunes git worktree references from ALL repos (client-manager, hazina, artrevisionist)
+2. ✅ Prunes git worktree references from ALL repos (your-project, hazina, artrevisionist)
 3. ✅ Verifies directory is empty
 4. ✅ Checks pool status (warns if not FREE)
 5. ✅ Displays next steps reminder
@@ -2391,7 +2391,7 @@ bash C:/scripts/tools/complete-release.sh agent-XXX
 Step 1: Cleaning worktree directory...
 ✅ Directory cleaned
 Step 2: Pruning git worktree references...
-  Pruning client-manager...
+  Pruning your-project...
   Pruning hazina...
   Pruning artrevisionist...
 ✅ Git references pruned
@@ -2424,7 +2424,7 @@ bash C:/scripts/tools/check-base-repos.sh
 ```
 
 **What it does:**
-1. ✅ Checks client-manager, hazina, artrevisionist branches
+1. ✅ Checks your-project, hazina, artrevisionist branches
 2. ✅ Verifies each is on `develop`
 3. ✅ Checks for uncommitted changes (warns if can't auto-fix)
 4. ✅ Provides auto-fix command if repos are clean
@@ -2443,7 +2443,7 @@ bash C:/scripts/tools/check-base-repos.sh
 ```
 === Base Repo Health Check ===
 
-✅ client-manager on develop
+✅ your-project on develop
 ✅ hazina on develop
 ✅ artrevisionist on develop
 
@@ -2454,16 +2454,16 @@ bash C:/scripts/tools/check-base-repos.sh
 ```
 === Base Repo Health Check ===
 
-❌ client-manager on 'agent-001-feature' (should be develop)
+❌ your-project on 'agent-001-feature' (should be develop)
    ✅ No uncommitted changes - safe to fix
-   Fix: git -C client-manager checkout develop && git -C client-manager pull origin develop
+   Fix: git -C your-project checkout develop && git -C your-project pull origin develop
 ✅ hazina on develop
 ✅ artrevisionist on develop
 
 ❌ Fix required: Restore affected repos to develop branch
 
 Auto-fix command (for clean repos only):
-  for repo in client-manager hazina artrevisionist; do
+  for repo in your-project hazina artrevisionist; do
     git -C C:/Projects/$repo checkout develop
     git -C C:/Projects/$repo pull origin develop
   done
@@ -2474,7 +2474,7 @@ Auto-fix command (for clean repos only):
 - RULE 3B: Base repos MUST ALWAYS be on develop
 - Pattern 59: Post-Compaction Verification (Tier 1 checks)
 
-**Critical:** This script prevented hours of debugging in 2026-01-11 session by catching client-manager on wrong branch before worktree allocation.
+**Critical:** This script prevented hours of debugging in 2026-01-11 session by catching your-project on wrong branch before worktree allocation.
 
 
 ---

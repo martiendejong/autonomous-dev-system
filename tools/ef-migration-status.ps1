@@ -5,17 +5,17 @@
 .DESCRIPTION
     Checks EF Core migration state: pending migrations, applied migrations, and file integrity
 .PARAMETER ProjectPath
-    Path to the project containing DbContext (default: C:\Projects\client-manager\ClientManagerAPI)
+    Path to the project containing DbContext (default: C:\Projects\your-project\ClientManagerAPI)
 .PARAMETER Detailed
     Show detailed information about each migration
 .EXAMPLE
     .\ef-migration-status.ps1
 .EXAMPLE
-    .\ef-migration-status.ps1 -ProjectPath C:\Projects\client-manager\ClientManagerAPI -Detailed
+    .\ef-migration-status.ps1 -ProjectPath C:\Projects\your-project\ClientManagerAPI -Detailed
 #>
 
 param(
-    [string]$ProjectPath = "C:\Projects\client-manager\ClientManagerAPI",
+    [string]$ProjectPath = "C:\Projects\your-project\ClientManagerAPI",
     [switch]$Detailed
 )
 

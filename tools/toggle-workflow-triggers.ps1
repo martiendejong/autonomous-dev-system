@@ -13,7 +13,7 @@
     - Deployment freezes
 
 .PARAMETER RepoPath
-    Path to repository (default: C:\Projects\client-manager)
+    Path to repository (default: C:\Projects\your-project)
 
 .PARAMETER Mode
     Target mode: "manual" or "automatic"
@@ -47,7 +47,7 @@
 #>
 
 param(
-    [string]$RepoPath = "C:\Projects\client-manager",
+    [string]$RepoPath = "C:\Projects\your-project",
     [ValidateSet("manual", "automatic")
 
 # AUTO-USAGE TRACKING

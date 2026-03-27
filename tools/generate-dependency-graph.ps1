@@ -7,7 +7,7 @@
     an interactive visualization using Mermaid.js or D3.js.
 
     Supports:
-    - Multi-repository analysis (Hazina + client-manager + other apps)
+    - Multi-repository analysis (Hazina + your-project + other apps)
     - Circular dependency detection
     - Export to HTML, Mermaid, or JSON
 
@@ -188,7 +188,7 @@ function Generate-MermaidDiagram {
 
         $class = switch ($repo) {
             "hazina" { "hazina" }
-            "client-manager" { "clientManager" }
+            "your-project" { "clientManager" }
             default { "other" }
         }
 

@@ -7,13 +7,13 @@
     Prevents common mistake of targeting main instead of develop.
 
 .PARAMETER Repo
-    Repository to check (client-manager, hazina, etc.)
+    Repository to check (your-project, hazina, etc.)
 
 .PARAMETER BaseBranch
     Expected base branch (default: develop)
 
 .EXAMPLE
-    .\validate-pr-base.ps1 -Repo "client-manager"
+    .\validate-pr-base.ps1 -Repo "your-project"
     .\validate-pr-base.ps1 -Repo "hazina" -BaseBranch "develop"
 #>
 
@@ -28,7 +28,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 
 
 $RepoMappings = @{
-    "client-manager" = "C:\Projects\client-manager"
+    "your-project" = "C:\Projects\your-project"
     "hazina" = "C:\Projects\hazina"
     "artrevisionist" = "C:\Projects\artrevisionist"
     "bugattiinsights" = "C:\Projects\bugattiinsights"
@@ -53,7 +53,7 @@ if (-not $Repo) {
     Write-Host "ERROR: -Repo parameter required" -ForegroundColor Red
     Write-Host ""
     Write-Host "Usage:" -ForegroundColor White
-    Write-Host "  .\validate-pr-base.ps1 -Repo 'client-manager' [-BaseBranch 'develop']" -ForegroundColor DarkGray
+    Write-Host "  .\validate-pr-base.ps1 -Repo 'your-project' [-BaseBranch 'develop']" -ForegroundColor DarkGray
     Write-Host ""
     exit 1
 }

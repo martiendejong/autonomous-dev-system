@@ -6,7 +6,7 @@ Use when creating or editing content for an Art Revisionist case/investigation. 
 
 ## Overview
 
-Art Revisionist is a research publication platform for historical investigations. Each "case" (like Valsuani, Senufo, CV Martien) has a structured content hierarchy that must be followed exactly for the application to display it correctly.
+Art Revisionist is a research publication platform for historical investigations. Each "case" (like Valsuani, Senufo, CV Your Name) has a structured content hierarchy that must be followed exactly for the application to display it correctly.
 
 ## Content Hierarchy
 
@@ -339,7 +339,7 @@ Always read a file before writing to it (Claude Code requirement).
 
 ## Related Files
 
-- Reference case: `C:\stores\artrevisionist\CV Martien\`
+- Reference case: `C:\stores\artrevisionist\CV Your Name\`
 - Image storage: `C:\stores\artrevisionist\{CaseName}\office_images\`
 - Main content: `C:\stores\artrevisionist\{CaseName}\pages.json`
 

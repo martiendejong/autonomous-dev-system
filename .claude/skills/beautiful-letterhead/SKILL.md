@@ -187,7 +187,7 @@ Assembled from the collective expertise of 100 specialists across design, typogr
 
 ## Design Systems
 
-### System 1: Minimalist/Modern (Stripe, Linear, martiendejong.nl)
+### System 1: Minimalist/Modern (Stripe, Linear, yourname.nl)
 
 **Philosophy:** "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away." — Antoine de Saint-Exupéry
 
@@ -220,7 +220,7 @@ Assembled from the collective expertise of 100 specialists across design, typogr
 
 **Best For:** Tech companies, startups, modern professional services, design agencies
 
-**Example Brands:** Stripe, Linear, Basecamp, martiendejong.nl, Vercel, Pitch
+**Example Brands:** Stripe, Linear, Basecamp, yourname.nl, Vercel, Pitch
 
 ### System 2: Classic/Traditional (Law firms, established banks)
 

@@ -34,7 +34,7 @@ User: "run automated reviewer"
 
 ```bash
 # Get all tasks in review status
-powershell.exe -Command "C:/scripts/tools/clickup-sync.ps1 -Action list -Project client-manager" | grep "review"
+powershell.exe -Command "C:/scripts/tools/clickup-sync.ps1 -Action list -Project your-project" | grep "review"
 ```
 
 ### Step 2: For Each Task - Full Review Pipeline
@@ -49,7 +49,7 @@ powershell.exe -Command "C:/scripts/tools/clickup-sync.ps1 -Action list -Project
 # - #XXX in task name
 # - Search GitHub: gh pr list --search <task-id>
 
-cd /c/Projects/client-manager
+cd /c/Projects/your-project
 TASK_ID="869c1w3d4"
 PR_NUM=$(gh pr list --search "$TASK_ID" --state all --limit 1 --json number --jq '.[0].number')
 ```
@@ -119,8 +119,8 @@ else
     PR_BRANCH=$(gh pr view $PR_NUM --json headRefName --jq '.headRefName')
 
     # Create worktree
-    WORKTREE="/c/Projects/worker-agents/$SEAT/client-manager"
-    cd /c/Projects/client-manager
+    WORKTREE="/c/Projects/worker-agents/$SEAT/your-project"
+    cd /c/Projects/your-project
 
     # Remove existing if present
     git worktree remove "$WORKTREE" --force 2>/dev/null
@@ -149,7 +149,7 @@ else
     fi
 
     # Clean up
-    cd /c/Projects/client-manager
+    cd /c/Projects/your-project
     git worktree remove "$WORKTREE" --force
 fi
 ```
@@ -263,7 +263,7 @@ EOF
 gh pr comment $PR_NUM --body "$REVIEW"
 
 # Post summary to ClickUp
-powershell.exe -Command "C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId '$TASK_ID' -Comment 'CODE REVIEW COMPLETED\n\nPR #$PR_NUM: $VERDICT\n\nSee GitHub PR for full review: https://github.com/martiendejong/client-manager/pull/$PR_NUM\n\n-- Automated by Claude Code Agent'"
+powershell.exe -Command "C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId '$TASK_ID' -Comment 'CODE REVIEW COMPLETED\n\nPR #$PR_NUM: $VERDICT\n\nSee GitHub PR for full review: https://github.com/yourname/your-project/pull/$PR_NUM\n\n-- Automated by Claude Code Agent'"
 ```
 
 ## Review Template Format

@@ -391,7 +391,7 @@ $compare = .\ai-vision.ps1 `
 
 **Auto-loaded from:**
 ```
-C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json
+C:\Projects\your-project\ClientManagerAPI\appsettings.Secrets.json
 ```
 
 **Required structure:**

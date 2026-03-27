@@ -7,7 +7,7 @@ echo ""
 
 all_good=true
 
-for repo in client-manager hazina artrevisionist; do
+for repo in your-project hazina artrevisionist; do
   repo_path="C:/Projects/$repo"
 
   if [ ! -d "$repo_path" ]; then
@@ -42,7 +42,7 @@ else
   echo "❌ Fix required: Restore affected repos to develop branch"
   echo ""
   echo "Auto-fix command (for clean repos only):"
-  echo "  for repo in client-manager hazina artrevisionist; do"
+  echo "  for repo in your-project hazina artrevisionist; do"
   echo "    git -C C:/Projects/\$repo checkout develop"
   echo "    git -C C:/Projects/\$repo pull origin develop"
   echo "  done"

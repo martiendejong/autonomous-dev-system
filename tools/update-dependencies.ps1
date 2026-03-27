@@ -34,7 +34,7 @@
     Show what would be updated without making changes
 
 .EXAMPLE
-    .\update-dependencies.ps1 -ProjectPath "C:\Projects\client-manager" -CheckOnly
+    .\update-dependencies.ps1 -ProjectPath "C:\Projects\your-project" -CheckOnly
     .\update-dependencies.ps1 -ProjectPath "." -AutoPatch -DryRun
     .\update-dependencies.ps1 -ProjectPath "." -SecurityOnly -CreatePR
 #>

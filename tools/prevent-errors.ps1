@@ -18,7 +18,7 @@
 
 .EXAMPLE
     prevent-errors.ps1 -Scan
-    prevent-errors.ps1 -Action "editing C:\Projects\client-manager directly"
+    prevent-errors.ps1 -Action "editing C:\Projects\your-project directly"
     prevent-errors.ps1 -List
 #>
 
@@ -39,7 +39,7 @@ $PreventionDB = "C:\scripts\_machine\error_prevention.json"
 # Known error patterns (hardcoded + learned)
 $KnownPatterns = @(
     @{
-        pattern = "edit.*C:\\Projects\\(client-manager|hazina)[^\\]"
+        pattern = "edit.*C:\\Projects\\(your-project|hazina)[^\\]"
         error = "Editing base repo directly instead of worktree"
         prevention = "STOP! Use worktree. Run: worktree-allocate.ps1"
         severity = "CRITICAL"

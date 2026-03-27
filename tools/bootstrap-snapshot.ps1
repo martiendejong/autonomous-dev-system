@@ -76,7 +76,7 @@ function Get-RecentReflections {
 function Get-BaseRepoStatus {
     $repos = @{}
     $repoPaths = @(
-        "C:\Projects\client-manager",
+        "C:\Projects\your-project",
         "C:\Projects\hazina"
     )
 

@@ -6,9 +6,9 @@
     Resets SQLite database and applies all migrations from scratch.
     Automatically backs up existing database before deletion.
 .PARAMETER DatabasePath
-    Path to SQLite database file (default: c:\stores\brand2boost\identity.db)
+    Path to SQLite database file (default: c:\stores\your-app\identity.db)
 .PARAMETER ProjectPath
-    Path to project with migrations (default: C:\Projects\client-manager\ClientManagerAPI)
+    Path to project with migrations (default: C:\Projects\your-project\ClientManagerAPI)
 .PARAMETER SkipBackup
     Skip backup creation (USE WITH CAUTION)
 .PARAMETER NoMigrate
@@ -22,8 +22,8 @@
 #>
 
 param(
-    [string]$DatabasePath = "c:\stores\brand2boost\identity.db",
-    [string]$ProjectPath = "C:\Projects\client-manager\ClientManagerAPI",
+    [string]$DatabasePath = "c:\stores\your-app\identity.db",
+    [string]$ProjectPath = "C:\Projects\your-project\ClientManagerAPI",
     [switch]$SkipBackup,
     [switch]$NoMigrate
 )

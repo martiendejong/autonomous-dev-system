@@ -1,5 +1,5 @@
 ﻿# ClickUp Dashboard Builder
-# Generates dashboard configuration for brand2boost workspace
+# Generates dashboard configuration for your-app workspace
 
 param(
     [string]$Action = "generate",
@@ -355,7 +355,7 @@ function Generate-Instructions {
 ================================================================
 
 PREREQUISITES:
-* ClickUp workspace access (brand2boost)
+* ClickUp workspace access (your-app)
 * Admin or Owner permissions
 * List ID: 901214097647 (Brand Designer)
 

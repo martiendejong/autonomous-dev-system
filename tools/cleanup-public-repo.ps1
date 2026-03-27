@@ -20,9 +20,9 @@ Push-Location $targetDir
 try {
     # Files to delete entirely (contain hardcoded credentials or project-specific info)
     $filesToDelete = @(
-        "analysis-50-expert-panel-brand2boost.md"
+        "analysis-50-expert-panel-your-app.md"
         "analysis-50-expert-panel-workflow-processes.md"
-        "tools/backup-brand2boost.ps1"
+        "tools/backup-your-app.ps1"
         "tools/check-database.py"
         "tools/fix-database.py"
         "tools/full-backend-reset.py"
@@ -57,8 +57,8 @@ try {
     $gitignoreAdditions = @"
 
 # Project-specific files (exclude from public repo)
-analysis-*-brand2boost.md
-tools/backup-brand2boost.ps1
+analysis-*-your-app.md
+tools/backup-your-app.ps1
 tools/*database*.py
 tools/ssh-*.py
 tools/*-vps*.ps1
@@ -82,18 +82,18 @@ tools/create-project-kb.ps1
     $skillFiles = Get-ChildItem -Path ".claude/skills" -Filter "*.md" -Recurse
 
     $replacements = @{
-        "client-manager" = "myproject"
-        "brand2boost" = "myapp"
+        "your-project" = "myproject"
+        "your-app" = "myapp"
         "hazina" = "myframework"
         "wreckingball" = "admin"
         "YOUR_PASSWORD" = "YourSecurePassword"
         "YOUR_SERVER_IP" = "your-server-ip"
         "3WsXcFr`$7YhNmKi\*" = "YourServerPassword"
-        "C:/Projects/client-manager" = "C:/Projects/myproject"
+        "C:/Projects/your-project" = "C:/Projects/myproject"
         "C:/Projects/hazina" = "C:/Projects/myframework"
-        "C:\\Projects\\client-manager" = "C:\\Projects\\myproject"
+        "C:\\Projects\\your-project" = "C:\\Projects\\myproject"
         "C:\\Projects\\hazina" = "C:\\Projects\\myframework"
-        "martiendejong" = "yourname"
+        "yourname" = "yourname"
     }
 
     $updatedCount = 0

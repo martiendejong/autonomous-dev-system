@@ -24,7 +24,7 @@
     Exit with error if schema drift detected
 
 .EXAMPLE
-    .\ef-preflight-check.ps1 -Context AppDbContext -ProjectPath C:\Projects\client-manager\ClientManagerAPI
+    .\ef-preflight-check.ps1 -Context AppDbContext -ProjectPath C:\Projects\your-project\ClientManagerAPI
     .\ef-preflight-check.ps1 -Context AppDbContext -ProjectPath . -FailOnDrift
 #>
 

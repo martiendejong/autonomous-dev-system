@@ -22,7 +22,7 @@ $TaskId = '869bt43qt'
 $Headers = @{ Authorization = $ApiKey; 'Content-Type' = 'application/json' }
 
 $Comment = @{
-    comment_text = "PR #149 (allitemslist branch) linked:`nhttps://github.com/martiendejong/client-manager/pull/149`n`nThis PR must be merged before subsequent phases can begin."
+    comment_text = "PR #149 (allitemslist branch) linked:`nhttps://github.com/yourname/your-project/pull/149`n`nThis PR must be merged before subsequent phases can begin."
 } | ConvertTo-Json
 
 try {

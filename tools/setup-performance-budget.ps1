@@ -21,7 +21,7 @@
     Comma-separated list of routes to test (default: /)
 
 .EXAMPLE
-    .\setup-performance-budget.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerFrontend"
+    .\setup-performance-budget.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerFrontend"
     .\setup-performance-budget.ps1 -ProjectPath "." -CreateWorkflow -Routes "/,/dashboard,/reports"
 #>
 

@@ -49,8 +49,8 @@ function Get-AzureCosts {
             "Other" = 200.00
         }
         "ByResourceGroup" = @{
-            "client-manager-prod" = 780.00
-            "client-manager-dev" = 320.75
+            "your-project-prod" = 780.00
+            "your-project-dev" = 320.75
             "infrastructure" = 150.00
         }
         "Recommendations" = @(

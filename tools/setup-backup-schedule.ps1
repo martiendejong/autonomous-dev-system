@@ -1,9 +1,9 @@
 ﻿#!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Sets up Windows Task Scheduler to run nightly backups of brand2boost data
+    Sets up Windows Task Scheduler to run nightly backups of your-app data
 .DESCRIPTION
-    Creates a scheduled task that runs backup-brand2boost.ps1 every night at 3:00 AM
+    Creates a scheduled task that runs backup-your-app.ps1 every night at 3:00 AM
 .EXAMPLE
     .\setup-backup-schedule.ps1
     .\setup-backup-schedule.ps1 -Time "02:00"
@@ -23,8 +23,8 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 $ErrorActionPreference = "Stop"
 
 $taskName = "Brand2Boost Nightly Backup"
-$taskDescription = "Nightly backup of brand2boost data folder with 5-day retention"
-$scriptPath = Join-Path $PSScriptRoot "backup-brand2boost.ps1"
+$taskDescription = "Nightly backup of your-app data folder with 5-day retention"
+$scriptPath = Join-Path $PSScriptRoot "backup-your-app.ps1"
 
 # Verify script exists
 if (-not (Test-Path $scriptPath)) {
@@ -110,15 +110,15 @@ try {
     Write-Host ""
     Write-Host "CONFIGURATION:" -ForegroundColor Cyan
     Write-Host "  - Runs: Daily at $Time"
-    Write-Host "  - Source: C:\stores\brand2boost"
-    Write-Host "  - Backup Location: C:\backups\brand2boost"
+    Write-Host "  - Source: C:\stores\your-app"
+    Write-Host "  - Backup Location: C:\backups\your-app"
     Write-Host "  - Retention: Last 5 backups (rotating)"
-    Write-Host "  - Log File: C:\backups\brand2boost\backup.log"
+    Write-Host "  - Log File: C:\backups\your-app\backup.log"
     Write-Host "  - Excludes: .git, bin, obj, logs, model-usage-stats, .hazina"
     Write-Host ""
     Write-Host "MANUAL TESTING:" -ForegroundColor Cyan
-    Write-Host "  Test backup:        .\backup-brand2boost.ps1"
-    Write-Host "  Test dry run:       .\backup-brand2boost.ps1 -DryRun"
+    Write-Host "  Test backup:        .\backup-your-app.ps1"
+    Write-Host "  Test dry run:       .\backup-your-app.ps1 -DryRun"
     Write-Host "  Run scheduled task: Start-ScheduledTask -TaskName '$taskName'"
     Write-Host "  Uninstall task:     .\setup-backup-schedule.ps1 -Uninstall"
     Write-Host ""

@@ -33,7 +33,7 @@
     Show what would happen without making changes
 
 .EXAMPLE
-    .\validate-migration.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerApi"
+    .\validate-migration.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerApi"
     .\validate-migration.ps1 -ProjectPath "." -MigrationName "AddUserTable" -GenerateRollback
     .\validate-migration.ps1 -ProjectPath "." -TestApply -DryRun
 #>

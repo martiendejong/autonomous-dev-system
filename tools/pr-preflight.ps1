@@ -14,7 +14,7 @@
     Designed for FREE GitHub (no Actions minutes used - all local).
 
 .PARAMETER Repo
-    Repository name (client-manager, hazina)
+    Repository name (your-project, hazina)
 
 .PARAMETER Branch
     Branch to validate
@@ -29,10 +29,10 @@
     Show detailed output
 
 .EXAMPLE
-    .\pr-preflight.ps1 -Repo "client-manager" -Branch "feature/new-thing"
+    .\pr-preflight.ps1 -Repo "your-project" -Branch "feature/new-thing"
 
 .EXAMPLE
-    .\pr-preflight.ps1 -Repo "client-manager" -Branch "feature/x" -AutoFix
+    .\pr-preflight.ps1 -Repo "your-project" -Branch "feature/x" -AutoFix
 #>
 
 param(
@@ -54,7 +54,7 @@ $ErrorActionPreference = "Continue"
 
 # Configuration
 $RepoMappings = @{
-    "client-manager" = "C:\Projects\client-manager"
+    "your-project" = "C:\Projects\your-project"
     "hazina" = "C:\Projects\hazina"
 }
 

@@ -98,7 +98,7 @@ if ($installed -gt 0 -or $skipped -gt 0) {
     Write-Host "   bat README.md        # View file with syntax highlighting" -ForegroundColor White
     Write-Host "   eza -l --git         # List files with git status" -ForegroundColor White
     Write-Host "   fzf                  # Interactive fuzzy finder" -ForegroundColor White
-    Write-Host "   z client             # Jump to client-manager directory" -ForegroundColor White
+    Write-Host "   z client             # Jump to your-project directory" -ForegroundColor White
 }
 
 Write-Host "`n"

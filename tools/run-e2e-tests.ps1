@@ -37,7 +37,7 @@
     CI mode (headless, no interactive prompts)
 
 .EXAMPLE
-    .\run-e2e-tests.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerFrontend"
+    .\run-e2e-tests.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerFrontend"
     .\run-e2e-tests.ps1 -ProjectPath "." -Browser all -Headed
     .\run-e2e-tests.ps1 -ProjectPath "." -UpdateSnapshots
     .\run-e2e-tests.ps1 -ProjectPath "." -CI

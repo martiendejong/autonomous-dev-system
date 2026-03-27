@@ -36,7 +36,7 @@
     Show optimization suggestions
 
 .EXAMPLE
-    .\analyze-build-cache.ps1 -ProjectPath "C:\Projects\client-manager" -Measure
+    .\analyze-build-cache.ps1 -ProjectPath "C:\Projects\your-project" -Measure
     .\analyze-build-cache.ps1 -ProjectPath "." -Analyze -LogPath "msbuild.binlog"
     .\analyze-build-cache.ps1 -ProjectPath "." -BuildType vite -Trends
 #>

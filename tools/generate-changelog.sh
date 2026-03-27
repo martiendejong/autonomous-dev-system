@@ -21,7 +21,7 @@ done
 if [ -n "$REPO" ]; then
   REPOS=("$REPO")
 else
-  REPOS=("client-manager" "hazina")
+  REPOS=("your-project" "hazina")
 fi
 
 echo "=== CHANGELOG GENERATOR ==="

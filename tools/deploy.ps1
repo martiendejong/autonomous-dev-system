@@ -1,6 +1,6 @@
 ﻿<#
 .SYNOPSIS
-    Deploy client-manager frontend and/or backend to production.
+    Deploy your-project frontend and/or backend to production.
 
 .DESCRIPTION
     Wrapper around the publish scripts for easy deployment.
@@ -42,7 +42,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 )
 
 $ErrorActionPreference = 'Stop'
-$RepoRoot = "C:\Projects\client-manager"
+$RepoRoot = "C:\Projects\your-project"
 
 function Write-Status($message, $color = 'Cyan') {
     Write-Host "[$((Get-Date).ToString('HH:mm:ss'))] $message" -ForegroundColor $color
@@ -51,7 +51,7 @@ function Write-Status($message, $color = 'Cyan') {
 function Deploy-Frontend {
     Write-Status "Deploying FRONTEND..." "Yellow"
 
-    $script = Join-Path $RepoRoot "publish-brand2boost-frontend.ps1"
+    $script = Join-Path $RepoRoot "publish-your-app-frontend.ps1"
     if (-not (Test-Path $script)) {
         Write-Status "ERROR: Frontend publish script not found at $script" "Red"
         return $false
@@ -76,7 +76,7 @@ function Deploy-Frontend {
 function Deploy-Backend {
     Write-Status "Deploying BACKEND..." "Yellow"
 
-    $script = Join-Path $RepoRoot "publish-brand2boost-backend.ps1"
+    $script = Join-Path $RepoRoot "publish-your-app-backend.ps1"
     if (-not (Test-Path $script)) {
         Write-Status "ERROR: Backend publish script not found at $script" "Red"
         return $false
@@ -126,7 +126,7 @@ switch ($Target) {
 if ($success) {
     Write-Status "=== DEPLOYMENT SUCCESSFUL ===" "Green"
     Write-Host ""
-    Write-Host "Production URL: https://app.brand2boost.com" -ForegroundColor Cyan
+    Write-Host "Production URL: https://app.your-app.com" -ForegroundColor Cyan
     Write-Host "Reminder: Hard refresh (Ctrl+Shift+R) to see changes" -ForegroundColor Yellow
 }
 else {

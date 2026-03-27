@@ -23,7 +23,7 @@ This tool scans C# DbContext files and:
 
 ### Basic Audit (Report Only)
 ```powershell
-.\audit-dbcontext-table-names.ps1 -ProjectPath C:\Projects\client-manager\ClientManagerAPI
+.\audit-dbcontext-table-names.ps1 -ProjectPath C:\Projects\your-project\ClientManagerAPI
 
 # Output:
 # ✅ 30 entities with explicit .ToTable() configuration
@@ -37,8 +37,8 @@ This tool scans C# DbContext files and:
 ### Audit with Database Schema Comparison
 ```powershell
 .\audit-dbcontext-table-names.ps1 `
-    -ProjectPath C:\Projects\client-manager\ClientManagerAPI `
-    -DatabasePath C:\stores\brand2boost\identity.db
+    -ProjectPath C:\Projects\your-project\ClientManagerAPI `
+    -DatabasePath C:\stores\your-app\identity.db
 
 # Output:
 # Comparing DbContext configuration with actual database...
@@ -52,8 +52,8 @@ This tool scans C# DbContext files and:
 ### Auto-Fix Mode
 ```powershell
 .\audit-dbcontext-table-names.ps1 `
-    -ProjectPath C:\Projects\client-manager\ClientManagerAPI `
-    -DatabasePath C:\stores\brand2boost\identity.db `
+    -ProjectPath C:\Projects\your-project\ClientManagerAPI `
+    -DatabasePath C:\stores\your-app\identity.db `
     -Fix
 
 # Output:
@@ -73,12 +73,12 @@ This tool scans C# DbContext files and:
 ### -ProjectPath (Required)
 Path to project containing DbContext files.
 
-**Example:** `C:\Projects\client-manager\ClientManagerAPI`
+**Example:** `C:\Projects\your-project\ClientManagerAPI`
 
 ### -DatabasePath (Optional)
 Path to SQLite database for schema comparison.
 
-**Example:** `C:\stores\brand2boost\identity.db`
+**Example:** `C:\stores\your-app\identity.db`
 
 **Behavior:**
 - If provided: Compares DbContext config with actual database tables
@@ -260,7 +260,7 @@ function Generate-Report {
 
 ### Console Format (Default)
 ```
-Auditing DbContext configurations in: C:\Projects\client-manager\ClientManagerAPI
+Auditing DbContext configurations in: C:\Projects\your-project\ClientManagerAPI
 
 DbContext File: Custom\IdentityDbContext.cs
 Entity Configurations Found: 50

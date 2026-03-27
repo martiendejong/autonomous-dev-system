@@ -145,15 +145,15 @@ constraints:
 client_manager:
   type: "SaaS promotion/brand development software"
   stack: ".NET + React + Hazina framework"
-  base_path: "C:\\Projects\\client-manager"
+  base_path: "C:\\Projects\\your-project"
   main_branch: "develop"
   dependencies: "Hazina (paired worktree required)"
 
 hazina:
-  type: "Framework (dependency of client-manager)"
+  type: "Framework (dependency of your-project)"
   base_path: "C:\\Projects\\hazina"
   main_branch: "develop"
-  note: "Must allocate paired with client-manager (Pattern 73)"
+  note: "Must allocate paired with your-project (Pattern 73)"
 ```
 
 ### Technical Knowledge

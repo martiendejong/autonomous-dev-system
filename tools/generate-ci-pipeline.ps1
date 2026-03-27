@@ -31,7 +31,7 @@
     Output path for workflow files (default: .github/workflows)
 
 .EXAMPLE
-    .\generate-ci-pipeline.ps1 -ProjectPath "C:\Projects\client-manager"
+    .\generate-ci-pipeline.ps1 -ProjectPath "C:\Projects\your-project"
     .\generate-ci-pipeline.ps1 -ProjectPath "." -ProjectType dotnet -Environments "dev,staging,prod"
     .\generate-ci-pipeline.ps1 -ProjectPath "." -DeployTarget docker
 #>

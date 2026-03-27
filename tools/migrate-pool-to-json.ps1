@@ -38,7 +38,7 @@ function Parse-PoolMarkdown {
     $lines = $Content -split "`n" | Where-Object { $_ -match '^\| agent-' }
 
     foreach ($line in $lines) {
-        # Parse: | agent-001 | agent001 | C:\Projects | C:\Projects\worker-agents\agent-001 | BUSY | client-manager | allitemslist | 2026-01-14T22:00:00Z | Notes |
+        # Parse: | agent-001 | agent001 | C:\Projects | C:\Projects\worker-agents\agent-001 | BUSY | your-project | allitemslist | 2026-01-14T22:00:00Z | Notes |
         if ($line -match '\| (agent-\d+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| (FREE|BUSY|STALE|BROKEN) \| ([^|]*) \| ([^|]*) \| ([^|]*) \| ([^|]*) \|') {
             $seats += @{
                 id = $matches[1].Trim()

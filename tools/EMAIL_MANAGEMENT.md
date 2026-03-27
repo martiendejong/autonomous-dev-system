@@ -1,6 +1,6 @@
 # Email Management Tools
 
-Tools for managing emails via IMAP for `info@martiendejong.nl`.
+Tools for managing emails via IMAP for `info@yourname.nl`.
 
 ## Quick Reference (Main Tools)
 
@@ -49,7 +49,7 @@ node email-manager.js search "query"
 ```
 Host: mail.zxcs.nl
 Port: 993 (SSL/TLS)
-User: info@martiendejong.nl
+User: info@yourname.nl
 Password: (see C:\scripts\_machine\credentials.md)
 ```
 
@@ -110,7 +110,7 @@ Password: (see C:\scripts\_machine\credentials.md)
 - `@lovable.dev` - Lovable (archive, not spam)
 - `@brainito.com` - Spam (promotional)
 - `@whitepress.com` - Spam (marketing)
-- `@gmail.com` from Martien de Jong - Own forwarded emails
+- `@gmail.com` from Your Name - Own forwarded emails
 - `@gmail.com` from Mang'abo Momanyi - Important contact (NDA)
 
 ### LinkedIn

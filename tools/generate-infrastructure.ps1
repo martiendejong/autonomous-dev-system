@@ -22,7 +22,7 @@
     Environment: dev, staging, production
 
 .EXAMPLE
-    .\generate-infrastructure.ps1 -Provider terraform -ResourceType webapp -ProjectName "client-manager"
+    .\generate-infrastructure.ps1 -Provider terraform -ResourceType webapp -ProjectName "your-project"
     .\generate-infrastructure.ps1 -Provider bicep -ResourceType full-stack -Environment production
 #>
 

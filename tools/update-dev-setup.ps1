@@ -43,20 +43,20 @@ Open terminal/PowerShell:
 cd C:\Projects
 
 # Clone main repository
-git clone https://github.com/martiendejong/client-manager.git client-manager
+git clone https://github.com/yourname/your-project.git your-project
 
 # Clone Hazina framework
-git clone https://github.com/martiendejong/hazina.git hazina
+git clone https://github.com/yourname/hazina.git hazina
 ``````
 
 **Repository URLs:**
-- Client Manager: https://github.com/martiendejong/client-manager
-- Hazina Framework: https://github.com/martiendejong/hazina
+- Client Manager: https://github.com/yourname/your-project
+- Hazina Framework: https://github.com/yourname/hazina
 
 ## Step 2: Backend Setup
 
 ``````bash
-cd C:\Projects\client-manager\ClientManagerAPI
+cd C:\Projects\your-project\ClientManagerAPI
 
 # Restore dependencies
 dotnet restore
@@ -81,7 +81,7 @@ dotnet run
 ## Step 3: Frontend Setup
 
 ``````bash
-cd C:\Projects\client-manager\client-manager-frontend
+cd C:\Projects\your-project\your-project-frontend
 
 # Install dependencies
 npm install
@@ -124,7 +124,7 @@ npm run dev
 
 ## Cross-Platform Setup (macOS + Windows VM)
 
-See documentation: `C:\Projects\client-manager\CROSS_PLATFORM_SETUP.md`
+See documentation: `C:\Projects\your-project\CROSS_PLATFORM_SETUP.md`
 
 **Key points:**
 - Run backend in Windows VM (UTM)

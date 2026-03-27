@@ -21,7 +21,7 @@
     Generate HTML visualization report
 
 .EXAMPLE
-    .\analyze-bundle-size.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerFrontend"
+    .\analyze-bundle-size.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerFrontend"
     .\analyze-bundle-size.ps1 -ProjectPath "." -Build -OutputReport
 #>
 

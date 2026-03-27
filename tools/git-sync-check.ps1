@@ -14,7 +14,7 @@
 .EXAMPLE
     .\git-sync-check.ps1
 .EXAMPLE
-    .\git-sync-check.ps1 -RepoPath C:\Projects\client-manager -Verbose
+    .\git-sync-check.ps1 -RepoPath C:\Projects\your-project -Verbose
 .EXAMPLE
     .\git-sync-check.ps1 -Fetch:$false
 #>

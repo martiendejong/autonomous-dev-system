@@ -29,8 +29,8 @@
     Labels to add to created issues (comma-separated)
 
 .EXAMPLE
-    .\track-todos.ps1 -Path "C:\Projects\client-manager" -Recursive
-    .\track-todos.ps1 -Path "src" -CreateIssues -Repository "martiendejong/client-manager"
+    .\track-todos.ps1 -Path "C:\Projects\your-project" -Recursive
+    .\track-todos.ps1 -Path "src" -CreateIssues -Repository "yourname/your-project"
     .\track-todos.ps1 -Path "." -Recursive -Label "technical-debt,todo"
 #>
 

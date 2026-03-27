@@ -39,7 +39,7 @@ This open-source system is powerful on its own. But we also build **custom agent
 **Prototype: EUR 500** — See what a custom agent can do for your domain.
 **Full Product: EUR 5,000+** — Production-ready agent integrated into your workflow.
 
-Interested? [Open an issue](https://github.com/martiendejong/autonomous-dev-system/issues/new?title=Custom%20Agent%20Inquiry&body=I%27m%20interested%20in%20a%20custom%20agent.%20My%20domain%3A%20) or reach out via [GitHub](https://github.com/martiendejong).
+Interested? [Open an issue](https://github.com/yourname/autonomous-dev-system/issues/new?title=Custom%20Agent%20Inquiry&body=I%27m%20interested%20in%20a%20custom%20agent.%20My%20domain%3A%20) or reach out via [GitHub](https://github.com/yourname).
 
 ---
 

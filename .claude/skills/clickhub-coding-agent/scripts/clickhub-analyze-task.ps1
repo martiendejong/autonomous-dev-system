@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 
 # Paths
 $toolsPath = "C:\scripts\tools"
-$projectPath = "C:\Projects\client-manager"
+$projectPath = "C:\Projects\your-project"
 
 Write-Host "`n================================================================" -ForegroundColor Cyan
 Write-Host "   ClickHub Task Analyzer" -ForegroundColor Cyan

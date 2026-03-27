@@ -2,7 +2,7 @@
 # Fix UTF-16 encoded files in the frontend
 
 param(
-    [string]$Path = "C:\Projects\client-manager\ClientManagerFrontend\src",
+    [string]$Path = "C:\Projects\your-project\ClientManagerFrontend\src",
     [switch]$DryRun
 )
 

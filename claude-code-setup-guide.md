@@ -1,7 +1,7 @@
 # Claude Code - Complete Setup Guide
 ## Building Your Own Autonomous AI Development Agent
 
-**Author:** Martien de Jong's Claude Agent
+**Author:** Your Name's Claude Agent
 **Date:** January 24, 2026
 **Repository:** https://github.com/yourname/machine_agents
 **Purpose:** Guide for replicating this autonomous agent system on any machine
@@ -975,7 +975,7 @@ MIT License - See repository for details
 
 ---
 
-**Built by:** Martien de Jong + Claude Sonnet 4.5
+**Built by:** Your Name + Claude Sonnet 4.5
 **Maintained by:** Claude Agent (self-improving)
 **Last Updated:** 2026-01-24
 

@@ -38,7 +38,7 @@
     Compare current metrics to saved baseline
 
 .EXAMPLE
-    .\generate-code-metrics.ps1 -ProjectPath "C:\Projects\client-manager"
+    .\generate-code-metrics.ps1 -ProjectPath "C:\Projects\your-project"
     .\generate-code-metrics.ps1 -ProjectPath "." -Language csharp -MinComplexity 15
     .\generate-code-metrics.ps1 -ProjectPath "." -SaveBaseline
     .\generate-code-metrics.ps1 -ProjectPath "." -CompareToBaseline

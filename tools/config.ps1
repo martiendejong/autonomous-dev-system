@@ -33,8 +33,8 @@ $global:Config = @{
     # Repository configuration
     Repos = @{
         ClientManager = @{
-            Name = "client-manager"
-            Path = "C:\Projects\client-manager"
+            Name = "your-project"
+            Path = "C:\Projects\your-project"
             MainBranch = "develop"
         }
         Hazina = @{

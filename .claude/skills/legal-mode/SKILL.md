@@ -363,7 +363,7 @@ Settlement is permanent, zoals jij wilde.
 Ik ga akkoord met je voorstel.
 
 Groet,
-Martien"
+Your Name"
 ```
 
 **Legal-mode response:**
@@ -396,7 +396,7 @@ Graag schriftelijke specificatie van:
 Dan kan ik reageren.
 
 Groet,
-Martien"
+Your Name"
 
 ALTERNATIEF 2 (Zeer voorzichtig):
 "Hallo Arjan,
@@ -405,7 +405,7 @@ Wat stel je concreet voor?
 Graag op papier met alle details.
 
 Groet,
-Martien"
+Your Name"
 ```
 
 ---

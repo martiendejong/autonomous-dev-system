@@ -1,7 +1,7 @@
 #!/bin/bash
 # pr-status.sh - Show status of all open PRs across repos
 # Usage: ./pr-status.sh [repo-name]
-# Example: ./pr-status.sh client-manager
+# Example: ./pr-status.sh your-project
 
 REPO="$1"
 
@@ -11,7 +11,7 @@ echo ""
 if [ -n "$REPO" ]; then
   REPOS=("$REPO")
 else
-  REPOS=("client-manager" "hazina")
+  REPOS=("your-project" "hazina")
 fi
 
 TOTAL_PRS=0

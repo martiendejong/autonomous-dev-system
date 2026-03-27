@@ -24,7 +24,7 @@ echo ""
 if [ -n "$REPO" ]; then
   REPOS=("$REPO")
 else
-  REPOS=("client-manager")
+  REPOS=("your-project")
 fi
 
 LOW_COVERAGE_THRESHOLD=80

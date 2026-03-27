@@ -7,7 +7,7 @@ REPO="$1"
 if [ -n "$REPO" ]; then
   REPOS=("$REPO")
 else
-  REPOS=("client-manager" "hazina")
+  REPOS=("your-project" "hazina")
 fi
 
 echo "=== PRE-COMMIT HOOK INSTALLER ==="

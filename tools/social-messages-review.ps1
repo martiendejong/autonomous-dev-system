@@ -95,7 +95,7 @@ $ErrorActionPreference = "Stop"
 
 # Load API key from appsettings.Secrets.json if not provided
 if ([string]::IsNullOrEmpty($OpenAIApiKey)) {
-    $secretsPath = "C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json"
+    $secretsPath = "C:\Projects\your-project\ClientManagerAPI\appsettings.Secrets.json"
     if (Test-Path $secretsPath) {
         try {
             $secrets = Get-Content $secretsPath -Raw | ConvertFrom-Json

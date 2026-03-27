@@ -36,7 +36,7 @@ user-invocable: true
 ```bash
 # Accept board name or list ID
 # Examples:
-#   /refine-backlog client-manager
+#   /refine-backlog your-project
 #   /refine-backlog 901214097647
 #   /refine-backlog seo-god
 ```
@@ -187,14 +187,14 @@ Next steps:
 
 ### Example 1: Refine Client Manager Backlog
 
-**User says:** "Refine the backlog for client-manager"
+**User says:** "Refine the backlog for your-project"
 
 **Claude activates clickup-refinement and:**
 
 1. Reads ClickUp config, finds list ID 901214097647
 2. Fetches 12 tasks in "backlog" status
 3. For each task:
-   - Analyzes codebase (scans `C:\Projects\client-manager`)
+   - Analyzes codebase (scans `C:\Projects\your-project`)
    - Identifies exact files: `frontend/src/components/UserProfile.tsx`, `ClientManagerAPI/Controllers/UsersController.cs`
    - Generates 4-section description with exact paths and test steps
    - Sets priority based on impact
@@ -210,7 +210,7 @@ Next steps:
 
 1. Uses list ID directly (SEO God board)
 2. Fetches backlog tasks
-3. Analyzes `E:\projects\seo-god` codebase
+3. Analyzes `C:\Projects\seo-god` codebase
 4. Refines tasks with SEO-specific context
 5. Reports summary
 

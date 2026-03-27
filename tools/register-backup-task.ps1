@@ -5,7 +5,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 . "$PSScriptRoot\_usage-logger.ps1" -ToolName $toolName -Action "execute" -Metadata @{ Parameters = ($PSBoundParameters.Keys -join ',') } -ErrorAction SilentlyContinue
 
 $taskName = "Brand2Boost Nightly Backup"
-$scriptPath = "C:\scripts\tools\backup-brand2boost.ps1"
+$scriptPath = "C:\scripts\tools\backup-your-app.ps1"
 
 # Remove existing task if it exists
 try {
@@ -31,7 +31,7 @@ $principal = New-ScheduledTaskPrincipal `
 
 Register-ScheduledTask `
     -TaskName $taskName `
-    -Description "Nightly backup of brand2boost data folder with 5-day retention" `
+    -Description "Nightly backup of your-app data folder with 5-day retention" `
     -Action $action `
     -Trigger $trigger `
     -Settings $settings `

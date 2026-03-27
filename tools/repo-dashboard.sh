@@ -7,7 +7,7 @@ echo "║         MULTI-REPO STATUS DASHBOARD                           ║"
 echo "╚═══════════════════════════════════════════════════════════════╝"
 echo ""
 
-REPOS=("client-manager" "hazina")
+REPOS=("your-project" "hazina")
 
 for repo in "${REPOS[@]}"; do
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

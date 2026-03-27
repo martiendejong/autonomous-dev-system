@@ -24,7 +24,7 @@ fi
 # Step 2: Prune all repos
 echo ""
 echo "Step 2: Pruning git worktree references..."
-for repo in client-manager hazina artrevisionist; do
+for repo in your-project hazina artrevisionist; do
   if [ -d "C:/Projects/$repo" ]; then
     echo "  Pruning $repo..."
     git -C "C:/Projects/$repo" worktree prune -v

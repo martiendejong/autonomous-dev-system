@@ -29,7 +29,7 @@
     Test that API endpoints are reachable
 
 .EXAMPLE
-    .\generate-api-docs.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerApi"
+    .\generate-api-docs.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerApi"
     .\generate-api-docs.ps1 -ProjectPath ".\API" -Format "all" -ValidateEndpoints
     .\generate-api-docs.ps1 -ProjectPath ".\API" -BaseUrl "https://api.example.com"
 #>

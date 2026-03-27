@@ -11,7 +11,7 @@
     Feature name (will be used for branch).
 
 .PARAMETER Repo
-    Repository (client-manager, hazina).
+    Repository (your-project, hazina).
 
 .PARAMETER Type
     Type (feature, fix, refactor).
@@ -20,14 +20,14 @@
     Create paired worktrees for both repos.
 
 .EXAMPLE
-    feature-setup.ps1 -Name "user-auth" -Repo client-manager
+    feature-setup.ps1 -Name "user-auth" -Repo your-project
     feature-setup.ps1 -Name "api-refactor" -Type refactor -Paired
 #>
 
 param(
     [Parameter(Mandatory=$true)]
     [string]$Name,
-    [string]$Repo = "client-manager",
+    [string]$Repo = "your-project",
     [string]$Type = "feature",
     [switch]$Paired,
     [string]$Description = ""
@@ -135,7 +135,7 @@ if ($Paired) {
     Write-Host ""
     Write-Host "5. Creating paired worktree..." -ForegroundColor Yellow
 
-    $pairedRepo = if ($Repo -eq "client-manager") { "hazina" } else { "client-manager" }
+    $pairedRepo = if ($Repo -eq "your-project") { "hazina" } else { "your-project" }
     $pairedPath = "$WorktreeBase\$($agent.id)\$pairedRepo"
     $pairedRepoPath = "$BaseDir\$pairedRepo"
 

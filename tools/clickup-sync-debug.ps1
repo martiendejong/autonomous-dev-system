@@ -56,8 +56,8 @@ param(
     [string]$Name,
     [string]$Description,
     [int]$PrNumber,
-    [string]$Repo = "martiendejong/client-manager",
-    [string]$ListId = "901214097647"  # Default: Brand Designer list (client-manager)
+    [string]$Repo = "yourname/your-project",
+    [string]$ListId = "901214097647"  # Default: Brand Designer list (your-project)
 )
 
 Write-Output "=== Script Started ==="
@@ -95,7 +95,7 @@ function Format-TaskTable {
 
 switch ($Action) {
     "list" {
-        Write-Host "`n=== Brand Designer Tasks (client-manager/hazina) ===" -ForegroundColor Cyan
+        Write-Host "`n=== Brand Designer Tasks (your-project/hazina) ===" -ForegroundColor Cyan
 
         $url = "$apiBase/list/$ListId/task?archived=false&include_closed=false"
         $response = Invoke-RestMethod -Uri $url -Headers $headers

@@ -47,8 +47,8 @@ switch ($Command.ToLower()) {
         & "$scriptDir\worktree-status.ps1" -Compact 2>$null
 
         Write-Host ""
-        Write-Host "[GIT STATUS - client-manager]" -ForegroundColor Yellow
-        Push-Location "C:\Projects\client-manager"
+        Write-Host "[GIT STATUS - your-project]" -ForegroundColor Yellow
+        Push-Location "C:\Projects\your-project"
         git status -sb
         Pop-Location
 

@@ -62,7 +62,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/martiendejong/autonomous-dev-system.git
+git clone https://github.com/yourname/autonomous-dev-system.git
 cd autonomous-dev-system
 
 # 2. Run installation wizard
@@ -86,10 +86,10 @@ claude --plugin-dir="/path/to/autonomous-dev-system"
 
 ### 📚 Documentation
 
-- **[README](https://github.com/martiendejong/autonomous-dev-system/blob/master/README.md)** - Complete installation and usage guide
-- **[TESTING](https://github.com/martiendejong/autonomous-dev-system/blob/master/TESTING.md)** - Test plan and validation procedures
-- **[Pattern Library](https://github.com/martiendejong/autonomous-dev-system/blob/master/patterns/INDEX.md)** - 75+ documented patterns
-- **[GitHub Setup](https://github.com/martiendejong/autonomous-dev-system/blob/master/GITHUB_SETUP.md)** - Publishing and contribution guide
+- **[README](https://github.com/yourname/autonomous-dev-system/blob/master/README.md)** - Complete installation and usage guide
+- **[TESTING](https://github.com/yourname/autonomous-dev-system/blob/master/TESTING.md)** - Test plan and validation procedures
+- **[Pattern Library](https://github.com/yourname/autonomous-dev-system/blob/master/patterns/INDEX.md)** - 75+ documented patterns
+- **[GitHub Setup](https://github.com/yourname/autonomous-dev-system/blob/master/GITHUB_SETUP.md)** - Publishing and contribution guide
 
 ---
 
@@ -132,10 +132,10 @@ Built from battle-tested protocols developed across **hundreds of development se
 
 ### 🤝 Contributing
 
-Contributions welcome! See [GITHUB_SETUP.md](https://github.com/martiendejong/autonomous-dev-system/blob/master/GITHUB_SETUP.md) for contribution guidelines.
+Contributions welcome! See [GITHUB_SETUP.md](https://github.com/yourname/autonomous-dev-system/blob/master/GITHUB_SETUP.md) for contribution guidelines.
 
 **Ways to contribute:**
-- Report bugs or request features via [Issues](https://github.com/martiendejong/autonomous-dev-system/issues)
+- Report bugs or request features via [Issues](https://github.com/yourname/autonomous-dev-system/issues)
 - Add new patterns to the library
 - Improve documentation
 - Share your experience
@@ -144,7 +144,7 @@ Contributions welcome! See [GITHUB_SETUP.md](https://github.com/martiendejong/au
 
 ### 📄 License
 
-MIT License - See [LICENSE](https://github.com/martiendejong/autonomous-dev-system/blob/master/LICENSE) file
+MIT License - See [LICENSE](https://github.com/yourname/autonomous-dev-system/blob/master/LICENSE) file
 
 Free to use, modify, and distribute!
 
@@ -157,9 +157,9 @@ Free to use, modify, and distribute!
 ---
 
 **Questions or Issues?**
-- [Report a bug](https://github.com/martiendejong/autonomous-dev-system/issues)
-- [Request a feature](https://github.com/martiendejong/autonomous-dev-system/issues)
-- [Share patterns](https://github.com/martiendejong/autonomous-dev-system/discussions)
+- [Report a bug](https://github.com/yourname/autonomous-dev-system/issues)
+- [Request a feature](https://github.com/yourname/autonomous-dev-system/issues)
+- [Share patterns](https://github.com/yourname/autonomous-dev-system/discussions)
 
 ---
 

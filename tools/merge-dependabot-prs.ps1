@@ -9,7 +9,7 @@
     - Provides detailed summary report
 
 .PARAMETER Repo
-    Repository in format "owner/repo" (default: martiendejong/client-manager)
+    Repository in format "owner/repo" (default: yourname/your-project)
 
 .PARAMETER DryRun
     Preview actions without making changes
@@ -34,7 +34,7 @@
 #>
 
 param(
-    [string]$Repo = "martiendejong/client-manager",
+    [string]$Repo = "yourname/your-project",
     [switch]$DryRun,
     [switch]$AutoMerge,
     [string]$ClosureMessage = "Closing due to merge conflicts. Dependabot will automatically recreate this PR against the updated develop branch."

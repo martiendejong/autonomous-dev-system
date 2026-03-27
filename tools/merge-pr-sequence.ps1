@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Reads pr-dependencies.md and merges PRs in correct topological order.
-    Handles Hazina → client-manager dependencies automatically.
+    Handles Hazina → your-project dependencies automatically.
 
     Waits for CI to pass between merges to ensure stability.
 
@@ -37,7 +37,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 $DependenciesFile = "C:\scripts\_machine\pr-dependencies.md"
 $Repositories = @{
     "hazina" = "C:\Projects\hazina"
-    "client-manager" = "C:\Projects\client-manager"
+    "your-project" = "C:\Projects\your-project"
     "artrevisionist" = "C:\Projects\artrevisionist"
     "bugattiinsights" = "C:\Projects\bugattiinsights"
 }
@@ -52,7 +52,7 @@ function Parse-Dependencies {
     $dependencies = @()
 
     # Parse markdown table for dependencies
-    # Format: | [client-manager#96](...) | [Hazina#37](...) | ⏳ Waiting | ... |
+    # Format: | [your-project#96](...) | [Hazina#37](...) | ⏳ Waiting | ... |
     $matches = [regex]::Matches($content, '\|\s*\[([^\]]+)\]\(([^\)]+)\)\s*\|\s*\[([^\]]+)\]\(([^\)]+)\)\s*\|\s*([^|]+)\s*\|')
 
     foreach ($match in $matches) {

@@ -7,7 +7,7 @@
     which branches they use, and compares with worktrees.pool.md status.
 
 .PARAMETER BaseRepos
-    Array of base repository paths. Defaults to client-manager and hazina.
+    Array of base repository paths. Defaults to your-project and hazina.
 
 .PARAMETER PoolFile
     Path to worktrees.pool.md for status comparison.
@@ -24,7 +24,7 @@
 
 param(
     [string[]]$BaseRepos = @(
-        "C:\Projects\client-manager",
+        "C:\Projects\your-project",
         "C:\Projects\hazina"
     )
 

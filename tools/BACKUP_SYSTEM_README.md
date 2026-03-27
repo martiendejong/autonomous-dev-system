@@ -1,11 +1,11 @@
 # Brand2Boost Backup System
 
-Automated nightly backup system for brand2boost data with 5-day retention.
+Automated nightly backup system for your-app data with 5-day retention.
 
 ## 📁 What Gets Backed Up
 
-**Source:** `C:\stores\brand2boost`
-**Backup Location:** `C:\backups\brand2boost`
+**Source:** `C:\stores\your-app`
+**Backup Location:** `C:\backups\your-app`
 
 ### Included:
 - ✅ `identity.db` - User authentication database
@@ -49,12 +49,12 @@ Get-ScheduledTask -TaskName "Brand2Boost Nightly Backup" | Get-ScheduledTaskInfo
 ### Run Backup Now
 ```powershell
 cd C:\scripts\tools
-.\backup-brand2boost.ps1
+.\backup-your-app.ps1
 ```
 
 ### Test Backup (Dry Run - No Changes)
 ```powershell
-.\backup-brand2boost.ps1 -DryRun
+.\backup-your-app.ps1 -DryRun
 ```
 
 ### Run Scheduled Task Manually
@@ -66,7 +66,7 @@ Start-ScheduledTask -TaskName "Brand2Boost Nightly Backup"
 
 Backups are stored in:
 ```
-C:\backups\brand2boost\
+C:\backups\your-app\
 ├── backup_2026-01-19_03-00-00\   (Most recent)
 ├── backup_2026-01-18_03-00-00\
 ├── backup_2026-01-17_03-00-00\
@@ -77,12 +77,12 @@ C:\backups\brand2boost\
 
 ## 🔧 Configuration
 
-Edit `backup-brand2boost.ps1` to customize:
+Edit `backup-your-app.ps1` to customize:
 
 ```powershell
 param(
-    [string]$SourcePath = "C:\stores\brand2boost",      # What to backup
-    [string]$BackupRoot = "C:\backups\brand2boost",     # Where to store backups
+    [string]$SourcePath = "C:\stores\your-app",      # What to backup
+    [string]$BackupRoot = "C:\backups\your-app",     # Where to store backups
     [int]$MaxBackups = 5,                                # Number of backups to keep
     [string[]]$ExcludeDirs = @(".git", "bin", "obj", "logs", "model-usage-stats", ".hazina")
 )
@@ -91,18 +91,18 @@ param(
 ## 📊 View Backup Log
 
 ```powershell
-Get-Content C:\backups\brand2boost\backup.log -Tail 50
+Get-Content C:\backups\your-app\backup.log -Tail 50
 ```
 
 ## ♻️ Restoring from Backup
 
 ### Full Restore
-1. Stop the brand2boost application
-2. Copy backup folder contents to `C:\stores\brand2boost`
+1. Stop the your-app application
+2. Copy backup folder contents to `C:\stores\your-app`
 ```powershell
 # Example: Restore from January 19th backup
-Copy-Item -Path "C:\backups\brand2boost\backup_2026-01-19_03-00-00\*" `
-          -Destination "C:\stores\brand2boost" `
+Copy-Item -Path "C:\backups\your-app\backup_2026-01-19_03-00-00\*" `
+          -Destination "C:\stores\your-app" `
           -Recurse -Force
 ```
 3. Restart the application
@@ -110,8 +110,8 @@ Copy-Item -Path "C:\backups\brand2boost\backup_2026-01-19_03-00-00\*" `
 ### Restore Specific Files
 ```powershell
 # Example: Restore only the database
-Copy-Item -Path "C:\backups\brand2boost\backup_2026-01-19_03-00-00\identity.db*" `
-          -Destination "C:\stores\brand2boost"
+Copy-Item -Path "C:\backups\your-app\backup_2026-01-19_03-00-00\identity.db*" `
+          -Destination "C:\stores\your-app"
 ```
 
 ## 🗑️ Uninstall
@@ -124,7 +124,7 @@ Unregister-ScheduledTask -TaskName "Brand2Boost Nightly Backup" -Confirm:$false
 
 ### Delete Backups
 ```powershell
-Remove-Item -Path "C:\backups\brand2boost" -Recurse -Force
+Remove-Item -Path "C:\backups\your-app" -Recurse -Force
 ```
 
 ## ⚠️ Important Notes
@@ -150,12 +150,12 @@ Get-ScheduledTask -TaskName "Brand2Boost Nightly Backup" | Get-ScheduledTaskInfo
 ### Manual Test Run
 ```powershell
 cd C:\scripts\tools
-.\backup-brand2boost.ps1
+.\backup-your-app.ps1
 ```
 
 ### Check Backup Log
 ```powershell
-Get-Content C:\backups\brand2boost\backup.log
+Get-Content C:\backups\your-app\backup.log
 ```
 
 ## 📅 Backup Schedule

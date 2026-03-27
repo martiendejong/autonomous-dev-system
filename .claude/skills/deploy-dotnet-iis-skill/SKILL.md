@@ -69,7 +69,7 @@ import json
 # Example PROJECT_MASTER_MAP.md entry:
 """
 ### Password Manager (Vault)
-- **Local Path:** `E:\projects\passwordmanager`
+- **Local Path:** `C:\Projects\passwordmanager`
 - **Deployment:**
   - **Server:** YOUR_SERVER_IP (SSH: administrator / YOUR_PASSWORD)
   - **API Path:** `C:\inetpub\YOUR_APP\backend`
@@ -323,12 +323,12 @@ Status: SUCCESS
 
 ### Example 2: Deploy with Manual Configuration
 
-**User says:** "Deploy client-manager to production"
+**User says:** "Deploy your-project to production"
 
 **Claude activates deploy-dotnet-iis-skill:**
 
 ```bash
-python C:\scripts\tools\deploy-dotnet-to-iis.py client-manager
+python C:\scripts\tools\deploy-dotnet-to-iis.py your-project
 ```
 
 **Reads from PROJECT_MASTER_MAP.md:**
@@ -336,13 +336,13 @@ python C:\scripts\tools\deploy-dotnet-to-iis.py client-manager
 ### Client-Manager (Brand2Boost / Brand Designer)
 - **Deployment:**
   - **Server:** YOUR_SERVER_IP
-  - **API Path:** `C:\stores\brand2boost\backend`
-  - **Frontend Path:** `C:\stores\brand2boost\www`
+  - **API Path:** `C:\stores\your-app\backend`
+  - **Frontend Path:** `C:\stores\your-app\www`
   - **App Pool:** Brand2boost
-  - **Production URL:** https://api.brand2boost.com
+  - **Production URL:** https://api.your-app.com
 ```
 
-**Executes same 6-step pipeline with client-manager configuration**
+**Executes same 6-step pipeline with your-project configuration**
 
 ### Example 3: Rollback After Failed Deployment
 
@@ -496,7 +496,7 @@ C:\scripts\tools\deploy-dotnet-to-iis.py
 python C:\scripts\tools\deploy-dotnet-to-iis.py passwordmanager
 
 # By project name with custom args
-python C:\scripts\tools\deploy-dotnet-to-iis.py client-manager --skip-backup
+python C:\scripts\tools\deploy-dotnet-to-iis.py your-project --skip-backup
 ```
 
 ---

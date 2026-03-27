@@ -37,7 +37,7 @@
     Override connection string
 
 .EXAMPLE
-    .\seed-database.ps1 -ProjectPath "C:\Projects\client-manager" -DataVolume small
+    .\seed-database.ps1 -ProjectPath "C:\Projects\your-project" -DataVolume small
     .\seed-database.ps1 -ProjectPath "." -DataVolume medium -ClearExisting
     .\seed-database.ps1 -ProjectPath "." -Scenario realistic -Environment staging
     .\seed-database.ps1 -ProjectPath "." -Entities "Users,Clients,Projects"

@@ -2,7 +2,7 @@
 
 **Version:** v1.0.0
 **Plugin Name:** Autonomous Development System for Claude Code
-**GitHub:** https://github.com/martiendejong/autonomous-dev-system
+**GitHub:** https://github.com/yourname/autonomous-dev-system
 
 ---
 
@@ -73,7 +73,7 @@ Write-Host "Claude Code: $(claude --version)"
 cd ~/Downloads  # or wherever you want
 
 # Clone the repository
-git clone https://github.com/martiendejong/autonomous-dev-system.git
+git clone https://github.com/yourname/autonomous-dev-system.git
 cd autonomous-dev-system
 
 # Verify files exist
@@ -449,7 +449,7 @@ FREE: 12 agents (100%) ✅ Healthy
 
 Please create a GitHub issue with your test results:
 
-**Go to:** https://github.com/martiendejong/autonomous-dev-system/issues/new
+**Go to:** https://github.com/yourname/autonomous-dev-system/issues/new
 
 **Title:** `[TEST RESULTS] v1.0.0 - [PASS/FAIL]`
 
@@ -537,9 +537,9 @@ chmod +x scripts/*.sh
 
 ## 💬 Need Help?
 
-- **GitHub Issues:** https://github.com/martiendejong/autonomous-dev-system/issues
+- **GitHub Issues:** https://github.com/yourname/autonomous-dev-system/issues
 - **Email the developer:** [Include if you want]
-- **Check Documentation:** https://github.com/martiendejong/autonomous-dev-system/blob/master/README.md
+- **Check Documentation:** https://github.com/yourname/autonomous-dev-system/blob/master/README.md
 
 ---
 
@@ -549,7 +549,7 @@ Your testing helps make this plugin better for everyone. We appreciate your time
 
 **After testing, please:**
 1. Submit your test results as a GitHub issue
-2. Star the repo if you found it useful: https://github.com/martiendejong/autonomous-dev-system
+2. Star the repo if you found it useful: https://github.com/yourname/autonomous-dev-system
 3. Share with others who might benefit!
 
 ---

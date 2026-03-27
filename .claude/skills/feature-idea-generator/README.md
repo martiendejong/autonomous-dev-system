@@ -37,21 +37,21 @@ The skill auto-activates when you:
 
 **You say:**
 ```
-Come up with improvements for client-manager
+Come up with improvements for your-project
 ```
 
 **What happens:**
-1. Analyzes client-manager codebase
+1. Analyzes your-project codebase
 2. Assembles expert panel (CRM experts, UX designers, sales leaders, etc.)
 3. Identifies core value: "Helps agencies manage client relationships without admin overhead"
 4. Generates 100 ideas (AI client insights, automated invoicing, smart scheduling, etc.)
 5. Designs 100 billion-dollar features
 6. Refines with expert panel
 7. Selects Top 5 by ROI
-8. Creates ClickUp tasks in client-manager backlog
+8. Creates ClickUp tasks in your-project backlog
 
 **You get:**
-- Detailed analysis in `C:/scripts/_ideation/client-manager/`
+- Detailed analysis in `C:/scripts/_ideation/your-project/`
 - 5 validated, high-impact features
 - ClickUp tasks ready to implement
 
@@ -213,7 +213,7 @@ python C:/scripts/.claude/skills/feature-idea-generator/clickup-integration.py \
 
 **1. Be Specific About Context**
 ```
-Good: "Generate features for client-manager that help agencies scale"
+Good: "Generate features for your-project that help agencies scale"
 Bad: "Make it better"
 ```
 
@@ -275,9 +275,9 @@ Generate features, add to ClickUp, then refine backlog
 
 **Generate features for multiple products, compare:**
 ```
-Generate features for client-manager
+Generate features for your-project
 [wait for completion]
-Generate features for brand2boost
+Generate features for your-app
 [wait for completion]
 Compare the feature sets and find cross-product opportunities
 ```

@@ -157,7 +157,7 @@ fetch('http://localhost:9999/messages', {
     from: 'claude-browser',
     to: 'claude-code',
     type: 'file-request',
-    content: 'User asking about C:\\Projects\\client-manager\\src\\config.json'
+    content: 'User asking about C:\\Projects\\your-project\\src\\config.json'
   })
 })
 ```

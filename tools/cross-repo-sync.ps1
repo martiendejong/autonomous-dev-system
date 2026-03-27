@@ -1,4 +1,4 @@
-﻿# Cross-Repo Sync - Synchronize branches across Hazina + client-manager
+﻿# Cross-Repo Sync - Synchronize branches across Hazina + your-project
 # Wave 2 Tool #6 (Ratio: 6.0)
 
 param(
@@ -18,7 +18,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 
 $Repos = @(
     'C:\Projects\hazina',
-    'C:\Projects\client-manager'
+    'C:\Projects\your-project'
 )
 
 function Get-SyncStatus {

@@ -53,7 +53,7 @@ $ToolRegistry = @(
         name = "worktree-allocate.ps1"
         keywords = @("worktree", "allocate", "branch", "checkout", "workspace")
         description = "Allocate a worktree for isolated development"
-        usage = "worktree-allocate.ps1 -Repo client-manager -Branch feature/x"
+        usage = "worktree-allocate.ps1 -Repo your-project -Branch feature/x"
     },
     @{
         name = "worktree-status.ps1"

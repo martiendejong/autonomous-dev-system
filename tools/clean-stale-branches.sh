@@ -1,7 +1,7 @@
 #!/bin/bash
 # clean-stale-branches.sh - Delete all merged branches
 # Usage: ./clean-stale-branches.sh [--dry-run] [repo-name]
-# Example: ./clean-stale-branches.sh --dry-run client-manager
+# Example: ./clean-stale-branches.sh --dry-run your-project
 
 set -e
 
@@ -26,7 +26,7 @@ done
 if [ -n "$REPO" ]; then
   REPOS=("$REPO")
 else
-  REPOS=("client-manager" "hazina")
+  REPOS=("your-project" "hazina")
 fi
 
 echo "=== STALE BRANCH CLEANER ==="

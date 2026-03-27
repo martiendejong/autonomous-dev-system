@@ -5,7 +5,7 @@ REM Example: claim-worktree.cmd feature/new-feature "Implementing new feature X"
 REM
 REM This script:
 REM 1. Finds a FREE agent from worktrees.pool.md
-REM 2. Ensures base repos (client-manager, hazina) are on develop and up-to-date
+REM 2. Ensures base repos (your-project, hazina) are on develop and up-to-date
 REM 3. Creates git worktrees for both repos in the agent folder
 REM 4. Marks the agent as BUSY in the pool
 REM 5. Logs the allocation in worktrees.activity.md
@@ -30,7 +30,7 @@ if "%TASK_DESC%"=="" set TASK_DESC=Working on %BRANCH_NAME%
 REM === PATHS ===
 set POOL_FILE=C:\scripts\_machine\worktrees.pool.md
 set ACTIVITY_FILE=C:\scripts\_machine\worktrees.activity.md
-set BASE_CLIENT_MANAGER=C:\Projects\client-manager
+set BASE_CLIENT_MANAGER=C:\Projects\your-project
 set BASE_HAZINA=C:\Projects\hazina
 set WORKTREE_ROOT=C:\Projects\worker-agents
 
@@ -79,7 +79,7 @@ echo.
 echo === STEP 2: Ensuring base repos are on develop and up-to-date ===
 
 REM --- CLIENT-MANAGER ---
-echo Checking client-manager...
+echo Checking your-project...
 cd /d "%BASE_CLIENT_MANAGER%" || (
     echo ERROR: Cannot access %BASE_CLIENT_MANAGER%
     exit /b 1
@@ -87,22 +87,22 @@ cd /d "%BASE_CLIENT_MANAGER%" || (
 
 for /f %%i in ('git branch --show-current') do set CURRENT_BRANCH=%%i
 if not "%CURRENT_BRANCH%"=="develop" (
-    echo WARNING: client-manager on branch %CURRENT_BRANCH%, switching to develop
+    echo WARNING: your-project on branch %CURRENT_BRANCH%, switching to develop
     git checkout develop || (
-        echo ERROR: Failed to checkout develop in client-manager
+        echo ERROR: Failed to checkout develop in your-project
         exit /b 1
     )
 )
 
-echo Fetching latest changes for client-manager...
+echo Fetching latest changes for your-project...
 git fetch origin --prune || (
-    echo ERROR: Failed to fetch client-manager
+    echo ERROR: Failed to fetch your-project
     exit /b 1
 )
 
-echo Pulling latest develop for client-manager...
+echo Pulling latest develop for your-project...
 git pull origin develop || (
-    echo ERROR: Failed to pull client-manager develop
+    echo ERROR: Failed to pull your-project develop
     exit /b 1
 )
 
@@ -145,10 +145,10 @@ REM Create agent directory if it doesn't exist
 if not exist "%AGENT_PATH%" mkdir "%AGENT_PATH%"
 
 REM --- CREATE CLIENT-MANAGER WORKTREE ---
-echo Creating client-manager worktree with branch %BRANCH_NAME%...
+echo Creating your-project worktree with branch %BRANCH_NAME%...
 cd /d "%BASE_CLIENT_MANAGER%"
-git worktree add "%AGENT_PATH%\client-manager" -b %BRANCH_NAME% || (
-    echo ERROR: Failed to create client-manager worktree
+git worktree add "%AGENT_PATH%\your-project" -b %BRANCH_NAME% || (
+    echo ERROR: Failed to create your-project worktree
     echo This might mean the branch already exists. Check: git branch -a ^| grep %BRANCH_NAME%
     exit /b 1
 )
@@ -159,9 +159,9 @@ cd /d "%BASE_HAZINA%"
 git worktree add "%AGENT_PATH%\hazina" -b %BRANCH_NAME% || (
     echo ERROR: Failed to create hazina worktree
     echo This might mean the branch already exists. Check: git branch -a ^| grep %BRANCH_NAME%
-    REM Clean up client-manager worktree if hazina fails
+    REM Clean up your-project worktree if hazina fails
     cd /d "%BASE_CLIENT_MANAGER%"
-    git worktree remove "%AGENT_PATH%\client-manager" --force
+    git worktree remove "%AGENT_PATH%\your-project" --force
     exit /b 1
 )
 
@@ -171,14 +171,14 @@ REM === STEP 4: COPY CONFIG FILES ===
 echo.
 echo === STEP 4: Copying configuration files ===
 
-REM Copy client-manager configs
+REM Copy your-project configs
 if exist "%BASE_CLIENT_MANAGER%\appsettings.json" (
-    copy "%BASE_CLIENT_MANAGER%\appsettings.json" "%AGENT_PATH%\client-manager\" >nul 2>&1
-    echo Copied appsettings.json to client-manager worktree
+    copy "%BASE_CLIENT_MANAGER%\appsettings.json" "%AGENT_PATH%\your-project\" >nul 2>&1
+    echo Copied appsettings.json to your-project worktree
 )
 if exist "%BASE_CLIENT_MANAGER%\.env" (
-    copy "%BASE_CLIENT_MANAGER%\.env" "%AGENT_PATH%\client-manager\" >nul 2>&1
-    echo Copied .env to client-manager worktree
+    copy "%BASE_CLIENT_MANAGER%\.env" "%AGENT_PATH%\your-project\" >nul 2>&1
+    echo Copied .env to your-project worktree
 )
 
 REM Copy hazina configs (if any exist)
@@ -208,7 +208,7 @@ for /f "usebackq delims=" %%a in ("%POOL_FILE%") do (
         echo !LINE! | findstr /c:"| FREE |" >nul
         if !errorlevel! equ 0 (
             REM This is our agent's line and it's FREE - update it to BUSY
-            echo ^| %AGENT_SEAT% ^| %AGENT_SEAT:~0,7% ^| C:\Projects ^| %AGENT_PATH% ^| BUSY ^| client-manager+hazina ^| %BRANCH_NAME% ^| %TIMESTAMP% ^| %TASK_DESC% ^|>> "%TEMP_POOL%"
+            echo ^| %AGENT_SEAT% ^| %AGENT_SEAT:~0,7% ^| C:\Projects ^| %AGENT_PATH% ^| BUSY ^| your-project+hazina ^| %BRANCH_NAME% ^| %TIMESTAMP% ^| %TASK_DESC% ^|>> "%TEMP_POOL%"
         ) else (
             REM Keep line as-is
             echo !LINE!>> "%TEMP_POOL%"
@@ -228,7 +228,7 @@ REM === STEP 6: LOG ALLOCATION IN ACTIVITY FILE ===
 echo.
 echo === STEP 6: Logging allocation ===
 
-echo %TIMESTAMP% — allocate — %AGENT_SEAT% — client-manager+hazina — %BRANCH_NAME% — — claude-code — %TASK_DESC% >> "%ACTIVITY_FILE%"
+echo %TIMESTAMP% — allocate — %AGENT_SEAT% — your-project+hazina — %BRANCH_NAME% — — claude-code — %TASK_DESC% >> "%ACTIVITY_FILE%"
 
 echo Logged allocation to activity file
 
@@ -240,12 +240,12 @@ echo ========================================
 echo Agent: %AGENT_SEAT%
 echo Branch: %BRANCH_NAME%
 echo Path: %AGENT_PATH%
-echo Repos: client-manager + hazina
+echo Repos: your-project + hazina
 echo Status: BUSY
 echo Task: %TASK_DESC%
 echo.
 echo NEXT STEPS:
-echo 1. Work in: %AGENT_PATH%\client-manager and %AGENT_PATH%\hazina
+echo 1. Work in: %AGENT_PATH%\your-project and %AGENT_PATH%\hazina
 echo 2. Make your changes
 echo 3. When done, run: release-worktree.cmd %AGENT_SEAT% "PR title" "PR description"
 echo.

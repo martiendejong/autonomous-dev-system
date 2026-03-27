@@ -30,7 +30,7 @@
     Output path for extracted/exported translations
 
 .EXAMPLE
-    .\manage-translations.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerFrontend" -Action extract
+    .\manage-translations.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerFrontend" -Action extract
     .\manage-translations.ps1 -ProjectPath "." -Action validate -Locale nl
     .\manage-translations.ps1 -ProjectPath "." -Action export -OutputPath "translations.json"
 #>

@@ -22,7 +22,7 @@
     Alert threshold in seconds.
 
 .EXAMPLE
-    build-tracker.ps1 -Track -Project "client-manager" -Duration 45
+    build-tracker.ps1 -Track -Project "your-project" -Duration 45
     build-tracker.ps1 -Stats
 #>
 

@@ -16,7 +16,7 @@
 | `claude-ctl.ps1` | Unified CLI | `.\claude-ctl.ps1 status` |
 | `bootstrap-snapshot.ps1` | Fast startup state | `.\bootstrap-snapshot.ps1 -Generate` |
 | `system-health.ps1` | Health checks | `.\system-health.ps1 -Fix` |
-| `worktree-allocate.ps1` | Allocate seat | `.\worktree-allocate.ps1 -Repo client-manager -Branch feature/x` |
+| `worktree-allocate.ps1` | Allocate seat | `.\worktree-allocate.ps1 -Repo your-project -Branch feature/x` |
 | `worktree-status.ps1` | Check seats | `.\worktree-status.ps1 -Compact` |
 | `worktree-release-all.ps1` | Release seats | `.\worktree-release-all.ps1 -AutoCommit` |
 | `pattern-search.ps1` | Search past solutions | `.\pattern-search.ps1 -Query "error"` |
@@ -47,7 +47,7 @@
 .\claude-ctl.ps1 health
 
 # Allocate worktree
-.\claude-ctl.ps1 allocate -Seat agent-002 -Repo client-manager -Branch feature/x
+.\claude-ctl.ps1 allocate -Seat agent-002 -Repo your-project -Branch feature/x
 
 # Release worktree
 .\claude-ctl.ps1 release -Seat agent-002 -AutoCommit
@@ -129,16 +129,16 @@ Single-command worktree allocation with all safety checks.
 
 ```powershell
 # Basic allocation
-.\worktree-allocate.ps1 -Repo client-manager -Branch feature/new-thing
+.\worktree-allocate.ps1 -Repo your-project -Branch feature/new-thing
 
-# Paired allocation (client-manager + hazina)
-.\worktree-allocate.ps1 -Repo client-manager -Branch feature/x -Paired
+# Paired allocation (your-project + hazina)
+.\worktree-allocate.ps1 -Repo your-project -Branch feature/x -Paired
 
 # Specific seat
 .\worktree-allocate.ps1 -Repo hazina -Branch fix/bug -Seat agent-003
 
 # With description
-.\worktree-allocate.ps1 -Repo client-manager -Branch feature/pdf -Description "PDF export feature"
+.\worktree-allocate.ps1 -Repo your-project -Branch feature/pdf -Description "PDF export feature"
 ```
 
 **Automatically:**
@@ -295,7 +295,7 @@ Processes all open Dependabot PRs based on their merge status:
 ```
 
 **Parameters:**
-- `-Repo` - Repository in format "owner/repo" (default: martiendejong/client-manager)
+- `-Repo` - Repository in format "owner/repo" (default: yourname/your-project)
 - `-DryRun` - Preview actions without making changes
 - `-AutoMerge` - Skip confirmation prompts
 - `-ClosureMessage` - Custom message for closing conflicting PRs
@@ -305,7 +305,7 @@ Processes all open Dependabot PRs based on their merge status:
 ═══════════════════════════════════════════════════════════
   Dependabot PR Batch Processor
 ═══════════════════════════════════════════════════════════
-Repository: martiendejong/client-manager
+Repository: yourname/your-project
 Mode: LIVE
 
 Found 4 Dependabot PR(s)
@@ -366,7 +366,7 @@ Converts workflow triggers between:
 ```
 
 **Parameters:**
-- `-RepoPath` - Path to repository (default: C:\Projects\client-manager)
+- `-RepoPath` - Path to repository (default: C:\Projects\your-project)
 - `-Mode` - Target mode: "manual" or "automatic"
 - `-DryRun` - Preview changes without modifying files
 - `-Backup` - Create backup before modification (default: true)
@@ -409,7 +409,7 @@ on:
 **After Running:**
 ```powershell
 # Commit and push changes
-cd C:\Projects\client-manager
+cd C:\Projects\your-project
 git add .github/workflows/
 git commit -m "chore(ci): Convert workflows to manual mode"
 git push origin develop
@@ -447,7 +447,7 @@ Export emails from multiple accounts (IMAP and Gmail).
 node email-export.js --query="gemeente meppel" --output="C:\gemeente_emails"
 
 # Uses credentials from script for:
-# - info@martiendejong.nl (IMAP)
+# - info@yourname.nl (IMAP)
 # - Gmail (requires GMAIL_APP_PASSWORD env variable)
 ```
 
@@ -480,7 +480,7 @@ node email-send.js \
 - Host: `mail.zxcs.nl`
 - Port: `465` (SSL/TLS)
 - **Important:** Port 587 (STARTTLS) does NOT work
-- Credentials embedded for info@martiendejong.nl
+- Credentials embedded for info@yourname.nl
 
 **Features:**
 - File attachments with proper MIME types
@@ -490,7 +490,7 @@ node email-send.js \
 
 #### email.ps1 / email-manager.js
 
-IMAP management wrapper for info@martiendejong.nl.
+IMAP management wrapper for info@yourname.nl.
 
 ```powershell
 # List recent messages

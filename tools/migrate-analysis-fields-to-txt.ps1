@@ -7,10 +7,10 @@
     for fields that contain only plain text content.
 
 .PARAMETER StoresPath
-    Path to the stores directory (e.g., C:\stores\brand2boost)
+    Path to the stores directory (e.g., C:\stores\your-app)
 
 .EXAMPLE
-    .\migrate-analysis-fields-to-txt.ps1 -StoresPath "C:\stores\brand2boost"
+    .\migrate-analysis-fields-to-txt.ps1 -StoresPath "C:\stores\your-app"
 #>
 
 param(

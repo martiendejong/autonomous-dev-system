@@ -18,7 +18,7 @@
 - 100% completeness, 0% forgotten info
 
 **What's loaded automatically:**
-- 4 projects (client-manager, hazina, art-revisionist, hydro-vision)
+- 4 projects (your-project, hazina, art-revisionist, hydro-vision)
 - 4 services (Orchestration, Debugger, UI Automation, WordPress)
 - All tools (ai-image, ai-vision, vault, services-query)
 - Worktree pool status
@@ -63,14 +63,14 @@ That's it. Context loads automatically via `load-quick-context.ps1` in startup s
 
 | Project | Location | Type |
 |---------|----------|------|
-| Client Manager / brand2boost | `C:\Projects\client-manager` | SaaS (frontend + API) |
+| Client Manager / your-app | `C:\Projects\your-project` | SaaS (frontend + API) |
 | Hazina framework | `C:\Projects\hazina` | Framework |
 | Art Revisionist | `C:\Projects\artrevisionist` + `C:\xampp\htdocs\wp-content\themes\artrevisionist-wp-theme\` | WordPress + React admin |
-| Store config | `C:\stores\brand2boost` | Config/data |
+| Store config | `C:\stores\your-app` | Config/data |
 | Orchestration | `C:\stores\orchestration\HazinaOrchestration.exe` | Terminal service (HTTPS:5123) |
 
 **Admin:** user=wreckingball, pass=YOUR_PASSWORD
-**Don't** run client-manager from command line - user runs from Visual Studio + npm.
+**Don't** run your-project from command line - user runs from Visual Studio + npm.
 
 ## Debugging Tools
 
@@ -95,7 +95,7 @@ That's it. Context loads automatically via `load-quick-context.ps1` in startup s
 **Files:** `C:\scripts\_machine\projects\*.json`
 **Contains:** Deep project info - git state, recent commits, file counts, dependencies
 **Usage:** Load when you need detailed project information
-**Command:** Read `C:\scripts\_machine\projects\client-manager.json`
+**Command:** Read `C:\scripts\_machine\projects\your-project.json`
 
 ### Layer 2: Services Registry (Real-time)
 **File:** `C:\scripts\_machine\services-registry.json`
@@ -127,7 +127,7 @@ refresh-all-context.ps1
 
 # Build individual components
 build-quick-context-v2.ps1
-build-project-context-v2.ps1 -ProjectName "client-manager"
+build-project-context-v2.ps1 -ProjectName "your-project"
 build-external-tools-v2.ps1
 
 # Register a service

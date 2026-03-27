@@ -34,7 +34,7 @@
 
 .EXAMPLE
     .\onboard-developer.ps1 -DeveloperName "John Doe" -DeveloperEmail "john@example.com"
-    .\onboard-developer.ps1 -DeveloperName "Jane Smith" -DeveloperEmail "jane@example.com" -ProjectName "client-manager"
+    .\onboard-developer.ps1 -DeveloperName "Jane Smith" -DeveloperEmail "jane@example.com" -ProjectName "your-project"
     .\onboard-developer.ps1 -SkipInstallation
     .\onboard-developer.ps1 -GenerateDocsOnly
 #>

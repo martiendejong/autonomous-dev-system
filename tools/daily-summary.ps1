@@ -35,7 +35,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 
 $ActivityPath = "C:\scripts\_machine\worktrees.activity.md"
 $ReflectionPath = "C:\scripts\_machine\reflection.log.md"
-$BaseRepos = @("C:\Projects\client-manager", "C:\Projects\hazina")
+$BaseRepos = @("C:\Projects\your-project", "C:\Projects\hazina")
 
 function Get-WorktreeActivity {
     param([string]$TargetDate)

@@ -55,7 +55,7 @@ Also installs:
 
 ```
 C:\Projects\                      # BASE_REPO_PATH
-  ├── client-manager\             # Your project repos
+  ├── your-project\             # Your project repos
   ├── hazina\
   └── worker-agents\              # WORKTREE_PATH
       ├── agent-001\              # Agent worktree seats

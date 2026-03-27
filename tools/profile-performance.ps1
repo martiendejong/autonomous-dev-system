@@ -36,7 +36,7 @@
     Compare against baseline and detect regressions
 
 .EXAMPLE
-    .\profile-performance.ps1 -ProjectPath "C:\Projects\client-manager" -ProfileType dotnet
+    .\profile-performance.ps1 -ProjectPath "C:\Projects\your-project" -ProfileType dotnet
     .\profile-performance.ps1 -ProjectPath "." -ProfileType frontend -Url "http://localhost:5173"
     .\profile-performance.ps1 -ProjectPath "." -ProfileType all -Baseline
     .\profile-performance.ps1 -ProjectPath "." -Compare

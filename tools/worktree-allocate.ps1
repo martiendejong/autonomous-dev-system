@@ -12,7 +12,7 @@
     6. Optionally allocates paired Hazina worktree
 
 .PARAMETER Repo
-    Repository to allocate (client-manager or hazina)
+    Repository to allocate (your-project or hazina)
 
 .PARAMETER Branch
     Branch name for the worktree
@@ -21,20 +21,20 @@
     Specific seat to use (optional - auto-selects if not provided)
 
 .PARAMETER Paired
-    Also allocate Hazina worktree (for client-manager work)
+    Also allocate Hazina worktree (for your-project work)
 
 .PARAMETER Description
     Short description of what you're working on
 
 .EXAMPLE
-    .\worktree-allocate.ps1 -Repo client-manager -Branch feature/new-thing
-    .\worktree-allocate.ps1 -Repo client-manager -Branch feature/x -Paired -Description "Adding PDF export"
+    .\worktree-allocate.ps1 -Repo your-project -Branch feature/new-thing
+    .\worktree-allocate.ps1 -Repo your-project -Branch feature/x -Paired -Description "Adding PDF export"
     .\worktree-allocate.ps1 -Repo hazina -Branch fix/bug -Seat agent-003
 #>
 
 param(
     [Parameter(Mandatory=$true)]
-    [ValidateSet("client-manager", "hazina")]
+    [ValidateSet("your-project", "hazina")]
     [string]$Repo,
 
     [Parameter(Mandatory=$true)]
@@ -56,7 +56,7 @@ $PoolPath = "$MachineContext\worktrees.pool.md"
 $ActivityPath = "$MachineContext\worktrees.activity.md"
 $WorkerAgentsPath = "C:\Projects\worker-agents"
 $BaseRepos = @{
-    "client-manager" = "C:\Projects\client-manager"
+    "your-project" = "C:\Projects\your-project"
     "hazina" = "C:\Projects\hazina"
 }
 
@@ -196,7 +196,7 @@ Write-Host "=== WORKTREE ALLOCATION ===" -ForegroundColor Cyan
 Write-Host "Repository: $Repo"
 Write-Host "Branch: $Branch"
 Write-Host "Description: $Description"
-if ($Paired) { Write-Host "Mode: PAIRED (client-manager + hazina)" }
+if ($Paired) { Write-Host "Mode: PAIRED (your-project + hazina)" }
 Write-Host ""
 
 try {
@@ -217,7 +217,7 @@ try {
     Write-Step "Checking base repo state..." "INFO"
     Test-BaseRepoState -RepoPath $BaseRepos[$Repo]
 
-    if ($Paired -and $Repo -eq "client-manager") {
+    if ($Paired -and $Repo -eq "your-project") {
         Write-Step "Checking Hazina base repo state..." "INFO"
         Test-BaseRepoState -RepoPath $BaseRepos["hazina"]
     }
@@ -227,7 +227,7 @@ try {
     $worktreePath = New-Worktree -SeatName $Seat -RepoName $Repo -BranchName $Branch
     Write-Step "Created: $worktreePath" "OK"
 
-    if ($Paired -and $Repo -eq "client-manager") {
+    if ($Paired -and $Repo -eq "your-project") {
         Write-Step "Creating paired Hazina worktree..." "INFO"
         $hazinaPath = New-Worktree -SeatName $Seat -RepoName "hazina" -BranchName $Branch
         Write-Step "Created: $hazinaPath" "OK"

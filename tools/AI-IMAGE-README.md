@@ -210,7 +210,7 @@ Universal AI image generation system supporting **all major providers** and **al
 
 **API keys are automatically loaded from:**
 ```
-C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json
+C:\Projects\your-project\ClientManagerAPI\appsettings.Secrets.json
 ```
 
 **Required structure:**

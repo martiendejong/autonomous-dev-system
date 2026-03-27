@@ -20,7 +20,7 @@
 
 .EXAMPLE
     .\claude-ctl.ps1 status
-    .\claude-ctl.ps1 allocate -Seat agent-002 -Repo client-manager -Branch feature/new-thing
+    .\claude-ctl.ps1 allocate -Seat agent-002 -Repo your-project -Branch feature/new-thing
     .\claude-ctl.ps1 release -Seat agent-002
     .\claude-ctl.ps1 health
     .\claude-ctl.ps1 reflect -Tag "PATTERN" -Message "Learned something"
@@ -70,7 +70,7 @@ function Show-Help {
     Write-Host "  .\claude-ctl.ps1 status"
     Write-Host "  .\claude-ctl.ps1 status -Compact"
     Write-Host "  .\claude-ctl.ps1 snapshot"
-    Write-Host "  .\claude-ctl.ps1 allocate -Seat agent-002 -Repo client-manager -Branch feature/x"
+    Write-Host "  .\claude-ctl.ps1 allocate -Seat agent-002 -Repo your-project -Branch feature/x"
     Write-Host "  .\claude-ctl.ps1 release -Seat agent-002 -AutoCommit"
     Write-Host "  .\claude-ctl.ps1 health"
     Write-Host "  .\claude-ctl.ps1 reflect -Tag 'BUG-FIX' -Message 'Fixed issue with...'"
@@ -111,7 +111,7 @@ function Show-Status {
 
     # Base repos
     Write-Host "BASE REPOSITORIES:" -ForegroundColor Yellow
-    @("C:\Projects\client-manager", "C:\Projects\hazina") | ForEach-Object {
+    @("C:\Projects\your-project", "C:\Projects\hazina") | ForEach-Object {
         if (Test-Path $_) {
             $name = Split-Path $_ -Leaf
             $branch = git -C $_ branch --show-current 2>$null
@@ -150,7 +150,7 @@ function Show-Status {
 function Invoke-Allocate {
     if (-not $Seat -or -not $Repo -or -not $Branch) {
         Write-Host "ERROR: allocate requires -Seat, -Repo, and -Branch" -ForegroundColor Red
-        Write-Host "Example: .\claude-ctl.ps1 allocate -Seat agent-002 -Repo client-manager -Branch feature/x"
+        Write-Host "Example: .\claude-ctl.ps1 allocate -Seat agent-002 -Repo your-project -Branch feature/x"
         return
     }
 
@@ -283,7 +283,7 @@ function Invoke-Health {
     # Check 2: Base repos on develop
     Write-Host "[Check] Base repos on develop... " -NoNewline
     $repoIssues = @()
-    @("C:\Projects\client-manager", "C:\Projects\hazina") | ForEach-Object {
+    @("C:\Projects\your-project", "C:\Projects\hazina") | ForEach-Object {
         if (Test-Path $_) {
             $branch = git -C $_ branch --show-current 2>$null
             if ($branch -ne "develop") {

@@ -93,13 +93,13 @@ Remove the line for this agent from `C:/scripts/_machine/instances.map.md`.
 **⚠️ CRITICAL: Check for Active Debugging Mode first!**
 
 ```bash
-# Check client-manager for active work
-cd C:/Projects/client-manager
+# Check your-project for active work
+cd C:/Projects/your-project
 current_branch=$(git branch --show-current)
 uncommitted_changes=$(git status --short)
 
 if [ "$current_branch" != "develop" ] && [ -n "$uncommitted_changes" ]; then
-  echo "⚠️ SKIP: Active debugging detected in client-manager (branch: $current_branch, uncommitted changes)"
+  echo "⚠️ SKIP: Active debugging detected in your-project (branch: $current_branch, uncommitted changes)"
   echo "User is actively working - NOT switching branches"
 else
   git checkout develop
@@ -128,7 +128,7 @@ fi
 
 ```bash
 # Remove worktree references from git
-git -C C:/Projects/client-manager worktree prune
+git -C C:/Projects/your-project worktree prune
 git -C C:/Projects/hazina worktree prune
 ```
 
@@ -187,11 +187,11 @@ ls C:/Projects/worker-agents/agent-XXX/
 grep "agent-XXX" C:/scripts/_machine/worktrees.pool.md
 
 # Check base repos on develop
-git -C C:/Projects/client-manager branch --show-current
+git -C C:/Projects/your-project branch --show-current
 git -C C:/Projects/hazina branch --show-current
 
 # Check git worktree list (should not show released worktree)
-git -C C:/Projects/client-manager worktree list
+git -C C:/Projects/your-project worktree list
 git -C C:/Projects/hazina worktree list
 ```
 
@@ -235,7 +235,7 @@ git -C C:/Projects/hazina worktree list
 
 ```bash
 # 1. Verify PR exists
-gh pr view 123 --repo user/client-manager
+gh pr view 123 --repo user/your-project
 
 # 2. Clean worktree
 rm -rf C:/Projects/worker-agents/agent-001/*
@@ -243,11 +243,11 @@ rm -rf C:/Projects/worker-agents/agent-001/*
 # 3-5. Update tracking files (pool.md, activity.md, instances.map.md)
 
 # 6. Switch to develop
-cd C:/Projects/client-manager && git checkout develop && git pull
+cd C:/Projects/your-project && git checkout develop && git pull
 cd C:/Projects/hazina && git checkout develop && git pull
 
 # 7. Prune worktrees
-git -C C:/Projects/client-manager worktree prune
+git -C C:/Projects/your-project worktree prune
 git -C C:/Projects/hazina worktree prune
 
 # 8. Commit tracking files

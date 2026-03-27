@@ -21,7 +21,7 @@
     Automatically fix detected issues (remove Testing environment conditionals)
 
 .EXAMPLE
-    .\webappfactory-validator.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerAPI"
+    .\webappfactory-validator.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerAPI"
 
 .EXAMPLE
     .\webappfactory-validator.ps1 -ProjectPath "." -Fix

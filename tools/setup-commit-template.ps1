@@ -44,7 +44,7 @@
 
 .EXAMPLE
     .\setup-commit-template.ps1 -Install
-    .\setup-commit-template.ps1 -Repo "C:\Projects\client-manager" -Install
+    .\setup-commit-template.ps1 -Repo "C:\Projects\your-project" -Install
     .\setup-commit-template.ps1 -Interactive
     .\setup-commit-template.ps1 -Type feat -Scope api -Message "Add user authentication" -IssueRef "#123"
 #>

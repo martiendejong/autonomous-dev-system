@@ -308,7 +308,7 @@ switch ($Action) {
 
         # 1. Create main Knowledge Base doc
         Write-Host "[1/4] Creating Knowledge Base doc..." -ForegroundColor Cyan
-        $kbDoc = & $PSCommandPath -Action create -WorkspaceId $WorkspaceId -Name "Brand2Boost Knowledge Base" -Content "Documentation and guides for the client-manager and hazina projects."
+        $kbDoc = & $PSCommandPath -Action create -WorkspaceId $WorkspaceId -Name "Brand2Boost Knowledge Base" -Content "Documentation and guides for the your-project and hazina projects."
 
         if (-not $kbDoc) {
             Write-Error "Failed to create knowledge base doc"

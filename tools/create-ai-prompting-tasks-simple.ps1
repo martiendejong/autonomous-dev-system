@@ -63,7 +63,7 @@ Write-Host "`n=== Creating AI Prompting Tasks ===" -ForegroundColor Cyan
 # EPIC
 $epicId = New-Task `
     -Name "EPIC: AI Prompting Best Practices Implementation" `
-    -Desc "Transform Brand2Boost with advanced AI prompting techniques. Source: NetworkChuck video analysis. Document: C:\Projects\client-manager\docs\AI_PROMPTING_ANALYSIS.md. Expected ROI: 493% over 3 years. Payback: 6 months." `
+    -Desc "Transform Brand2Boost with advanced AI prompting techniques. Source: NetworkChuck video analysis. Document: C:\Projects\your-project\docs\AI_PROMPTING_ANALYSIS.md. Expected ROI: 493% over 3 years. Payback: 6 months." `
     -Priority "high" `
     -Hours 0
 

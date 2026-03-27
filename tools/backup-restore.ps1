@@ -44,7 +44,7 @@
 
 .EXAMPLE
     .\backup-restore.ps1 -Action backup -Type database -DatabaseName ClientManager
-    .\backup-restore.ps1 -Action backup -Type config -ConfigPaths "C:\Projects\client-manager\appsettings.json"
+    .\backup-restore.ps1 -Action backup -Type config -ConfigPaths "C:\Projects\your-project\appsettings.json"
     .\backup-restore.ps1 -Action restore -DatabaseName ClientManager -RestorePoint "backup-2024-01-16.bak"
     .\backup-restore.ps1 -Action list
     .\backup-restore.ps1 -Action cleanup -KeepCount 7

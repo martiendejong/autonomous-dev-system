@@ -45,7 +45,7 @@ if (-not (Test-Path $scriptPath)) {
 if ([string]::IsNullOrEmpty($RepoPath)) {
     $repositories = @(
         "C:\Projects\hazina",
-        "C:\Projects\client-manager"
+        "C:\Projects\your-project"
     ) | Where-Object { Test-Path $_ }
 } else {
     if (-not (Test-Path $RepoPath)) {

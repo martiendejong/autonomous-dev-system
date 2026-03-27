@@ -30,7 +30,7 @@ Claude Agent can synchronize with ClickUp to:
 
 ## Workspaces Summary
 
-### 1. Martien de Jong's Workspace (Personal)
+### 1. Your Name's Workspace (Personal)
 - **ID:** 9015747737
 - **Role:** Owner
 - **Usage:** Personal/household tasks, tax admin

@@ -77,8 +77,8 @@ Write-Host "  • Cassandra project"
 Write-Host ""
 
 Write-Info "Van accounts:"
-Write-Host "  • info@martiendejong.nl"
-Write-Host "  • martiendejong2008@gmail.com"
+Write-Host "  • info@yourname.nl"
+Write-Host "  • yourname2008@gmail.com"
 Write-Host ""
 
 Write-Info "Output: C:\scripts\arjan_emails\emails\"

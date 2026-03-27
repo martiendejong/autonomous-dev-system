@@ -157,7 +157,7 @@ Moving to TODO for rework.
 ### Mode 2: Specific Project
 ```
 "review clickup tasks for art-revisionist"
-"run clickup reviewer for client-manager"
+"run clickup reviewer for your-project"
 "check hazina tasks in review"
 ```
 **Scope:** Only tasks from specified project
@@ -183,7 +183,7 @@ Moving to TODO for rework.
 Before starting the review cycle, activate the bridge:
 
 ```bash
-powershell.exe -File "C:/scripts/tools/consciousness-bridge.ps1" -Action OnTaskStart -TaskDescription "ClickUp review cycle" -Project "client-manager" -Silent
+powershell.exe -File "C:/scripts/tools/consciousness-bridge.ps1" -Action OnTaskStart -TaskDescription "ClickUp review cycle" -Project "your-project" -Silent
 ```
 
 Read `C:/scripts/agentidentity/state/consciousness-context.json` for project-specific warnings.
@@ -213,7 +213,7 @@ $SCOPE = @{
 
 # Default = internal + client (NOT household/personal unless explicitly requested)
 if ($SCOPE.Mode -eq "default") {
-    $internalProjects = @("client-manager", "hazina", "brand2boost-birdseye", "learningtool", "general-meta")
+    $internalProjects = @("your-project", "hazina", "your-app-birdseye", "learningtool", "general-meta")
     $clientProjects = @("art-revisionist", "vera-ai", "wreckingball", "cloudgrafo", "vloerenhuis")
     $SCOPE.Projects = $internalProjects + $clientProjects
 }
@@ -330,8 +330,8 @@ Write-Host "Found $($allReviewTasks.Count) tasks in review status across $($list
    # Allocate worktree
    # Use allocate-worktree skill or manual allocation
 
-   # For projects requiring paired worktrees (client-manager, artrevisionist):
-   # - client-manager requires hazina worktree
+   # For projects requiring paired worktrees (your-project, artrevisionist):
+   # - your-project requires hazina worktree
    # - artrevisionist requires hazina worktree
 
    cd /c/Projects/worker-agents/agent-XXX/<repo>
@@ -607,7 +607,7 @@ Recommendation: Create PR or clarify review status.
 
 **Project Mapping** (from `clickup-config.json`):
 - art-revisionist: List ID `901211612245`
-- client-manager: List ID `901214097647`
+- your-project: List ID `901214097647`
 - hazina: List ID `901215559249`
 
 ## Notes

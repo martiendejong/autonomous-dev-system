@@ -20,7 +20,7 @@
     Skip test execution
 
 .EXAMPLE
-    .\validate-deployment.ps1 -ProjectPath "C:\Projects\client-manager" -Environment production
+    .\validate-deployment.ps1 -ProjectPath "C:\Projects\your-project" -Environment production
     .\validate-deployment.ps1 -ProjectPath "." -Environment staging -SkipTests
 #>
 

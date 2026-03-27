@@ -128,7 +128,7 @@ foreach ($file in $files) {
                 Link = $fullLink
                 Target = $linkTarget
             }
-        } elseif ($linkTarget -match '^\.\./client-manager|^\.\./hazina') {
+        } elseif ($linkTarget -match '^\.\./your-project|^\.\./hazina') {
             $categories.ExternalProject += @{
                 File = $relativePath
                 Link = $fullLink

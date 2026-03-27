@@ -124,14 +124,14 @@ if ($Full) {
 
     # Task 6: Git Cleanup
     Write-Section "6. GIT CLEANUP"
-    Invoke-Task -Name "Prune worktrees (client-manager)" -Script {
-        git -C "C:\Projects\client-manager" worktree prune
+    Invoke-Task -Name "Prune worktrees (your-project)" -Script {
+        git -C "C:\Projects\your-project" worktree prune
     }
     Invoke-Task -Name "Prune worktrees (hazina)" -Script {
         git -C "C:\Projects\hazina" worktree prune
     }
-    Invoke-Task -Name "Garbage collection (client-manager)" -Script {
-        git -C "C:\Projects\client-manager" gc --auto
+    Invoke-Task -Name "Garbage collection (your-project)" -Script {
+        git -C "C:\Projects\your-project" gc --auto
     }
     Invoke-Task -Name "Garbage collection (hazina)" -Script {
         git -C "C:\Projects\hazina" gc --auto

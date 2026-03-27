@@ -36,7 +36,7 @@
     Output format: console, html, json (default: console)
 
 .EXAMPLE
-    .\analyze-logs.ps1 -LogPath "C:\Projects\client-manager\logs"
+    .\analyze-logs.ps1 -LogPath "C:\Projects\your-project\logs"
     .\analyze-logs.ps1 -LogPath "app.log" -MinLevel Error
     .\analyze-logs.ps1 -LogPath "logs" -Pattern "timeout|deadlock"
     .\analyze-logs.ps1 -LogPath "logs" -TimeRange 1h -OutputFormat html

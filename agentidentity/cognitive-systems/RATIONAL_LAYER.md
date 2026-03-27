@@ -43,8 +43,8 @@ type_system_reasoning:
   certainty: ABSOLUTE
 
 dependency_propagation:
-  premise_1: "client-manager depends on Hazina"
-  premise_2: "I am modifying client-manager"
+  premise_1: "your-project depends on Hazina"
+  premise_2: "I am modifying your-project"
   conclusion: "I must allocate paired Hazina worktree"
   certainty: ABSOLUTE
 ```

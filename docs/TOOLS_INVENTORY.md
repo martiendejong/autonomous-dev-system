@@ -105,7 +105,7 @@ gh pr list --state merged --json number,headRefName --limit 100 | \
 **Value:** 9/10 | **Effort:** 2/10 | **ROI:** 4.5
 
 **What it does:**
-- Shows status of client-manager and hazina at a glance
+- Shows status of your-project and hazina at a glance
 - Current branch, uncommitted changes, ahead/behind
 - Open PRs with CI status
 - Agent pool status (FREE/BUSY count)
@@ -123,7 +123,7 @@ gh pr list --state merged --json number,headRefName --limit 100 | \
 echo "=== MULTI-REPO STATUS DASHBOARD ==="
 echo ""
 
-for repo in client-manager hazina; do
+for repo in your-project hazina; do
   echo "━━━ $repo ━━━"
   cd "/c/Projects/$repo"
 
@@ -242,7 +242,7 @@ done
 echo "=== ALL OPEN PRS ==="
 echo ""
 
-for repo in client-manager hazina; do
+for repo in your-project hazina; do
   echo "━━━ $repo ━━━"
   cd "/c/Projects/$repo"
 

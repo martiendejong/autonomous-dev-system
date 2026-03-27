@@ -82,7 +82,7 @@ git -C C:/Projects/<repo> status --short
 - User provided task ID → Use it
 - No task ID → CREATE one immediately:
   - hazina-only → List 901215559249
-  - client-manager → List 901214097647
+  - your-project → List 901214097647
   - art-revisionist → List 901211612245
 
 ```bash
@@ -101,14 +101,14 @@ Edit `C:/scripts/_machine/worktrees.pool.md`:
 
 ### Step 2: Create Worktree(s)
 
-**🚨 CRITICAL (Pattern 73): For client-manager, ALWAYS create paired Hazina worktree! 🚨**
+**🚨 CRITICAL (Pattern 73): For your-project, ALWAYS create paired Hazina worktree! 🚨**
 
-**Reason:** client-manager depends on Hazina assemblies. Build and QA tests require BOTH repos in sync.
+**Reason:** your-project depends on Hazina assemblies. Build and QA tests require BOTH repos in sync.
 
 ```bash
-# For client-manager (ALWAYS paired with Hazina)
-cd C:/Projects/client-manager
-git worktree add C:/Projects/worker-agents/agent-XXX/client-manager -b <branch-name>
+# For your-project (ALWAYS paired with Hazina)
+cd C:/Projects/your-project
+git worktree add C:/Projects/worker-agents/agent-XXX/your-project -b <branch-name>
 
 # IMMEDIATELY also create Hazina worktree (SAME branch name!)
 cd C:/Projects/hazina
@@ -118,7 +118,7 @@ git worktree add C:/Projects/worker-agents/agent-XXX/hazina -b <branch-name>
 **Result:**
 ```
 C:\Projects\worker-agents\agent-XXX\
-├── client-manager\    ← Branch: agent-XXX-feature-name
+├── your-project\    ← Branch: agent-XXX-feature-name
 └── hazina\            ← Branch: agent-XXX-feature-name (SAME!)
 ```
 
@@ -172,20 +172,20 @@ git -C C:/Projects/worker-agents/agent-XXX/<repo> branch --show-current
 - No conflicts detected (checked with conflict detection script)
 - Seat marked BUSY in pool.md
 - Worktree directory exists at `C:/Projects/worker-agents/agent-XXX/<repo>/`
-- **For client-manager:** BOTH worktrees created (client-manager + hazina, same branch name)
+- **For your-project:** BOTH worktrees created (your-project + hazina, same branch name)
 - Branch created and checked out in worktree(s)
 - Allocation logged in activity.md
 - Entry added to instances.map.md
 - Base repo(s) still on develop branch
 
-**Verification for client-manager:**
+**Verification for your-project:**
 ```bash
 # Check both worktrees exist
-ls C:/Projects/worker-agents/agent-XXX/client-manager
+ls C:/Projects/worker-agents/agent-XXX/your-project
 ls C:/Projects/worker-agents/agent-XXX/hazina
 
 # Verify same branch name in both
-git -C C:/Projects/worker-agents/agent-XXX/client-manager branch --show-current
+git -C C:/Projects/worker-agents/agent-XXX/your-project branch --show-current
 git -C C:/Projects/worker-agents/agent-XXX/hazina branch --show-current
 # Must match: agent-XXX-<same-feature-name>
 ```
@@ -213,20 +213,20 @@ git -C C:/Projects/worker-agents/agent-XXX/hazina branch --show-current
 - Conflict detection: `C:/scripts/_machine/MULTI_AGENT_CONFLICT_DETECTION.md`
 - Pool status: `C:/scripts/_machine/worktrees.pool.md`
 
-## Example: Complete Allocation (client-manager with Hazina)
+## Example: Complete Allocation (your-project with Hazina)
 
 ```bash
 # 1. Conflict check (BOTH repos)
-bash C:/scripts/tools/check-branch-conflicts.sh client-manager agent-001-new-feature
+bash C:/scripts/tools/check-branch-conflicts.sh your-project agent-001-new-feature
 bash C:/scripts/tools/check-branch-conflicts.sh hazina agent-001-new-feature
 
 # 2. Ensure base repos on develop
-git -C C:/Projects/client-manager checkout develop && git pull origin develop
+git -C C:/Projects/your-project checkout develop && git pull origin develop
 git -C C:/Projects/hazina checkout develop && git pull origin develop
 
 # 3. Create BOTH worktrees (same branch name)
-cd C:/Projects/client-manager
-git worktree add C:/Projects/worker-agents/agent-001/client-manager -b agent-001-new-feature
+cd C:/Projects/your-project
+git worktree add C:/Projects/worker-agents/agent-001/your-project -b agent-001-new-feature
 
 cd C:/Projects/hazina
 git worktree add C:/Projects/worker-agents/agent-001/hazina -b agent-001-new-feature
@@ -237,18 +237,18 @@ git worktree add C:/Projects/worker-agents/agent-001/hazina -b agent-001-new-fea
 # - instances.map.md: Add entry
 
 # 5. Verify both worktrees exist
-ls C:/Projects/worker-agents/agent-001/client-manager/
+ls C:/Projects/worker-agents/agent-001/your-project/
 ls C:/Projects/worker-agents/agent-001/hazina/
 
 # 6. Verify same branch name in both
-git -C C:/Projects/worker-agents/agent-001/client-manager branch --show-current
+git -C C:/Projects/worker-agents/agent-001/your-project branch --show-current
 # Output: agent-001-new-feature
 
 git -C C:/Projects/worker-agents/agent-001/hazina branch --show-current
 # Output: agent-001-new-feature (SAME!)
 
 # 7. Build verification (Pattern 71)
-cd C:/Projects/worker-agents/agent-001/client-manager
+cd C:/Projects/worker-agents/agent-001/your-project
 dotnet build --configuration Release
 # Must succeed with 0 errors
 ```

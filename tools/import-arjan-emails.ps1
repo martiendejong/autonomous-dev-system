@@ -1,13 +1,13 @@
 ﻿#!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Importeert emails van Arjan's contacten uit Gmail en martiendejong.nl mailbox
+    Importeert emails van Arjan's contacten uit Gmail en yourname.nl mailbox
 
 .DESCRIPTION
-    Wrapper script voor email import. Gebruikt Gmail API voor Gmail en IMAP voor martiendejong.nl
+    Wrapper script voor email import. Gebruikt Gmail API voor Gmail en IMAP voor yourname.nl
 
 .PARAMETER Source
-    Email bron: 'gmail', 'martiendejong', of 'all'
+    Email bron: 'gmail', 'yourname', of 'all'
 
 .PARAMETER Setup
     Toont setup instructies voor OAuth configuratie
@@ -26,7 +26,7 @@
 #>
 
 param(
-    [ValidateSet('gmail', 'martiendejong', 'all')
+    [ValidateSet('gmail', 'yourname', 'all')
 
 # AUTO-USAGE TRACKING
 $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
@@ -74,11 +74,11 @@ function Show-Setup {
     Write-Host "   .\import-arjan-emails.ps1 -Source gmail"
 
     Write-Host "`n==============================================================" -ForegroundColor Cyan
-    Write-Host "`n📧 info@martiendejong.nl Setup"
+    Write-Host "`n📧 info@yourname.nl Setup"
     Write-Host "==============================================================`n" -ForegroundColor Cyan
 
     Write-Host "Voor IMAP import heb je nodig:"
-    Write-Host "   - IMAP server adres (bv. mail.martiendejong.nl)"
+    Write-Host "   - IMAP server adres (bv. mail.yourname.nl)"
     Write-Host "   - IMAP poort (meestal 993 voor SSL)"
     Write-Host "   - Email wachtwoord"
     Write-Host "`nDeze gegevens worden gevraagd bij eerste run.`n"
@@ -144,14 +144,14 @@ function Import-Gmail {
     }
 }
 
-function Import-Martiendejong {
+function Import-yourname {
     Write-Host "`n==============================================================" -ForegroundColor Cyan
-    Write-Host "  info@martiendejong.nl IMAP Import" -ForegroundColor Cyan
+    Write-Host "  info@yourname.nl IMAP Import" -ForegroundColor Cyan
     Write-Host "==============================================================" -ForegroundColor Cyan
 
     Write-Host "⚠️  IMAP import nog niet geïmplementeerd" -ForegroundColor Yellow
     Write-Host "`n📋 Handmatige export optie:"
-    Write-Host "   1. Log in op webmail.martiendejong.nl (of je provider)"
+    Write-Host "   1. Log in op webmail.yourname.nl (of je provider)"
     Write-Host "   2. Zoek emails van gewenste contacten"
     Write-Host "   3. Exporteer als .eml of .mbox bestanden"
     Write-Host "   4. Plaats in: $OutputDir\[contact_naam]\"
@@ -176,14 +176,14 @@ switch ($Source) {
     'gmail' {
         $success = Import-Gmail
     }
-    'martiendejong' {
-        $success = Import-Martiendejong
+    'yourname' {
+        $success = Import-yourname
     }
     'all' {
         $gmailSuccess = Import-Gmail
         Start-Sleep -Seconds 2
-        $martiendejongSuccess = Import-Martiendejong
-        $success = $gmailSuccess -and $martiendejongSuccess
+        $yournameSuccess = Import-yourname
+        $success = $gmailSuccess -and $yournameSuccess
     }
 }
 

@@ -20,7 +20,7 @@
     Scan subdirectories recursively
 
 .EXAMPLE
-    detect-encoding-issues.ps1 -ProjectPath C:\Projects\client-manager\ClientManagerFrontend
+    detect-encoding-issues.ps1 -ProjectPath C:\Projects\your-project\ClientManagerFrontend
 
 .EXAMPLE
     detect-encoding-issues.ps1 -ProjectPath . -Fix -Recursive

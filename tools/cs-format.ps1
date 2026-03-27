@@ -16,7 +16,7 @@
     Show detailed output
 
 .EXAMPLE
-    .\cs-format.ps1 -ProjectPath "C:\Projects\client-manager"
+    .\cs-format.ps1 -ProjectPath "C:\Projects\your-project"
     .\cs-format.ps1 -ProjectPath "C:\Projects\hazina" -VerifyOnly
 #>
 

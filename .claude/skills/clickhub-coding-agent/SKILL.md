@@ -16,9 +16,9 @@ user-invocable: true
 ### Internal Projects (Default Scope)
 | Project | List ID | Type | Repos | Environment |
 |---------|---------|------|-------|-------------|
-| Brand Designer (client-manager) | 901214097647 | Fullstack | client-manager, hazina | Visual Studio |
+| Brand Designer (your-project) | 901214097647 | Fullstack | your-project, hazina | Visual Studio |
 | Hazina Framework | 901215559249 | Framework | hazina | Visual Studio |
-| Brand2Boost Birdseye | 901215573347 | Strategic | client-manager | Visual Studio |
+| Brand2Boost Birdseye | 901215573347 | Strategic | your-project | Visual Studio |
 | LearningTool | 901215905273 | Fullstack | learningtool | VSCode |
 | General & Meta Tasks | 901215818012 | Meta | various | Mixed |
 
@@ -63,7 +63,7 @@ user-invocable: true
 
 ### Mode 4: Multiple Specific Projects
 ```
-"Run clickhub for client-manager and hazina"
+"Run clickhub for your-project and hazina"
 "Start clickhub on art-revisionist and vera-ai"
 ```
 **Scope:** Only specified projects
@@ -212,7 +212,7 @@ Working on Google OAuth integration.
 ```
 ✅ AGENT COMPLETED
 
-PR: https://github.com/martiendejong/client-manager/pull/157
+PR: https://github.com/yourname/your-project/pull/157
 Branch: feature/task-869abc-add-login
 Files: 8 changed, 245 additions
 
@@ -234,7 +234,7 @@ PR created, ready for review
 - ClickUp API configured (`C:\scripts\_machine\clickup-config.json`)
 - `clickup-sync.ps1` tool available in `C:\scripts\tools\`
 - Worktree pool system initialized
-- Access to client-manager and hazina repositories
+- Access to your-project and hazina repositories
 - **MoSCoW prioritization framework** (`C:\scripts\MOSCOW_PRIORITIZATION.md`) ⭐ MANDATORY
 
 ## Workflow Steps
@@ -257,7 +257,7 @@ $SCOPE = @{
 # Parse user request:
 # "for art-revisionist" → Mode=specific, Projects=@("art-revisionist")
 # "for list 901211612245" → Mode=listid, ListIds=@("901211612245")
-# "for client-manager and hazina" → Mode=multiple, Projects=@("client-manager","hazina")
+# "for your-project and hazina" → Mode=multiple, Projects=@("your-project","hazina")
 # "for internal projects only" → Mode=category, Projects=@(all internal)
 # "for client projects only" → Mode=category, Projects=@(all client)
 # No specification → Mode=default, Projects=@(all internal + all client)
@@ -267,9 +267,9 @@ $SCOPE = @{
 ```powershell
 # Internal projects folder (901266650982)
 $internalProjects = @(
-    "client-manager",      # 901214097647
+    "your-project",      # 901214097647
     "hazina",              # 901215559249
-    "brand2boost-birdseye", # 901215573347
+    "your-app-birdseye", # 901215573347
     "learningtool",        # 901215905273
     "general-meta"         # 901215818012
 )
@@ -436,7 +436,7 @@ WON'T HAVE (Out of scope for this iteration):
 
 ```bash
 # Search for related branches
-cd C:/Projects/client-manager
+cd C:/Projects/your-project
 git branch -a | grep -i "<task-keyword>"
 
 # Search for related PRs
@@ -811,7 +811,7 @@ if ($taskDetails -match "🤖 AGENT WORKING" -and $taskDetails -notmatch "✅ AG
 **STEP 2: Check for existing branch**
 
 ```bash
-cd C:/Projects/client-manager
+cd C:/Projects/your-project
 git fetch --all
 
 # Check if branch already exists
@@ -855,10 +855,10 @@ AGENT_SEAT="agent-002"
 
 # Update pool to BUSY (manually edit or use tool)
 
-# Allocate paired worktrees (client-manager + hazina)
-cd C:/Projects/client-manager
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/client-manager" -b "$BRANCH_NAME" || \
-git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/client-manager" "$BRANCH_NAME"
+# Allocate paired worktrees (your-project + hazina)
+cd C:/Projects/your-project
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/your-project" -b "$BRANCH_NAME" || \
+git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/your-project" "$BRANCH_NAME"
 
 cd C:/Projects/hazina
 git worktree add "C:/Projects/worker-agents/$AGENT_SEAT/hazina" -b "$BRANCH_NAME" || \
@@ -888,7 +888,7 @@ echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | ALLOCATE | $BRANCH_NAME | C
 
 ```bash
 # Work in worktree directory
-cd "C:/Projects/worker-agents/$AGENT_SEAT/client-manager"
+cd "C:/Projects/worker-agents/$AGENT_SEAT/your-project"
 
 # Read existing code, understand patterns
 # Use Task/Explore agent for complex analysis
@@ -930,7 +930,7 @@ C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
 Agent ID: $AGENT_ID
 Session Start: $SESSION_TIME
 Branch: $BRANCH_NAME
-Worktree: C:/Projects/worker-agents/$AGENT_ID/client-manager
+Worktree: C:/Projects/worker-agents/$AGENT_ID/your-project
 
 This task is now being actively worked on.
 Other agents: Please do not pick up this task.
@@ -939,7 +939,7 @@ Other agents: Please do not pick up this task.
 "
 
 # STEP 2: Update to busy when starting implementation AND assign to someone
-# Default assignee: 74525428 (Martien de Jong - primary developer)
+# Default assignee: 74525428 (Your Name - primary developer)
 C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "busy" -Assignee "74525428"
 
 # STEP 3: Add progress comment with technical details
@@ -949,7 +949,7 @@ IMPLEMENTATION STARTED
 Branch: $BRANCH_NAME
 Worktree: $AGENT_SEAT
 Approach: [Brief description of technical approach]
-Assigned to: Martien de Jong
+Assigned to: Your Name
 
 -- ClickHub Coding Agent ($AGENT_ID)
 "
@@ -1015,7 +1015,7 @@ C:/scripts/tools/clickup-sync.ps1 -Action comment -TaskId "<task-id>" -Comment "
 
 Agent ID: $AGENT_ID
 PR Created: #$PR_NUMBER
-PR URL: https://github.com/martiendejong/client-manager/pull/$PR_NUMBER
+PR URL: https://github.com/yourname/your-project/pull/$PR_NUMBER
 Session Duration: $([math]::Round($completionTime, 1)) minutes
 Files Changed: [count]
 Commits: [count]
@@ -1027,7 +1027,7 @@ Other agents: Task is available for pickup if review changes needed.
 "
 
 # Update task to review status AND assign to reviewer
-# Default assignee: 74525428 (Martien de Jong - primary reviewer)
+# Default assignee: 74525428 (Your Name - primary reviewer)
 C:/scripts/tools/clickup-sync.ps1 -Action update -TaskId "<task-id>" -Status "review" -Assignee "74525428"
 ```
 
@@ -1067,7 +1067,7 @@ Write-Host "[LEARNING] Failure recorded - pattern detected for future avoidance"
 
 ```bash
 # Clean worktree
-rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/client-manager"
+rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/your-project"
 rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/hazina"
 
 # Update pool to FREE
@@ -1077,11 +1077,11 @@ rm -rf "C:/Projects/worker-agents/$AGENT_SEAT/hazina"
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | $AGENT_SEAT | RELEASE | $BRANCH_NAME | PR #$PR_NUMBER created" >> C:/scripts/_machine/worktrees.activity.md
 
 # Prune worktrees
-cd C:/Projects/client-manager && git worktree prune
+cd C:/Projects/your-project && git worktree prune
 cd C:/Projects/hazina && git worktree prune
 
 # Switch base repos to develop
-cd C:/Projects/client-manager && git checkout develop && git pull
+cd C:/Projects/your-project && git checkout develop && git pull
 cd C:/Projects/hazina && git checkout develop && git pull
 ```
 

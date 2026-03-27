@@ -30,7 +30,7 @@
     Generate interactive examples (requires running dev server)
 
 .EXAMPLE
-    .\generate-component-catalog.ps1 -ProjectPath "C:\Projects\client-manager\ClientManagerFrontend"
+    .\generate-component-catalog.ps1 -ProjectPath "C:\Projects\your-project\ClientManagerFrontend"
     .\generate-component-catalog.ps1 -ProjectPath "." -Format all
     .\generate-component-catalog.ps1 -ProjectPath "." -Interactive
 #>

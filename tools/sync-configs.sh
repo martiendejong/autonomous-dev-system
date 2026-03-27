@@ -69,13 +69,13 @@ for agent in "${AGENTS[@]}"; do
     continue
   fi
 
-  # Sync client-manager configs
-  if [ -d "$agent_path/client-manager" ]; then
-    echo "  📁 client-manager:"
+  # Sync your-project configs
+  if [ -d "$agent_path/your-project" ]; then
+    echo "  📁 your-project:"
 
     for config in "${CLIENT_MANAGER_CONFIGS[@]}"; do
-      source_file="/c/Projects/client-manager/$config"
-      dest_file="$agent_path/client-manager/$config"
+      source_file="/c/Projects/your-project/$config"
+      dest_file="$agent_path/your-project/$config"
 
       if [ ! -f "$source_file" ]; then
         continue

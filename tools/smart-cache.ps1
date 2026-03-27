@@ -141,7 +141,7 @@ elseif ($Preload) {
     # Preload commonly needed context
     $preloads = @(
         @{ key = "worktree_status"; cmd = "worktree-status.ps1 -Compact" },
-        @{ key = "git_status_cm"; cmd = "git -C C:\Projects\client-manager status -sb" },
+        @{ key = "git_status_cm"; cmd = "git -C C:\Projects\your-project status -sb" },
         @{ key = "git_status_hz"; cmd = "git -C C:\Projects\hazina status -sb" }
     )
 

@@ -22,7 +22,7 @@ All rules in one place. No duplicates. No contradictions. <5KB.
 2. **Verify feature doesn't exist** (automated - see below)
 3. Ensure base repo on develop: `git -C C:\Projects\<repo> checkout develop && git pull`
 4. Create worktree: `git worktree add C:\Projects\worker-agents\agent-XXX\<repo> -b <branch>`
-5. For client-manager: ALWAYS create paired hazina worktree (same branch name)
+5. For your-project: ALWAYS create paired hazina worktree (same branch name)
 6. Mark seat BUSY, log in activity.md
 
 ### Feature-Exists Check (AUTOMATED GATE)
@@ -71,7 +71,7 @@ If feature EXISTS → **STOP**. Do NOT proceed.
 - Always assign when changing status: `-Assignee "74525428"`
 - No task ID given + feature work → CREATE task immediately
 - Apply MoSCoW prioritization before implementation
-- List IDs: hazina=901215559249, client-manager=901214097647, art-revisionist=901211612245
+- List IDs: hazina=901215559249, your-project=901214097647, art-revisionist=901211612245
 
 ---
 
@@ -125,7 +125,7 @@ STATUS: Knowledge system integrated and tested
 All 8 tools built, quick-context auto-loads at startup (53x faster), 100% context completeness.
 
 STATUS: PR #123 created and worktree released
-Feature implemented, tests passing, PR ready for review in client-manager develop branch.
+Feature implemented, tests passing, PR ready for review in your-project develop branch.
 
 STATUS: Build failed - missing dependency
 dotnet build errors in Hazina framework, needs Microsoft.Extensions.Http package.

@@ -32,7 +32,7 @@
     Generate Dockerfiles for API and frontend if missing
 
 .EXAMPLE
-    .\generate-docker-compose.ps1 -ProjectPath "C:\Projects\client-manager"
+    .\generate-docker-compose.ps1 -ProjectPath "C:\Projects\your-project"
     .\generate-docker-compose.ps1 -ProjectPath "." -Services api,sqlserver,redis
     .\generate-docker-compose.ps1 -ProjectPath "." -Profile production -GenerateDockerfiles
 #>

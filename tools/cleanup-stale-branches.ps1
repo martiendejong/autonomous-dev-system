@@ -27,7 +27,7 @@
 
 .EXAMPLE
     .\cleanup-stale-branches.ps1 -DryRun
-    .\cleanup-stale-branches.ps1 -Repo "C:\Projects\client-manager" -MergedOnly
+    .\cleanup-stale-branches.ps1 -Repo "C:\Projects\your-project" -MergedOnly
     .\cleanup-stale-branches.ps1 -AutoDelete -DaysInactive 60
 #>
 

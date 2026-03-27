@@ -21,7 +21,7 @@ $issues = @{
     PlaceholderLinks = @()  # [link](url), [text](link)
     MissingFiles = @()       # Actual missing .md files
     WrongPaths = @()         # Wrong relative paths
-    ExternalRepos = @()      # Links to ../client-manager, ../hazina
+    ExternalRepos = @()      # Links to ../your-project, ../hazina
     TemplateArtifacts = @()  # Template placeholders like [params]
 }
 
@@ -54,7 +54,7 @@ foreach ($section in $brokenSections) {
     elseif ($target -match '^\[.*\]$') {
         $issues.TemplateArtifacts += $issue
     }
-    elseif ($target -match '\.\./client-manager' -or $target -match '\.\./hazina') {
+    elseif ($target -match '\.\./your-project' -or $target -match '\.\./hazina') {
         $issues.ExternalRepos += $issue
     }
     elseif ($target -match '\.\./|^\./') {
@@ -125,7 +125,7 @@ $report += @"
 
 ## 3. External Repository Links (HIGH PRIORITY)
 
-These link to ``../client-manager`` or ``../hazina`` which don't exist relative to C:\scripts.
+These link to ``../your-project`` or ``../hazina`` which don't exist relative to C:\scripts.
 **Action:** Update to absolute paths or add note that repos must be cloned.
 
 "@
@@ -139,9 +139,9 @@ if ($issues.ExternalRepos.Count -gt 0) {
             $report += "- ``$($item.Source)```n"
         }
         $report += "`n**Fix:**`n"
-        if ($group.Name -match 'client-manager') {
-            $report += "- Update to: ``C:\Projects\client-manager\...``  OR`n"
-            $report += "- Add note: *Requires client-manager repository cloned at C:\Projects\client-manager*`n"
+        if ($group.Name -match 'your-project') {
+            $report += "- Update to: ``C:\Projects\your-project\...``  OR`n"
+            $report += "- Add note: *Requires your-project repository cloned at C:\Projects\your-project*`n"
         }
         elseif ($group.Name -match 'hazina') {
             $report += "- Update to: ``C:\Projects\hazina\...``  OR`n"

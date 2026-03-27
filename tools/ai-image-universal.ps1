@@ -90,7 +90,7 @@
 
 .NOTES
     Created: 2026-01-25
-    API keys auto-loaded from: C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json
+    API keys auto-loaded from: C:\Projects\your-project\ClientManagerAPI\appsettings.Secrets.json
 #>
 
 param(
@@ -155,7 +155,7 @@ $ErrorActionPreference = "Stop"
 
 # Auto-load API keys from appsettings.Secrets.json if not provided
 if (-not $ApiKey) {
-    $secretsPath = "C:\Projects\client-manager\ClientManagerAPI\appsettings.Secrets.json"
+    $secretsPath = "C:\Projects\your-project\ClientManagerAPI\appsettings.Secrets.json"
 
     if (Test-Path $secretsPath) {
         try {

@@ -19,7 +19,7 @@
     Run checks without being in a hook context
 
 .EXAMPLE
-    .\pre-commit-hook.ps1 -Install -RepoPath "C:\Projects\client-manager"
+    .\pre-commit-hook.ps1 -Install -RepoPath "C:\Projects\your-project"
     .\pre-commit-hook.ps1 -Check
 #>
 
@@ -36,7 +36,7 @@ $toolName = $MyInvocation.MyCommand.Name -replace '\.ps1$', ''
 
 $PoolPath = "C:\scripts\_machine\worktrees.pool.md"
 $BaseRepos = @(
-    "C:\Projects\client-manager",
+    "C:\Projects\your-project",
     "C:\Projects\hazina"
 )
 
@@ -274,7 +274,7 @@ exit `$?
 if ($Install) {
     if (-not $RepoPath) {
         Write-Host "ERROR: -RepoPath required for install" -ForegroundColor Red
-        Write-Host "Usage: .\pre-commit-hook.ps1 -Install -RepoPath 'C:\Projects\client-manager'"
+        Write-Host "Usage: .\pre-commit-hook.ps1 -Install -RepoPath 'C:\Projects\your-project'"
         exit 1
     }
     Install-Hook -TargetRepo $RepoPath

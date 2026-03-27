@@ -34,7 +34,7 @@
     Output format: console, json, markdown (default: console)
 
 .EXAMPLE
-    .\auto-code-review.ps1 -Path "C:\Projects\client-manager" -Severity error
+    .\auto-code-review.ps1 -Path "C:\Projects\your-project" -Severity error
     .\auto-code-review.ps1 -Path "." -SecurityOnly
     .\auto-code-review.ps1 -Path "." -PRNumber 123 -PostComments
 #>

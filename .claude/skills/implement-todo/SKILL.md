@@ -82,7 +82,7 @@ user-invocable: true
 /implement-todo <board> [max_tasks]
 
 # Examples:
-/implement-todo client-manager
+/implement-todo your-project
 /implement-todo 901214097647 5
 /implement-todo seo-god
 ```
@@ -323,11 +323,11 @@ Success rate: 85% (tasks moved to review or properly escalated)
 
 ### Example 1: Successful Implementation
 
-**User says:** "Implement the todo tasks for client-manager"
+**User says:** "Implement the todo tasks for your-project"
 
 **Claude activates implement-todo:**
 
-1. Fetches 3 TODO tasks from client-manager board
+1. Fetches 3 TODO tasks from your-project board
 2. **Task #123: "Add user profile avatar upload"**
    - Reads comments: Found rework request "Use Cloudinary instead of local storage"
    - Scans codebase: Detects 40% complete (backend done, frontend pending)

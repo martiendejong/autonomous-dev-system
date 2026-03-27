@@ -41,7 +41,7 @@ $Config = @{
     MachineContext = "C:\scripts\_machine"
     WorkerAgents = "C:\Projects\worker-agents"
     BaseRepos = @(
-        @{ Name = "client-manager"; Path = "C:\Projects\client-manager"; MainBranch = "develop" }
+        @{ Name = "your-project"; Path = "C:\Projects\your-project"; MainBranch = "develop" }
         @{ Name = "hazina"; Path = "C:\Projects\hazina"; MainBranch = "develop" }
     )
     RequiredFiles = @(

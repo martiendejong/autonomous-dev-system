@@ -27,7 +27,7 @@
 
 .EXAMPLE
     .\scan-secrets.ps1
-    .\scan-secrets.ps1 -Path "C:\Projects\client-manager" -Recursive
+    .\scan-secrets.ps1 -Path "C:\Projects\your-project" -Recursive
     .\scan-secrets.ps1 -Path "src" -FailOnSecrets
 #>
 
