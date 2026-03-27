@@ -1,0 +1,60 @@
+## Issue: TikTok API Configuration Error
+
+**Problem:** TikTok Developer Portal requires publicly accessible, HTTPS, non-redirecting pages for:
+- Terms of Service URL
+- Privacy Policy URL
+
+Current URLs (https://app.brand2boost.com/) fail because:
+- Root URLs dont contain ToS/Privacy content
+- May require login (not publicly accessible)
+- TikTok cannot verify URL properties
+
+## Solution - 4 Steps Required
+
+### Step 1: Create Public Legal Document Pages (NEEDS DEVELOPMENT)
+Create two static pages that do NOT require login:
+- https://brand2boost.com/terms OR https://app.brand2boost.com/terms
+- https://brand2boost.com/privacy OR https://app.brand2boost.com/privacy
+
+Requirements:
+- HTTPS
+- No login required
+- Loads directly in browser
+- Contains relevant legal text
+- Not blank, not redirecting
+
+### Step 2: Add Legal Content (NEEDS CONTENT)
+
+Terms of Service must include:
+- Service eligibility
+- Account usage rules
+- Copyright policy
+- Limitations of liability
+- Contact info
+
+Privacy Policy must include:
+- Data collected
+- Purpose of processing
+- Cookies usage
+- Third-party sharing
+- User rights
+- Contact info
+
+### Step 3: Update TikTok Developer Portal Config
+Set URLs in TikTok Developer Portal:
+- Terms of Service URL: https://brand2boost.com/terms
+- Privacy Policy URL: https://brand2boost.com/privacy
+
+### Step 4: Verify URL Properties
+TikTok checks:
+- HTTP 200 response (not 302, 401, 403, 404)
+- Public access (no login redirect)
+- TLS certificate validity
+- Page not empty
+
+Test command: curl -I https://brand2boost.com/terms
+Expected: HTTP/2 200
+
+---
+Session: 2026-01-15 with Sandra/Simitia
+Source: ChatGPT analysis of TikTok API requirements

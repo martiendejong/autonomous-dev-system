@@ -1,0 +1,83 @@
+# Large binaries (download separately)
+*.jar
+*.exe
+*.phar
+*.dll
+
+# Claude local settings (exclude settings, include skills)
+.claude/settings.json
+.claude/settings.local.json
+
+# Node modules (reinstall with npm install)
+node_modules/
+playwright/node_modules/
+
+# Compiled binaries
+tools/cs-autofix/bin/
+tools/cs-autofix/obj/
+
+# Temporary/generated files
+nul
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Secrets (if any)
+*.secret
+*.key
+secrets/
+
+# OAuth credentials (contain client secrets)
+_machine/gcp-oauth.keys.json
+_machine/gdrive-credentials.json
+_machine/gdrive.credentials.json
+_machine/gdrive-sheets-credentials.json
+_machine/client_secret_*.json
+tools/gdrive-upload/credentials.json
+temp_clickup.json
+**/credentials.json
+**/*.credentials.json
+
+# Weird filename
+C:*
+
+# Machine temp files (created at runtime)
+_machine/tmpclaude-*
+
+# Bootstrap-generated (machine-specific state - templates tracked separately)
+# These are created by bootstrap from .template files
+09-SECRETS/
+
+# Project-specific files (exclude from public repo)
+analysis-*-brand2boost.md
+tools/backup-brand2boost.ps1
+tools/*database*.py
+tools/ssh-*.py
+tools/*-vps*.ps1
+tools/upload-config.py
+tools/create-project-kb.ps1
+
+# Security - Never commit sensitive data
+*password*.txt
+*credentials*.txt
+*.env
+.env.*
+secrets/
+vault.json
+config.private.*
+*-private.*
+
+# Project-specific paths
+_machine/
+_temp/
+temp/
+logs/*.log
+

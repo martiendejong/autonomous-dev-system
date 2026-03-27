@@ -1,0 +1,1 @@
+@php "C:\scripts\wp-cli.phar" %*
