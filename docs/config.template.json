@@ -1,0 +1,80 @@
+{
+  "$schema": "./config.schema.json",
+  "openai": {
+    "apiKey": "sk-...",
+    "model": "gpt-4-turbo-preview",
+    "temperature": 0.7,
+    "maxTokens": 4000
+  },
+  "wordpress": {
+    "siteUrl": "https://your-site.com",
+    "apiKey": "your-wordpress-application-password",
+    "username": "admin"
+  },
+  "rss": {
+    "feeds": [
+      {
+        "url": "https://example.com/feed.xml",
+        "name": "Example Feed",
+        "category": "general",
+        "updateInterval": 3600
+      }
+    ]
+  },
+  "factions": {
+    "definitions": [
+      {
+        "id": "progressive",
+        "name": "Progressive",
+        "keywords": ["climate", "equality", "justice", "diversity"],
+        "sentimentBias": 0.2
+      },
+      {
+        "id": "conservative",
+        "name": "Conservative",
+        "keywords": ["tradition", "security", "economy", "family"],
+        "sentimentBias": -0.2
+      },
+      {
+        "id": "libertarian",
+        "name": "Libertarian",
+        "keywords": ["freedom", "minimal-government", "free-market"],
+        "sentimentBias": 0.0
+      }
+    ]
+  },
+  "regions": {
+    "mappings": [
+      {
+        "code": "us",
+        "name": "United States",
+        "timezone": "America/New_York",
+        "language": "en"
+      },
+      {
+        "code": "eu",
+        "name": "European Union",
+        "timezone": "Europe/Brussels",
+        "language": "en"
+      },
+      {
+        "code": "nl",
+        "name": "Netherlands",
+        "timezone": "Europe/Amsterdam",
+        "language": "nl"
+      }
+    ]
+  },
+  "agents": {
+    "enabled": true,
+    "maxConcurrent": 3,
+    "retryAttempts": 3,
+    "timeout": 30000
+  },
+  "logging": {
+    "level": "info",
+    "outputPath": "./logs",
+    "maxFileSize": "10MB",
+    "maxFiles": 5
+  }
+}

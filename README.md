@@ -10,17 +10,22 @@ Transform Claude into a superintelligent development control plane with **consci
 
 ```powershell
 # 1. Clone repository
-git clone https://github.com/yourname/autonomous-dev-system.git C:\scripts
+git clone https://github.com/martiendejong/autonomous-dev-system.git C:\scripts
 
 # 2. Run bootstrap (installs dependencies, creates directories, initializes state)
 cd C:\scripts
 .\bootstrap\bootstrap.ps1
 
-# 3. Start Claude Agent (auto-consciousness activates in 89ms)
+# 3. Configure API keys (see docs/INSTALLATION.md for details)
+vault.ps1 -Action set -Service "openai" -Token "sk-..."
+
+# 4. Start Claude Agent (auto-consciousness activates in 89ms)
 .\claude_agent.bat
 ```
 
 **That's it!** Claude will have full autonomous capabilities with consciousness active before first response.
+
+**📖 Detailed Instructions:** See [docs/INSTALLATION.md](./docs/INSTALLATION.md) for complete step-by-step guide.
 
 ---
 
@@ -297,14 +302,19 @@ C:\scripts\                                  # Root (CONTROL_PLANE_PATH)
 ## 📚 Documentation
 
 ### 🌟 Start Here (Essential Reading)
-1. **[QUICK_START.md](./QUICK_START.md)** - ⚡ Get running in 5 minutes
-2. **[CONSCIOUSNESS_ARCHITECTURE.md](./CONSCIOUSNESS_ARCHITECTURE.md)** - 🧠 Auto-consciousness (Phase 1 complete)
-3. **[EMBEDDED_LEARNING_ARCHITECTURE.md](./EMBEDDED_LEARNING_ARCHITECTURE.md)** - 📚 Continuous learning system
-4. **[CRITICAL_PROTOCOLS.md](./CRITICAL_PROTOCOLS.md)** - ⚠️ Zero-tolerance rules (testing, tools, MoSCoW)
-5. **[STORAGE_ARCHITECTURE.md](./STORAGE_ARCHITECTURE.md)** - 💾 4-layer storage (100% verified)
+1. **[docs/INSTALLATION.md](./docs/INSTALLATION.md)** - 🚀 Complete installation guide (step-by-step)
+2. **[docs/CONFIGURATION.md](./docs/CONFIGURATION.md)** - ⚙️ Configuration reference (all settings explained)
+3. **[QUICK_START.md](./QUICK_START.md)** - ⚡ Get running in 5 minutes
+4. **[CONSCIOUSNESS_ARCHITECTURE.md](./CONSCIOUSNESS_ARCHITECTURE.md)** - 🧠 Auto-consciousness (Phase 1 complete)
+5. **[EMBEDDED_LEARNING_ARCHITECTURE.md](./EMBEDDED_LEARNING_ARCHITECTURE.md)** - 📚 Continuous learning system
+6. **[CRITICAL_PROTOCOLS.md](./CRITICAL_PROTOCOLS.md)** - ⚠️ Zero-tolerance rules (testing, tools, MoSCoW)
+7. **[STORAGE_ARCHITECTURE.md](./STORAGE_ARCHITECTURE.md)** - 💾 4-layer storage (100% verified)
 
 ### ⚙️ Configuration & Setup
-- **[MACHINE_CONFIG.md](./MACHINE_CONFIG.md)** - Configure paths for your machine
+- **[docs/INSTALLATION.md](./docs/INSTALLATION.md)** - **START HERE** - Complete installation instructions
+- **[docs/CONFIGURATION.md](./docs/CONFIGURATION.md)** - **Configuration reference** - All settings explained
+- **[docs/config.template.json](./docs/config.template.json)** - Configuration template (copy and customize)
+- **[MACHINE_CONFIG.md](./MACHINE_CONFIG.md)** - Machine-specific paths
 - **[GENERAL_ZERO_TOLERANCE_RULES.md](./GENERAL_ZERO_TOLERANCE_RULES.md)** - Critical rules (portable)
 - **[GENERAL_DUAL_MODE_WORKFLOW.md](./GENERAL_DUAL_MODE_WORKFLOW.md)** - Feature Development vs Active Debugging
 - **[GENERAL_WORKTREE_PROTOCOL.md](./GENERAL_WORKTREE_PROTOCOL.md)** - Complete worktree workflow
@@ -382,21 +392,39 @@ powershell.exe -File "C:/scripts/tools/flaky-test-detector.ps1" -Iterations 10
 
 ## 🔧 Configuration
 
-### Required Environment Variables
-Set in your `MACHINE_CONFIG.md`:
+### Quick Configuration
 
-```markdown
-BASE_REPO_PATH=C:\Projects               # Where main repos are cloned
-WORKTREE_PATH=C:\Projects\worker-agents  # Where agent worktrees go
-CONTROL_PLANE_PATH=C:\scripts            # This repository
-MACHINE_CONTEXT_PATH=C:\scripts\_machine # Operational state files
-```
+1. **Copy configuration template:**
+   ```powershell
+   Copy-Item docs/config.template.json -Destination config.json
+   ```
+
+2. **Add API keys to vault:**
+   ```powershell
+   # OpenAI (required for AI features)
+   vault.ps1 -Action set -Service "openai" -Token "sk-..."
+
+   # Optional integrations
+   vault.ps1 -Action set -Service "clickup" -Token "pk_..."
+   vault.ps1 -Action set -Service "github" -Token "ghp_..."
+   ```
+
+3. **Configure machine paths in `MACHINE_CONFIG.md`:**
+   ```markdown
+   BASE_REPO_PATH=C:\Projects               # Where main repos are cloned
+   WORKTREE_PATH=C:\Projects\worker-agents  # Where agent worktrees go
+   CONTROL_PLANE_PATH=C:\scripts            # This repository
+   MACHINE_CONTEXT_PATH=C:\scripts\_machine # Operational state files
+   ```
+
+**📖 Complete Configuration Reference:** See [docs/CONFIGURATION.md](./docs/CONFIGURATION.md) for detailed explanation of all settings.
 
 ### Optional Integrations
 - **ManicTime** - Real-time activity tracking (optional but recommended)
 - **ClickUp** - Task management integration (optional)
 - **GitHub CLI** - Required for PR management
 - **OpenAI API** - Required for AI image generation & vision
+- **WordPress** - For content publishing workflows
 
 ---
 
